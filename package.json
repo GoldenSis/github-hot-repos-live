@@ -1,0 +1,16 @@
+{
+  "name": "github-hot-repos-live",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Weekly Hot GitHub Repos report with live, self-refreshing star counts.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/preprocess.mjs",
+    "test": "node scripts/test.mjs",
+    "dev": "wrangler dev",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

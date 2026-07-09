@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hot GitHub Repos — June 25, 2026 · The Next New Thing</title>
+<link rel="preconnect" href="https://opengraph.githubassets.com" crossorigin>
+<link rel="preconnect" href="https://github.com">
+<link rel="preconnect" href="https://x.com" crossorigin>
+<link rel="preconnect" href="https://twitter.com" crossorigin>
+<link rel="preconnect" href="https://www.youtube.com" crossorigin>
+<link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin>
+<link rel="preconnect" href="https://youtu.be" crossorigin>
+<link rel="preconnect" href="https://zapier.com" crossorigin>
+<link rel="dns-prefetch" href="https://github.com">
+<link rel="dns-prefetch" href="https://www.youtube.com">
+<link rel="dns-prefetch" href="https://x.com">
+<link rel="preconnect" href="https://i.ytimg.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Rye&family=Special+Elite&display=swap">
+<script>(function(){
+  var TOKENS=['1','og','v2','v3','v4'];
+  window.ogErr=function(img){
+    var n=+(img.dataset.tryn||0);
+    if(n<TOKENS.length-1){ n++; img.dataset.tryn=n;
+      setTimeout(function(){ img.src='https://opengraph.githubassets.com/'+TOKENS[n]+'/'+img.dataset.owner+'/'+img.dataset.repo+'?cb='+Date.now(); }, 500*n);
+    } else { img.style.display='none'; if(img.nextElementSibling) img.nextElementSibling.style.display='flex'; }
+  };
+})();</script>
+<style>
+:root {
+  --canvas: #f8f9fc;
+  --surface: #ffffff;
+  --surface-2: #edeff4;
+  --ink: #0c0d11;
+  --ink-muted: #4a4f59;
+  --ink-subtle: #6b7079;
+  --hairline: #d6dae2;
+  --hairline-soft: #edeff4;
+  --accent: #1f3a5f;
+  --canvas-hm: #f3f4f9;
+  --canvas-hm-accent: #f6ead0;
+  --accent-warm: #9a6a1e;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: auto;
+  overflow-x: hidden;
+}
+body { overflow-y: scroll; }
+.panel {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 0;
+}
+.panel-hm { background: var(--canvas-hm); }
+.panel-hm .panel-header { background: var(--canvas-hm); }
+.hm-chip { background: var(--accent); color: var(--canvas); padding: 5px 11px; border-radius: 12px; font-size: 11px; font-family: 'Inter', sans-serif; font-weight: 600; white-space: nowrap; letter-spacing: 0.02em; }
+.panel-hm-accent { background: var(--canvas-hm-accent); }
+.panel-hm-accent .panel-header { background: var(--canvas-hm-accent); }
+.panel-hm-accent .hm-chip { background: var(--accent-warm); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 4px; }
+.vbtn { display: inline-block; background: var(--accent); color: var(--canvas); padding: 11px 18px; border-radius: 8px; font-size: 13px; font-weight: 500; text-decoration: none; }
+.vbtn:hover { background: #142847; }
+.cta-alt { background: var(--surface); color: var(--accent); border: 1px solid var(--accent); }
+.cta-alt:hover { background: var(--surface-2); }
+.h-desc a, .why a, .sowhat p a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--hairline); }
+.h-desc a:hover, .why a:hover, .sowhat p a:hover { border-bottom-color: var(--accent); }
+.panel-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 36px; border-bottom: 1px solid var(--hairline);
+  background: var(--canvas); position: sticky; top: 0; z-index: 10;
+  font-family: 'Inter', sans-serif;
+}
+.ph-left { display: flex; align-items: center; gap: 14px; }
+.rank {
+  font-family: ui-monospace, 'JetBrains Mono', monospace;
+  font-size: 12px; color: var(--ink-subtle); letter-spacing: 0.06em;
+}
+.repo-name {
+  font-size: 16px; font-weight: 500; color: var(--ink);
+  text-decoration: none; letter-spacing: -0.2px;
+}
+.repo-name:hover .name { color: var(--accent); }
+.repo-name .owner { color: var(--ink-muted); font-weight: 400; }
+.repo-name .slash { color: var(--ink-subtle); margin: 0 2px; }
+.ph-dots { display: flex; gap: 4px; }
+.dot {
+  font-size: 11px; padding: 6px 12px; border-radius: 14px;
+  text-decoration: none; color: var(--ink-subtle);
+  letter-spacing: 0.04em; text-transform: uppercase; font-weight: 500;
+  border: 1px solid transparent;
+}
+.dot:hover { color: var(--ink); border-color: var(--hairline); }
+.dot.active { color: var(--accent); border-color: var(--accent); }
+.panel-body {
+  flex: 1; display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px;
+  padding: 36px 56px 48px;
+}
+.panel-body-centered {
+  display: flex; align-items: center; justify-content: center;
+  padding: 36px 56px; flex: 1;
+}
+.summary-left { display: flex; flex-direction: column; justify-content: space-between; }
+.summary-right { display: flex; flex-direction: column; gap: 14px; min-height: 0; }
+.eyebrow {
+  font-size: 11px; font-weight: 600; color: var(--accent);
+  letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 14px;
+}
+.title {
+  font-size: 38px; font-weight: 500; line-height: 1.15;
+  letter-spacing: -1.0px; color: var(--ink); margin-bottom: 24px;
+}
+.title .em { color: var(--accent); }
+.why-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-subtle); margin-bottom: 8px;
+}
+.why { font-size: 15px; line-height: 1.55; color: var(--ink-muted); margin-bottom: 18px; }
+.why b { color: var(--ink); font-weight: 500; }
+.cta {
+  display: inline-block; background: var(--accent); color: var(--canvas);
+  padding: 12px 22px; border-radius: 8px; font-size: 14px; font-weight: 500;
+  text-decoration: none; margin-top: auto; align-self: flex-start;
+}
+.cta:hover { background: #142847; }
+.card { background: var(--surface); border: 1px solid var(--hairline); border-radius: 14px; }
+.stats-card { padding: 16px 22px; flex-shrink: 0; }
+.stats-row {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 18px; align-items: end;
+}
+.stat-label {
+  font-size: 10px; color: var(--ink-subtle); letter-spacing: 0.14em;
+  text-transform: uppercase; font-weight: 600; margin-bottom: 4px;
+}
+.stat-val { font-size: 18px; font-weight: 500; color: var(--ink); letter-spacing: -0.3px; }
+.highlights-card { padding: 18px 22px; flex: 1; min-height: 0; overflow: hidden; }
+.card-label {
+  font-size: 10px; color: var(--ink-subtle); letter-spacing: 0.14em;
+  text-transform: uppercase; font-weight: 600; margin-bottom: 14px;
+}
+.highlights { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.highlights li {
+  padding-bottom: 12px; border-bottom: 1px solid var(--hairline-soft);
+  position: relative; padding-left: 14px;
+}
+.highlights li::before {
+  content: ''; display: inline-block; width: 5px; height: 5px;
+  background: var(--accent); border-radius: 50%; position: absolute;
+  left: 0; top: 8px;
+}
+.highlights li:last-child { border-bottom: none; padding-bottom: 0; }
+.h-name { font-size: 14px; font-weight: 500; color: var(--ink); letter-spacing: -0.15px; margin-bottom: 2px; }
+.h-desc { font-size: 13px; line-height: 1.45; color: var(--ink-muted); }
+.h-desc code, .why code {
+  font-family: ui-monospace, 'JetBrains Mono', monospace; font-size: 12px;
+  background: var(--surface-2); padding: 1px 6px; border-radius: 4px; color: var(--ink);
+}
+.sowhat { margin-top:14px; padding-top:12px; border-top:1px solid var(--hairline-soft); }
+.sowhat-label { font-size:10px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:4px; }
+.sowhat p { font-size:13px; line-height:1.45; color:var(--ink-muted); }
+.reads { margin-top:14px; padding-top:12px; border-top:1px solid var(--hairline-soft); }
+.reads-label { font-size:10px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:6px; }
+.read-list { list-style:none; display:flex; flex-direction:column; gap:2px; }
+.read-list a { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:5px 0; text-decoration:none; border-bottom:1px solid var(--hairline-soft); }
+.read-list li:last-child a { border-bottom:none; }
+.read-label { font-size:13px; font-weight:500; color:var(--ink); }
+.read-list a:hover .read-label { color:var(--accent); }
+.read-url { font-family: ui-monospace, 'JetBrains Mono', monospace; font-size:11px; color:var(--ink-subtle); white-space:nowrap; }
+.github-card {
+  max-width: 1100px; width: 100%; display: flex; flex-direction: column;
+  align-items: center; gap: 24px;
+}
+.github-og {
+  width: 100%; max-width: 1100px; aspect-ratio: 2 / 1; object-fit: cover;
+  border-radius: 14px; border: 1px solid var(--hairline);
+  background: var(--surface);
+}
+.github-meta { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.badges { display: flex; gap: 10px; }
+.badge {
+  background: var(--surface); border: 1px solid var(--hairline);
+  padding: 8px 14px; border-radius: 16px; font-size: 13px; color: var(--ink);
+}
+.embed-card { max-width: 640px; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.embed-caption { font-size: 13px; color: var(--ink-muted); font-style: italic; text-align: center; line-height: 1.5; max-width: 620px; }
+.tweet-iframe { width: 100%; height: 600px; max-height: 75vh; border: none; border-radius: 14px; background: var(--surface); }
+.video-card { max-width: 980px; width: 100%; }
+.video-embed { width: 100%; max-width: 980px; aspect-ratio: 16 / 9; position: relative; background: #000; border-radius: 14px; }
+.video-embed iframe { width: 100%; height: 100%; border: 1px solid var(--hairline); border-radius: 14px; background: #000; display: block; }
+.under-link { font-size: 13px; color: var(--ink-subtle); text-decoration: none; }
+.under-link:hover { color: var(--accent); }
+.issue-card { background: var(--surface); border: 1px solid var(--hairline); border-radius: 14px; padding: 36px 36px; max-width: 720px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+.issue-card .card-label { color: var(--accent); margin-bottom: 0; }
+.issue-title { font-size: 24px; font-weight: 500; color: var(--ink); letter-spacing: -0.5px; line-height: 1.3; }
+.issue-summary { font-size: 15px; color: var(--ink-muted); line-height: 1.6; }
+.issue-summary code, .embed-caption code { font-family: ui-monospace, 'JetBrains Mono', monospace; font-size: 12px; background: var(--surface-2); padding: 1px 6px; border-radius: 4px; color: var(--ink); }
+.panel-hero {
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 0 40px; flex: 1;
+}
+.hero-block { max-width: 1400px; }
+.hero-eyebrow {
+  font-size: 24px; font-weight: 600; color: var(--accent);
+  letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 36px;
+}
+.hero-title {
+  font-size: 128px; font-weight: 500; line-height: 1.0;
+  letter-spacing: -3.6px; color: var(--ink); margin-bottom: 36px;
+}
+.hero-title .em { color: var(--accent); }
+.hero-sub { font-size: 40px; font-weight: 400; color: var(--ink-muted); margin-bottom: 60px; }
+.hero-sub b { color: var(--ink); font-weight: 500; }
+.hero-hint { font-size: 16px; color: var(--ink-subtle); }
+.panel-outro { display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 40px; flex: 1; }
+.outro-block { max-width: 1200px; }
+.outro-title { font-size: 88px; font-weight: 500; line-height: 1.05; letter-spacing: -2.4px; color: var(--ink); margin-bottom: 36px; }
+.outro-title .em { color: var(--accent); }
+@media (max-width: 1100px) {
+  .panel-body { grid-template-columns: 1fr; gap: 28px; padding: 28px 32px 36px; }
+  .title { font-size: 30px; letter-spacing: -0.6px; }
+  .hero-title { font-size: 88px; letter-spacing: -2.4px; }
+  .hero-sub { font-size: 28px; }
+  .hero-eyebrow { font-size: 18px; }
+  .panel-header { padding: 12px 24px; }
+  .outro-title { font-size: 56px; letter-spacing: -1.4px; }
+}
+@media (max-width: 700px) {
+  .panel-header { flex-direction: column; align-items: flex-start; gap: 8px; padding: 12px 18px; }
+  .ph-dots { flex-wrap: wrap; }
+  .title { font-size: 24px; }
+  .hero-title { font-size: 60px; letter-spacing: -1.6px; }
+  .hero-sub { font-size: 22px; }
+  .panel-body { padding: 24px 18px 28px; }
+  .panel-body-centered { padding: 24px 18px; }
+}
+.rank-nav { position: relative; display: inline-flex; align-items: center; }
+.rank-trigger { cursor: pointer; user-select: none; padding: 4px 6px; border-radius: 4px; }
+.rank-trigger:hover, .rank-trigger:focus { color: var(--accent); outline: none; }
+.rank-dropdown {
+  display: none; position: absolute;
+  top: 100%; left: -4px; margin-top: 6px;
+  background: var(--surface); border: 1px solid var(--hairline);
+  border-radius: 10px; padding: 8px;
+  box-shadow: 0 12px 32px rgba(15,23,42,0.12);
+  grid-template-columns: repeat(4, 36px); gap: 4px;
+  z-index: 100; min-width: 180px;
+}
+.rank-nav:hover .rank-dropdown,
+.rank-nav:focus-within .rank-dropdown { display: grid; }
+.rank-item {
+  display: flex; align-items: center; justify-content: center;
+  height: 30px; padding: 0 6px;
+  font-family: ui-monospace, 'JetBrains Mono', monospace;
+  font-size: 12px; color: var(--ink-subtle);
+  text-decoration: none; border-radius: 6px;
+  letter-spacing: 0.06em; font-weight: 500;
+}
+.rank-item:hover { background: var(--surface-2); color: var(--ink); }
+.rank-item.active { color: var(--canvas); background: var(--accent); }
+.github-fallback {
+  display: none; width: 100%; max-width: 1100px; aspect-ratio: 2 / 1;
+  border-radius: 14px; border: 1px solid var(--hairline);
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+  align-items: center; justify-content: center; padding: 40px;
+  flex-direction: column;
+}
+.gf-content { text-align: center; display: flex; flex-direction: column; gap: 18px; align-items: center; }
+.gf-octocat { color: var(--accent); }
+.gf-name { font-family: 'Inter', sans-serif; font-size: 44px; font-weight: 500; letter-spacing: -1px; line-height: 1.1; }
+.gf-owner { color: var(--ink-muted); font-weight: 400; }
+.gf-slash { color: var(--ink-subtle); margin: 0 4px; }
+.gf-repo { color: var(--ink); }
+.gf-hint { font-size: 14px; color: var(--ink-subtle); }
+@media (max-width: 900px) {
+  .gf-name { font-size: 28px; }
+  .gf-octocat svg { width: 40px; height: 40px; }
+}
+
+/* ===== WANTED interstitial (scoped) ===== */
+/* ===== WANTED slide (scoped wp-) ===== */
+.wp-panel{
+  min-height:100vh;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  display:flex; align-items:center; justify-content:center;
+  padding:40px 56px;
+  background:var(--canvas);
+}
+.wp-poster{
+  position:relative;
+  width:100%; max-width:1040px;
+  display:grid;
+  grid-template-columns:340px 1fr;
+  gap:46px;
+  align-items:center;
+  padding:38px 50px 30px;
+  background:radial-gradient(120% 130% at 50% 0%, #f3e8c6 0%, #e7d6ab 48%, #d8c08c 100%);
+  border:2px solid #6b4a23;
+  border-radius:4px;
+  box-shadow:0 0 0 9px #e7d6ab, 0 0 0 11px #5b3f1f, 0 26px 60px rgba(40,26,10,.32), inset 0 0 120px rgba(120,80,30,.40);
+  color:#2b1c10;
+}
+.wp-poster::before{
+  content:"";position:absolute;inset:0;pointer-events:none;border-radius:4px;
+  background:
+    radial-gradient(55% 35% at 10% 6%, rgba(90,55,20,.18), transparent 60%),
+    radial-gradient(50% 32% at 94% 14%, rgba(90,55,20,.16), transparent 60%),
+    radial-gradient(45% 28% at 50% 100%, rgba(70,40,15,.26), transparent 70%);
+  mix-blend-mode:multiply;
+}
+.wp-poster > *{position:relative;z-index:1}
+
+.wp-banner{ grid-column:1 / -1; text-align:center; }
+.wp-order{
+  letter-spacing:.42em; font-size:11px; text-transform:uppercase;
+  color:#5b3f1f; margin-bottom:10px;
+}
+.wp-rule{ height:0;border:0;border-top:3px double #5b3f1f; }
+
+/* left column: photo + name */
+.wp-photo-col{ grid-column:1; display:flex; flex-direction:column; align-items:center; gap:14px; }
+.wp-photo-wrap{
+  width:100%; padding:9px; background:#dfca99;
+  border:2px solid #5b3f1f;
+  box-shadow:inset 0 0 0 4px #b89a63, 0 8px 20px rgba(0,0,0,.30);
+}
+.wp-photo-wrap img{
+  display:block;width:100%;height:auto;
+  filter:sepia(.55) contrast(1.04) brightness(.98) grayscale(.15);
+}
+.wp-name{
+  font-family:'Rye',serif; text-align:center; line-height:1;
+  font-size:clamp(30px,3.4vw,42px); color:#2b1c10;
+}
+.wp-alias{ text-align:center; font-family:'Special Elite',monospace; font-size:12.5px; letter-spacing:.06em; color:#5b3f1f; line-height:1.5; }
+.wp-alias a{ color:inherit; }
+
+/* right column: headline + charges + reward */
+.wp-text-col{ grid-column:2; display:flex; flex-direction:column; }
+.wp-wanted{
+  font-family:'Rye',serif; line-height:.9;
+  font-size:clamp(58px,8.5vw,104px); color:#3a240f;
+  text-shadow:1px 1px 0 #c9b074, 2px 3px 0 rgba(0,0,0,.10);
+}
+.wp-for{ font-family:'Rye',serif; font-size:clamp(20px,2.6vw,30px); color:#5b3f1f; letter-spacing:.04em; margin:2px 0 22px; }
+
+.wp-charges-h{ font-family:'Rye',serif; font-size:16px; color:#3a240f; letter-spacing:.03em; margin-bottom:12px; }
+.wp-charges{ display:flex; flex-direction:column; gap:12px; margin-bottom:22px; }
+.wp-charge{
+  display:flex; align-items:baseline; justify-content:space-between; gap:16px;
+  border-bottom:2px dotted rgba(91,63,31,.50); padding-bottom:10px;
+}
+.wp-charge .wp-what{ display:flex; flex-direction:column; gap:1px; }
+.wp-proj{ font-family:'Rye',serif; font-size:clamp(20px,2.4vw,26px); color:#2b1c10; line-height:1.04; }
+.wp-handle{ font-family:'Special Elite',monospace; font-size:12px; letter-spacing:.05em; color:#6b4a23; }
+.wp-stars{ white-space:nowrap; font-family:'Rye',serif; font-size:clamp(20px,2.6vw,28px); color:#7a3b12; }
+
+.wp-reward{
+  text-align:center; border-top:3px double #5b3f1f; border-bottom:3px double #5b3f1f;
+  padding:12px 8px; margin-bottom:16px;
+}
+.wp-reward-lbl{ font-family:'Rye',serif; font-size:clamp(24px,3.4vw,36px); color:#7a3b12; line-height:1; }
+.wp-reward-amt{ font-family:'Special Elite',monospace; font-size:14px; color:#3a240f; margin-top:5px; }
+
+.wp-call{ font-family:'Special Elite',monospace; font-size:14px; line-height:1.65; color:#3a240f; }
+.wp-call strong{ color:#7a3b12; }
+
+.wp-foot{
+  grid-column:1 / -1; text-align:center; margin-top:6px;
+  font-family:'Special Elite',monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#5b3f1f;
+}
+.wp-foot a{ color:#7a3b12; text-decoration:none; border-bottom:1px solid #7a3b12; }
+
+@media (max-width:860px){
+  .wp-poster{ grid-template-columns:1fr; gap:24px; padding:30px 26px 24px; }
+  .wp-photo-col{ grid-column:1; max-width:300px; margin:0 auto; }
+  .wp-text-col{ grid-column:1; text-align:center; align-items:center; }
+  .wp-charge{ text-align:left; }
+  .wp-panel{ padding:28px 18px; }
+}
+</style>
+</head>
+<body>
+<section class="panel panel-hero" id="hero" data-repo="hero">
+  <div class="hero-block">
+    <div class="hero-eyebrow">GITHUB HOT REPOS · JUNE 25, 2026</div>
+    <h1 class="hero-title">Hot GitHub repos<br><span class="em">of the week</span>.</h1>
+    <p class="hero-sub">Report by <b>The Next New Thing</b>.</p>
+    <p class="hero-hint">Scroll for the report ↓</p>
+  </div>
+</section>
+<section class="panel panel-summary" id="r-01-summary" data-repo="r-01" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">01</span><span class="rank-dropdown" role="menu"><a class="rank-item active" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/calesthio/OpenMontage" target="_blank" rel="noopener">
+        <span class="owner">calesthio</span><span class="slash">/</span><span class="name">OpenMontage</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot active" href="#r-01-summary">Summary</a><a class="dot" href="#r-01-github">GitHub</a><a class="dot" href="#r-01-video">Video</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">AI video · Agent-native</div>
+      <h1 class="title">Describe a video in plain language and your coding agent <span class="em">researches, scripts, edits, and renders the whole thing</span>.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why">Turns your AI coding assistant (Claude Code, Cursor, Copilot, Windsurf, Codex) into a full <b>video-production studio</b>. Created less than three months ago and pushed same-day; the README badges <b>#1 on GitHub Trending</b> and momentum is commit- and marketing-driven. Heavily self-promoted via its own YouTube and X.</p>
+      <a class="cta" href="https://github.com/calesthio/OpenMontage" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="calesthio/OpenMontage" data-role="stat" data-base="22k">22k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Python</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">AGPL-3.0</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">Agent-native pipeline</div><p class="h-desc">Works with any AI coding assistant; README claims 12 pipelines, 52 tools, 500+ skills.</p></li><li><div class="h-name">Edits real footage</div><p class="h-desc">Cuts actual stock/archive footage into a timeline, not just animating stills.</p></li><li><div class="h-name">Concept-first</div><p class="h-desc">Start from a reference video → 2–3 concepts + cost estimates before producing.</p></li><li><div class="h-name">Cents per video</div><p class="h-desc">Disclosed demo costs: $1.33 Pixar-style short, $0.69 one-key ad, $0.15 FLUX anime.</p></li><li><div class="h-name">Self-review built in</div><p class="h-desc">Optional FAL/Pexels/Suno/ElevenLabs keys; ffprobe/frame/audio checks on output.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>A non-engineer can produce a narrated, captioned, music-backed video for cents to a couple dollars by telling their coding agent what they want.</p></div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-01-github" data-repo="r-01" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">01</span><span class="rank-dropdown" role="menu"><a class="rank-item active" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/calesthio/OpenMontage" target="_blank" rel="noopener">
+        <span class="owner">calesthio</span><span class="slash">/</span><span class="name">OpenMontage</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-01-summary">Summary</a><a class="dot active" href="#r-01-github">GitHub</a><a class="dot" href="#r-01-video">Video</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/calesthio/OpenMontage" data-owner="calesthio" data-repo="OpenMontage" alt="GitHub social card for calesthio/OpenMontage" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">calesthio</span><span class="gf-slash">/</span><span class="gf-repo">OpenMontage</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="calesthio/OpenMontage" data-role="badge" data-base="22k">★ 22k</span>
+          <span class="badge">Python</span>
+        </div>
+        <a class="cta" href="https://github.com/calesthio/OpenMontage" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-video" id="r-01-video" data-repo="r-01" data-type="video">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">01</span><span class="rank-dropdown" role="menu"><a class="rank-item active" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/calesthio/OpenMontage" target="_blank" rel="noopener">
+        <span class="owner">calesthio</span><span class="slash">/</span><span class="name">OpenMontage</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-01-summary">Summary</a><a class="dot" href="#r-01-github">GitHub</a><a class="dot active" href="#r-01-video">Video</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="embed-card video-card">
+      <div class="embed-caption">DevsKingdom (third-party) — “OpenMontage + HyperFrames + Remotion: The World’s First Open Source Agentic Video Production System.”</div>
+      <div class="video-embed" data-id="zFrA3-o6fLY" data-start="243" data-title="calesthio/OpenMontage — DevsKingdom (third-party) — “OpenMontage + HyperFrames + Remotion: The World’s First Open Source Agentic Video Production System.”"></div>
+      <div class="btn-row"><a class="vbtn" href="https://youtu.be/zFrA3-o6fLY?si=BsLpZddkcQZuH2jc&t=243" target="_blank" rel="noopener">▶ Finished video</a><a class="vbtn" href="https://youtu.be/zFrA3-o6fLY?si=phz_Nr__DBdguNXF&t=316" target="_blank" rel="noopener">The prompt that created it</a></div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-summary" id="r-02-summary" data-repo="r-02" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">02</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item active" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/DeusData/codebase-memory-mcp" target="_blank" rel="noopener">
+        <span class="owner">DeusData</span><span class="slash">/</span><span class="name">codebase-memory-mcp</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot active" href="#r-02-summary">Summary</a><a class="dot" href="#r-02-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">AI coding · Code memory</div>
+      <h1 class="title">Stop your agent re-reading files — this gives it a <span class="em">persistent, searchable memory of your whole codebase</span>.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why">Indexes your repo into a searchable knowledge graph so your agent answers "what calls what" instantly instead of re-reading files. Created Feb 2026, pushed same-day, latest release v0.8.1. Strong perf claims (<b>Linux kernel in 3 min, sub-1ms queries</b>), an arXiv preprint, and plug-and-play setup across <b>11 coding agents</b>.</p>
+      <a class="cta" href="https://github.com/DeusData/codebase-memory-mcp" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="DeusData/codebase-memory-mcp" data-role="stat" data-base="14.7k">14.7k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">C</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">MIT</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">Single static binary</div><p class="h-desc">Pure C, zero dependencies/API keys; one-line install; 100% local.</p></li><li><div class="h-name">158 languages</div><p class="h-desc">tree-sitter parsing plus Hybrid LSP type resolution for 11 languages.</p></li><li><div class="h-name">Big token savings</div><p class="h-desc">README claims 120× fewer tokens; the paper reports 10× fewer tokens, 2.1× fewer tool calls.</p></li><li><div class="h-name">Auto-configures 11 agents</div><p class="h-desc">One install wires up Claude Code, Codex, Gemini CLI, Zed, OpenCode, Aider, VS Code.</p></li><li><div class="h-name">14 MCP tools</div><p class="h-desc">Semantic + BM25 search, Cypher queries, call graphs, dead-code detection, git-diff impact.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>Makes an AI coding agent smarter and cheaper on big codebases — it stops burning tokens re-reading files and answers architecture questions in one query.</p></div>
+        <div class="reads"><span class="reads-label">Further reading</span><ul class="read-list"><li><a href="https://www.reddit.com/r/LocalLLM/comments/1uasxjk/codebasememorymcp_review_99_token_cut_for_code/" target="_blank" rel="noopener"><span class="read-label">Reddit: cuts token usage by 99%</span><span class="read-url">reddit.com</span></a></li><li><a href="https://andrew.ooo/posts/codebase-memory-mcp-code-intelligence-review/" target="_blank" rel="noopener"><span class="read-label">Andrew’s blog: code-intelligence review</span><span class="read-url">andrew.ooo</span></a></li><li><a href="https://dev.to/arshtechpro/stop-making-your-ai-coding-agent-grep-your-whole-repo-try-codebase-memory-mcp-4g8l" target="_blank" rel="noopener"><span class="read-label">Dev.to: faster multi-agent handoffs</span><span class="read-url">dev.to</span></a></li><li><a href="https://github.com/DeusData/codebase-memory-mcp" target="_blank" rel="noopener"><span class="read-label">GitHub: official repo & setup</span><span class="read-url">github.com</span></a></li><li><a href="https://arxiv.org/abs/2603.27277" target="_blank" rel="noopener"><span class="read-label">arXiv: tree-sitter research paper</span><span class="read-url">arxiv.org</span></a></li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-02-github" data-repo="r-02" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">02</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item active" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/DeusData/codebase-memory-mcp" target="_blank" rel="noopener">
+        <span class="owner">DeusData</span><span class="slash">/</span><span class="name">codebase-memory-mcp</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-02-summary">Summary</a><a class="dot active" href="#r-02-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/DeusData/codebase-memory-mcp" data-owner="DeusData" data-repo="codebase-memory-mcp" alt="GitHub social card for DeusData/codebase-memory-mcp" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">DeusData</span><span class="gf-slash">/</span><span class="gf-repo">codebase-memory-mcp</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="DeusData/codebase-memory-mcp" data-role="badge" data-base="14.7k">★ 14.7k</span>
+          <span class="badge">C</span>
+        </div>
+        <a class="cta" href="https://github.com/DeusData/codebase-memory-mcp" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel wp-panel" id="wanted" data-repo="wanted">
+  <article class="wp-poster">
+    <div class="wp-banner">
+      <div class="wp-order">★ &nbsp; By Order Of The Next New Thing &nbsp; ★</div>
+      <hr class="wp-rule">
+    </div>
+
+    <div class="wp-photo-col">
+      <div class="wp-photo-wrap">
+        <img src="data:image/jpeg;base64,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" alt="Matt Van Horn">
+      </div>
+      <div class="wp-name">MATT VAN HORN</div>
+      <div class="wp-alias">a.k.a. <a href="https://x.com/mvanhorn">@mvanhorn</a><br>the non-technical founder gone open-source outlaw</div>
+    </div>
+
+    <div class="wp-text-col">
+      <h1 class="wp-wanted">WANTED</h1>
+      <div class="wp-for">— for an interview —</div>
+
+      <div class="wp-charges-h">★ Wanted In Connection With ★</div>
+      <div class="wp-charges">
+        <div class="wp-charge">
+          <div class="wp-what"><span class="wp-proj">/last30days</span><span class="wp-handle">@slashlast30days</span></div>
+          <span class="wp-stars">47k★</span>
+        </div>
+        <div class="wp-charge">
+          <div class="wp-what"><span class="wp-proj">Printing Press</span><span class="wp-handle">@ppressdev</span></div>
+          <span class="wp-stars">5.4k★</span>
+        </div>
+      </div>
+
+      <div class="wp-reward">
+        <div class="wp-reward-lbl">REWARD</div>
+        <div class="wp-reward-amt">one legendary interview on the channel</div>
+      </div>
+
+      <p class="wp-call">We aim to bring this man in for questioning — on camera.<br>
+      If you know him, tag him. If you <strong>are</strong> him… <strong>let's talk.</strong></p>
+    </div>
+
+    <div class="wp-foot">Last seen at <a href="https://x.com/mvanhorn">x.com/mvanhorn</a></div>
+  </article>
+</section>
+<section class="panel panel-summary" id="r-03-summary" data-repo="r-03" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">03</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item active" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/google-research/timesfm" target="_blank" rel="noopener">
+        <span class="owner">google-research</span><span class="slash">/</span><span class="name">timesfm</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot active" href="#r-03-summary">Summary</a><a class="dot" href="#r-03-github">GitHub</a><a class="dot" href="#r-03-video">Video</a><a class="dot" href="#r-03-controversy">Controversy</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">Forecasting · Foundation model</div>
+      <h1 class="title">Feed it a sequence of numbers — sales, demand, traffic — and <span class="em">it predicts what comes next, no training required</span>.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why">A free, pretrained <b>time-series foundation model from Google Research</b>. The most-established repo in the slate (live since 2024). TimesFM 2.5 is the latest model; recent updates include PyPI 2.0.0, a LoRA fine-tuning example, and integration into <b>BigQuery ML, Sheets, and Vertex</b>.</p>
+      <a class="cta" href="https://github.com/google-research/timesfm" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="google-research/timesfm" data-role="stat" data-base="25.6k">25.6k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Python</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">Apache-2.0</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">TimesFM 2.5</div><p class="h-desc">200M params (down from 500M), up to 16k context length, drops the frequency indicator.</p></li><li><div class="h-name">Uncertainty ranges</div><p class="h-desc">Optional 30M quantile head gives continuous quantile forecasts up to a 1k horizon.</p></li><li><div class="h-name">A few lines of Python</div><p class="h-desc">pip install timesfm[torch]/[flax]; pretrained checkpoints on Hugging Face.</p></li><li><div class="h-name">Peer-reviewed</div><p class="h-desc">Backed by an ICML 2024 paper (arXiv 2310.10688).</p></li><li><div class="h-name">Use it without code</div><p class="h-desc">Reachable via BigQuery ML (SQL), Google Sheets, and Vertex Model Garden.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>Founders can get solid demand/sales/traffic forecasts with uncertainty ranges without a data scientist or custom training — load the model, pass your numbers, get predictions.</p></div>
+        <div class="reads"><span class="reads-label">Further reading</span><ul class="read-list"><li><a href="https://news.ycombinator.com/item?id=47583045" target="_blank" rel="noopener"><span class="read-label">HN launch thread (327 pts)</span><span class="read-url">news.ycombinator.com</span></a></li><li><a href="https://news.ycombinator.com/item?id=40297946" target="_blank" rel="noopener"><span class="read-label">Original TimesFM HN thread</span><span class="read-url">news.ycombinator.com</span></a></li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-03-github" data-repo="r-03" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">03</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item active" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/google-research/timesfm" target="_blank" rel="noopener">
+        <span class="owner">google-research</span><span class="slash">/</span><span class="name">timesfm</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-03-summary">Summary</a><a class="dot active" href="#r-03-github">GitHub</a><a class="dot" href="#r-03-video">Video</a><a class="dot" href="#r-03-controversy">Controversy</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/google-research/timesfm" data-owner="google-research" data-repo="timesfm" alt="GitHub social card for google-research/timesfm" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">google-research</span><span class="gf-slash">/</span><span class="gf-repo">timesfm</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="google-research/timesfm" data-role="badge" data-base="25.6k">★ 25.6k</span>
+          <span class="badge">Python</span>
+        </div>
+        <a class="cta" href="https://github.com/google-research/timesfm" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-video" id="r-03-video" data-repo="r-03" data-type="video">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">03</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item active" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/google-research/timesfm" target="_blank" rel="noopener">
+        <span class="owner">google-research</span><span class="slash">/</span><span class="name">timesfm</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-03-summary">Summary</a><a class="dot" href="#r-03-github">GitHub</a><a class="dot active" href="#r-03-video">Video</a><a class="dot" href="#r-03-controversy">Controversy</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="embed-card video-card">
+      <div class="embed-caption">Byte Goose AI (third-party, 4.5k views, Feb 2026) — “Google TimesFM: The Zero-Shot Foundation Model for Time-Series Forecasting.”</div>
+      <div class="video-embed" data-id="oHhJkmYD3pw" data-start="0" data-title="google-research/timesfm — Byte Goose AI (third-party, 4.5k views, Feb 2026) — “Google TimesFM: The Zero-Shot Foundation Model for Time-Series Forecasting.”"></div>
+      <a class="under-link" href="https://www.youtube.com/watch?v=oHhJkmYD3pw" target="_blank" rel="noopener">▶ Play here</a>
+    </div>
+  </div>
+</section>
+<section class="panel panel-controversy" id="r-03-controversy" data-repo="r-03" data-type="controversy">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">03</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item active" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/google-research/timesfm" target="_blank" rel="noopener">
+        <span class="owner">google-research</span><span class="slash">/</span><span class="name">timesfm</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-03-summary">Summary</a><a class="dot" href="#r-03-github">GitHub</a><a class="dot" href="#r-03-video">Video</a><a class="dot active" href="#r-03-controversy">Controversy</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="issue-card">
+      <div class="card-label">Hacker News · 327 points · 109 comments</div>
+      <div class="issue-title">Google’s 200M-parameter time-series foundation model with 16k context</div>
+      <p class="issue-summary">The TimesFM 2.5 launch thread on Hacker News drew 327 points and 109 comments — practitioners debating zero-shot forecasting quality, the parameter cut from 500M to 200M, and where a foundation model beats classical methods.</p>
+      <div class="btn-row"><a class="cta" href="https://news.ycombinator.com/item?id=47583045" target="_blank" rel="noopener">Open the HN thread →</a><a class="cta cta-alt" href="https://news.ycombinator.com/item?id=47589715" target="_blank" rel="noopener">Google use case →</a></div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-summary panel-sponsor" id="sponsor" data-repo="sponsor" data-type="sponsor">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">SP</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item active" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://zapier.com/mcp" target="_blank" rel="noopener">
+        <span class="owner">Zapier</span><span class="slash">/</span><span class="name">MCP</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot active">Sponsor</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">Sponsor · Zapier MCP</div>
+      <h1 class="title">One MCP URL, <span class="em">8,000+ tools your agent can call</span> — Gmail, Google Calendar, Asana, Notion. No code. No glue.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why">I've used <b>Zapier</b> across multiple businesses for over 10 years. They've been doing automation reliably long before this moment — and the <b>MCP</b> service brings that same reliability to any AI agent you're building with.</p>
+      <a class="cta" href="https://zapier.com/mcp" target="_blank" rel="noopener">Try Zapier MCP →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Tools</div><div class="stat-val">8,000+</div></div>
+          <div><div class="stat-label">Setup</div><div class="stat-val">2 min</div></div>
+          <div><div class="stat-label">Plan</div><div class="stat-val">Free start</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">Zapier just released MCP</div><p class="h-desc">Exposes 8,000+ tools as MCP resources any agent can call.</p></li><li><div class="h-name">Works with every agent</div><p class="h-desc">Claude Code, OpenCode, Cursor — anything that speaks MCP.</p></li><li><div class="h-name">Setup in two minutes</div><p class="h-desc">Enable the tools you want in Zapier, grab the MCP endpoint, paste it into your agent.</p></li><li><div class="h-name">Zero code, zero glue</div><p class="h-desc">Zapier handles auth, rate limits, and reliability for you.</p></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-summary panel-hm panel-hm-accent" id="hm-11-summary" data-repo="hm-11" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="hm-chip">People are Talking</span>
+      <a class="repo-name" href="https://github.com/NotASithLord/peerd" target="_blank" rel="noopener">
+        <span class="owner">NotASithLord</span><span class="slash">/</span><span class="name">peerd</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot active" href="#hm-11-summary">Summary</a><a class="dot" href="#hm-11-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">AI agents · Browser-native</div>
+      <h1 class="title">An AI agent that lives in your browser — <span class="em">no backend, no telemetry</span>.</h1>
+      <div class="why-label">Why it's worth a look</div>
+      <p class="why">peerd is brand new — <b>created June 22, 2026</b> — and already hit the Hacker News front page with a <b>“Show HN” post at 68 points and 25 comments</b>. It pitches itself as “the first AI agent harness native to the browser,” running the agent loop client-side with a security model where the key-holding agent never directly reads raw page content. It's an early 0.x developer preview, so it's one to watch rather than rely on.</p>
+      <a class="cta" href="https://github.com/NotASithLord/peerd" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="NotASithLord/peerd" data-role="stat" data-base="111">111</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">JavaScript</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">Apache-2.0</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">Browser-native loop</div><p class="h-desc">Runs the full agent loop in Chrome/Firefox — no servers, no external processes.</p></li><li><div class="h-name">Sandboxed compute</div><p class="h-desc">Spins up JS notebooks, WASM Linux VMs, and client-side apps inside your tabs.</p></li><li><div class="h-name">Peer-to-peer sharing</div><p class="h-desc">Shares what the agent builds between peers over WebRTC.</p></li><li><div class="h-name">BYOK, no telemetry</div><p class="h-desc">Bring your own key (Anthropic, OpenRouter, local Ollama); data stays encrypted locally.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>If you want to experiment with autonomous browser agents that use your existing logged-in sessions without shipping your data to a vendor's cloud, peerd is the bleeding-edge place to start.</p></div>
+        <div class="reads"><span class="reads-label">Links</span><ul class="read-list"><li><a href="http://peerd.ai" target="_blank" rel="noopener"><span class="read-label">Project site — peerd.ai</span><span class="read-url">peerd.ai</span></a></li><li><a href="https://news.ycombinator.com/item?id=48646165" target="_blank" rel="noopener"><span class="read-label">Show HN discussion (68 pts)</span><span class="read-url">news.ycombinator.com</span></a></li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github panel-hm panel-hm-accent" id="hm-11-github" data-repo="hm-11" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="hm-chip">People are Talking</span>
+      <a class="repo-name" href="https://github.com/NotASithLord/peerd" target="_blank" rel="noopener">
+        <span class="owner">NotASithLord</span><span class="slash">/</span><span class="name">peerd</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#hm-11-summary">Summary</a><a class="dot active" href="#hm-11-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/NotASithLord/peerd" data-owner="NotASithLord" data-repo="peerd" alt="GitHub social card for NotASithLord/peerd" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">NotASithLord</span><span class="gf-slash">/</span><span class="gf-repo">peerd</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="NotASithLord/peerd" data-role="badge" data-base="111">★ 111</span>
+          <span class="badge">JavaScript</span>
+        </div>
+        <a class="cta" href="https://github.com/NotASithLord/peerd" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-summary panel-hm panel-hm-accent" id="hm-12-summary" data-repo="hm-12" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="hm-chip">People are Talking</span>
+      <a class="repo-name" href="https://github.com/altic-dev/FluidVoice" target="_blank" rel="noopener">
+        <span class="owner">altic-dev</span><span class="slash">/</span><span class="name">FluidVoice</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot active" href="#hm-12-summary">Summary</a><a class="dot" href="#hm-12-github">GitHub</a><a class="dot" href="#hm-12-tweet">Tweet</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">Voice AI · Local-first</div>
+      <h1 class="title">Dictate into any Mac app — <span class="em">fully local, free forever</span>.</h1>
+      <div class="why-label">Why it's worth a look</div>
+      <p class="why">A free, open-source macOS dictation app that turns speech into text on-device. It's <b>free and open source (GPLv3)</b> and the homepage reports <b>25,000+ downloads</b>. A power dictation user publicly cancelled his paid Wispr Flow plan for it in a tweet that hit <b>~179k views</b>. Latest release v1.6.0 shipped June 22, 2026, with multiple speech models (Parakeet, Cohere, Whisper, Apple Speech) and on-device AI correction.</p>
+      <a class="cta" href="https://github.com/altic-dev/FluidVoice" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="altic-dev/FluidVoice" data-role="stat" data-base="2.7k">2.7k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Swift</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">GPL-3.0</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">Fully local</div><p class="h-desc">On-device transcription with optional AI cleanup — no audio leaves your Mac, no API key needed.</p></li><li><div class="h-name">Works everywhere</div><p class="h-desc">Global hotkey inserts text into any app — Notes, Slack, Gmail, Cursor, code editors.</p></li><li><div class="h-name">Multiple models</div><p class="h-desc">Choose Parakeet, Cohere, Whisper, Nemotron, or Apple Speech; up to ~99 languages.</p></li><li><div class="h-name">Free, no tiers</div><p class="h-desc">Completely free forever, installable via Homebrew (macOS 15+, Apple Silicon).</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>A founder can replace a paid dictation subscription with a private, on-device tool and dictate roughly 3.7× faster than typing into any app.</p></div>
+        <div class="reads"><span class="reads-label">Links</span><ul class="read-list"><li><a href="https://altic.dev/fluid" target="_blank" rel="noopener"><span class="read-label">Project site — altic.dev/fluid</span><span class="read-url">altic.dev</span></a></li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github panel-hm panel-hm-accent" id="hm-12-github" data-repo="hm-12" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="hm-chip">People are Talking</span>
+      <a class="repo-name" href="https://github.com/altic-dev/FluidVoice" target="_blank" rel="noopener">
+        <span class="owner">altic-dev</span><span class="slash">/</span><span class="name">FluidVoice</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#hm-12-summary">Summary</a><a class="dot active" href="#hm-12-github">GitHub</a><a class="dot" href="#hm-12-tweet">Tweet</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/altic-dev/FluidVoice" data-owner="altic-dev" data-repo="FluidVoice" alt="GitHub social card for altic-dev/FluidVoice" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">altic-dev</span><span class="gf-slash">/</span><span class="gf-repo">FluidVoice</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="altic-dev/FluidVoice" data-role="badge" data-base="2.7k">★ 2.7k</span>
+          <span class="badge">Swift</span>
+        </div>
+        <a class="cta" href="https://github.com/altic-dev/FluidVoice" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-tweet panel-hm panel-hm-accent" id="hm-12-tweet" data-repo="hm-12" data-type="tweet">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="hm-chip">People are Talking</span>
+      <a class="repo-name" href="https://github.com/altic-dev/FluidVoice" target="_blank" rel="noopener">
+        <span class="owner">altic-dev</span><span class="slash">/</span><span class="name">FluidVoice</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#hm-12-summary">Summary</a><a class="dot" href="#hm-12-github">GitHub</a><a class="dot active" href="#hm-12-tweet">Tweet</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="embed-card">
+      <div class="embed-caption">@sdhilip (Dhilip Subramanian, dictation power-user — not the repo owner) — “Cancelled my paid Wispr Flow plan after trying FluidVoice: open source, runs local, corrects as I speak with no API key.”</div>
+      <iframe
+        class="tweet-iframe"
+        src="https://platform.twitter.com/embed/Tweet.html?dnt=true&id=2069140867466797200&theme=light&lang=en"
+        loading="lazy"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+        title="Tweet for altic-dev/FluidVoice"
+      ></iframe>
+    </div>
+  </div>
+</section>
+<section class="panel panel-summary panel-hm panel-hm-accent" id="hm-13-summary" data-repo="hm-13" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="hm-chip">People are Talking</span>
+      <a class="repo-name" href="https://github.com/steipete/birdclaw" target="_blank" rel="noopener">
+        <span class="owner">steipete</span><span class="slash">/</span><span class="name">birdclaw</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot active" href="#hm-13-summary">Summary</a><a class="dot" href="#hm-13-github">GitHub</a><a class="dot" href="#hm-13-tweet">Tweet</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">Personal data · Local-first</div>
+      <h1 class="title">Own your whole Twitter — <span class="em">in one local SQLite database</span>.</h1>
+      <div class="why-label">Why it's worth a look</div>
+      <p class="why">A local-first Twitter/X workspace that stores all your tweets, DMs, likes and bookmarks in a single SQLite database. Built by <b>Peter Steinberger (@steipete)</b>, a well-known developer — a big part of its pull. His own tweet calling it “my favorite way to read Twitter” did <b>~603k views</b>, and the repo has crossed <b>1.3k stars</b> since launching March 2026. Bundles archive import, cached live reads, full-text search, and AI inbox ranking into one local app + CLI (latest release 0.8.5, June 21, 2026).</p>
+      <a class="cta" href="https://github.com/steipete/birdclaw" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="steipete/birdclaw" data-role="stat" data-base="1.3k">1.3k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">TypeScript</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">MIT</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">One SQLite DB</div><p class="h-desc">Stores tweets, DMs, likes, bookmarks, and follow graph locally under ~/.birdclaw.</p></li><li><div class="h-name">Web UI + CLI</div><p class="h-desc">Home timeline, mentions queue, DMs workspace, and JSON-piping CLI in one tool.</p></li><li><div class="h-name">Full-text search</div><p class="h-desc">FTS5 search across all tweets and DMs, plus follow-graph analysis.</p></li><li><div class="h-name">Agent-ready + AI</div><p class="h-desc">Structured data “claw-able” by agents, with AI-powered inbox ranking and digests.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>A creator can archive and actually search their entire Twitter history offline — and point AI agents at it — instead of being locked inside X's app.</p></div>
+        <div class="reads"><span class="reads-label">Links</span><ul class="read-list"><li><a href="https://birdclaw.sh/" target="_blank" rel="noopener"><span class="read-label">Project site — birdclaw.sh</span><span class="read-url">birdclaw.sh</span></a></li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github panel-hm panel-hm-accent" id="hm-13-github" data-repo="hm-13" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="hm-chip">People are Talking</span>
+      <a class="repo-name" href="https://github.com/steipete/birdclaw" target="_blank" rel="noopener">
+        <span class="owner">steipete</span><span class="slash">/</span><span class="name">birdclaw</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#hm-13-summary">Summary</a><a class="dot active" href="#hm-13-github">GitHub</a><a class="dot" href="#hm-13-tweet">Tweet</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/steipete/birdclaw" data-owner="steipete" data-repo="birdclaw" alt="GitHub social card for steipete/birdclaw" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">steipete</span><span class="gf-slash">/</span><span class="gf-repo">birdclaw</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="steipete/birdclaw" data-role="badge" data-base="1.3k">★ 1.3k</span>
+          <span class="badge">TypeScript</span>
+        </div>
+        <a class="cta" href="https://github.com/steipete/birdclaw" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-tweet panel-hm panel-hm-accent" id="hm-13-tweet" data-repo="hm-13" data-type="tweet">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="hm-chip">People are Talking</span>
+      <a class="repo-name" href="https://github.com/steipete/birdclaw" target="_blank" rel="noopener">
+        <span class="owner">steipete</span><span class="slash">/</span><span class="name">birdclaw</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#hm-13-summary">Summary</a><a class="dot" href="#hm-13-github">GitHub</a><a class="dot active" href="#hm-13-tweet">Tweet</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="embed-card">
+      <div class="embed-caption">@steipete (Peter Steinberger, creator — OWNER) — “This is becoming my favorite way to read Twitter.”</div>
+      <iframe
+        class="tweet-iframe"
+        src="https://platform.twitter.com/embed/Tweet.html?dnt=true&id=2068965200343224367&theme=light&lang=en"
+        loading="lazy"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+        title="Tweet for steipete/birdclaw"
+      ></iframe>
+    </div>
+  </div>
+</section>
+<section class="panel panel-summary" id="r-04-summary" data-repo="r-04" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">04</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item active" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/koala73/worldmonitor" target="_blank" rel="noopener">
+        <span class="owner">koala73</span><span class="slash">/</span><span class="name">worldmonitor</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot active" href="#r-04-summary">Summary</a><a class="dot" href="#r-04-github">GitHub</a><a class="dot" href="#r-04-tweet">Tweet</a><a class="dot" href="#r-04-video">Video</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">OSINT · Situation room</div>
+      <h1 class="title">An edge for anyone trying to make money: <span class="em">read your own industry, the stock market, and Polymarket</span> before the crowd does.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why">A free, real-time global situation room in your browser — a self-hostable, Palantir-style <b>OSINT</b> dashboard. (<b>OSINT = open-source intelligence</b>: insight built only from publicly available data — news, markets, sensors, social feeds.) For a founder that's three money angles in one: anticipate shifts in the business you're already in, get early reads on the stock market, and spot mispriced Polymarket bets. Hundreds of news feeds plus geopolitical, financial, and infrastructure data sit in one map-based dashboard. <b>Highest star count in the slate</b> (~59.8k) despite being created only Jan 2026; pushed same-day.</p>
+      <a class="cta" href="https://github.com/koala73/worldmonitor" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="koala73/worldmonitor" data-role="stat" data-base="59.8k">59.8k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">TypeScript</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">AGPL-3.0</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">500+ news feeds</div><p class="h-desc">15 categories AI-synthesized into briefs; aggregates 65+ providers/APIs.</p></li><li><div class="h-name">Dual map engine</div><p class="h-desc">3D globe (globe.gl) + WebGL flat map (deck.gl) with 56 layer types; signal correlation.</p></li><li><div class="h-name">Risk + finance radar</div><p class="h-desc">Country Instability Index for 31 Tier-1 countries; 29 exchanges, commodities, crypto.</p></li><li><div class="h-name">Runs fully local</div><p class="h-desc">Ollama with no API keys; also Groq/OpenRouter and browser Transformers.js.</p></li><li><div class="h-name">Native desktop too</div><p class="h-desc">6 variants from one codebase + Tauri 2 app (Win/macOS/Linux), 24 languages.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>If you trade, run a business, or bet on Polymarket, you can self-host a serious OSINT dashboard for free (or use worldmonitor.app) and try to see the move before everyone else — instead of paying for an enterprise tool.</p></div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-04-github" data-repo="r-04" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">04</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item active" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/koala73/worldmonitor" target="_blank" rel="noopener">
+        <span class="owner">koala73</span><span class="slash">/</span><span class="name">worldmonitor</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-04-summary">Summary</a><a class="dot active" href="#r-04-github">GitHub</a><a class="dot" href="#r-04-tweet">Tweet</a><a class="dot" href="#r-04-video">Video</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/koala73/worldmonitor" data-owner="koala73" data-repo="worldmonitor" alt="GitHub social card for koala73/worldmonitor" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">koala73</span><span class="gf-slash">/</span><span class="gf-repo">worldmonitor</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="koala73/worldmonitor" data-role="badge" data-base="59.8k">★ 59.8k</span>
+          <span class="badge">TypeScript</span>
+        </div>
+        <a class="cta" href="https://github.com/koala73/worldmonitor" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-tweet" id="r-04-tweet" data-repo="r-04" data-type="tweet">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">04</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item active" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/koala73/worldmonitor" target="_blank" rel="noopener">
+        <span class="owner">koala73</span><span class="slash">/</span><span class="name">worldmonitor</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-04-summary">Summary</a><a class="dot" href="#r-04-github">GitHub</a><a class="dot active" href="#r-04-tweet">Tweet</a><a class="dot" href="#r-04-video">Video</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="embed-card">
+      <div class="embed-caption">@Abhinavstwt (third-party, 2.36M views) — “Someone built a site that monitors everything related to wars happening around the world.” The viral discovery post that drove the surge.</div>
+      <iframe
+        class="tweet-iframe"
+        src="https://platform.twitter.com/embed/Tweet.html?dnt=true&id=2028072507492745435&theme=light&lang=en"
+        loading="lazy"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+        title="Tweet for koala73/worldmonitor"
+      ></iframe>
+    </div>
+  </div>
+</section>
+<section class="panel panel-video" id="r-04-video" data-repo="r-04" data-type="video">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">04</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item active" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/koala73/worldmonitor" target="_blank" rel="noopener">
+        <span class="owner">koala73</span><span class="slash">/</span><span class="name">worldmonitor</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-04-summary">Summary</a><a class="dot" href="#r-04-github">GitHub</a><a class="dot" href="#r-04-tweet">Tweet</a><a class="dot active" href="#r-04-video">Video</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="embed-card video-card">
+      <div class="embed-caption">NLR Crew (third-party) — “World Monitor | Global OSINT Intelligence Tool in Real Time.”</div>
+      <div class="video-embed" data-id="U3j9k1FHQ_E" data-start="0" data-title="koala73/worldmonitor — NLR Crew (third-party) — “World Monitor | Global OSINT Intelligence Tool in Real Time.”"></div>
+      <a class="under-link" href="https://www.youtube.com/watch?v=U3j9k1FHQ_E" target="_blank" rel="noopener">▶ Play here</a>
+    </div>
+  </div>
+</section>
+<section class="panel panel-summary" id="r-05-summary" data-repo="r-05" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">05</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item active" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/penpot/penpot" target="_blank" rel="noopener">
+        <span class="owner">penpot</span><span class="slash">/</span><span class="name">penpot</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot active" href="#r-05-summary">Summary</a><a class="dot" href="#r-05-github">GitHub</a><a class="dot" href="#r-05-video">Video</a><a class="dot" href="#r-05-controversy">Controversy</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">Design · Open source</div>
+      <h1 class="title">Stop paying money to <span class="em">rent your designs</span> and then figure out how to get them coded.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why">It's a free, self-hostable Figma alternative — and every design comes out as real code. Designers and developers work on the same files in real time, with full ownership and no vendor lock-in. A mature <b>53.7k-star</b> project pushed today; the README now pushes its new <b>MCP server</b> for AI design-to-code plus native Design Tokens — momentum is sustained development plus the AI/MCP angle.</p>
+      <a class="cta" href="https://github.com/penpot/penpot" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="penpot/penpot" data-role="stat" data-base="53.7k">53.7k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Clojure</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">MPL-2.0</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">Self-host or hosted</div><p class="h-desc">Docker/Kubernetes/Elestio or the hosted SaaS — full ownership, no lock-in.</p></li><li><div class="h-name">Design is code</div><p class="h-desc">Open standards (SVG/CSS/HTML/JSON); the Inspect tab gives ready-to-use code.</p></li><li><div class="h-name">Penpot MCP server</div><p class="h-desc">Enables multi-directional design↔code↔AI workflows.</p></li><li><div class="h-name">Native Design Tokens</div><p class="h-desc">Components and Variants as a single source of truth for design systems.</p></li><li><div class="h-name">Raised $20M, still open source</div><p class="h-desc">Kaleidos raised <b>$20M</b> — an $8M Series A (Sept 2022) and a $12M extension (Feb 2023), both led by Decibel Partners, with Figma's ex-COO Eric Wittman among the angels.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>A real Figma-class design tool that's free and self-hostable — and because designs are code plus an MCP server, your AI tools can actually read and act on them.</p></div>
+        <div class="reads"><span class="reads-label">Further reading</span><ul class="read-list"><li><a href="https://news.ycombinator.com/item?id=46064757" target="_blank" rel="noopener"><span class="read-label">HN: The Open-Source Figma (775 pts)</span><span class="read-url">news.ycombinator.com</span></a></li><li><a href="https://dev.to/arshtechpro/penpot-for-developers-the-open-source-design-tool-that-speaks-your-language-47p" target="_blank" rel="noopener"><span class="read-label">Penpot for Developers (dev.to)</span><span class="read-url">dev.to</span></a></li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-05-github" data-repo="r-05" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">05</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item active" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/penpot/penpot" target="_blank" rel="noopener">
+        <span class="owner">penpot</span><span class="slash">/</span><span class="name">penpot</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-05-summary">Summary</a><a class="dot active" href="#r-05-github">GitHub</a><a class="dot" href="#r-05-video">Video</a><a class="dot" href="#r-05-controversy">Controversy</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/penpot/penpot" data-owner="penpot" data-repo="penpot" alt="GitHub social card for penpot/penpot" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">penpot</span><span class="gf-slash">/</span><span class="gf-repo">penpot</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="penpot/penpot" data-role="badge" data-base="53.7k">★ 53.7k</span>
+          <span class="badge">Clojure</span>
+        </div>
+        <a class="cta" href="https://github.com/penpot/penpot" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-video" id="r-05-video" data-repo="r-05" data-type="video">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">05</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item active" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/penpot/penpot" target="_blank" rel="noopener">
+        <span class="owner">penpot</span><span class="slash">/</span><span class="name">penpot</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-05-summary">Summary</a><a class="dot" href="#r-05-github">GitHub</a><a class="dot active" href="#r-05-video">Video</a><a class="dot" href="#r-05-controversy">Controversy</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="embed-card video-card">
+      <div class="embed-caption">Penpot (official channel, 9k views) — “Get started with Penpot in under 5 minutes.”</div>
+      <div class="video-embed" data-id="vAkb4QQmbfk" data-start="0" data-title="penpot/penpot — Penpot (official channel, 9k views) — “Get started with Penpot in under 5 minutes.”"></div>
+      <a class="under-link" href="https://www.youtube.com/watch?v=vAkb4QQmbfk" target="_blank" rel="noopener">▶ Play here</a>
+    </div>
+  </div>
+</section>
+<section class="panel panel-controversy" id="r-05-controversy" data-repo="r-05" data-type="controversy">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">05</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item active" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/penpot/penpot" target="_blank" rel="noopener">
+        <span class="owner">penpot</span><span class="slash">/</span><span class="name">penpot</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-05-summary">Summary</a><a class="dot" href="#r-05-github">GitHub</a><a class="dot" href="#r-05-video">Video</a><a class="dot active" href="#r-05-controversy">Controversy</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="issue-card">
+      <div class="card-label">Hacker News · 775 points · 207 comments</div>
+      <div class="issue-title">Penpot: The Open-Source Figma</div>
+      <p class="issue-summary">A 775-point, 207-comment Hacker News thread (2025-11-27) on Penpot as the open-source Figma — a substantive debate about self-hosting, design-as-code, and whether an open tool can match Figma in practice.</p>
+      <div class="btn-row"><a class="cta" href="https://news.ycombinator.com/item?id=46064757" target="_blank" rel="noopener">Open the HN thread →</a></div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-summary" id="r-06-summary" data-repo="r-06" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">06</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item active" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/jamiepine/voicebox" target="_blank" rel="noopener">
+        <span class="owner">jamiepine</span><span class="slash">/</span><span class="name">voicebox</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot active" href="#r-06-summary">Summary</a><a class="dot" href="#r-06-github">GitHub</a><a class="dot" href="#r-06-tweet">Tweet</a><a class="dot" href="#r-06-video">Video</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">Voice AI · Local-first</div>
+      <h1 class="title">Clone a voice, turn text to speech, and dictate anywhere — <span class="em">entirely on your own computer</span>.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why">A free, open-source voice studio from <b>Jamie Pine</b> (creator of Spacedrive), pitched as one free local replacement for two paid clouds at once — <b>ElevenLabs</b> (output) and <b>WisprFlow</b> (input). ~34k stars in roughly five months, with a Trendshift badge. <b>Note the freshness flag</b> — last pushed 2026-04-26.</p>
+      <a class="cta" href="https://github.com/jamiepine/voicebox" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="jamiepine/voicebox" data-role="stat" data-base="34.2k">34.2k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">TypeScript</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">MIT</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">Local and private</div><p class="h-desc">Tauri/Rust, not Electron — voice data never leaves your machine.</p></li><li><div class="h-name">7 TTS engines</div><p class="h-desc">Qwen3-TTS, Kokoro, Chatterbox, HumeAI; zero-shot cloning or 50+ preset voices.</p></li><li><div class="h-name">Expressive + multilingual</div><p class="h-desc">23 languages plus tags like [laugh] and [sigh] via Chatterbox Turbo.</p></li><li><div class="h-name">Dictate into any app</div><p class="h-desc">Global hotkey + Whisper speech-to-text with auto-paste on macOS — a free <a href="https://voicebox.sh/capture" target="_blank" rel="noopener">dictation tool</a> that stands in for WisprFlow.</p></li><li><div class="h-name">Give agents a voice</div><p class="h-desc">One MCP call (voicebox.speak) lets Claude Code/Cursor speak back; REST + MCP server.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>Replaces two paid voice subscriptions with one free download — and keeps your cloned voice and audio on your own computer instead of a vendor's cloud.</p></div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-06-github" data-repo="r-06" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">06</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item active" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/jamiepine/voicebox" target="_blank" rel="noopener">
+        <span class="owner">jamiepine</span><span class="slash">/</span><span class="name">voicebox</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-06-summary">Summary</a><a class="dot active" href="#r-06-github">GitHub</a><a class="dot" href="#r-06-tweet">Tweet</a><a class="dot" href="#r-06-video">Video</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/jamiepine/voicebox" data-owner="jamiepine" data-repo="voicebox" alt="GitHub social card for jamiepine/voicebox" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">jamiepine</span><span class="gf-slash">/</span><span class="gf-repo">voicebox</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="jamiepine/voicebox" data-role="badge" data-base="34.2k">★ 34.2k</span>
+          <span class="badge">TypeScript</span>
+        </div>
+        <a class="cta" href="https://github.com/jamiepine/voicebox" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-tweet" id="r-06-tweet" data-repo="r-06" data-type="tweet">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">06</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item active" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/jamiepine/voicebox" target="_blank" rel="noopener">
+        <span class="owner">jamiepine</span><span class="slash">/</span><span class="name">voicebox</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-06-summary">Summary</a><a class="dot" href="#r-06-github">GitHub</a><a class="dot active" href="#r-06-tweet">Tweet</a><a class="dot" href="#r-06-video">Video</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="embed-card">
+      <div class="embed-caption">@exploraX_ (third-party, 444k views) — a full step-by-step Voicebox setup guide that ends linking the repo.</div>
+      <iframe
+        class="tweet-iframe"
+        src="https://platform.twitter.com/embed/Tweet.html?dnt=true&id=2049435699913363788&theme=light&lang=en"
+        loading="lazy"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+        title="Tweet for jamiepine/voicebox"
+      ></iframe>
+    </div>
+  </div>
+</section>
+<section class="panel panel-video" id="r-06-video" data-repo="r-06" data-type="video">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">06</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item active" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/jamiepine/voicebox" target="_blank" rel="noopener">
+        <span class="owner">jamiepine</span><span class="slash">/</span><span class="name">voicebox</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-06-summary">Summary</a><a class="dot" href="#r-06-github">GitHub</a><a class="dot" href="#r-06-tweet">Tweet</a><a class="dot active" href="#r-06-video">Video</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="embed-card video-card">
+      <div class="embed-caption">Kevin Stratvert (third-party, 161k views) — “Free AI Voice Generator on Your PC (Clone Any Voice).”</div>
+      <div class="video-embed" data-id="sisnzgc73zc" data-start="0" data-title="jamiepine/voicebox — Kevin Stratvert (third-party, 161k views) — “Free AI Voice Generator on Your PC (Clone Any Voice).”"></div>
+      <a class="under-link" href="https://www.youtube.com/watch?v=sisnzgc73zc" target="_blank" rel="noopener">▶ Play here</a>
+    </div>
+  </div>
+</section>
+<section class="panel panel-summary" id="r-07-summary" data-repo="r-07" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">07</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item active" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/asgeirtj/system_prompts_leaks" target="_blank" rel="noopener">
+        <span class="owner">asgeirtj</span><span class="slash">/</span><span class="name">system_prompts_leaks</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot active" href="#r-07-summary">Summary</a><a class="dot" href="#r-07-github">GitHub</a><a class="dot" href="#r-07-video">Video</a><a class="dot" href="#r-07-controversy">Controversy</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">LLMs · Prompt engineering</div>
+      <h1 class="title">The secret instructions companies feed their chatbots before you type — <span class="em">extracted from Claude, ChatGPT, Gemini, and Grok</span>.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why">A regularly-updated archive of the hidden <b>system prompts</b> behind the major AI products. Actively updated (pushed today) and adds the newest models fast — the README lists Claude Design (June 23), GPT-5.5 Codex, Claude Fable 5, Gemini 3.5 Flash. Cites a real <b>Washington Post feature</b> driving mainstream attention.</p>
+      <a class="cta" href="https://github.com/asgeirtj/system_prompts_leaks" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="asgeirtj/system_prompts_leaks" data-role="stat" data-base="46k">46k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">JavaScript</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">CC0-1.0</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">Every major lab</div><p class="h-desc">Anthropic, OpenAI, Google, xAI, plus Cursor, Copilot, Perplexity and more.</p></li><li><div class="h-name">Tracks new models fast</div><p class="h-desc">Claude Fable 5, Opus 4.8, GPT-5.5, Gemini 3.5 Flash — all dated.</p></li><li><div class="h-name">Model-to-model diffs</div><p class="h-desc">See exactly what changed, e.g. Claude Opus 4.8 → Fable 5.</p></li><li><div class="h-name">Tool + policy prompts</div><p class="h-desc">Web search, code, image-gen, memory — not just the chat personas.</p></li><li><div class="h-name">Public domain</div><p class="h-desc">CC0 — free to copy, study, and reuse.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>For anyone writing prompts or building on these AIs, seeing how the big labs actually instruct their own models is a free masterclass — and reveals the guardrails shaping your answers.</p></div>
+        <div class="reads"><span class="reads-label">Further reading</span><ul class="read-list"><li><a href="https://archive.is/pYtPk" target="_blank" rel="noopener"><span class="read-label">Washington Post feature (archived)</span><span class="read-url">archive.is</span></a></li><li><a href="https://news.ycombinator.com/item?id=43909409" target="_blank" rel="noopener"><span class="read-label">HN: Claude’s system prompt (627 pts)</span><span class="read-url">news.ycombinator.com</span></a></li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-07-github" data-repo="r-07" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">07</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item active" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/asgeirtj/system_prompts_leaks" target="_blank" rel="noopener">
+        <span class="owner">asgeirtj</span><span class="slash">/</span><span class="name">system_prompts_leaks</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-07-summary">Summary</a><a class="dot active" href="#r-07-github">GitHub</a><a class="dot" href="#r-07-video">Video</a><a class="dot" href="#r-07-controversy">Controversy</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/asgeirtj/system_prompts_leaks" data-owner="asgeirtj" data-repo="system_prompts_leaks" alt="GitHub social card for asgeirtj/system_prompts_leaks" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">asgeirtj</span><span class="gf-slash">/</span><span class="gf-repo">system_prompts_leaks</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="asgeirtj/system_prompts_leaks" data-role="badge" data-base="46k">★ 46k</span>
+          <span class="badge">JavaScript</span>
+        </div>
+        <a class="cta" href="https://github.com/asgeirtj/system_prompts_leaks" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-video" id="r-07-video" data-repo="r-07" data-type="video">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">07</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item active" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/asgeirtj/system_prompts_leaks" target="_blank" rel="noopener">
+        <span class="owner">asgeirtj</span><span class="slash">/</span><span class="name">system_prompts_leaks</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-07-summary">Summary</a><a class="dot" href="#r-07-github">GitHub</a><a class="dot active" href="#r-07-video">Video</a><a class="dot" href="#r-07-controversy">Controversy</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="embed-card video-card">
+      <div class="embed-caption">Bitwise AI (third-party) — “Somebody Leaked the System Prompts of 32 AI Agents (Cursor, Claude Code)” (verified to be about this repo).</div>
+      <div class="video-embed" data-id="XOddQHz4gtA" data-start="0" data-title="asgeirtj/system_prompts_leaks — Bitwise AI (third-party) — “Somebody Leaked the System Prompts of 32 AI Agents (Cursor, Claude Code)” (verified to be about this repo)."></div>
+      <a class="under-link" href="https://www.youtube.com/watch?v=XOddQHz4gtA" target="_blank" rel="noopener">▶ Play here</a>
+    </div>
+  </div>
+</section>
+<section class="panel panel-controversy" id="r-07-controversy" data-repo="r-07" data-type="controversy">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">07</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item active" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/asgeirtj/system_prompts_leaks" target="_blank" rel="noopener">
+        <span class="owner">asgeirtj</span><span class="slash">/</span><span class="name">system_prompts_leaks</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-07-summary">Summary</a><a class="dot" href="#r-07-github">GitHub</a><a class="dot" href="#r-07-video">Video</a><a class="dot active" href="#r-07-controversy">Controversy</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="issue-card">
+      <div class="card-label">Hacker News · 627 points · 334 comments</div>
+      <div class="issue-title">Claude’s system prompt is over 24k tokens with tools</div>
+      <p class="issue-summary">A 627-point, 334-comment Hacker News thread links the repo’s claude.txt and dissects how large and detailed a production system prompt really is. The repo also anchors a Washington Post feature (~2026-05-11) profiling the maintainer.</p>
+      <div class="btn-row"><a class="cta" href="https://news.ycombinator.com/item?id=43909409" target="_blank" rel="noopener">Open the HN thread →</a></div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-summary" id="r-08-summary" data-repo="r-08" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">08</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item active" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/Panniantong/Agent-Reach" target="_blank" rel="noopener">
+        <span class="owner">Panniantong</span><span class="slash">/</span><span class="name">Agent-Reach</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot active" href="#r-08-summary">Summary</a><a class="dot" href="#r-08-github">GitHub</a><a class="dot" href="#r-08-video">Video</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">AI agents · Web access</div>
+      <h1 class="title">Give your agent the ability to actually read the internet — <span class="em">Twitter, Reddit, YouTube, GitHub — by pasting one line</span>.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why">One CLI that wires your agent into the platforms that normally block scrapers or charge for API access. A new project that hit <b>~41k stars in about four months</b>, with a Trendshift "GitHub Trending #1 Repository of the Day" badge. The hook: paste one install sentence and minutes later it reads Twitter, Reddit, and YouTube for free.</p>
+      <a class="cta" href="https://github.com/Panniantong/Agent-Reach" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="Panniantong/Agent-Reach" data-role="stat" data-base="41.1k">41.1k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Python</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">MIT</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">One-line install</div><p class="h-desc">Paste a single raw-GitHub-URL sentence; the agent sets up the CLI, Node.js, gh, and MCP.</p></li><li><div class="h-name">Six platforms zero-config</div><p class="h-desc">Web, YouTube transcripts+search, RSS, GitHub, full-web semantic search via Exa, V2EX.</p></li><li><div class="h-name">Preferred + fallback routing</div><p class="h-desc">When one method breaks (e.g. yt-dlp blocked) it auto-switches; users do nothing.</p></li><li><div class="h-name">Health check built in</div><p class="h-desc">"agent-reach doctor" reports which channels work and how to fix the rest.</p></li><li><div class="h-name">Free and local-first</div><p class="h-desc">Open-source tools, free APIs, cookies stay local; only cost is a ~$1/mo server proxy.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>If your agent comes up empty when you ask it to check Twitter or summarize a YouTube video, this is a one-paste fix that wires those sources in for free.</p></div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-08-github" data-repo="r-08" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">08</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item active" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/Panniantong/Agent-Reach" target="_blank" rel="noopener">
+        <span class="owner">Panniantong</span><span class="slash">/</span><span class="name">Agent-Reach</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-08-summary">Summary</a><a class="dot active" href="#r-08-github">GitHub</a><a class="dot" href="#r-08-video">Video</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/Panniantong/Agent-Reach" data-owner="Panniantong" data-repo="Agent-Reach" alt="GitHub social card for Panniantong/Agent-Reach" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">Panniantong</span><span class="gf-slash">/</span><span class="gf-repo">Agent-Reach</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="Panniantong/Agent-Reach" data-role="badge" data-base="41.1k">★ 41.1k</span>
+          <span class="badge">Python</span>
+        </div>
+        <a class="cta" href="https://github.com/Panniantong/Agent-Reach" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-video" id="r-08-video" data-repo="r-08" data-type="video">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">08</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item active" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/Panniantong/Agent-Reach" target="_blank" rel="noopener">
+        <span class="owner">Panniantong</span><span class="slash">/</span><span class="name">Agent-Reach</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-08-summary">Summary</a><a class="dot" href="#r-08-github">GitHub</a><a class="dot active" href="#r-08-video">Video</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="embed-card video-card">
+      <div class="embed-caption">Better Stack (third-party, English) — “Your AI Agent Is Missing Half the Internet… Until Now (Agent-Reach).”</div>
+      <div class="video-embed" data-id="aanqEqQwjNU" data-start="0" data-title="Panniantong/Agent-Reach — Better Stack (third-party, English) — “Your AI Agent Is Missing Half the Internet… Until Now (Agent-Reach).”"></div>
+      <a class="under-link" href="https://www.youtube.com/watch?v=aanqEqQwjNU" target="_blank" rel="noopener">▶ Play here</a>
+    </div>
+  </div>
+</section>
+<section class="panel panel-summary" id="r-09-summary" data-repo="r-09" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">09</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item active" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/ZhuLinsen/daily_stock_analysis" target="_blank" rel="noopener">
+        <span class="owner">ZhuLinsen</span><span class="slash">/</span><span class="name">daily_stock_analysis</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot active" href="#r-09-summary">Summary</a><a class="dot" href="#r-09-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">Finance · AI agent</div>
+      <h1 class="title">A free AI robot that reads the market for your watchlist daily and <span class="em">sends a buy/sell/hold dashboard to your phone</span>.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why">Runs every weekday and pushes a plain-language readout to your phone, Telegram, Slack, or email — <b>without running a server</b>. Created Jan 2026, already ~49.5k stars and 43k+ forks (the fork count reflects its fork-to-deploy model). README carries a Trendshift #1-Python badge and a HelloGitHub feature; buzz is China-developer-driven.</p>
+      <a class="cta" href="https://github.com/ZhuLinsen/daily_stock_analysis" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="ZhuLinsen/daily_stock_analysis" data-role="stat" data-base="49.5k">49.5k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Python</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">MIT</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">Multi-market</div><p class="h-desc">A-shares, HK, US, Japan, Korea with indicators, fund flows, news, fundamentals.</p></li><li><div class="h-name">AI report per stock</div><p class="h-desc">Conclusion, score, trend, buy/sell levels, risk alerts, catalysts, action checklist.</p></li><li><div class="h-name">Zero-cost scheduling</div><p class="h-desc">Fork + add API keys; GitHub Actions auto-runs each trading day; Docker/local too.</p></li><li><div class="h-name">Pushes anywhere</div><p class="h-desc">WeChat Work, Feishu, Telegram, Discord, Slack, or email.</p></li><li><div class="h-name">Bring your own LLM</div><p class="h-desc">Gemini, OpenAI-compatible, DeepSeek, Qwen, Claude, or local Ollama.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>If you follow a handful of stocks, fork it and have an AI quietly send you a daily readout on each — free, no coding, no server.</p></div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-09-github" data-repo="r-09" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">09</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item active" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/ZhuLinsen/daily_stock_analysis" target="_blank" rel="noopener">
+        <span class="owner">ZhuLinsen</span><span class="slash">/</span><span class="name">daily_stock_analysis</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-09-summary">Summary</a><a class="dot active" href="#r-09-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/ZhuLinsen/daily_stock_analysis" data-owner="ZhuLinsen" data-repo="daily_stock_analysis" alt="GitHub social card for ZhuLinsen/daily_stock_analysis" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">ZhuLinsen</span><span class="gf-slash">/</span><span class="gf-repo">daily_stock_analysis</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="ZhuLinsen/daily_stock_analysis" data-role="badge" data-base="49.5k">★ 49.5k</span>
+          <span class="badge">Python</span>
+        </div>
+        <a class="cta" href="https://github.com/ZhuLinsen/daily_stock_analysis" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-summary" id="r-10-summary" data-repo="r-10" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">10</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item active" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/OpenCut-app/OpenCut" target="_blank" rel="noopener">
+        <span class="owner">OpenCut-app</span><span class="slash">/</span><span class="name">OpenCut</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot active" href="#r-10-summary">Summary</a><a class="dot" href="#r-10-github">GitHub</a><a class="dot" href="#r-10-tweet">Tweet</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">Video editing · Open source</div>
+      <h1 class="title"><span class="em">A free, open-source CapCut alternative</span> — a video editor that runs in your browser.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why">Edit without a subscription or watermarks. The description is literally "The open-source CapCut alternative" and at <b>~60k stars</b> it's one of the most-starred OSS creator tools. The timeliness now is the rewrite: the README's top section announces OpenCut is being <b>rebuilt from the ground up</b> with a Rust core.</p>
+      <a class="cta" href="https://github.com/OpenCut-app/OpenCut" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="OpenCut-app/OpenCut" data-role="stat" data-base="59.8k">59.8k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">TypeScript</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">MIT</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">Ground-up rewrite</div><p class="h-desc">Plugin-first architecture and an Editor API; the usable version powers opencut.app.</p></li><li><div class="h-name">One codebase</div><p class="h-desc">Desktop, mobile, and browser planned from a single Rust core.</p></li><li><div class="h-name">AI + automation roadmap</div><p class="h-desc">An MCP server for agents, headless batch rendering, and an in-editor scripting tab.</p></li><li><div class="h-name">Third-party plugins</div><p class="h-desc">First-class plugins are a stated goal of the new architecture.</p></li><li><div class="h-name">Sponsor-backed</div><p class="h-desc">Supported by sponsors including fal.ai.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>A free, self-run video editor for creators who don't want to pay for CapCut — and the rewrite aims it at people who want AI agents and automation in their editing pipeline.</p></div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-10-github" data-repo="r-10" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">10</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item active" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/OpenCut-app/OpenCut" target="_blank" rel="noopener">
+        <span class="owner">OpenCut-app</span><span class="slash">/</span><span class="name">OpenCut</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-10-summary">Summary</a><a class="dot active" href="#r-10-github">GitHub</a><a class="dot" href="#r-10-tweet">Tweet</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/OpenCut-app/OpenCut" data-owner="OpenCut-app" data-repo="OpenCut" alt="GitHub social card for OpenCut-app/OpenCut" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">OpenCut-app</span><span class="gf-slash">/</span><span class="gf-repo">OpenCut</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="OpenCut-app/OpenCut" data-role="badge" data-base="59.8k">★ 59.8k</span>
+          <span class="badge">TypeScript</span>
+        </div>
+        <a class="cta" href="https://github.com/OpenCut-app/OpenCut" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-tweet" id="r-10-tweet" data-repo="r-10" data-type="tweet">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">10</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#sponsor">SP</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item active" href="#r-10-summary">10</a></span></span>
+      <a class="repo-name" href="https://github.com/OpenCut-app/OpenCut" target="_blank" rel="noopener">
+        <span class="owner">OpenCut-app</span><span class="slash">/</span><span class="name">OpenCut</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-10-summary">Summary</a><a class="dot" href="#r-10-github">GitHub</a><a class="dot active" href="#r-10-tweet">Tweet</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="embed-card">
+      <div class="embed-caption">@opencutapp (OWNER, 33k views) — the official showcase of OpenCut, the free, open-source CapCut alternative you edit right in your browser.</div>
+      <iframe
+        class="tweet-iframe"
+        src="https://platform.twitter.com/embed/Tweet.html?dnt=true&id=2059360143909802128&theme=light&lang=en"
+        loading="lazy"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+        title="Tweet for OpenCut-app/OpenCut"
+      ></iframe>
+    </div>
+  </div>
+</section>
+<section class="panel panel-outro" id="outro" data-repo="outro">
+  <div class="outro-block">
+    <div class="hero-eyebrow">THAT'S THE TOP 10 · JUNE 25, 2026</div>
+    <h2 class="outro-title">Thanks for watching.<br><span class="em">The Next New Thing</span>.</h2>
+    <p class="hero-sub">New hot repos every week. Subscribe so you never miss the next drop.</p>
+  </div>
+</section>
+<script>
+/* Inline YouTube players (pattern from reaction-site-v2): each .video-embed builds a
+   youtube-nocookie iframe that starts at its data-start second. The IFrame API lets us
+   pause whatever video you scroll away from. Controls stay visible so viewers can play. */
+(function(){
+  var players = {}, apiReady = false;
+  // Pass the real page origin to YouTube so the embed plays in-page (no "Watch on YouTube" config errors).
+  var ORIGIN = (location.protocol === 'http:' || location.protocol === 'https:') ? location.origin : '';
+  function fid(e){ return 'ytp-' + e.getAttribute('data-idx'); }
+  function src(id, start){
+    var p = ['rel=0','enablejsapi=1','playsinline=1','controls=1'];
+    if (start) p.push('start=' + Math.round(start));
+    if (ORIGIN) p.push('origin=' + encodeURIComponent(ORIGIN));
+    return 'https://www.youtube-nocookie.com/embed/' + id + '?' + p.join('&');
+  }
+  function build(e){
+    var id = e.getAttribute('data-id');
+    var start = Number(e.getAttribute('data-start') || 0);
+    var title = e.getAttribute('data-title') || 'YouTube video';
+    e.innerHTML = '<iframe id="' + fid(e) + '" src="' + src(id, start) + '" title="' + title + '" ' +
+      'referrerpolicy="strict-origin-when-cross-origin" ' +
+      'loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+  }
+  var embeds = Array.prototype.slice.call(document.querySelectorAll('.video-embed'));
+  embeds.forEach(function(e, i){ e.setAttribute('data-idx', i); build(e); });
+
+  // Read a start time (seconds) out of a YouTube watch/share link: ?t=, &t=, #t= (1h2m3s or plain seconds), or start=.
+  function tSeconds(url){
+    var m = url.match(/[?&#]t=([0-9hms]+)/i) || url.match(/[?&#]start=([0-9]+)/i);
+    if (!m) return 0;
+    var v = m[1], mm, s = 0;
+    if (/^\d+$/.test(v)) return parseInt(v, 10);
+    if ((mm = v.match(/(\d+)h/i))) s += parseInt(mm[1], 10) * 3600;
+    if ((mm = v.match(/(\d+)m/i))) s += parseInt(mm[1], 10) * 60;
+    if ((mm = v.match(/(\d+)s/i))) s += parseInt(mm[1], 10);
+    return s;
+  }
+  // Play the inline player that lives in the same card as a clicked link, at the given second.
+  function playInCard(card, seconds){
+    var e = card.querySelector('.video-embed');
+    if (!e) return false;
+    var pl = players[fid(e)];
+    if (!pl || !pl.seekTo) return false;
+    try {
+      pl.seekTo(seconds || 0, true); pl.playVideo();
+      e.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch (x) { return false; }
+    return true;
+  }
+  // Clicking any in-card YouTube link plays the embedded player in place instead of leaving the page.
+  document.addEventListener('click', function(ev){
+    var a = ev.target && ev.target.closest && ev.target.closest('.video-card a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (!/youtu\.be\/|youtube(?:-nocookie)?\.com\/(?:watch|embed|shorts|v\/)/i.test(href)) return;
+    var card = a.closest('.video-card');
+    if (card && playInCard(card, tSeconds(href))) ev.preventDefault();
+  });
+
+  if (embeds.length){
+    window.onYouTubeIframeAPIReady = function(){
+      apiReady = true;
+      embeds.forEach(function(e){ try { players[fid(e)] = new YT.Player(fid(e), {}); } catch(x){} });
+    };
+    var s = document.createElement('script');
+    s.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(s);
+    var allPanels = Array.prototype.slice.call(document.querySelectorAll('section.panel'));
+    function curIdx(){
+      var f = window.innerHeight * 0.4, y = window.scrollY + f, b = 0;
+      for (var i = 0; i < allPanels.length; i++){ if (allPanels[i].offsetTop <= y) b = i; else break; }
+      return b;
+    }
+    var pt;
+    window.addEventListener('scroll', function(){
+      clearTimeout(pt);
+      pt = setTimeout(function(){
+        var idx = curIdx();
+        embeds.forEach(function(e){
+          var pl = players[fid(e)];
+          if (pl && pl.pauseVideo && allPanels[idx] && !allPanels[idx].contains(e)){ try { pl.pauseVideo(); } catch(x){} }
+        });
+      }, 140);
+    }, { passive: true });
+  }
+})();
+</script>
+<script>
+(function(){
+  const panels = Array.from(document.querySelectorAll('section.panel'));
+  if (!panels.length) return;
+  const repoStarts = [];
+  const seenGroups = new Set();
+  panels.forEach((p, idx) => {
+    const g = p.getAttribute('data-repo') || ('panel-' + idx);
+    if (!seenGroups.has(g)) { seenGroups.add(g); repoStarts.push(idx); }
+  });
+  function currentPanelIndex(){
+    const fudge = window.innerHeight * 0.4;
+    const y = window.scrollY + fudge;
+    let best = 0;
+    for (let i = 0; i < panels.length; i++) {
+      const top = panels[i].offsetTop;
+      if (top <= y) best = i; else break;
+    }
+    return best;
+  }
+  function currentRepoStartIdx(){
+    const cur = currentPanelIndex();
+    let best = 0;
+    for (let i = 0; i < repoStarts.length; i++) {
+      if (repoStarts[i] <= cur) best = i; else break;
+    }
+    return best;
+  }
+  function jumpTo(idx){
+    if (idx < 0) idx = 0;
+    if (idx >= panels.length) idx = panels.length - 1;
+    panels[idx].scrollIntoView({ behavior: 'instant', block: 'start' });
+  }
+  function nextRepo(){
+    const cur = currentRepoStartIdx();
+    jumpTo(repoStarts[Math.min(cur + 1, repoStarts.length - 1)]);
+  }
+  function prevRepo(){
+    const cur = currentRepoStartIdx();
+    jumpTo(repoStarts[Math.max(cur - 1, 0)]);
+  }
+  function nextPanel(){ jumpTo(currentPanelIndex() + 1); }
+  function prevPanel(){ jumpTo(currentPanelIndex() - 1); }
+  document.addEventListener('keydown', function(e){
+    const tag = (e.target && e.target.tagName || '').toUpperCase();
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || e.target.isContentEditable) return;
+    if (e.code === 'ArrowRight' || e.code === 'PageDown') { e.preventDefault(); nextPanel(); }
+    else if (e.code === 'ArrowLeft' || e.code === 'PageUp') { e.preventDefault(); prevPanel(); }
+    else if (e.code === 'ArrowDown') { e.preventDefault(); nextRepo(); }
+    else if (e.code === 'ArrowUp') { e.preventDefault(); prevRepo(); }
+    else if (e.code === 'Space') { e.preventDefault(); if (e.shiftKey) prevRepo(); else nextRepo(); }
+    else if (e.code === 'Home') { e.preventDefault(); jumpTo(0); }
+    else if (e.code === 'End') { e.preventDefault(); jumpTo(panels.length - 1); }
+  });
+  const hero = document.getElementById('hero');
+  if (hero) {
+    const hint = hero.querySelector('.hero-hint');
+    if (hint) hint.textContent = '\u2190 \u2192 page  \u00b7  \u2191 \u2193 repo  \u00b7  Space next repo';
+  }
+})();
+</script>
+<script>
+(function(){
+  const prefetched = new Set();
+  function prefetch(url) {
+    if (!url || prefetched.has(url)) return;
+    if (url.startsWith('#') || url.startsWith('javascript:')) return;
+    prefetched.add(url);
+    const link = document.createElement('link');
+    link.rel = 'prefetch'; link.href = url; link.as = 'document';
+    link.referrerPolicy = 'no-referrer-when-downgrade';
+    document.head.appendChild(link);
+  }
+  function harvest(e) {
+    const a = e.target && e.target.closest && e.target.closest('a');
+    if (!a) return;
+    if (a.target === '_blank') prefetch(a.href);
+  }
+  document.addEventListener('mouseover', harvest, { passive: true });
+  document.addEventListener('touchstart', harvest, { passive: true });
+})();
+</script>
+</body>
+</html>

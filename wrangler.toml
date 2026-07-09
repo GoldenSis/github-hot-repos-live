@@ -1,0 +1,11 @@
+name = "github-hot-repos-20260625"
+main = "src/worker.js"
+compatibility_date = "2026-06-01"
+
+# Import the HTML template as text; repos.json imports natively as JSON.
+rules = [
+  { type = "Text", globs = ["**/*.html"] },
+]
+
+# Optional: set a GitHub token to lift the 60 req/hr unauthenticated limit.
+#   npx wrangler secret put GITHUB_TOKEN
