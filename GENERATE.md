@@ -1,59 +1,45 @@
-# Weekly build brief — "Hot GitHub Repos" (The Next New Thing)
+# Weekly build brief — "The Next New Thing" (multi-source AI digest)
 
-This is the spec the weekly routine follows to auto-generate one issue. The goal: a new
-`issues/<date>.html` in the **exact design** of the exemplar `issues/2026-06-25.html`,
-built from this week's GitHub Trending, then deployed to the archive worker.
+Spec the weekly routine follows to auto-generate one issue: a new `issues/<date>.html` in the
+**house design** of the exemplar `issues/2026-06-25.html`, built from this week's activity across
+GitHub, Hugging Face, the AI labs, papers, and the buzz — then deployed to the archive worker.
 
-Repo: `~/projects/github-hot-repos-live`. Style exemplar (READ IT FIRST): `issues/2026-06-25.html`.
+Repo: `~/projects/github-hot-repos-live`. Read FIRST: `issues/2026-06-25.html` (design exemplar) and
+`sources.md` (the verified feed list — every endpoint below comes from there; all are no-key unless noted).
+
+## Sections to produce (in order)
+1. **🔥 Hot Repos** (rank 01–10) — the spine. GitHub Trending + breakouts.
+2. **🧠 Hot Models** (~5) — Hugging Face trending models/spaces.
+3. **📄 Fresh Papers** (~4) — trending/high-signal papers, code-linked.
+4. **🚀 Lab Drops** (~5) — official releases from the AI labs this week.
+5. **📡 The Buzz** (~5) — what's being talked about (newsletters/HN/Reddit).
+6. **⭐ WANTED** (3) — hidden-gem repos (lower-star, high-signal).
+
+Scale gracefully: if a section has little genuinely-new this week, run it shorter rather than padding.
 
 ## Steps
-
-1. **Date.** Use the run date as `YYYY-MM-DD` (the issue date). Header/label text uses the
-   human form, e.g. "July 9, 2026" and "JULY 9, 2026".
-
-2. **Pick the repos.** Fetch GitHub Trending (`https://github.com/trending?since=weekly`,
-   and language-specific pages if useful). Choose **10 main repos** (rank 01–10) — favour
-   genuinely surging, useful projects; be skeptical of pure astroturf (huge stars days after
-   creation + heavy first-party promo) and *say so* in the copy when it applies. Also pick
-   **3 "hidden gems"** (lower-star, high-signal) for the WANTED section.
-
-3. **Research each repo (verify at source — no guessing).**
-   - From the GitHub repo: exact `owner/repo`, stargazers, primary language, license, one-line description.
-   - Web-search for: *why it's trending*, 3–5 concrete *highlights*, a crisp *so what?*, and
-     2–5 *further-reading* links (independent sources > first-party). For main repos, find a
-     relevant **YouTube video** to embed if a good one exists (walkthrough/demo).
-   - Mark anything unverified; never invent benchmarks, links, or quotes.
-
-4. **Write the HTML** — a complete self-contained document in the SAME design as the exemplar.
-   Reuse its `<head>`/`<style>` verbatim and its section markup conventions. **The star markup
-   contract is load-bearing** (the live-stars Worker depends on it) — keep it EXACT:
-   - Each repo is a set of `<section … data-repo="r-NN" data-type="summary|github|video|…">` panels
-     (hidden gems use `hm-NN`). Each panel repeats the header with
-     `<a class="repo-name" href="https://github.com/OWNER/REPO" …>`.
-   - Summary panel Stars stat: `<div class="stat-label">Stars</div><div class="stat-val">36k</div>`
-     (plain human count, no tags — the pipeline adds them).
-   - GitHub panel badge: `<span class="badge">★ 36k</span>`.
-   - Panels are per-repo bespoke: include a `video` panel only when you found a good video, a
-     `controversy`/`tweet` panel only when warranted — mirror how the exemplar varies them.
-
-5. **Ingest + publish.**
+1. **Date** = run date `YYYY-MM-DD`; human forms "July 9, 2026" / "JULY 9, 2026".
+2. **Gather (keyless, one pass — see `sources.md` for exact endpoints):**
+   - Repos: GitHub Trending RSS (`mshibanami…/weekly/all.xml` + top languages) + GitHub Search API breakouts (`created:>lastweek sort:stars`). Dedupe. Cross-check suspicious spikes.
+   - Models: `huggingface.co/api/models?sort=trendingScore&limit=30&full=true` (+ spaces).
+   - Papers: `huggingface.co/api/daily_papers` (loop the week) + arXiv API.
+   - Lab drops: Tier-1 lab RSS (OpenAI, Mistral, Google AI/Research/DeepMind, Qwen, AI2, Stability, MS, NVIDIA) + HF per-org new-model JSON for DeepSeek/Meta/etc. + scrape Anthropic news.
+   - Buzz: AI News (`news.smol.ai/rss.xml`) + HN Algolia (score>100) + Import AI + r/LocalLLaMA `.rss` (spaced, custom UA, curl).
+3. **Curate & verify (provenance mandatory, no fabrication):** pick the items, then for each confirm facts at the primary source (repo stars/lang/license; model card; paper abstract; the lab's own post). Be skeptical of astroturf (huge stars days after creation + first-party promo) and *say so* in the copy. Mark anything unverified.
+4. **Write the HTML** — one self-contained document in the exemplar's design (reuse its `<head>`/`<style>`; give each new section a header styled like the existing rank/section headers; cards analogous to the repo cards). **Load-bearing:** keep the repo star markup EXACT so the live-stars Worker still works —
+   - repo panels: `<section … data-repo="r-NN" data-type="summary|github|video|…">`, each repeating `<a class="repo-name" href="https://github.com/OWNER/REPO">`; Stars stat `<div class="stat-label">Stars</div><div class="stat-val">36k</div>`; badge `<span class="badge">★ 36k</span>`.
+   - Non-repo sections (models/papers/labs/buzz) are static cards — no star tags needed; link each to its primary source. (HF likes / paper upvotes may be shown as plain text; they are NOT live-refreshed — only GitHub repo stars are.)
+5. **Ingest + publish:**
    ```
-   node scripts/add-issue.mjs <raw-report.html> <YYYY-MM-DD>   # tags stars, rebuilds manifest
-   npm run build                                              # regenerate src/issues.index.js
+   node scripts/add-issue.mjs <raw-report.html> <YYYY-MM-DD>   # tags repo stars, rebuilds manifest
+   npm run build
    git add -A && git commit -m "issue <YYYY-MM-DD>" && git push
    ```
-   **Deploy happens on push:** the `.github/workflows/deploy.yml` GitHub Action runs
-   `wrangler deploy` automatically. Only run `npm run deploy` yourself if you have local
-   Cloudflare creds (`wrangler login` / `CLOUDFLARE_API_TOKEN`) — the cloud routine does NOT,
-   so it just pushes and lets the Action deploy.
-
-6. **Verify + report.** After the Action finishes (~1 min), curl
-   `https://github-hot-repos.nextnewthing.workers.dev/<date>` and `/stars.json?issue=<date>`;
-   confirm live stars + delta chips render and the index lists the new issue. Report the URL +
-   a one-line summary of the 10 picks.
+   Deploy is automatic via `.github/workflows/deploy.yml` on push. Do NOT run `wrangler deploy` (no Cloudflare creds in the cloud env).
+6. **Verify + report:** after the Action finishes (~1 min), curl `https://github-hot-repos.nextnewthing.workers.dev/<date>` + `/stars.json?issue=<date>`; confirm the repo section's live stars + delta chips render and the index lists the new issue. Report the URL + a one-line summary of each section's picks.
 
 ## Guardrails
-- Provenance: every factual claim traces to a source; prefer independent corroboration.
-- Keep the exact house markup so star-tagging works (verify `add-issue.mjs` reports 13 repos tagged).
-- Deploys are additive (new dated path); past issues never change. Safe to self-run.
-- Note token spend; this is a research-heavy run (visible on /budget).
+- Provenance on every claim; prefer independent corroboration; X is excluded (use AI News for buzz).
+- Keep the repo star markup exact (verify `add-issue.mjs` reports the repo count tagged).
+- Validate feed content-type, not just HTTP 200 (some return HTML with 200 — see `sources.md`).
+- Deploys are additive (new dated path); past issues never change. Note token spend (research-heavy).
