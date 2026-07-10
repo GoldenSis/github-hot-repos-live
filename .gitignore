@@ -4,6 +4,3 @@ node_modules/
 dist/
 *.log
 
-# Action template lives at ops/github-action-deploy.yml.template; installing it needs
-# the gh token to have "workflow" scope, so keep .github out of git for now.
-.github/
