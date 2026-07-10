@@ -70,9 +70,38 @@ content-type (check for `<rss>`/`<?xml>` or real JSON), not just HTTP 200.**
 > Skip: The Batch & Ben's Bites (no working RSS — AI News covers their ground).
 
 ## 6. Video — YouTube (per-channel RSS, keyless)
-`https://www.youtube.com/feeds/videos.xml?channel_id=UC…` — free, no quota. **Must resolve each channel's `UC…` id once** (from page source `"channelId":"UC…"`). Feed includes Shorts — filter if needed.
-Backbone channels: **AI Explained**, **Two Minute Papers**, **Yannic Kilcher**, **Matthew Berman**, **Fireship**, + official **OpenAI / Google DeepMind / Anthropic**.
-> `channel_id` values are load-bearing and NOT yet resolved — resolve + pin them before wiring YouTube in.
+`https://www.youtube.com/feeds/videos.xml?channel_id=UC…` — free, no quota, no key. Feed = channel's ~15 latest uploads (includes Shorts — filter by title/duration if needed).
+
+**Channel IDs resolved 2026-07-10** (curated from Arnaud's own subscriptions + verified top-notch adds; tiers per the cross-check). Pull the S/A tier every week; the rest are optional depth.
+
+**S — elite / foundational**
+| Channel | channel_id | Best for |
+|---|---|---|
+| Andrej Karpathy | `UCXUPKJO5MZQN11PqgIvyuvQ` | foundational LLM/AI (ex-OpenAI/Tesla) |
+| AI Engineer (conf) | `UCLKPca3kwwd-B59HNr-_lvA` | high-density technical talks |
+| Matt Pocock (AI Hero) | `UCswG6FSbgZjbWtdf_hMLaow` | serious AI-assisted dev |
+| Addy Osmani | `UCfetJpmQH2XpFj8uFgWsezw` | LLM-in-production coding (Google) |
+| Two Minute Papers | `UCbfYPyITQ-7l4upoX8nvctg` | research/capability demos |
+| Yannic Kilcher | `UCZHmQk67mSJgfCCTn7xBfew` | deep paper walkthroughs |
+| AI Explained | `UCNJ1Ymd5yFuUPtn21xtRbbw` | measured launch/benchmark analysis |
+
+**A — credible, high-signal**
+| Channel | channel_id | Best for |
+|---|---|---|
+| Machine Learning Street Talk | `UCMLtBahI5DMrt0NPvDSoIRQ` | long-form researcher interviews |
+| Sam Witteveen | `UC55ODQSvARtgSyc8ThfiepQ` | hands-on agents/LLM building |
+| bycloud | `UCgfe2ooZD3VJPB6aJAnuQng` | ML research/trend explainers |
+| Matt Wolfe | `UChpleBmo18P08aKCIgti38g` | AI-news curation |
+| Bret Fisher | `UC0NErq0RhP51iXx64ZmyVfg` | agentic DevOps / cloud-native |
+| Alex Ziskind | `UCajiMK_CY9icRhLepS8_3ug` | local-LLM benchmarking |
+| Kun Chen | `UCb69t9ZkE5z1KvCmfJoaifA` | ex-L8 eng; firstmate upstream |
+| The AI Advantage | `UCHhYXsLBEVVnbvsq57n1MTQ` | practical weekly tutorials |
+| Fireship | `UCsBjURrPoezykLs9EqgamOA` | punchy launch recaps |
+
+**B — Claude-stack relevant** (Arnaud's subs; lighter depth): Hyperautomation Labs `UCiax-xbEI0P6Y8C8VwZGMgQ` · Brad AI & Automation `UCLHfIq7P2CkA62ReystiOrw`.
+
+Official lab channels also worth a feed (resolve if wanted): OpenAI, Google DeepMind, Anthropic.
+> Selection basis: `youtube-crosscheck` (2026-07-10) — ranked Arnaud's AI subs S→C and flagged research-explainer gaps (he had none), which the S-tier adds fill.
 
 ## X / Twitter — deliberately excluded
 No free API since 2026-02-06; nitter effectively dead. Best-effort only: `xcancel.com` RSS with a custom User-Agent (flaky, allowed to fail). **Do not architect the digest to depend on X** — AI News (§5) carries the same buzz, automatably.
