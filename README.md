@@ -1,47 +1,44 @@
 # github-hot-repos-live
 
-The weekly **Hot GitHub Repos** report ("The Next New Thing"), rebuilt so the star
-counts never go stale. The original was a one-shot generate-and-deploy Worker with no
-saved source and hard-coded star numbers — two weeks after publish every count was
-wrong (e.g. OpenMontage read 22k when it was already ~36k).
+The weekly **Hot GitHub Repos** report ("The Next New Thing") as a live, self-updating,
+auto-generated archive. One Cloudflare Worker serves every issue by path, with star counts
+that refresh from the GitHub API on every request.
 
-This version keeps the exact original design but rewrites every star count with a
-**live value from the GitHub API**, and adds a small **"since publish" delta chip**
-(e.g. `▲ 14k since Jun 25`) next to each repo's Stars stat.
+**Live:** https://github-hot-repos.nextnewthing.workers.dev
+
+## Routes
+- `/` — archive index (all issues, newest first)
+- `/YYYY-MM-DD` — that week's issue, with live star counts + `▲ since publish` deltas
+- `/latest` — 302 to the newest issue
+- `/stars.json[?issue=YYYY-MM-DD]` — raw `{ "owner/repo": stars }` map
 
 ## How it works
+- `issues/<date>.html` — each week's report, with star elements tagged (`data-gh` + baseline).
+- `src/issues.index.js` — AUTO-GENERATED manifest (`{date, published, repos[], html}`, newest first).
+- `src/worker.js` — routes issues + index; fetches live stars (edge-cached 10 min) and rewrites
+  them via `HTMLRewriter`, appending a delta chip. Falls back to baked values if GitHub is down.
 
-1. `scripts/preprocess.mjs` takes the deployed HTML (`scripts/report.source.html`) and
-   tags every star element with `data-gh="owner/repo"` + its publish-day baseline,
-   emitting `src/report.template.html` and `src/repos.json`.
-2. `src/worker.js` fetches live star counts (one GitHub API call per repo, edge-cached
-   ~10 min), then uses `HTMLRewriter` to swap the numbers in and append the delta chip.
-   If GitHub is unreachable it leaves the baked value untouched — never blanks out.
+## Add / regenerate an issue
+```bash
+node scripts/add-issue.mjs <raw-report.html> <YYYY-MM-DD>   # tags stars + rebuilds the manifest
+npm run build                                              # regenerate the manifest only
+git add -A && git commit -m "issue <date>" && git push     # GitHub Action deploys on push
+```
 
-Endpoints:
-- `/` — the report, with live stars.
-- `/stars.json` — raw `{ "owner/repo": stars }` map (handy for other bots).
+## Weekly auto-generation
+- **Brief:** `GENERATE.md` — the spec for producing one issue from GitHub Trending in the
+  house design (exemplar: `issues/2026-06-25.html`).
+- **Routine:** a Claude Code cloud routine `hot-repos-weekly` (`trig_01UeAEQVdikHrRkkGUnCUg3L`)
+  runs Wednesdays 06:00 UTC (08:00 Europe/Zurich): clones this repo, follows `GENERATE.md`,
+  pushes the new issue. Manage at https://claude.ai/code/routines
+- **Deploy:** `.github/workflows/deploy.yml` runs `wrangler deploy` on every push to `master`.
+  Requires repo secret `CLOUDFLARE_API_TOKEN` (Cloudflare account achretien22, "Edit Workers").
 
-## Develop
-
+## Develop / deploy locally
 ```bash
 npm install
-npm run build      # regenerate template + repos.json from the source HTML
-npm test           # formatting/parse unit checks
-npm run dev        # wrangler dev — local preview at http://localhost:8787
+npm run build      # regenerate the manifest
+npm run dev        # wrangler dev at http://localhost:8787
+npm run deploy     # build + wrangler deploy (needs wrangler login / CLOUDFLARE_API_TOKEN)
 ```
-
-## Deploy
-
-```bash
-# optional: lift the 60 req/hr unauthenticated GitHub limit
-npx wrangler secret put GITHUB_TOKEN
-
-npm run deploy
-```
-
-## Next issues
-
-To publish a new week, drop the new report HTML in as `scripts/report.source.html`
-(same markup conventions: `data-repo` panels, `stat-label`/`stat-val`, `★ badge`),
-bump `PUBLISH_LABEL` in `src/worker.js`, then `npm run build && npm run deploy`.
+Optional: `npx wrangler secret put GITHUB_TOKEN` lifts the 60 req/hr anonymous GitHub limit.
