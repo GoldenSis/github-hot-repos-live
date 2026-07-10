@@ -1,8 +1,8 @@
-name = "github-hot-repos-20260625"
+name = "github-hot-repos"
 main = "src/worker.js"
 compatibility_date = "2026-06-01"
 
-# Import the HTML template as text; repos.json imports natively as JSON.
+# Every issue's HTML (issues/*.html) bundles into the Worker as text.
 rules = [
   { type = "Text", globs = ["**/*.html"] },
 ]

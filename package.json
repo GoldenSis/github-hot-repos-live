@@ -5,8 +5,8 @@
   "description": "Weekly Hot GitHub Repos report with live, self-refreshing star counts.",
   "type": "module",
   "scripts": {
-    "build": "node scripts/preprocess.mjs",
-    "test": "node scripts/test.mjs",
+    "build": "node scripts/build-index.mjs",
+    "add-issue": "node scripts/add-issue.mjs",
     "dev": "wrangler dev",
     "deploy": "npm run build && wrangler deploy"
   },
