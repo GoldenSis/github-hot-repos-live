@@ -31,8 +31,13 @@ git add -A && git commit -m "issue <date>" && git push     # GitHub Action deplo
 - **Routine:** a Claude Code cloud routine `hot-repos-weekly` (`trig_01UeAEQVdikHrRkkGUnCUg3L`)
   runs Wednesdays 06:00 UTC (08:00 Europe/Zurich): clones this repo, follows `GENERATE.md`,
   pushes the new issue. Manage at https://claude.ai/code/routines
-- **Deploy:** `.github/workflows/deploy.yml` runs `wrangler deploy` on every push to `master`.
-  Requires repo secret `CLOUDFLARE_API_TOKEN` (Cloudflare account achretien22, "Edit Workers").
+- **Deploy (current):** Mac launchd `com.arnaud.hot-repos-deploy` (`ops/deploy-on-change.sh`)
+  pulls + `wrangler deploy` when the routine pushes. Reload after a Mac rebuild:
+  `launchctl bootstrap gui/$(id -u) ~/projects/github-hot-repos-live/ops/com.arnaud.hot-repos-deploy.plist`.
+- **Deploy (pure-cloud upgrade):** install `ops/github-action-deploy.yml.template` at
+  `.github/workflows/deploy.yml` (via the GitHub web UI, or grant the gh token `workflow` scope
+  and push) + add repo secret `CLOUDFLARE_API_TOKEN` — then retire the launchd job. `.github/`
+  is gitignored so the auto-backup can't get stuck on an unpushable workflow file.
 
 ## Develop / deploy locally
 ```bash
