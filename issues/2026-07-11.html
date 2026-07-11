@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hot GitHub Repos — July 11, 2026 · The Next New Thing</title>
+<link rel="preconnect" href="https://opengraph.githubassets.com" crossorigin>
+<link rel="preconnect" href="https://github.com">
+<link rel="preconnect" href="https://x.com" crossorigin>
+<link rel="preconnect" href="https://twitter.com" crossorigin>
+<link rel="preconnect" href="https://www.youtube.com" crossorigin>
+<link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin>
+<link rel="preconnect" href="https://youtu.be" crossorigin>
+<link rel="preconnect" href="https://zapier.com" crossorigin>
+<link rel="dns-prefetch" href="https://github.com">
+<link rel="dns-prefetch" href="https://www.youtube.com">
+<link rel="dns-prefetch" href="https://x.com">
+<link rel="preconnect" href="https://i.ytimg.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Rye&family=Special+Elite&display=swap">
+<script>(function(){
+  var TOKENS=['1','og','v2','v3','v4'];
+  window.ogErr=function(img){
+    var n=+(img.dataset.tryn||0);
+    if(n<TOKENS.length-1){ n++; img.dataset.tryn=n;
+      setTimeout(function(){ img.src='https://opengraph.githubassets.com/'+TOKENS[n]+'/'+img.dataset.owner+'/'+img.dataset.repo+'?cb='+Date.now(); }, 500*n);
+    } else { img.style.display='none'; if(img.nextElementSibling) img.nextElementSibling.style.display='flex'; }
+  };
+})();</script>
+<style>
+:root {
+  --canvas: #f8f9fc;
+  --surface: #ffffff;
+  --surface-2: #edeff4;
+  --ink: #0c0d11;
+  --ink-muted: #4a4f59;
+  --ink-subtle: #6b7079;
+  --hairline: #d6dae2;
+  --hairline-soft: #edeff4;
+  --accent: #1f3a5f;
+  --canvas-hm: #f3f4f9;
+  --canvas-hm-accent: #f6ead0;
+  --accent-warm: #9a6a1e;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: auto;
+  overflow-x: hidden;
+}
+body { overflow-y: scroll; }
+.panel {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 0;
+}
+.panel-hm { background: var(--canvas-hm); }
+.panel-hm .panel-header { background: var(--canvas-hm); }
+.hm-chip { background: var(--accent); color: var(--canvas); padding: 5px 11px; border-radius: 12px; font-size: 11px; font-family: 'Inter', sans-serif; font-weight: 600; white-space: nowrap; letter-spacing: 0.02em; }
+.panel-hm-accent { background: var(--canvas-hm-accent); }
+.panel-hm-accent .panel-header { background: var(--canvas-hm-accent); }
+.panel-hm-accent .hm-chip { background: var(--accent-warm); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 4px; }
+.vbtn { display: inline-block; background: var(--accent); color: var(--canvas); padding: 11px 18px; border-radius: 8px; font-size: 13px; font-weight: 500; text-decoration: none; }
+.vbtn:hover { background: #142847; }
+.cta-alt { background: var(--surface); color: var(--accent); border: 1px solid var(--accent); }
+.cta-alt:hover { background: var(--surface-2); }
+.h-desc a, .why a, .sowhat p a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--hairline); }
+.h-desc a:hover, .why a:hover, .sowhat p a:hover { border-bottom-color: var(--accent); }
+.panel-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 36px; border-bottom: 1px solid var(--hairline);
+  background: var(--canvas); position: sticky; top: 0; z-index: 10;
+  font-family: 'Inter', sans-serif;
+}
+.ph-left { display: flex; align-items: center; gap: 14px; }
+.rank {
+  font-family: ui-monospace, 'JetBrains Mono', monospace;
+  font-size: 12px; color: var(--ink-subtle); letter-spacing: 0.06em;
+}
+.repo-name {
+  font-size: 16px; font-weight: 500; color: var(--ink);
+  text-decoration: none; letter-spacing: -0.2px;
+}
+.repo-name:hover .name { color: var(--accent); }
+.repo-name .owner { color: var(--ink-muted); font-weight: 400; }
+.repo-name .slash { color: var(--ink-subtle); margin: 0 2px; }
+.ph-dots { display: flex; gap: 4px; }
+.dot {
+  font-size: 11px; padding: 6px 12px; border-radius: 14px;
+  text-decoration: none; color: var(--ink-subtle);
+  letter-spacing: 0.04em; text-transform: uppercase; font-weight: 500;
+  border: 1px solid transparent;
+}
+.dot:hover { color: var(--ink); border-color: var(--hairline); }
+.dot.active { color: var(--accent); border-color: var(--accent); }
+.panel-body {
+  flex: 1; display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px;
+  padding: 36px 56px 48px;
+}
+.panel-body-centered {
+  display: flex; align-items: center; justify-content: center;
+  padding: 36px 56px; flex: 1;
+}
+.summary-left { display: flex; flex-direction: column; justify-content: space-between; }
+.summary-right { display: flex; flex-direction: column; gap: 14px; min-height: 0; }
+.eyebrow {
+  font-size: 11px; font-weight: 600; color: var(--accent);
+  letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 14px;
+}
+.title {
+  font-size: 38px; font-weight: 500; line-height: 1.15;
+  letter-spacing: -1.0px; color: var(--ink); margin-bottom: 24px;
+}
+.title .em { color: var(--accent); }
+.why-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-subtle); margin-bottom: 8px;
+}
+.why { font-size: 15px; line-height: 1.55; color: var(--ink-muted); margin-bottom: 18px; }
+.why b { color: var(--ink); font-weight: 500; }
+.cta {
+  display: inline-block; background: var(--accent); color: var(--canvas);
+  padding: 12px 22px; border-radius: 8px; font-size: 14px; font-weight: 500;
+  text-decoration: none; margin-top: auto; align-self: flex-start;
+}
+.cta:hover { background: #142847; }
+.card { background: var(--surface); border: 1px solid var(--hairline); border-radius: 14px; }
+.stats-card { padding: 16px 22px; flex-shrink: 0; }
+.stats-row {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 18px; align-items: end;
+}
+.stat-label {
+  font-size: 10px; color: var(--ink-subtle); letter-spacing: 0.14em;
+  text-transform: uppercase; font-weight: 600; margin-bottom: 4px;
+}
+.stat-val { font-size: 18px; font-weight: 500; color: var(--ink); letter-spacing: -0.3px; }
+.highlights-card { padding: 18px 22px; flex: 1; min-height: 0; overflow: hidden; }
+.card-label {
+  font-size: 10px; color: var(--ink-subtle); letter-spacing: 0.14em;
+  text-transform: uppercase; font-weight: 600; margin-bottom: 14px;
+}
+.highlights { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.highlights li {
+  padding-bottom: 12px; border-bottom: 1px solid var(--hairline-soft);
+  position: relative; padding-left: 14px;
+}
+.highlights li::before {
+  content: ''; display: inline-block; width: 5px; height: 5px;
+  background: var(--accent); border-radius: 50%; position: absolute;
+  left: 0; top: 8px;
+}
+.highlights li:last-child { border-bottom: none; padding-bottom: 0; }
+.h-name { font-size: 14px; font-weight: 500; color: var(--ink); letter-spacing: -0.15px; margin-bottom: 2px; }
+.h-desc { font-size: 13px; line-height: 1.45; color: var(--ink-muted); }
+.h-desc code, .why code {
+  font-family: ui-monospace, 'JetBrains Mono', monospace; font-size: 12px;
+  background: var(--surface-2); padding: 1px 6px; border-radius: 4px; color: var(--ink);
+}
+.sowhat { margin-top:14px; padding-top:12px; border-top:1px solid var(--hairline-soft); }
+.sowhat-label { font-size:10px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:4px; }
+.sowhat p { font-size:13px; line-height:1.45; color:var(--ink-muted); }
+.reads { margin-top:14px; padding-top:12px; border-top:1px solid var(--hairline-soft); }
+.reads-label { font-size:10px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:6px; }
+.read-list { list-style:none; display:flex; flex-direction:column; gap:2px; }
+.read-list a { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:5px 0; text-decoration:none; border-bottom:1px solid var(--hairline-soft); }
+.read-list li:last-child a { border-bottom:none; }
+.read-label { font-size:13px; font-weight:500; color:var(--ink); }
+.read-list a:hover .read-label { color:var(--accent); }
+.read-url { font-family: ui-monospace, 'JetBrains Mono', monospace; font-size:11px; color:var(--ink-subtle); white-space:nowrap; }
+.github-card {
+  max-width: 1100px; width: 100%; display: flex; flex-direction: column;
+  align-items: center; gap: 24px;
+}
+.github-og {
+  width: 100%; max-width: 1100px; aspect-ratio: 2 / 1; object-fit: cover;
+  border-radius: 14px; border: 1px solid var(--hairline);
+  background: var(--surface);
+}
+.github-meta { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.badges { display: flex; gap: 10px; }
+.badge {
+  background: var(--surface); border: 1px solid var(--hairline);
+  padding: 8px 14px; border-radius: 16px; font-size: 13px; color: var(--ink);
+}
+.embed-card { max-width: 640px; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.embed-caption { font-size: 13px; color: var(--ink-muted); font-style: italic; text-align: center; line-height: 1.5; max-width: 620px; }
+.tweet-iframe { width: 100%; height: 600px; max-height: 75vh; border: none; border-radius: 14px; background: var(--surface); }
+.video-card { max-width: 980px; width: 100%; }
+.video-embed { width: 100%; max-width: 980px; aspect-ratio: 16 / 9; position: relative; background: #000; border-radius: 14px; }
+.video-embed iframe { width: 100%; height: 100%; border: 1px solid var(--hairline); border-radius: 14px; background: #000; display: block; }
+.under-link { font-size: 13px; color: var(--ink-subtle); text-decoration: none; }
+.under-link:hover { color: var(--accent); }
+.issue-card { background: var(--surface); border: 1px solid var(--hairline); border-radius: 14px; padding: 36px 36px; max-width: 720px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+.issue-card .card-label { color: var(--accent); margin-bottom: 0; }
+.issue-title { font-size: 24px; font-weight: 500; color: var(--ink); letter-spacing: -0.5px; line-height: 1.3; }
+.issue-summary { font-size: 15px; color: var(--ink-muted); line-height: 1.6; }
+.issue-summary code, .embed-caption code { font-family: ui-monospace, 'JetBrains Mono', monospace; font-size: 12px; background: var(--surface-2); padding: 1px 6px; border-radius: 4px; color: var(--ink); }
+.panel-hero {
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 0 40px; flex: 1;
+}
+.hero-block { max-width: 1400px; }
+.hero-eyebrow {
+  font-size: 24px; font-weight: 600; color: var(--accent);
+  letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 36px;
+}
+.hero-title {
+  font-size: 128px; font-weight: 500; line-height: 1.0;
+  letter-spacing: -3.6px; color: var(--ink); margin-bottom: 36px;
+}
+.hero-title .em { color: var(--accent); }
+.hero-sub { font-size: 40px; font-weight: 400; color: var(--ink-muted); margin-bottom: 60px; }
+.hero-sub b { color: var(--ink); font-weight: 500; }
+.hero-hint { font-size: 16px; color: var(--ink-subtle); }
+.panel-outro { display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 40px; flex: 1; }
+.outro-block { max-width: 1200px; }
+.outro-title { font-size: 88px; font-weight: 500; line-height: 1.05; letter-spacing: -2.4px; color: var(--ink); margin-bottom: 36px; }
+.outro-title .em { color: var(--accent); }
+@media (max-width: 1100px) {
+  .panel-body { grid-template-columns: 1fr; gap: 28px; padding: 28px 32px 36px; }
+  .title { font-size: 30px; letter-spacing: -0.6px; }
+  .hero-title { font-size: 88px; letter-spacing: -2.4px; }
+  .hero-sub { font-size: 28px; }
+  .hero-eyebrow { font-size: 18px; }
+  .panel-header { padding: 12px 24px; }
+  .outro-title { font-size: 56px; letter-spacing: -1.4px; }
+}
+@media (max-width: 700px) {
+  .panel-header { flex-direction: column; align-items: flex-start; gap: 8px; padding: 12px 18px; }
+  .ph-dots { flex-wrap: wrap; }
+  .title { font-size: 24px; }
+  .hero-title { font-size: 60px; letter-spacing: -1.6px; }
+  .hero-sub { font-size: 22px; }
+  .panel-body { padding: 24px 18px 28px; }
+  .panel-body-centered { padding: 24px 18px; }
+}
+.rank-nav { position: relative; display: inline-flex; align-items: center; }
+.rank-trigger { cursor: pointer; user-select: none; padding: 4px 6px; border-radius: 4px; }
+.rank-trigger:hover, .rank-trigger:focus { color: var(--accent); outline: none; }
+.rank-dropdown {
+  display: none; position: absolute;
+  top: 100%; left: -4px; margin-top: 6px;
+  background: var(--surface); border: 1px solid var(--hairline);
+  border-radius: 10px; padding: 8px;
+  box-shadow: 0 12px 32px rgba(15,23,42,0.12);
+  grid-template-columns: repeat(4, 36px); gap: 4px;
+  z-index: 100; min-width: 180px;
+}
+.rank-nav:hover .rank-dropdown,
+.rank-nav:focus-within .rank-dropdown { display: grid; }
+.rank-item {
+  display: flex; align-items: center; justify-content: center;
+  height: 30px; padding: 0 6px;
+  font-family: ui-monospace, 'JetBrains Mono', monospace;
+  font-size: 12px; color: var(--ink-subtle);
+  text-decoration: none; border-radius: 6px;
+  letter-spacing: 0.06em; font-weight: 500;
+}
+.rank-item:hover { background: var(--surface-2); color: var(--ink); }
+.rank-item.active { color: var(--canvas); background: var(--accent); }
+.github-fallback {
+  display: none; width: 100%; max-width: 1100px; aspect-ratio: 2 / 1;
+  border-radius: 14px; border: 1px solid var(--hairline);
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+  align-items: center; justify-content: center; padding: 40px;
+  flex-direction: column;
+}
+.gf-content { text-align: center; display: flex; flex-direction: column; gap: 18px; align-items: center; }
+.gf-octocat { color: var(--accent); }
+.gf-name { font-family: 'Inter', sans-serif; font-size: 44px; font-weight: 500; letter-spacing: -1px; line-height: 1.1; }
+.gf-owner { color: var(--ink-muted); font-weight: 400; }
+.gf-slash { color: var(--ink-subtle); margin: 0 4px; }
+.gf-repo { color: var(--ink); }
+.gf-hint { font-size: 14px; color: var(--ink-subtle); }
+@media (max-width: 900px) {
+  .gf-name { font-size: 28px; }
+  .gf-octocat svg { width: 40px; height: 40px; }
+}
+
+/* ===== WANTED interstitial (scoped) ===== */
+/* ===== WANTED slide (scoped wp-) ===== */
+.wp-panel{
+  min-height:100vh;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  display:flex; align-items:center; justify-content:center;
+  padding:40px 56px;
+  background:var(--canvas);
+}
+.wp-poster{
+  position:relative;
+  width:100%; max-width:1040px;
+  display:grid;
+  grid-template-columns:340px 1fr;
+  gap:46px;
+  align-items:center;
+  padding:38px 50px 30px;
+  background:radial-gradient(120% 130% at 50% 0%, #f3e8c6 0%, #e7d6ab 48%, #d8c08c 100%);
+  border:2px solid #6b4a23;
+  border-radius:4px;
+  box-shadow:0 0 0 9px #e7d6ab, 0 0 0 11px #5b3f1f, 0 26px 60px rgba(40,26,10,.32), inset 0 0 120px rgba(120,80,30,.40);
+  color:#2b1c10;
+}
+.wp-poster::before{
+  content:"";position:absolute;inset:0;pointer-events:none;border-radius:4px;
+  background:
+    radial-gradient(55% 35% at 10% 6%, rgba(90,55,20,.18), transparent 60%),
+    radial-gradient(50% 32% at 94% 14%, rgba(90,55,20,.16), transparent 60%),
+    radial-gradient(45% 28% at 50% 100%, rgba(70,40,15,.26), transparent 70%);
+  mix-blend-mode:multiply;
+}
+.wp-poster > *{position:relative;z-index:1}
+
+.wp-banner{ grid-column:1 / -1; text-align:center; }
+.wp-order{
+  letter-spacing:.42em; font-size:11px; text-transform:uppercase;
+  color:#5b3f1f; margin-bottom:10px;
+}
+.wp-rule{ height:0;border:0;border-top:3px double #5b3f1f; }
+
+/* left column: photo + name */
+.wp-photo-col{ grid-column:1; display:flex; flex-direction:column; align-items:center; gap:14px; }
+.wp-photo-wrap{
+  width:100%; padding:9px; background:#dfca99;
+  border:2px solid #5b3f1f;
+  box-shadow:inset 0 0 0 4px #b89a63, 0 8px 20px rgba(0,0,0,.30);
+}
+.wp-photo-wrap img{
+  display:block;width:100%;height:auto;
+  filter:sepia(.55) contrast(1.04) brightness(.98) grayscale(.15);
+}
+.wp-name{
+  font-family:'Rye',serif; text-align:center; line-height:1;
+  font-size:clamp(30px,3.4vw,42px); color:#2b1c10;
+}
+.wp-alias{ text-align:center; font-family:'Special Elite',monospace; font-size:12.5px; letter-spacing:.06em; color:#5b3f1f; line-height:1.5; }
+.wp-alias a{ color:inherit; }
+
+/* right column: headline + charges + reward */
+.wp-text-col{ grid-column:2; display:flex; flex-direction:column; }
+.wp-wanted{
+  font-family:'Rye',serif; line-height:.9;
+  font-size:clamp(58px,8.5vw,104px); color:#3a240f;
+  text-shadow:1px 1px 0 #c9b074, 2px 3px 0 rgba(0,0,0,.10);
+}
+.wp-for{ font-family:'Rye',serif; font-size:clamp(20px,2.6vw,30px); color:#5b3f1f; letter-spacing:.04em; margin:2px 0 22px; }
+
+.wp-charges-h{ font-family:'Rye',serif; font-size:16px; color:#3a240f; letter-spacing:.03em; margin-bottom:12px; }
+.wp-charges{ display:flex; flex-direction:column; gap:12px; margin-bottom:22px; }
+.wp-charge{
+  display:flex; align-items:baseline; justify-content:space-between; gap:16px;
+  border-bottom:2px dotted rgba(91,63,31,.50); padding-bottom:10px;
+}
+.wp-charge .wp-what{ display:flex; flex-direction:column; gap:1px; }
+.wp-proj{ font-family:'Rye',serif; font-size:clamp(20px,2.4vw,26px); color:#2b1c10; line-height:1.04; }
+.wp-handle{ font-family:'Special Elite',monospace; font-size:12px; letter-spacing:.05em; color:#6b4a23; }
+.wp-stars{ white-space:nowrap; font-family:'Rye',serif; font-size:clamp(20px,2.6vw,28px); color:#7a3b12; }
+
+.wp-reward{
+  text-align:center; border-top:3px double #5b3f1f; border-bottom:3px double #5b3f1f;
+  padding:12px 8px; margin-bottom:16px;
+}
+.wp-reward-lbl{ font-family:'Rye',serif; font-size:clamp(24px,3.4vw,36px); color:#7a3b12; line-height:1; }
+.wp-reward-amt{ font-family:'Special Elite',monospace; font-size:14px; color:#3a240f; margin-top:5px; }
+
+.wp-call{ font-family:'Special Elite',monospace; font-size:14px; line-height:1.65; color:#3a240f; }
+.wp-call strong{ color:#7a3b12; }
+
+.wp-foot{
+  grid-column:1 / -1; text-align:center; margin-top:6px;
+  font-family:'Special Elite',monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#5b3f1f;
+}
+.wp-foot a{ color:#7a3b12; text-decoration:none; border-bottom:1px solid #7a3b12; }
+
+@media (max-width:860px){
+  .wp-poster{ grid-template-columns:1fr; gap:24px; padding:30px 26px 24px; }
+  .wp-photo-col{ grid-column:1; max-width:300px; margin:0 auto; }
+  .wp-text-col{ grid-column:1; text-align:center; align-items:center; }
+  .wp-charge{ text-align:left; }
+  .wp-panel{ padding:28px 18px; }
+}
+</style>
+</head>
+<body><section class="panel panel-hero" id="hero" data-repo="hero"><div class="hero-block"><div class="hero-eyebrow">GITHUB HOT REPOS · JULY 11, 2026</div><h1 class="hero-title">The Next New Thing<br><span class="em">daily AI digest</span>.</h1><p class="hero-sub">Repos · Models · Papers · Lab Drops · Buzz · Watch — by <b>The Next New Thing</b>.</p><p class="hero-hint">Scroll for the report ↓</p></div></section><section class="panel panel-summary" id="r-01-summary" data-repo="r-01" data-type="summary"><header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">01</span><span class="rank-dropdown" role="menu"><a class="rank-item active" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a></span></span><a class="repo-name" href="https://github.com/usestrix/strix" target="_blank" rel="noopener"><span class="owner">usestrix</span><span class="slash">/</span><span class="name">strix</span></a></div><nav class="ph-dots"><a class="dot active" href="#r-01-summary">Summary</a><a class="dot" href="#r-01-github">GitHub</a></nav></header><div class="panel-body"><div class="summary-left"><div class="eyebrow">AI security · Agentic pentest</div><h1 class="title">Point an AI agent at your app and it <span class="em">finds, proves, and helps fix the vulnerabilities</span>.</h1><div class="why-label">Why it’s trending</div><p class="why">Open-source AI penetration-testing agent that autonomously probes a codebase or running app for security holes — topping GitHub Trending this week as “agentic security” becomes a category. Fast-climbing and heavily discussed; treat any “fully autonomous hacker” framing with the usual skepticism and keep a human in the loop.</p><a class="cta" href="https://github.com/usestrix/strix" target="_blank" rel="noopener">View on GitHub →</a></div><div class="summary-right"><div class="card stats-card"><div class="stats-row"><div><div class="stat-label">Stars</div><div class="stat-val" data-gh="usestrix/strix" data-role="stat" data-base="40k">40k</div></div><div><div class="stat-label">Language</div><div class="stat-val">Python</div></div><div><div class="stat-label">License</div><div class="stat-val">Apache-2.0</div></div></div></div><div class="card highlights-card"><div class="card-label">Highlights</div><ul class="highlights"><li><div class="h-name">Autonomous pentest loop</div><p class="h-desc">Agents enumerate, exploit, and report app vulnerabilities rather than just scanning.</p></li><li><div class="h-name">Find and fix</div><p class="h-desc">Aims to propose remediations, not only flag issues.</p></li><li><div class="h-name">Open-source, Apache-2.0</div><p class="h-desc">Self-hostable; no black-box SaaS gate.</p></li></ul><div class="sowhat"><span class="sowhat-label">So what?</span><p>A small team can run a first-pass security audit continuously instead of paying for one-off pentests — as long as findings are human-verified before trusting them.</p></div></div></div></div></section><section class="panel panel-github" id="r-01-github" data-repo="r-01" data-type="github"><header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">01</span><span class="rank-dropdown" role="menu"><a class="rank-item active" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a></span></span><a class="repo-name" href="https://github.com/usestrix/strix" target="_blank" rel="noopener"><span class="owner">usestrix</span><span class="slash">/</span><span class="name">strix</span></a></div><nav class="ph-dots"><a class="dot" href="#r-01-summary">Summary</a><a class="dot active" href="#r-01-github">GitHub</a></nav></header><div class="panel-body panel-body-centered"><div class="github-card"><img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/usestrix/strix" data-owner="usestrix" data-repo="strix" alt="GitHub social card for usestrix/strix" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-name"><span class="gf-owner">usestrix</span><span class="gf-slash">/</span><span class="gf-repo">strix</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div><div class="github-meta"><div class="badges"><span class="badge" data-gh="usestrix/strix" data-role="badge" data-base="40k">★ 40k</span><span class="badge">Python</span></div><a class="cta" href="https://github.com/usestrix/strix" target="_blank" rel="noopener">Open the repo →</a></div></div></div></section><section class="panel panel-summary" id="r-02-summary" data-repo="r-02" data-type="summary"><header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">02</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item active" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a></span></span><a class="repo-name" href="https://github.com/alibaba/page-agent" target="_blank" rel="noopener"><span class="owner">alibaba</span><span class="slash">/</span><span class="name">page-agent</span></a></div><nav class="ph-dots"><a class="dot active" href="#r-02-summary">Summary</a><a class="dot" href="#r-02-github">GitHub</a></nav></header><div class="panel-body"><div class="summary-left"><div class="eyebrow">Browser agent · In-page GUI</div><h1 class="title">A JavaScript agent that lives <span class="em">inside the web page</span> and drives its UI from plain language.</h1><div class="why-label">Why it’s trending</div><p class="why">An in-page GUI agent from Alibaba: drop it into a site and it controls the interface with natural-language instructions — no separate browser-automation backend. Surging as “agent-in-the-page” competes with headless-browser approaches.</p><a class="cta" href="https://github.com/alibaba/page-agent" target="_blank" rel="noopener">View on GitHub →</a></div><div class="summary-right"><div class="card stats-card"><div class="stats-row"><div><div class="stat-label">Stars</div><div class="stat-val" data-gh="alibaba/page-agent" data-role="stat" data-base="26k">26k</div></div><div><div class="stat-label">Language</div><div class="stat-val">TypeScript</div></div><div><div class="stat-label">License</div><div class="stat-val">MIT</div></div></div></div><div class="card highlights-card"><div class="card-label">Highlights</div><ul class="highlights"><li><div class="h-name">Runs in-page</div><p class="h-desc">Operates the live DOM directly rather than driving a remote headless browser.</p></li><li><div class="h-name">Natural-language control</div><p class="h-desc">Describe the action; the agent maps it to clicks/inputs.</p></li><li><div class="h-name">MIT, big-lab backing</div><p class="h-desc">Permissive license, maintained by Alibaba.</p></li></ul><div class="sowhat"><span class="sowhat-label">So what?</span><p>Turns any web app into something an agent (or a non-technical user) can operate by describing intent — useful for automation, accessibility, and testing.</p></div></div></div></div></section><section class="panel panel-github" id="r-02-github" data-repo="r-02" data-type="github"><header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">02</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item active" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a></span></span><a class="repo-name" href="https://github.com/alibaba/page-agent" target="_blank" rel="noopener"><span class="owner">alibaba</span><span class="slash">/</span><span class="name">page-agent</span></a></div><nav class="ph-dots"><a class="dot" href="#r-02-summary">Summary</a><a class="dot active" href="#r-02-github">GitHub</a></nav></header><div class="panel-body panel-body-centered"><div class="github-card"><img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/alibaba/page-agent" data-owner="alibaba" data-repo="page-agent" alt="GitHub social card for alibaba/page-agent" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-name"><span class="gf-owner">alibaba</span><span class="gf-slash">/</span><span class="gf-repo">page-agent</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div><div class="github-meta"><div class="badges"><span class="badge" data-gh="alibaba/page-agent" data-role="badge" data-base="26k">★ 26k</span><span class="badge">TypeScript</span></div><a class="cta" href="https://github.com/alibaba/page-agent" target="_blank" rel="noopener">Open the repo →</a></div></div></div></section><section class="panel panel-summary" id="r-03-summary" data-repo="r-03" data-type="summary"><header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">03</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item active" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a></span></span><a class="repo-name" href="https://github.com/Zackriya-Solutions/meetily" target="_blank" rel="noopener"><span class="owner">Zackriya-Solutions</span><span class="slash">/</span><span class="name">meetily</span></a></div><nav class="ph-dots"><a class="dot active" href="#r-03-summary">Summary</a><a class="dot" href="#r-03-github">GitHub</a></nav></header><div class="panel-body"><div class="summary-left"><div class="eyebrow">Local AI · Meeting notes</div><h1 class="title">A privacy-first meeting assistant that transcribes and summarizes <span class="em">entirely on your machine</span>.</h1><div class="why-label">Why it’s trending</div><p class="why">Local, privacy-first meeting AI: live transcription (Parakeet/Whisper, claimed 4× faster), speaker diarization, and Ollama-based summarization — nothing leaves the device. Rust core; trending as on-device meeting tools mature.</p><a class="cta" href="https://github.com/Zackriya-Solutions/meetily" target="_blank" rel="noopener">View on GitHub →</a></div><div class="summary-right"><div class="card stats-card"><div class="stats-row"><div><div class="stat-label">Stars</div><div class="stat-val" data-gh="Zackriya-Solutions/meetily" data-role="stat" data-base="23k">23k</div></div><div><div class="stat-label">Language</div><div class="stat-val">Rust</div></div><div><div class="stat-label">License</div><div class="stat-val">MIT</div></div></div></div><div class="card highlights-card"><div class="card-label">Highlights</div><ul class="highlights"><li><div class="h-name">Fully local</div><p class="h-desc">Transcription + summarization on-device; no cloud upload of your calls.</p></li><li><div class="h-name">4× faster transcription</div><p class="h-desc">README claims Parakeet/Whisper speedups with live diarization.</p></li><li><div class="h-name">Ollama summaries</div><p class="h-desc">Bring your own local model for the recap.</p></li></ul><div class="sowhat"><span class="sowhat-label">So what?</span><p>Get searchable notes and summaries from every call without sending audio to a third party — the on-device answer to Otter/Fireflies.</p></div></div></div></div></section><section class="panel panel-github" id="r-03-github" data-repo="r-03" data-type="github"><header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">03</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item active" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a></span></span><a class="repo-name" href="https://github.com/Zackriya-Solutions/meetily" target="_blank" rel="noopener"><span class="owner">Zackriya-Solutions</span><span class="slash">/</span><span class="name">meetily</span></a></div><nav class="ph-dots"><a class="dot" href="#r-03-summary">Summary</a><a class="dot active" href="#r-03-github">GitHub</a></nav></header><div class="panel-body panel-body-centered"><div class="github-card"><img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/Zackriya-Solutions/meetily" data-owner="Zackriya-Solutions" data-repo="meetily" alt="GitHub social card for Zackriya-Solutions/meetily" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-name"><span class="gf-owner">Zackriya-Solutions</span><span class="gf-slash">/</span><span class="gf-repo">meetily</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div><div class="github-meta"><div class="badges"><span class="badge" data-gh="Zackriya-Solutions/meetily" data-role="badge" data-base="23k">★ 23k</span><span class="badge">Rust</span></div><a class="cta" href="https://github.com/Zackriya-Solutions/meetily" target="_blank" rel="noopener">Open the repo →</a></div></div></div></section><section class="panel panel-summary" id="r-04-summary" data-repo="r-04" data-type="summary"><header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">04</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item active" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a></span></span><a class="repo-name" href="https://github.com/stablyai/orca" target="_blank" rel="noopener"><span class="owner">stablyai</span><span class="slash">/</span><span class="name">orca</span></a></div><nav class="ph-dots"><a class="dot active" href="#r-04-summary">Summary</a><a class="dot" href="#r-04-github">GitHub</a></nav></header><div class="panel-body"><div class="summary-left"><div class="eyebrow">Agent orchestration · Coding</div><h1 class="title">An IDE for running a <span class="em">fleet of parallel coding agents</span> on your own subscription.</h1><div class="why-label">Why it’s trending</div><p class="why">Orca is an “agent development environment” for orchestrating many coding agents at once — run any agent on your own model subscription, on desktop or mobile. Momentum tracks the shift from single-agent to multi-agent coding.</p><a class="cta" href="https://github.com/stablyai/orca" target="_blank" rel="noopener">View on GitHub →</a></div><div class="summary-right"><div class="card stats-card"><div class="stats-row"><div><div class="stat-label">Stars</div><div class="stat-val" data-gh="stablyai/orca" data-role="stat" data-base="16k">16k</div></div><div><div class="stat-label">Language</div><div class="stat-val">TypeScript</div></div><div><div class="stat-label">License</div><div class="stat-val">MIT</div></div></div></div><div class="card highlights-card"><div class="card-label">Highlights</div><ul class="highlights"><li><div class="h-name">Fleet of parallel agents</div><p class="h-desc">Run and supervise many coding agents side by side.</p></li><li><div class="h-name">Your own subscription</div><p class="h-desc">Bring your model/account rather than a metered SaaS.</p></li><li><div class="h-name">Desktop + mobile</div><p class="h-desc">Supervise runs from anywhere.</p></li></ul><div class="sowhat"><span class="sowhat-label">So what?</span><p>Moves “AI coding” from one assistant in your editor to a supervised team of agents you dispatch and review.</p></div></div></div></div></section><section class="panel panel-github" id="r-04-github" data-repo="r-04" data-type="github"><header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">04</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item active" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a></span></span><a class="repo-name" href="https://github.com/stablyai/orca" target="_blank" rel="noopener"><span class="owner">stablyai</span><span class="slash">/</span><span class="name">orca</span></a></div><nav class="ph-dots"><a class="dot" href="#r-04-summary">Summary</a><a class="dot active" href="#r-04-github">GitHub</a></nav></header><div class="panel-body panel-body-centered"><div class="github-card"><img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/stablyai/orca" data-owner="stablyai" data-repo="orca" alt="GitHub social card for stablyai/orca" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-name"><span class="gf-owner">stablyai</span><span class="gf-slash">/</span><span class="gf-repo">orca</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div><div class="github-meta"><div class="badges"><span class="badge" data-gh="stablyai/orca" data-role="badge" data-base="16k">★ 16k</span><span class="badge">TypeScript</span></div><a class="cta" href="https://github.com/stablyai/orca" target="_blank" rel="noopener">Open the repo →</a></div></div></div></section><section class="panel panel-summary" id="r-05-summary" data-repo="r-05" data-type="summary"><header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">05</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item active" href="#r-05-summary">05</a></span></span><a class="repo-name" href="https://github.com/huggingface/speech-to-speech" target="_blank" rel="noopener"><span class="owner">huggingface</span><span class="slash">/</span><span class="name">speech-to-speech</span></a></div><nav class="ph-dots"><a class="dot active" href="#r-05-summary">Summary</a><a class="dot" href="#r-05-github">GitHub</a></nav></header><div class="panel-body"><div class="summary-left"><div class="eyebrow">Voice agents · Open models</div><h1 class="title">Build a <span class="em">local voice assistant</span> from open-source parts — mic in, speech out.</h1><div class="why-label">Why it’s trending</div><p class="why">Hugging Face’s reference stack for local voice agents: a modular STT → LLM → TTS pipeline you run yourself with open models. Trending as an open answer to closed real-time voice APIs.</p><a class="cta" href="https://github.com/huggingface/speech-to-speech" target="_blank" rel="noopener">View on GitHub →</a></div><div class="summary-right"><div class="card stats-card"><div class="stats-row"><div><div class="stat-label">Stars</div><div class="stat-val" data-gh="huggingface/speech-to-speech" data-role="stat" data-base="6k">6k</div></div><div><div class="stat-label">Language</div><div class="stat-val">Python</div></div><div><div class="stat-label">License</div><div class="stat-val">Apache-2.0</div></div></div></div><div class="card highlights-card"><div class="card-label">Highlights</div><ul class="highlights"><li><div class="h-name">Full local voice loop</div><p class="h-desc">Speech-to-text → LLM → text-to-speech, swappable parts.</p></li><li><div class="h-name">Open models</div><p class="h-desc">No proprietary real-time voice API required.</p></li><li><div class="h-name">HF-maintained</div><p class="h-desc">Apache-2.0, reference-quality code.</p></li></ul><div class="sowhat"><span class="sowhat-label">So what?</span><p>A keyless, private starting point for a talking assistant — the DIY alternative to a paid real-time voice endpoint.</p></div></div></div></div></section><section class="panel panel-github" id="r-05-github" data-repo="r-05" data-type="github"><header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">05</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item active" href="#r-05-summary">05</a></span></span><a class="repo-name" href="https://github.com/huggingface/speech-to-speech" target="_blank" rel="noopener"><span class="owner">huggingface</span><span class="slash">/</span><span class="name">speech-to-speech</span></a></div><nav class="ph-dots"><a class="dot" href="#r-05-summary">Summary</a><a class="dot active" href="#r-05-github">GitHub</a></nav></header><div class="panel-body panel-body-centered"><div class="github-card"><img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/huggingface/speech-to-speech" data-owner="huggingface" data-repo="speech-to-speech" alt="GitHub social card for huggingface/speech-to-speech" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-name"><span class="gf-owner">huggingface</span><span class="gf-slash">/</span><span class="gf-repo">speech-to-speech</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div><div class="github-meta"><div class="badges"><span class="badge" data-gh="huggingface/speech-to-speech" data-role="badge" data-base="6k">★ 6k</span><span class="badge">Python</span></div><a class="cta" href="https://github.com/huggingface/speech-to-speech" target="_blank" rel="noopener">Open the repo →</a></div></div></div></section><section class="panel panel-summary" id="s-models" data-repo="s-models" data-type="section" style="min-height:auto;padding-top:6vh;padding-bottom:6vh"><div style="max-width:1100px;margin:0 auto;width:100%"><div class="eyebrow">AI MODELS · Hugging Face trending</div><h1 class="title" style="margin-bottom:.4em">Hot <span class="em">models</span> this week.</h1><p class="why" style="max-width:70ch;margin-bottom:2rem">Trending on the Hugging Face Hub right now (ranked by trendingScore). Likes/downloads are a snapshot — they are not live-refreshed like the repo stars above.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px"><div class="card" style="display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">★ 3.8k likes</span><span class="badge">text-generation</span><span class="badge">393k dl</span></div><div class="h-name" style="font-size:1.05rem">zai-org/GLM-5.2</div><p class="h-desc" style="flex:1">Newest GLM flagship; top of HF trending this week for open text generation.</p><a class="cta" href="https://huggingface.co/zai-org/GLM-5.2" target="_blank" rel="noopener" style="align-self:flex-start">Model card →</a></div><div class="card" style="display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">★ 1.9k likes</span><span class="badge">image-text-to-text</span><span class="badge">1.3M dl</span></div><div class="h-name" style="font-size:1.05rem">baidu/Unlimited-OCR</div><p class="h-desc" style="flex:1">High-volume OCR / document-understanding model — huge download count signals real production use.</p><a class="cta" href="https://huggingface.co/baidu/Unlimited-OCR" target="_blank" rel="noopener" style="align-self:flex-start">Model card →</a></div><div class="card" style="display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">★ 679 likes</span><span class="badge">text-generation</span></div><div class="h-name" style="font-size:1.05rem">tencent/Hy3</div><p class="h-desc" style="flex:1">Tencent’s latest open text model climbing the trending board.</p><a class="cta" href="https://huggingface.co/tencent/Hy3" target="_blank" rel="noopener" style="align-self:flex-start">Model card →</a></div><div class="card" style="display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">★ 345 likes</span><span class="badge">tabular</span></div><div class="h-name" style="font-size:1.05rem">google/tabfm-1.0.0-pytorch</div><p class="h-desc" style="flex:1">A foundation model for tabular data — predict on spreadsheets/CSVs without task-specific training.</p><a class="cta" href="https://huggingface.co/google/tabfm-1.0.0-pytorch" target="_blank" rel="noopener" style="align-self:flex-start">Model card →</a></div></div></div></section><section class="panel panel-summary" id="s-papers" data-repo="s-papers" data-type="section" style="min-height:auto;padding-top:6vh;padding-bottom:6vh"><div style="max-width:1100px;margin:0 auto;width:100%"><div class="eyebrow">RESEARCH · Hugging Face daily papers</div><h1 class="title" style="margin-bottom:.4em">Fresh <span class="em">papers</span>.</h1><p class="why" style="max-width:70ch;margin-bottom:2rem">Community-upvoted on HF Daily Papers. Upvote counts are a same-day snapshot.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px"><div class="card" style="display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">▲ 12 upvotes</span><span class="badge">arXiv 2607.08404</span></div><div class="h-name" style="font-size:1.05rem">DrugGen 2</div><p class="h-desc" style="flex:1">A disease-aware language model for drug discovery — the top-upvoted paper on the board today.</p><a class="cta" href="https://huggingface.co/papers/2607.08404" target="_blank" rel="noopener" style="align-self:flex-start">Read →</a></div><div class="card" style="display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">▲ 5 upvotes</span><span class="badge">arXiv 2607.07953</span></div><div class="h-name" style="font-size:1.05rem">Linear Attention Architectures</div><p class="h-desc" style="flex:1">A survey of linear-attention mechanisms, trade-offs, and cross-layer design — the efficiency frontier for long context.</p><a class="cta" href="https://huggingface.co/papers/2607.07953" target="_blank" rel="noopener" style="align-self:flex-start">Read →</a></div><div class="card" style="display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">▲ 2 upvotes</span><span class="badge">arXiv 2607.08716</span></div><div class="h-name" style="font-size:1.05rem">Proactive Memory Agent</div><p class="h-desc" style="flex:1">“Remember When It Matters” — a memory agent that proactively stores context for long-horizon agentic tasks.</p><a class="cta" href="https://huggingface.co/papers/2607.08716" target="_blank" rel="noopener" style="align-self:flex-start">Read →</a></div></div></div></section><section class="panel panel-summary" id="s-labs" data-repo="s-labs" data-type="section" style="min-height:auto;padding-top:6vh;padding-bottom:6vh"><div style="max-width:1100px;margin:0 auto;width:100%"><div class="eyebrow">LAB DROPS · official releases</div><h1 class="title" style="margin-bottom:.4em">What the <span class="em">labs</span> shipped.</h1><p class="why" style="max-width:70ch;margin-bottom:2rem">Straight from the labs’ own newsrooms/RSS this week. Verified at source.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px"><div class="card" style="display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">OpenAI</span></div><div class="h-name" style="font-size:1.05rem">OpenAI — GPT-5.6 (Sol / Terra / Luna)</div><p class="h-desc" style="flex:1">OpenAI launched the GPT-5.6 family (Sol/Terra/Luna tiers) — the week’s biggest drop, dominating the aggregators.</p><a class="cta" href="https://openai.com/news/" target="_blank" rel="noopener" style="align-self:flex-start">OpenAI news →</a></div><div class="card" style="display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">Google DeepMind</span></div><div class="h-name" style="font-size:1.05rem">Google DeepMind — Computer use in Gemini 3.5 Flash</div><p class="h-desc" style="flex:1">Gemini 3.5 Flash gains computer-use (agentic GUI control) — announced on the DeepMind blog.</p><a class="cta" href="https://deepmind.google/discover/blog/" target="_blank" rel="noopener" style="align-self:flex-start">DeepMind blog →</a></div><div class="card" style="display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">Google DeepMind</span></div><div class="h-name" style="font-size:1.05rem">Google DeepMind — Nano Banana 2 Lite + Gemini Omni Flash</div><p class="h-desc" style="flex:1">New lightweight image + omni-modal Flash models for builders.</p><a class="cta" href="https://deepmind.google/discover/blog/" target="_blank" rel="noopener" style="align-self:flex-start">DeepMind blog →</a></div></div></div></section><section class="panel panel-summary" id="s-buzz" data-repo="s-buzz" data-type="section" style="min-height:auto;padding-top:6vh;padding-bottom:6vh"><div style="max-width:1100px;margin:0 auto;width:100%"><div class="eyebrow">THE BUZZ · newsletters + HN</div><h1 class="title" style="margin-bottom:.4em">What everyone’s <span class="em">talking about</span>.</h1><p class="why" style="max-width:70ch;margin-bottom:2rem">Pulse from AI News (smol.ai — which meta-aggregates X, Discord and Reddit) and Hacker News. This replaces a direct X feed.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px"><div class="card" style="display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">AI News · smol.ai</span></div><div class="h-name" style="font-size:1.05rem">A model-explosion week</div><p class="h-desc" style="flex:1">Aggregators led with OpenAI’s GPT-5.6 Sol/Terra/Luna launch alongside a wave of rival model drops — an unusually dense release week.</p><a class="cta" href="https://news.smol.ai/" target="_blank" rel="noopener" style="align-self:flex-start">AI News →</a></div><div class="card" style="display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">Buzz · YouTube</span></div><div class="h-name" style="font-size:1.05rem">DeepSeek’s speed hack makes the rounds</div><p class="h-desc" style="flex:1">A DeepSeek efficiency/inference trick is the week’s viral research talking point (covered by Two Minute Papers and bycloud).</p><a class="cta" href="https://news.smol.ai/" target="_blank" rel="noopener" style="align-self:flex-start">AI News →</a></div></div></div></section><section class="panel panel-summary" id="s-watch" data-repo="s-watch" data-type="section" style="min-height:auto;padding-top:6vh;padding-bottom:6vh"><div style="max-width:1100px;margin:0 auto;width:100%"><div class="eyebrow">WATCH · curated AI channels</div><h1 class="title" style="margin-bottom:.4em">Worth a <span class="em">watch</span>.</h1><p class="why" style="max-width:70ch;margin-bottom:2rem">Newest from the top-notch AI channels (curated from Arnaud’s own subscriptions + the research explainers). Pulled live from each channel’s YouTube RSS.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px"><div class="card" style="display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">AI Explained</span></div><div class="h-name" style="font-size:1.05rem">AI Explained — A Model Explosion</div><p class="h-desc" style="flex:1">GPT-5.6 Sol, Grok 4.5 and Meta Muse rewrite the rules — measured analysis of the week’s launches.</p><a class="cta" href="https://youtu.be/y24lF1q4SFY" target="_blank" rel="noopener" style="align-self:flex-start">Watch →</a></div><div class="card" style="display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">Two Minute Papers</span></div><div class="h-name" style="font-size:1.05rem">Two Minute Papers — DeepSeek’s Speed Hack</div><p class="h-desc" style="flex:1">An accessible breakdown of DeepSeek’s “insane AI speed” trick.</p><a class="cta" href="https://youtu.be/uO5cvkzh3P0" target="_blank" rel="noopener" style="align-self:flex-start">Watch →</a></div><div class="card" style="display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">Matt Wolfe</span></div><div class="h-name" style="font-size:1.05rem">Matt Wolfe — GPT-5.6 + the new Super App</div><p class="h-desc" style="flex:1">News roundup on GPT-5.6 and the week’s product leaps.</p><a class="cta" href="https://youtu.be/oXi5E3FvZKI" target="_blank" rel="noopener" style="align-self:flex-start">Watch →</a></div><div class="card" style="display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">bycloud</span></div><div class="h-name" style="font-size:1.05rem">bycloud — DeepSeek’s Deleted Vision Paper</div><p class="h-desc" style="flex:1">A sharper, research-flavored take on the DeepSeek vision-paper story.</p><a class="cta" href="https://youtu.be/nYwid6Q5HXk" target="_blank" rel="noopener" style="align-self:flex-start">Watch →</a></div></div></div></section><section class="panel panel-summary" id="s-wanted" data-repo="s-wanted" data-type="section" style="min-height:auto;padding-top:6vh;padding-bottom:6vh"><div style="max-width:1100px;margin:0 auto;width:100%"><div class="eyebrow">⭐ WANTED · hidden gems</div><h1 class="title" style="margin-bottom:.4em">Under-the-radar <span class="em">gems</span>.</h1><p class="why" style="max-width:70ch;margin-bottom:2rem">Lower-star repos worth a look before they blow up.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px"><div class="card" style="display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">★ 3.5k</span><span class="badge">JavaScript</span><span class="badge">MIT</span></div><div class="h-name" style="font-size:1.05rem">tt-a1i/archify</div><p class="h-desc" style="flex:1">An agent skill that generates beautiful architecture diagrams with dark/light themes and PNG/JPEG/WebP/SVG export.</p><a class="cta" href="https://github.com/tt-a1i/archify" target="_blank" rel="noopener" style="align-self:flex-start">Repo →</a></div><div class="card" style="display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">trending · new</span></div><div class="h-name" style="font-size:1.05rem">bradautomates/claude-video</div><p class="h-desc" style="flex:1">Claude-driven video generation making an early climb up GitHub Trending — unproven but worth watching.</p><a class="cta" href="https://github.com/bradautomates/claude-video" target="_blank" rel="noopener" style="align-self:flex-start">Repo →</a></div></div></div></section>
+<script>
+/* Inline YouTube players (pattern from reaction-site-v2): each .video-embed builds a
+   youtube-nocookie iframe that starts at its data-start second. The IFrame API lets us
+   pause whatever video you scroll away from. Controls stay visible so viewers can play. */
+(function(){
+  var players = {}, apiReady = false;
+  // Pass the real page origin to YouTube so the embed plays in-page (no "Watch on YouTube" config errors).
+  var ORIGIN = (location.protocol === 'http:' || location.protocol === 'https:') ? location.origin : '';
+  function fid(e){ return 'ytp-' + e.getAttribute('data-idx'); }
+  function src(id, start){
+    var p = ['rel=0','enablejsapi=1','playsinline=1','controls=1'];
+    if (start) p.push('start=' + Math.round(start));
+    if (ORIGIN) p.push('origin=' + encodeURIComponent(ORIGIN));
+    return 'https://www.youtube-nocookie.com/embed/' + id + '?' + p.join('&');
+  }
+  function build(e){
+    var id = e.getAttribute('data-id');
+    var start = Number(e.getAttribute('data-start') || 0);
+    var title = e.getAttribute('data-title') || 'YouTube video';
+    e.innerHTML = '<iframe id="' + fid(e) + '" src="' + src(id, start) + '" title="' + title + '" ' +
+      'referrerpolicy="strict-origin-when-cross-origin" ' +
+      'loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+  }
+  var embeds = Array.prototype.slice.call(document.querySelectorAll('.video-embed'));
+  embeds.forEach(function(e, i){ e.setAttribute('data-idx', i); build(e); });
+
+  // Read a start time (seconds) out of a YouTube watch/share link: ?t=, &t=, #t= (1h2m3s or plain seconds), or start=.
+  function tSeconds(url){
+    var m = url.match(/[?&#]t=([0-9hms]+)/i) || url.match(/[?&#]start=([0-9]+)/i);
+    if (!m) return 0;
+    var v = m[1], mm, s = 0;
+    if (/^\d+$/.test(v)) return parseInt(v, 10);
+    if ((mm = v.match(/(\d+)h/i))) s += parseInt(mm[1], 10) * 3600;
+    if ((mm = v.match(/(\d+)m/i))) s += parseInt(mm[1], 10) * 60;
+    if ((mm = v.match(/(\d+)s/i))) s += parseInt(mm[1], 10);
+    return s;
+  }
+  // Play the inline player that lives in the same card as a clicked link, at the given second.
+  function playInCard(card, seconds){
+    var e = card.querySelector('.video-embed');
+    if (!e) return false;
+    var pl = players[fid(e)];
+    if (!pl || !pl.seekTo) return false;
+    try {
+      pl.seekTo(seconds || 0, true); pl.playVideo();
+      e.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch (x) { return false; }
+    return true;
+  }
+  // Clicking any in-card YouTube link plays the embedded player in place instead of leaving the page.
+  document.addEventListener('click', function(ev){
+    var a = ev.target && ev.target.closest && ev.target.closest('.video-card a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (!/youtu\.be\/|youtube(?:-nocookie)?\.com\/(?:watch|embed|shorts|v\/)/i.test(href)) return;
+    var card = a.closest('.video-card');
+    if (card && playInCard(card, tSeconds(href))) ev.preventDefault();
+  });
+
+  if (embeds.length){
+    window.onYouTubeIframeAPIReady = function(){
+      apiReady = true;
+      embeds.forEach(function(e){ try { players[fid(e)] = new YT.Player(fid(e), {}); } catch(x){} });
+    };
+    var s = document.createElement('script');
+    s.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(s);
+    var allPanels = Array.prototype.slice.call(document.querySelectorAll('section.panel'));
+    function curIdx(){
+      var f = window.innerHeight * 0.4, y = window.scrollY + f, b = 0;
+      for (var i = 0; i < allPanels.length; i++){ if (allPanels[i].offsetTop <= y) b = i; else break; }
+      return b;
+    }
+    var pt;
+    window.addEventListener('scroll', function(){
+      clearTimeout(pt);
+      pt = setTimeout(function(){
+        var idx = curIdx();
+        embeds.forEach(function(e){
+          var pl = players[fid(e)];
+          if (pl && pl.pauseVideo && allPanels[idx] && !allPanels[idx].contains(e)){ try { pl.pauseVideo(); } catch(x){} }
+        });
+      }, 140);
+    }, { passive: true });
+  }
+})();
+</script>
+<script>
+(function(){
+  const panels = Array.from(document.querySelectorAll('section.panel'));
+  if (!panels.length) return;
+  const repoStarts = [];
+  const seenGroups = new Set();
+  panels.forEach((p, idx) => {
+    const g = p.getAttribute('data-repo') || ('panel-' + idx);
+    if (!seenGroups.has(g)) { seenGroups.add(g); repoStarts.push(idx); }
+  });
+  function currentPanelIndex(){
+    const fudge = window.innerHeight * 0.4;
+    const y = window.scrollY + fudge;
+    let best = 0;
+    for (let i = 0; i < panels.length; i++) {
+      const top = panels[i].offsetTop;
+      if (top <= y) best = i; else break;
+    }
+    return best;
+  }
+  function currentRepoStartIdx(){
+    const cur = currentPanelIndex();
+    let best = 0;
+    for (let i = 0; i < repoStarts.length; i++) {
+      if (repoStarts[i] <= cur) best = i; else break;
+    }
+    return best;
+  }
+  function jumpTo(idx){
+    if (idx < 0) idx = 0;
+    if (idx >= panels.length) idx = panels.length - 1;
+    panels[idx].scrollIntoView({ behavior: 'instant', block: 'start' });
+  }
+  function nextRepo(){
+    const cur = currentRepoStartIdx();
+    jumpTo(repoStarts[Math.min(cur + 1, repoStarts.length - 1)]);
+  }
+  function prevRepo(){
+    const cur = currentRepoStartIdx();
+    jumpTo(repoStarts[Math.max(cur - 1, 0)]);
+  }
+  function nextPanel(){ jumpTo(currentPanelIndex() + 1); }
+  function prevPanel(){ jumpTo(currentPanelIndex() - 1); }
+  document.addEventListener('keydown', function(e){
+    const tag = (e.target && e.target.tagName || '').toUpperCase();
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || e.target.isContentEditable) return;
+    if (e.code === 'ArrowRight' || e.code === 'PageDown') { e.preventDefault(); nextPanel(); }
+    else if (e.code === 'ArrowLeft' || e.code === 'PageUp') { e.preventDefault(); prevPanel(); }
+    else if (e.code === 'ArrowDown') { e.preventDefault(); nextRepo(); }
+    else if (e.code === 'ArrowUp') { e.preventDefault(); prevRepo(); }
+    else if (e.code === 'Space') { e.preventDefault(); if (e.shiftKey) prevRepo(); else nextRepo(); }
+    else if (e.code === 'Home') { e.preventDefault(); jumpTo(0); }
+    else if (e.code === 'End') { e.preventDefault(); jumpTo(panels.length - 1); }
+  });
+  const hero = document.getElementById('hero');
+  if (hero) {
+    const hint = hero.querySelector('.hero-hint');
+    if (hint) hint.textContent = '\u2190 \u2192 page  \u00b7  \u2191 \u2193 repo  \u00b7  Space next repo';
+  }
+})();
+</script>
+<script>
+(function(){
+  const prefetched = new Set();
+  function prefetch(url) {
+    if (!url || prefetched.has(url)) return;
+    if (url.startsWith('#') || url.startsWith('javascript:')) return;
+    prefetched.add(url);
+    const link = document.createElement('link');
+    link.rel = 'prefetch'; link.href = url; link.as = 'document';
+    link.referrerPolicy = 'no-referrer-when-downgrade';
+    document.head.appendChild(link);
+  }
+  function harvest(e) {
+    const a = e.target && e.target.closest && e.target.closest('a');
+    if (!a) return;
+    if (a.target === '_blank') prefetch(a.href);
+  }
+  document.addEventListener('mouseover', harvest, { passive: true });
+  document.addEventListener('touchstart', harvest, { passive: true });
+})();
+</script>
+</body>
+</html>
