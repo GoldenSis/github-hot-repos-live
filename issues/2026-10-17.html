@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hot GitHub Repos — October 17, 2026 · The Next New Thing</title>
+<link rel="preconnect" href="https://opengraph.githubassets.com" crossorigin>
+<link rel="preconnect" href="https://github.com">
+<link rel="preconnect" href="https://www.youtube.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Rye&family=Special+Elite&display=swap">
+<script>(function(){
+  var TOKENS=['1','og','v2','v3','v4'];
+  window.ogErr=function(img){
+    var n=+(img.dataset.tryn||0);
+    if(n<TOKENS.length-1){ n++; img.dataset.tryn=n;
+      setTimeout(function(){ img.src='https://opengraph.githubassets.com/'+TOKENS[n]+'/'+img.dataset.owner+'/'+img.dataset.repo+'?cb='+Date.now(); }, 500*n);
+    } else { img.style.display='none'; if(img.nextElementSibling) img.nextElementSibling.style.display='flex'; }
+  };
+})();</script>
+<style>
+:root {
+  --canvas: #f8f9fc;
+  --surface: #ffffff;
+  --surface-2: #edeff4;
+  --ink: #0c0d11;
+  --ink-muted: #4a4f59;
+  --ink-subtle: #6b7079;
+  --hairline: #d6dae2;
+  --hairline-soft: #edeff4;
+  --accent: #1f3a5f;
+  --canvas-hm: #f3f4f9;
+  --canvas-hm-accent: #f6ead0;
+  --accent-warm: #9a6a1e;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: auto;
+  overflow-x: hidden;
+}
+body { overflow-y: scroll; }
+.panel {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 0;
+}
+.panel-hm { background: var(--canvas-hm); }
+.panel-hm .panel-header { background: var(--canvas-hm); }
+.hm-chip { background: var(--accent); color: var(--canvas); padding: 5px 11px; border-radius: 12px; font-size: 11px; font-family: 'Inter', sans-serif; font-weight: 600; white-space: nowrap; letter-spacing: 0.02em; }
+.panel-hm-accent { background: var(--canvas-hm-accent); }
+.panel-hm-accent .panel-header { background: var(--canvas-hm-accent); }
+.panel-hm-accent .hm-chip { background: var(--accent-warm); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 4px; }
+.vbtn { display: inline-block; background: var(--accent); color: var(--canvas); padding: 11px 18px; border-radius: 8px; font-size: 13px; font-weight: 500; text-decoration: none; }
+.vbtn:hover { background: #142847; }
+.cta-alt { background: var(--surface); color: var(--accent); border: 1px solid var(--accent); }
+.cta-alt:hover { background: var(--surface-2); }
+.h-desc a, .why a, .sowhat p a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--hairline); }
+.h-desc a:hover, .why a:hover, .sowhat p a:hover { border-bottom-color: var(--accent); }
+.panel-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 36px; border-bottom: 1px solid var(--hairline);
+  background: var(--canvas); position: sticky; top: 0; z-index: 10;
+  font-family: 'Inter', sans-serif;
+}
+.ph-left { display: flex; align-items: center; gap: 14px; }
+.rank {
+  font-family: ui-monospace, 'JetBrains Mono', monospace;
+  font-size: 12px; color: var(--ink-subtle); letter-spacing: 0.06em;
+}
+.repo-name {
+  font-size: 16px; font-weight: 500; color: var(--ink);
+  text-decoration: none; letter-spacing: -0.2px;
+}
+.repo-name:hover .name { color: var(--accent); }
+.repo-name .owner { color: var(--ink-muted); font-weight: 400; }
+.repo-name .slash { color: var(--ink-subtle); margin: 0 2px; }
+.ph-dots { display: flex; gap: 4px; }
+.dot {
+  font-size: 11px; padding: 6px 12px; border-radius: 14px;
+  text-decoration: none; color: var(--ink-subtle);
+  letter-spacing: 0.04em; text-transform: uppercase; font-weight: 500;
+  border: 1px solid transparent;
+}
+.dot:hover { color: var(--ink); border-color: var(--hairline); }
+.dot.active { color: var(--accent); border-color: var(--accent); }
+.panel-body {
+  flex: 1; display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px;
+  padding: 36px 56px 48px;
+}
+.panel-body-centered {
+  display: flex; align-items: center; justify-content: center;
+  padding: 36px 56px; flex: 1;
+}
+.summary-left { display: flex; flex-direction: column; justify-content: space-between; }
+.summary-right { display: flex; flex-direction: column; gap: 14px; min-height: 0; }
+.eyebrow {
+  font-size: 11px; font-weight: 600; color: var(--accent);
+  letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 14px;
+}
+.title {
+  font-size: 38px; font-weight: 500; line-height: 1.15;
+  letter-spacing: -1.0px; color: var(--ink); margin-bottom: 24px;
+}
+.title .em { color: var(--accent); }
+.why-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-subtle); margin-bottom: 8px;
+}
+.why { font-size: 15px; line-height: 1.55; color: var(--ink-muted); margin-bottom: 18px; }
+.why b { color: var(--ink); font-weight: 500; }
+.cta {
+  display: inline-block; background: var(--accent); color: var(--canvas);
+  padding: 12px 22px; border-radius: 8px; font-size: 14px; font-weight: 500;
+  text-decoration: none; margin-top: auto; align-self: flex-start;
+}
+.cta:hover { background: #142847; }
+.card { background: var(--surface); border: 1px solid var(--hairline); border-radius: 14px; }
+.stats-card { padding: 16px 22px; flex-shrink: 0; }
+.stats-row {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 18px; align-items: end;
+}
+.stat-label {
+  font-size: 10px; color: var(--ink-subtle); letter-spacing: 0.14em;
+  text-transform: uppercase; font-weight: 600; margin-bottom: 4px;
+}
+.stat-val { font-size: 18px; font-weight: 500; color: var(--ink); letter-spacing: -0.3px; }
+.highlights-card { padding: 18px 22px; flex: 1; min-height: 0; overflow: hidden; }
+.card-label {
+  font-size: 10px; color: var(--ink-subtle); letter-spacing: 0.14em;
+  text-transform: uppercase; font-weight: 600; margin-bottom: 14px;
+}
+.highlights { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.highlights li {
+  padding-bottom: 12px; border-bottom: 1px solid var(--hairline-soft);
+  position: relative; padding-left: 14px;
+}
+.highlights li::before {
+  content: ''; display: inline-block; width: 5px; height: 5px;
+  background: var(--accent); border-radius: 50%; position: absolute;
+  left: 0; top: 8px;
+}
+.highlights li:last-child { border-bottom: none; padding-bottom: 0; }
+.h-name { font-size: 14px; font-weight: 500; color: var(--ink); letter-spacing: -0.15px; margin-bottom: 2px; }
+.h-desc { font-size: 13px; line-height: 1.45; color: var(--ink-muted); }
+.h-desc code, .why code {
+  font-family: ui-monospace, 'JetBrains Mono', monospace; font-size: 12px;
+  background: var(--surface-2); padding: 1px 6px; border-radius: 4px; color: var(--ink);
+}
+.sowhat { margin-top:14px; padding-top:12px; border-top:1px solid var(--hairline-soft); }
+.sowhat-label { font-size:10px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:4px; }
+.sowhat p { font-size:13px; line-height:1.45; color:var(--ink-muted); }
+.reads { margin-top:14px; padding-top:12px; border-top:1px solid var(--hairline-soft); }
+.reads-label { font-size:10px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:6px; }
+.read-list { list-style:none; display:flex; flex-direction:column; gap:2px; }
+.read-list a { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:5px 0; text-decoration:none; border-bottom:1px solid var(--hairline-soft); }
+.read-list li:last-child a { border-bottom:none; }
+.read-label { font-size:13px; font-weight:500; color:var(--ink); }
+.read-list a:hover .read-label { color:var(--accent); }
+.read-url { font-family: ui-monospace, 'JetBrains Mono', monospace; font-size:11px; color:var(--ink-subtle); white-space:nowrap; }
+.github-card {
+  max-width: 1100px; width: 100%; display: flex; flex-direction: column;
+  align-items: center; gap: 24px;
+}
+.github-og {
+  width: 100%; max-width: 1100px; aspect-ratio: 2 / 1; object-fit: cover;
+  border-radius: 14px; border: 1px solid var(--hairline);
+  background: var(--surface);
+}
+.github-meta { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.badges { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.badge {
+  background: var(--surface); border: 1px solid var(--hairline);
+  padding: 8px 14px; border-radius: 16px; font-size: 13px; color: var(--ink);
+}
+.embed-card { max-width: 640px; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.embed-caption { font-size: 13px; color: var(--ink-muted); font-style: italic; text-align: center; line-height: 1.5; max-width: 620px; }
+.video-card { max-width: 980px; width: 100%; }
+.video-embed { width: 100%; max-width: 980px; aspect-ratio: 16 / 9; position: relative; background: #000; border-radius: 14px; }
+.video-embed iframe { width: 100%; height: 100%; border: 1px solid var(--hairline); border-radius: 14px; background: #000; display: block; }
+.under-link { font-size: 13px; color: var(--ink-subtle); text-decoration: none; }
+.under-link:hover { color: var(--accent); }
+.issue-card { background: var(--surface); border: 1px solid var(--hairline); border-radius: 14px; padding: 36px 36px; max-width: 720px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+.issue-card .card-label { color: var(--accent); margin-bottom: 0; }
+.issue-title { font-size: 24px; font-weight: 500; color: var(--ink); letter-spacing: -0.5px; line-height: 1.3; }
+.issue-summary { font-size: 15px; color: var(--ink-muted); line-height: 1.6; }
+.issue-summary code, .embed-caption code { font-family: ui-monospace, 'JetBrains Mono', monospace; font-size: 12px; background: var(--surface-2); padding: 1px 6px; border-radius: 4px; color: var(--ink); }
+.panel-hero {
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 0 40px; flex: 1;
+}
+.hero-block { max-width: 1400px; }
+.hero-eyebrow {
+  font-size: 24px; font-weight: 600; color: var(--accent);
+  letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 36px;
+}
+.hero-title {
+  font-size: 128px; font-weight: 500; line-height: 1.0;
+  letter-spacing: -3.6px; color: var(--ink); margin-bottom: 36px;
+}
+.hero-title .em { color: var(--accent); }
+.hero-sub { font-size: 40px; font-weight: 400; color: var(--ink-muted); margin-bottom: 60px; }
+.hero-sub b { color: var(--ink); font-weight: 500; }
+.hero-hint { font-size: 16px; color: var(--ink-subtle); }
+@media (max-width: 1100px) {
+  .panel-body { grid-template-columns: 1fr; gap: 28px; padding: 28px 32px 36px; }
+  .title { font-size: 30px; letter-spacing: -0.6px; }
+  .hero-title { font-size: 88px; letter-spacing: -2.4px; }
+  .hero-sub { font-size: 28px; }
+  .hero-eyebrow { font-size: 18px; }
+  .panel-header { padding: 12px 24px; }
+}
+@media (max-width: 700px) {
+  .panel-header { flex-direction: column; align-items: flex-start; gap: 8px; padding: 12px 18px; }
+  .ph-dots { flex-wrap: wrap; }
+  .title { font-size: 24px; }
+  .hero-title { font-size: 60px; letter-spacing: -1.6px; }
+  .hero-sub { font-size: 22px; }
+  .panel-body { padding: 24px 18px 28px; }
+  .panel-body-centered { padding: 24px 18px; }
+}
+.rank-nav { position: relative; display: inline-flex; align-items: center; }
+.rank-trigger { cursor: pointer; user-select: none; padding: 4px 6px; border-radius: 4px; }
+.rank-trigger:hover, .rank-trigger:focus { color: var(--accent); outline: none; }
+.rank-dropdown {
+  display: none; position: absolute;
+  top: 100%; left: -4px; margin-top: 6px;
+  background: var(--surface); border: 1px solid var(--hairline);
+  border-radius: 10px; padding: 8px;
+  box-shadow: 0 12px 32px rgba(15,23,42,0.12);
+  grid-template-columns: repeat(5, 36px); gap: 4px;
+  z-index: 100; min-width: 210px;
+}
+.rank-nav:hover .rank-dropdown,
+.rank-nav:focus-within .rank-dropdown { display: grid; }
+.rank-item {
+  display: flex; align-items: center; justify-content: center;
+  height: 30px; padding: 0 6px;
+  font-family: ui-monospace, 'JetBrains Mono', monospace;
+  font-size: 12px; color: var(--ink-subtle);
+  text-decoration: none; border-radius: 6px;
+  letter-spacing: 0.06em; font-weight: 500;
+}
+.rank-item:hover { background: var(--surface-2); color: var(--ink); }
+.rank-item.active { color: var(--canvas); background: var(--accent); }
+.github-fallback {
+  display: none; width: 100%; max-width: 1100px; aspect-ratio: 2 / 1;
+  border-radius: 14px; border: 1px solid var(--hairline);
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+  align-items: center; justify-content: center; padding: 40px;
+  flex-direction: column;
+}
+.gf-content { text-align: center; display: flex; flex-direction: column; gap: 18px; align-items: center; }
+.gf-name { font-family: 'Inter', sans-serif; font-size: 44px; font-weight: 500; letter-spacing: -1px; line-height: 1.1; }
+.gf-owner { color: var(--ink-muted); font-weight: 400; }
+.gf-slash { color: var(--ink-subtle); margin: 0 4px; }
+.gf-repo { color: var(--ink); }
+.gf-hint { font-size: 14px; color: var(--ink-subtle); }
+@media (max-width: 900px) {
+  .gf-name { font-size: 28px; }
+}
+
+/* ===== WANTED slide (scoped wp-) ===== */
+.wp-panel{
+  min-height:100vh;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  display:flex; align-items:center; justify-content:center;
+  padding:40px 56px;
+  background:var(--canvas);
+}
+.wp-poster{
+  position:relative;
+  width:100%; max-width:1040px;
+  display:grid;
+  grid-template-columns:340px 1fr;
+  gap:46px;
+  align-items:center;
+  padding:38px 50px 30px;
+  background:radial-gradient(120% 130% at 50% 0%, #f3e8c6 0%, #e7d6ab 48%, #d8c08c 100%);
+  border:2px solid #6b4a23;
+  border-radius:4px;
+  box-shadow:0 0 0 9px #e7d6ab, 0 0 0 11px #5b3f1f, 0 26px 60px rgba(40,26,10,.32), inset 0 0 120px rgba(120,80,30,.40);
+  color:#2b1c10;
+}
+.wp-poster::before{
+  content:"";position:absolute;inset:0;pointer-events:none;border-radius:4px;
+  background:
+    radial-gradient(55% 35% at 10% 6%, rgba(90,55,20,.18), transparent 60%),
+    radial-gradient(50% 32% at 94% 14%, rgba(90,55,20,.16), transparent 60%),
+    radial-gradient(45% 28% at 50% 100%, rgba(70,40,15,.26), transparent 70%);
+  mix-blend-mode:multiply;
+}
+.wp-poster > *{position:relative;z-index:1}
+.wp-banner{ grid-column:1 / -1; text-align:center; }
+.wp-order{
+  letter-spacing:.42em; font-size:11px; text-transform:uppercase;
+  color:#5b3f1f; margin-bottom:10px;
+}
+.wp-rule{ height:0;border:0;border-top:3px double #5b3f1f; }
+.wp-photo-col{ grid-column:1; display:flex; flex-direction:column; align-items:center; gap:14px; }
+.wp-photo-wrap{
+  width:100%; padding:9px; background:#dfca99;
+  border:2px solid #5b3f1f;
+  box-shadow:inset 0 0 0 4px #b89a63, 0 8px 20px rgba(0,0,0,.30);
+}
+.wp-photo-wrap img{
+  display:block;width:100%;height:auto;
+  filter:sepia(.55) contrast(1.04) brightness(.98) grayscale(.15);
+}
+.wp-name{
+  font-family:'Rye',serif; text-align:center; line-height:1;
+  font-size:clamp(30px,3.4vw,42px); color:#2b1c10;
+}
+.wp-alias{ text-align:center; font-family:'Special Elite',monospace; font-size:12.5px; letter-spacing:.06em; color:#5b3f1f; line-height:1.5; }
+.wp-alias a{ color:inherit; }
+.wp-text-col{ grid-column:2; display:flex; flex-direction:column; }
+.wp-wanted{
+  font-family:'Rye',serif; line-height:.9;
+  font-size:clamp(58px,8.5vw,104px); color:#3a240f;
+  text-shadow:1px 1px 0 #c9b074, 2px 3px 0 rgba(0,0,0,.10);
+}
+.wp-for{ font-family:'Rye',serif; font-size:clamp(20px,2.6vw,30px); color:#5b3f1f; letter-spacing:.04em; margin:2px 0 22px; }
+.wp-charges-h{ font-family:'Rye',serif; font-size:16px; color:#3a240f; letter-spacing:.03em; margin-bottom:12px; }
+.wp-charges{ display:flex; flex-direction:column; gap:12px; margin-bottom:22px; }
+.wp-charge{
+  display:flex; align-items:baseline; justify-content:space-between; gap:16px;
+  border-bottom:2px dotted rgba(91,63,31,.50); padding-bottom:10px;
+}
+.wp-charge .wp-what{ display:flex; flex-direction:column; gap:1px; }
+.wp-proj{ font-family:'Rye',serif; font-size:clamp(20px,2.4vw,26px); color:#2b1c10; line-height:1.04; }
+.wp-handle{ font-family:'Special Elite',monospace; font-size:12px; letter-spacing:.05em; color:#6b4a23; }
+.wp-stars{ white-space:nowrap; font-family:'Rye',serif; font-size:clamp(20px,2.6vw,28px); color:#7a3b12; }
+.wp-reward{
+  text-align:center; border-top:3px double #5b3f1f; border-bottom:3px double #5b3f1f;
+  padding:12px 8px; margin-bottom:16px;
+}
+.wp-reward-lbl{ font-family:'Rye',serif; font-size:clamp(24px,3.4vw,36px); color:#7a3b12; line-height:1; }
+.wp-reward-amt{ font-family:'Special Elite',monospace; font-size:14px; color:#3a240f; margin-top:5px; }
+.wp-call{ font-family:'Special Elite',monospace; font-size:14px; line-height:1.65; color:#3a240f; }
+.wp-call strong{ color:#7a3b12; }
+.wp-foot{
+  grid-column:1 / -1; text-align:center; margin-top:6px;
+  font-family:'Special Elite',monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#5b3f1f;
+}
+.wp-foot a{ color:#7a3b12; text-decoration:none; border-bottom:1px solid #7a3b12; }
+@media (max-width:860px){
+  .wp-poster{ grid-template-columns:1fr; gap:24px; padding:30px 26px 24px; }
+  .wp-photo-col{ grid-column:1; max-width:300px; margin:0 auto; }
+  .wp-text-col{ grid-column:1; text-align:center; align-items:center; }
+  .wp-charge{ text-align:left; }
+  .wp-panel{ padding:28px 18px; }
+}
+</style>
+</head>
+<body>
+<section class="panel panel-hero" id="hero" data-repo="hero"><div class="hero-block"><div class="hero-eyebrow">GITHUB HOT REPOS · OCTOBER 17, 2026</div><h1 class="hero-title">The Next New Thing<br><span class="em">daily AI digest</span>.</h1><p class="hero-sub">Repos · Models · Papers · Lab Drops · Buzz · Watch — by <b>The Next New Thing</b>.</p><p class="hero-hint">Scroll for the report ↓</p></div></section>
+
+<section class="panel panel-summary" id="r-01-summary" data-repo="r-01" data-type="summary"><header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">01</span><span class="rank-dropdown" role="menu"><a class="rank-item active" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a></span></span><a class="repo-name" href="https://github.com/morluto/rea" target="_blank" rel="noopener"><span class="owner">morluto</span><span class="slash">/</span><span class="name">rea</span></a></div><nav class="ph-dots"><a class="dot active" href="#r-01-summary">Summary</a><a class="dot" href="#r-01-github">GitHub</a></nav></header><div class="panel-body"><div class="summary-left"><div class="eyebrow">REVERSE ENGINEERING · AI agent + MCP + decompilers · ⚠️ FAKE CLONE WARNING</div><h1 class="title">The week's story: <span class="em">AI agents that reverse-engineer anything</span> — from app behavior down to native binaries.</h1><div class="why-label">Why it's trending</div><p class="why">REA (Reverse Engineer Anything) connects AI agents to decompilers and disassemblers over MCP, letting Claude Code, Codex, and other agents analyze compiled binaries without source code. <b>~280k stars total, ~34k+ gained in the past week</b> (Oct 10–17 tracker data; a Dutch independent fact-check confirmed the growth curve looks organic — no clone-farm clusters, gradual acceleration). Fork ratio: ~22%. Created April 14, 2026; MIT. <b>⚠️ A fake trojan clone is in circulation.</b> Verify the URL is <code>github.com/morluto/rea</code> before installing.</p><a class="cta" href="https://github.com/morluto/rea" target="_blank" rel="noopener">View on GitHub →</a></div><div class="summary-right"><div class="card stats-card"><div class="stats-row"><div><div class="stat-label">Stars</div><div class="stat-val" data-gh="morluto/rea" data-role="stat" data-base="280k">280k</div></div><div><div class="stat-label">Language</div><div class="stat-val">Python</div></div><div><div class="stat-label">License</div><div class="stat-val">MIT</div></div></div></div><div class="card highlights-card"><div class="card-label">Highlights</div><ul class="highlights"><li><div class="h-name">MCP-native decompiler bridge</div><p class="h-desc">Exposes Ghidra, Binary Ninja, and radare2 as MCP tools — agents can call <code>decompile_function</code>, <code>find_strings</code>, <code>trace_calls</code> like any other tool. No manual RE session needed.</p></li><li><div class="h-name">Multi-level abstraction</div><p class="h-desc">Works from behavioural observation (black-box app interaction), to assembly, to decompiled pseudo-C. Agents choose the level of depth needed for each query.</p></li><li><div class="h-name">Bilingual documentation (EN + zh-CN)</div><p class="h-desc">README is in English and Simplified Chinese — the star distribution appears international with real account diversity, supporting the organic-growth reading.</p></li></ul><div class="sowhat"><span class="sowhat-label">So what?</span><p>Security research, malware analysis, and interoperability work have always required manual RE sessions — hours in Ghidra or Binary Ninja per target. REA turns that into an agent loop. The legal and ethical questions are real (verify your authorisation before running on anything you don't own), but the technical breakthrough here is significant enough to explain the extraordinary growth.</p></div></div></div></div></section>
+<section class="panel panel-github" id="r-01-github" data-repo="r-01" data-type="github"><header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">01</span><span class="rank-dropdown" role="menu"><a class="rank-item active" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a></span></span><a class="repo-name" href="https://github.com/morluto/rea" target="_blank" rel="noopener"><span class="owner">morluto</span><span class="slash">/</span><span class="name">rea</span></a></div><nav class="ph-dots"><a class="dot" href="#r-01-summary">Summary</a><a class="dot active" href="#r-01-github">GitHub</a></nav></header><div class="panel-body panel-body-centered"><div class="github-card"><img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/morluto/rea" data-owner="morluto" data-repo="rea" alt="GitHub social card for morluto/rea" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-name"><span class="gf-owner">morluto</span><span class="gf-slash">/</span><span class="gf-repo">rea</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div><div class="github-meta"><div class="badges"><span class="badge" data-gh="morluto/rea" data-role="badge" data-base="280k">★ 280k</span><span class="badge">Python</span><span class="badge">MIT</span><span class="badge">⚠️ verify URL</span></div><a class="cta" href="https://github.com/morluto/rea" target="_blank" rel="noopener">Open the repo →</a></div></div></div></section>
+
+<section class="panel panel-summary" id="r-02-summary" data-repo="r-02" data-type="summary"><header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">02</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item active" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a></span></span><a class="repo-name" href="https://github.com/addyosmani/agent-skills" target="_blank" rel="noopener"><span class="owner">addyosmani</span><span class="slash">/</span><span class="name">agent-skills</span></a></div><nav class="ph-dots"><a class="dot active" href="#r-02-summary">Summary</a><a class="dot" href="#r-02-github">GitHub</a></nav></header><div class="panel-body"><div class="summary-left"><div class="eyebrow">AGENT SKILLS · Google Chrome lead · production engineering</div><h1 class="title"><span class="em">Production-grade engineering skills</span> for AI coding agents — from Google's Addy Osmani.</h1><div class="why-label">Why it's trending</div><p class="why">Addy Osmani (Chrome performance lead, Google) published his personal <code>.claude/skills/</code> folder as a public collection of production engineering skills for AI coding agents. 20 core skills covering the full lifecycle — brainstorming to shipping — plus 7 slash commands, 3 specialist agent personas, and 4 engineering checklists. <b>~102k stars</b> (verified via multiple trackers, Oct 11 trending activity confirmed). Apache-2.0. Shell. The practical provenance — a senior Google engineer's actual daily tooling — is what sets this apart from the many skills repos that appeared this month.</p><a class="cta" href="https://github.com/addyosmani/agent-skills" target="_blank" rel="noopener">View on GitHub →</a></div><div class="summary-right"><div class="card stats-card"><div class="stats-row"><div><div class="stat-label">Stars</div><div class="stat-val" data-gh="addyosmani/agent-skills" data-role="stat" data-base="102k">102k</div></div><div><div class="stat-label">Language</div><div class="stat-val">Shell</div></div><div><div class="stat-label">License</div><div class="stat-val">Apache-2.0</div></div></div></div><div class="card highlights-card"><div class="card-label">Highlights</div><ul class="highlights"><li><div class="h-name">20 production engineering skills</div><p class="h-desc">Covers the full dev lifecycle: defining work, architecture, TDD, debugging, performance profiling, PR writing, and retrospectives — in a composable skill format.</p></li><li><div class="h-name">3 specialist agent personas</div><p class="h-desc">Separate personas for architect, implementer, and reviewer modes — the agent takes on different hats depending on which phase you're in.</p></li><li><div class="h-name">Real provenance</div><p class="h-desc">This is Addy Osmani's actual daily tooling for Chrome and open-source work, not a synthesised collection. The engineering patterns reflect a senior Google IC's real workflow.</p></li></ul><div class="sowhat"><span class="sowhat-label">So what?</span><p>"AI dotfiles" repositories are the genre of 2026 — but most are hobby collections. agent-skills is what that genre looks like when a senior engineer who ships production software publishes theirs. The Apache-2.0 licence and the quality of the patterns make it worth studying even if you don't adopt it wholesale.</p></div></div></div></div></section>
+<section class="panel panel-github" id="r-02-github" data-repo="r-02" data-type="github"><header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">02</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item active" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a></span></span><a class="repo-name" href="https://github.com/addyosmani/agent-skills" target="_blank" rel="noopener"><span class="owner">addyosmani</span><span class="slash">/</span><span class="name">agent-skills</span></a></div><nav class="ph-dots"><a class="dot" href="#r-02-summary">Summary</a><a class="dot active" href="#r-02-github">GitHub</a></nav></header><div class="panel-body panel-body-centered"><div class="github-card"><img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/addyosmani/agent-skills" data-owner="addyosmani" data-repo="agent-skills" alt="GitHub social card for addyosmani/agent-skills" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-name"><span class="gf-owner">addyosmani</span><span class="gf-slash">/</span><span class="gf-repo">agent-skills</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div><div class="github-meta"><div class="badges"><span class="badge" data-gh="addyosmani/agent-skills" data-role="badge" data-base="102k">★ 102k</span><span class="badge">Shell</span><span class="badge">Apache-2.0</span></div><a class="cta" href="https://github.com/addyosmani/agent-skills" target="_blank" rel="noopener">Open the repo →</a></div></div></div></section>
+
+<section class="panel panel-summary" id="r-03-summary" data-repo="r-03" data-type="summary"><header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">03</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item active" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a></span></span><a class="repo-name" href="https://github.com/stablyai/orca" target="_blank" rel="noopener"><span class="owner">stablyai</span><span class="slash">/</span><span class="name">orca</span></a></div><nav class="ph-dots"><a class="dot active" href="#r-03-summary">Summary</a><a class="dot" href="#r-03-github">GitHub</a></nav></header><div class="panel-body"><div class="summary-left"><div class="eyebrow">AGENT RUNNER · YC W22 · parallel coding agents</div><h1 class="title">Run <span class="em">Codex, Claude Code, and OpenCode in parallel</span> — each in its own isolated git worktree.</h1><div class="why-label">Why it's trending</div><p class="why">Orca (Stably AI, YC W22) is an open-source desktop app that fans one prompt across multiple coding agents simultaneously — each in an isolated git worktree — then lets you compare outputs and merge the best result. <b>~94k stars</b> (Oct 16 tracker data). MIT. macOS, Windows, Linux, and mobile. The design principle: your own agent subscriptions, no compute reselling. GitHub + Linear integration. The parallel-worktree architecture solves a real pain point for developers who want to benchmark Claude Code vs Codex on the same task without writing orchestration code themselves.</p><a class="cta" href="https://github.com/stablyai/orca" target="_blank" rel="noopener">View on GitHub →</a></div><div class="summary-right"><div class="card stats-card"><div class="stats-row"><div><div class="stat-label">Stars</div><div class="stat-val" data-gh="stablyai/orca" data-role="stat" data-base="94k">94k</div></div><div><div class="stat-label">License</div><div class="stat-val">MIT</div></div><div><div class="stat-label">Backer</div><div class="stat-val">YC W22</div></div></div></div><div class="card highlights-card"><div class="card-label">Highlights</div><ul class="highlights"><li><div class="h-name">Fan-out to 5 agents simultaneously</div><p class="h-desc">One prompt goes to Codex, Claude Code, OpenCode, or Pi in parallel — each runs in an isolated git worktree so outputs never contaminate each other.</p></li><li><div class="h-name">Merge the winner</div><p class="h-desc">After comparing results, select the best solution and merge it back to your branch with one click. The other worktrees are cleaned up automatically.</p></li><li><div class="h-name">Design Mode</div><p class="h-desc">Sends UI element details and screenshot context directly into agent prompts — making it practical for front-end tasks where visual context matters.</p></li></ul><div class="sowhat"><span class="sowhat-label">So what?</span><p>Multi-agent parallelism has been theoretically straightforward but practically annoying to set up. Orca turns it into a first-class workflow — and the YC backing and cross-platform desktop distribution suggest this is a serious long-term bet on parallel agentic development becoming the norm.</p></div></div></div></div></section>
+<section class="panel panel-github" id="r-03-github" data-repo="r-03" data-type="github"><header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">03</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item active" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a></span></span><a class="repo-name" href="https://github.com/stablyai/orca" target="_blank" rel="noopener"><span class="owner">stablyai</span><span class="slash">/</span><span class="name">orca</span></a></div><nav class="ph-dots"><a class="dot" href="#r-03-summary">Summary</a><a class="dot active" href="#r-03-github">GitHub</a></nav></header><div class="panel-body panel-body-centered"><div class="github-card"><img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/stablyai/orca" data-owner="stablyai" data-repo="orca" alt="GitHub social card for stablyai/orca" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-name"><span class="gf-owner">stablyai</span><span class="gf-slash">/</span><span class="gf-repo">orca</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div><div class="github-meta"><div class="badges"><span class="badge" data-gh="stablyai/orca" data-role="badge" data-base="94k">★ 94k</span><span class="badge">MIT</span><span class="badge">YC W22</span></div><a class="cta" href="https://github.com/stablyai/orca" target="_blank" rel="noopener">Open the repo →</a></div></div></div></section>
+
+<section class="panel panel-summary" id="r-04-summary" data-repo="r-04" data-type="summary"><header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">04</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item active" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a></span></span><a class="repo-name" href="https://github.com/JuliusBrussee/caveman" target="_blank" rel="noopener"><span class="owner">JuliusBrussee</span><span class="slash">/</span><span class="name">caveman</span></a></div><nav class="ph-dots"><a class="dot active" href="#r-04-summary">Summary</a><a class="dot" href="#r-04-github">GitHub</a></nav></header><div class="panel-body"><div class="summary-left"><div class="eyebrow">CLAUDE CODE SKILL · token efficiency · v3.1.0 this week</div><h1 class="title">The token-reduction Claude Code skill that <span class="em">hits 65% output savings</span> — now with three cave levels.</h1><div class="why-label">Why it's trending</div><p class="why">Caveman makes Claude Code respond in compressed, grammar-stripped prose that preserves technical accuracy while cutting output tokens. <b>~113k stars</b>. v3.1.0 shipped this week, replacing six intensity levels with three skills: <code>/caveman</code>, <code>/ultracave</code>, and <code>/megacave</code> (the last responds in Classical Chinese). The vendor-reported median output reductions on claude-opus-5-5: 3% for /caveman, 35% for /ultracave, 9% for /megacave — the v3.1.0 release notes honestly include <code>docs/HONEST-NUMBERS.md</code> with full methodology (n=10, single run). JavaScript, MIT.</p><a class="cta" href="https://github.com/JuliusBrussee/caveman" target="_blank" rel="noopener">View on GitHub →</a></div><div class="summary-right"><div class="card stats-card"><div class="stats-row"><div><div class="stat-label">Stars</div><div class="stat-val" data-gh="JuliusBrussee/caveman" data-role="stat" data-base="113k">113k</div></div><div><div class="stat-label">Language</div><div class="stat-val">JavaScript</div></div><div><div class="stat-label">License</div><div class="stat-val">MIT</div></div></div></div><div class="card highlights-card"><div class="card-label">Highlights</div><ul class="highlights"><li><div class="h-name">v3.1.0: three levels, not six</div><p class="h-desc"><code>/caveman</code> (light compression), <code>/ultracave</code> (heavy compression, 35% median savings), <code>/megacave</code> (Classical Chinese — for when you want the model to earn its tokens). Previous six-level system retired.</p></li><li><div class="h-name">Honest benchmarking</div><p class="h-desc"><code>docs/HONEST-NUMBERS.md</code> is included in the repo — methodology, sample size (n=10), and a note that a single-run result at this scale is indicative, not definitive. Rare for a viral skill repo.</p></li><li><div class="h-name">Install via Claude Code CLI</div><p class="h-desc">Two commands to install. Works with claude-opus-5-5 and claude-sonnet-4-6; behaviour on other models varies and is documented.</p></li></ul><div class="sowhat"><span class="sowhat-label">So what?</span><p>In high-volume agentic pipelines, output token cost accumulates fast. Even a real 20–35% reduction on the /ultracave level translates directly to cost savings at scale. The transparent benchmarking in HONEST-NUMBERS.md makes this one of the more trustworthy viral skills repos — the author is telling you exactly how weak the evidence is.</p></div></div></div></div></section>
+<section class="panel panel-github" id="r-04-github" data-repo="r-04" data-type="github"><header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">04</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item active" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a></span></span><a class="repo-name" href="https://github.com/JuliusBrussee/caveman" target="_blank" rel="noopener"><span class="owner">JuliusBrussee</span><span class="slash">/</span><span class="name">caveman</span></a></div><nav class="ph-dots"><a class="dot" href="#r-04-summary">Summary</a><a class="dot active" href="#r-04-github">GitHub</a></nav></header><div class="panel-body panel-body-centered"><div class="github-card"><img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/JuliusBrussee/caveman" data-owner="JuliusBrussee" data-repo="caveman" alt="GitHub social card for JuliusBrussee/caveman" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-name"><span class="gf-owner">JuliusBrussee</span><span class="gf-slash">/</span><span class="gf-repo">caveman</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div><div class="github-meta"><div class="badges"><span class="badge" data-gh="JuliusBrussee/caveman" data-role="badge" data-base="113k">★ 113k</span><span class="badge">JavaScript</span><span class="badge">MIT</span><span class="badge">v3.1.0</span></div><a class="cta" href="https://github.com/JuliusBrussee/caveman" target="_blank" rel="noopener">Open the repo →</a></div></div></div></section>
+
+<section class="panel panel-summary" id="r-05-summary" data-repo="r-05" data-type="summary"><header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">05</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item active" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a></span></span><a class="repo-name" href="https://github.com/thedotmack/claude-mem" target="_blank" rel="noopener"><span class="owner">thedotmack</span><span class="slash">/</span><span class="name">claude-mem</span></a></div><nav class="ph-dots"><a class="dot active" href="#r-05-summary">Summary</a><a class="dot" href="#r-05-github">GitHub</a></nav></header><div class="panel-body"><div class="summary-left"><div class="eyebrow">MEMORY LAYER · persistent context · coding agents</div><h1 class="title">The persistent context layer that <span class="em">remembers across Claude Code sessions</span> — so you don't have to repeat yourself.</h1><div class="why-label">Why it's trending</div><p class="why">claude-mem adds a persistent memory layer to Claude Code: decisions, preferences, conventions, and project context survive session boundaries. <b>~99.7k stars</b> (Oct 12 AI open-source tracker). The core problem it solves: "I told it which style guide we follow three sessions ago — why is it asking again?" The architecture is a local vector store that gets injected into each session's context window on startup, scoped to the project directory. No cloud dependency.</p><a class="cta" href="https://github.com/thedotmack/claude-mem" target="_blank" rel="noopener">View on GitHub →</a></div><div class="summary-right"><div class="card stats-card"><div class="stats-row"><div><div class="stat-label">Stars</div><div class="stat-val" data-gh="thedotmack/claude-mem" data-role="stat" data-base="99.7k">99.7k</div></div><div><div class="stat-label">Storage</div><div class="stat-val">Local</div></div><div><div class="stat-label">Scope</div><div class="stat-val">Per-project</div></div></div></div><div class="card highlights-card"><div class="card-label">Highlights</div><ul class="highlights"><li><div class="h-name">Local vector store, no cloud</div><p class="h-desc">All context lives in a local <code>.claude-mem/</code> directory in your project root — no API key, no sync service, no data leaving your machine.</p></li><li><div class="h-name">Project-scoped memory</div><p class="h-desc">Each project gets its own memory store. Switching projects switches the injected context automatically — your React project's conventions don't bleed into your Rust project.</p></li><li><div class="h-name">Structured + unstructured recall</div><p class="h-desc">Stores both structured facts (style guide rules, naming conventions, env config) and unstructured summaries of past decisions — retrieved by semantic similarity at session start.</p></li></ul><div class="sowhat"><span class="sowhat-label">So what?</span><p>Claude Code's context window resets between sessions — you lose everything you taught the model about your project. claude-mem is the most popular solution to this problem on GitHub, and the per-project scoping is the right design decision: you want different memory for different codebases, not a single global blob.</p></div></div></div></div></section>
+<section class="panel panel-github" id="r-05-github" data-repo="r-05" data-type="github"><header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">05</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item active" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a></span></span><a class="repo-name" href="https://github.com/thedotmack/claude-mem" target="_blank" rel="noopener"><span class="owner">thedotmack</span><span class="slash">/</span><span class="name">claude-mem</span></a></div><nav class="ph-dots"><a class="dot" href="#r-05-summary">Summary</a><a class="dot active" href="#r-05-github">GitHub</a></nav></header><div class="panel-body panel-body-centered"><div class="github-card"><img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/thedotmack/claude-mem" data-owner="thedotmack" data-repo="claude-mem" alt="GitHub social card for thedotmack/claude-mem" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-name"><span class="gf-owner">thedotmack</span><span class="gf-slash">/</span><span class="gf-repo">claude-mem</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div><div class="github-meta"><div class="badges"><span class="badge" data-gh="thedotmack/claude-mem" data-role="badge" data-base="99.7k">★ 99.7k</span></div><a class="cta" href="https://github.com/thedotmack/claude-mem" target="_blank" rel="noopener">Open the repo →</a></div></div></div></section>
+
+<section class="panel panel-summary" id="r-06-summary" data-repo="r-06" data-type="summary"><header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">06</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item active" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a></span></span><a class="repo-name" href="https://github.com/headroomlabs-ai/headroom" target="_blank" rel="noopener"><span class="owner">headroomlabs-ai</span><span class="slash">/</span><span class="name">headroom</span></a></div><nav class="ph-dots"><a class="dot active" href="#r-06-summary">Summary</a><a class="dot" href="#r-06-github">GitHub</a></nav></header><div class="panel-body"><div class="summary-left"><div class="eyebrow">CONTEXT COMPRESSION · prompt middleware</div><h1 class="title">Context compression middleware that <span class="em">shrinks tool output before it hits the LLM</span> — without losing the signal.</h1><div class="why-label">Why it's trending</div><p class="why">headroom sits between your agent's tool calls and the LLM context window. It compresses verbose tool outputs — stack traces, grep results, file listings, API responses — down to the semantically dense core, reducing prompt size without losing the information the agent actually needs. <b>~75k stars</b> (Oct 12 tracker). The problem it solves: long tool outputs are one of the fastest ways to exhaust your context window, and most of it is noise.</p><a class="cta" href="https://github.com/headroomlabs-ai/headroom" target="_blank" rel="noopener">View on GitHub →</a></div><div class="summary-right"><div class="card stats-card"><div class="stats-row"><div><div class="stat-label">Stars</div><div class="stat-val" data-gh="headroomlabs-ai/headroom" data-role="stat" data-base="75k">75k</div></div><div><div class="stat-label">Role</div><div class="stat-val">Middleware</div></div><div><div class="stat-label">Targets</div><div class="stat-val">Tool output</div></div></div></div><div class="card highlights-card"><div class="card-label">Highlights</div><ul class="highlights"><li><div class="h-name">Compresses before the LLM sees it</div><p class="h-desc">headroom intercepts tool call results and strips low-information content (boilerplate, whitespace, repeated tokens) before they're injected into the context window.</p></li><li><div class="h-name">Configurable compression targets</div><p class="h-desc">Stack traces, file diffs, search results, API JSON — each compression strategy is configurable and pluggable. The defaults handle the common cases out of the box.</p></li><li><div class="h-name">Drop-in middleware architecture</div><p class="h-desc">Wraps your existing tool-call layer with minimal changes — no agent re-architecture required. Works with Claude Code, LangChain, and bare Anthropic API usage.</p></li></ul><div class="sowhat"><span class="sowhat-label">So what?</span><p>Context window exhaustion is one of the top pain points in production agent deployments. headroom addresses it at the source — tool output — rather than at the expensive end (buying more context). Worth benchmarking against your own pipelines: the signal-preservation quality at high compression ratios is where it will either earn its place or not.</p></div></div></div></div></section>
+<section class="panel panel-github" id="r-06-github" data-repo="r-06" data-type="github"><header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">06</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item active" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a></span></span><a class="repo-name" href="https://github.com/headroomlabs-ai/headroom" target="_blank" rel="noopener"><span class="owner">headroomlabs-ai</span><span class="slash">/</span><span class="name">headroom</span></a></div><nav class="ph-dots"><a class="dot" href="#r-06-summary">Summary</a><a class="dot active" href="#r-06-github">GitHub</a></nav></header><div class="panel-body panel-body-centered"><div class="github-card"><img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/headroomlabs-ai/headroom" data-owner="headroomlabs-ai" data-repo="headroom" alt="GitHub social card for headroomlabs-ai/headroom" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-name"><span class="gf-owner">headroomlabs-ai</span><span class="gf-slash">/</span><span class="gf-repo">headroom</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div><div class="github-meta"><div class="badges"><span class="badge" data-gh="headroomlabs-ai/headroom" data-role="badge" data-base="75k">★ 75k</span></div><a class="cta" href="https://github.com/headroomlabs-ai/headroom" target="_blank" rel="noopener">Open the repo →</a></div></div></div></section>
+
+<section class="panel panel-summary" id="r-07-summary" data-repo="r-07" data-type="summary"><header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">07</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item active" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a></span></span><a class="repo-name" href="https://github.com/vxcontrol/pentagi" target="_blank" rel="noopener"><span class="owner">vxcontrol</span><span class="slash">/</span><span class="name">pentagi</span></a></div><nav class="ph-dots"><a class="dot active" href="#r-07-summary">Summary</a><a class="dot" href="#r-07-github">GitHub</a></nav></header><div class="panel-body"><div class="summary-left"><div class="eyebrow">SECURITY · autonomous pentesting agent · Docker-isolated</div><h1 class="title">An <span class="em">autonomous penetration-testing agent system</span> — multi-agent, Docker-isolated, 20+ security tools.</h1><div class="why-label">Why it's trending</div><p class="why">PentAGI is a self-hosted autonomous pentesting platform that coordinates multi-agent teams (researcher, developer, executor roles) to run security assessments without continuous human input. <b>~31k stars</b> (v2.1.0, May 2026; re-entering trending this week alongside the REA wave). MIT, Docker-isolated. Integrates Nmap, Metasploit, sqlmap, and 17+ other security tools. Supports local models via Ollama for air-gapped environments. <b>⚠️ Requires clear authorisation against any target you test.</b></p><a class="cta" href="https://github.com/vxcontrol/pentagi" target="_blank" rel="noopener">View on GitHub →</a></div><div class="summary-right"><div class="card stats-card"><div class="stats-row"><div><div class="stat-label">Stars</div><div class="stat-val" data-gh="vxcontrol/pentagi" data-role="stat" data-base="31k">31k</div></div><div><div class="stat-label">License</div><div class="stat-val">MIT</div></div><div><div class="stat-label">Isolation</div><div class="stat-val">Docker</div></div></div></div><div class="card highlights-card"><div class="card-label">Highlights</div><ul class="highlights"><li><div class="h-name">Multi-agent role separation</div><p class="h-desc">Three agent roles: researcher (recon and OSINT), developer (exploit customisation and payload writing), and executor (running tools inside isolated Docker). Coordination reduces task interference.</p></li><li><div class="h-name">20+ integrated security tools</div><p class="h-desc">Nmap, Metasploit, sqlmap, Burp Suite headless, and more — each wrapped as a tool-call the agents can invoke. The Docker isolation means a runaway exploit attempt stays contained.</p></li><li><div class="h-name">Ollama support for air-gapped testing</div><p class="h-desc">Run entirely offline with local models via Ollama — relevant for corporate environments where exfiltrating scan results to a cloud API is not acceptable.</p></li></ul><div class="sowhat"><span class="sowhat-label">So what?</span><p>PentAGI is back in trending as AI-assisted security tooling becomes mainstream (REA is today's r-01). The practical use case for the target audience — authorised pen testers running assessments on client infrastructure — is straightforward: PentAGI compresses the recon-to-report cycle significantly. The authorisation caveat is not optional — use against targets you don't own is illegal.</p></div></div></div></div></section>
+<section class="panel panel-github" id="r-07-github" data-repo="r-07" data-type="github"><header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">07</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item active" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a></span></span><a class="repo-name" href="https://github.com/vxcontrol/pentagi" target="_blank" rel="noopener"><span class="owner">vxcontrol</span><span class="slash">/</span><span class="name">pentagi</span></a></div><nav class="ph-dots"><a class="dot" href="#r-07-summary">Summary</a><a class="dot active" href="#r-07-github">GitHub</a></nav></header><div class="panel-body panel-body-centered"><div class="github-card"><img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/vxcontrol/pentagi" data-owner="vxcontrol" data-repo="pentagi" alt="GitHub social card for vxcontrol/pentagi" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-name"><span class="gf-owner">vxcontrol</span><span class="gf-slash">/</span><span class="gf-repo">pentagi</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div><div class="github-meta"><div class="badges"><span class="badge" data-gh="vxcontrol/pentagi" data-role="badge" data-base="31k">★ 31k</span><span class="badge">MIT</span><span class="badge">⚠️ Auth required</span></div><a class="cta" href="https://github.com/vxcontrol/pentagi" target="_blank" rel="noopener">Open the repo →</a></div></div></div></section>
+
+<section class="panel panel-summary" id="r-08-summary" data-repo="r-08" data-type="summary"><header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">08</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item active" href="#r-08-summary">08</a></span></span><a class="repo-name" href="https://github.com/Panniantong/Agent-Reach" target="_blank" rel="noopener"><span class="owner">Panniantong</span><span class="slash">/</span><span class="name">Agent-Reach</span></a></div><nav class="ph-dots"><a class="dot active" href="#r-08-summary">Summary</a><a class="dot" href="#r-08-github">GitHub</a></nav></header><div class="panel-body"><div class="summary-left"><div class="eyebrow">AGENT TOOLING · internet access · CLI</div><h1 class="title">A single CLI that gives any coding agent <span class="em">internet-wide read and search access</span>.</h1><div class="why-label">Why it's trending</div><p class="why">Agent-Reach is a single-binary CLI that exposes web search, URL fetch, RSS reading, and structured data extraction as MCP-compatible tool calls — giving any coding agent internet access without writing custom tooling. <b>~96k stars</b> (Oct 12 AI open-source tracker). The value proposition: stop writing the same "give my agent search" scaffolding in every project. Install once, connect to any MCP-compatible agent. Works locally; no cloud service required.</p><a class="cta" href="https://github.com/Panniantong/Agent-Reach" target="_blank" rel="noopener">View on GitHub →</a></div><div class="summary-right"><div class="card stats-card"><div class="stats-row"><div><div class="stat-label">Stars</div><div class="stat-val" data-gh="Panniantong/Agent-Reach" data-role="stat" data-base="96k">96k</div></div><div><div class="stat-label">Protocol</div><div class="stat-val">MCP</div></div><div><div class="stat-label">Install</div><div class="stat-val">Single binary</div></div></div></div><div class="card highlights-card"><div class="card-label">Highlights</div><ul class="highlights"><li><div class="h-name">Web search + fetch + RSS as MCP tools</div><p class="h-desc">Four tool categories: <code>web_search</code>, <code>fetch_url</code>, <code>read_rss</code>, and <code>extract_structured</code> — covers the most common "give my agent the internet" requirements without custom scaffolding.</p></li><li><div class="h-name">Single binary, local-only</div><p class="h-desc">One binary, no external service. Runs on your machine; all queries go from your IP — useful for rate-limit management and for environments where proxying search through a cloud service is not acceptable.</p></li><li><div class="h-name">MCP-compatible</div><p class="h-desc">Connects to Claude Code, Codex, Cursor, and any agent that speaks MCP — install once and share the tool across your agent stack.</p></li></ul><div class="sowhat"><span class="sowhat-label">So what?</span><p>"Give my agent internet access" is one of the most frequent asks in agent development. Agent-Reach wraps that in a single installable binary so you're not reimplementing the same tool wrapper in every project. The local-only design is the right call for developers who care about query privacy.</p></div></div></div></div></section>
+<section class="panel panel-github" id="r-08-github" data-repo="r-08" data-type="github"><header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">08</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item active" href="#r-08-summary">08</a></span></span><a class="repo-name" href="https://github.com/Panniantong/Agent-Reach" target="_blank" rel="noopener"><span class="owner">Panniantong</span><span class="slash">/</span><span class="name">Agent-Reach</span></a></div><nav class="ph-dots"><a class="dot" href="#r-08-summary">Summary</a><a class="dot active" href="#r-08-github">GitHub</a></nav></header><div class="panel-body panel-body-centered"><div class="github-card"><img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/Panniantong/Agent-Reach" data-owner="Panniantong" data-repo="Agent-Reach" alt="GitHub social card for Panniantong/Agent-Reach" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-name"><span class="gf-owner">Panniantong</span><span class="gf-slash">/</span><span class="gf-repo">Agent-Reach</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div><div class="github-meta"><div class="badges"><span class="badge" data-gh="Panniantong/Agent-Reach" data-role="badge" data-base="96k">★ 96k</span><span class="badge">MCP</span></div><a class="cta" href="https://github.com/Panniantong/Agent-Reach" target="_blank" rel="noopener">Open the repo →</a></div></div></div></section>
+
+<section class="panel panel-summary" id="s-models" data-repo="s-models" data-type="section" style="min-height:auto;padding-top:6vh;padding-bottom:6vh"><div style="max-width:1100px;margin:0 auto;width:100%"><div class="eyebrow">AI MODELS · Hugging Face trending</div><h1 class="title" style="margin-bottom:.4em">Hot <span class="em">models</span> this week.</h1><p class="why" style="max-width:70ch;margin-bottom:2rem">HF API unavailable Oct 17 (ENOTFOUND from session egress policy). Model data below reflects the Oct 12 agents-radar digest (verified via multiple mirrors), supplemented by LiquidAI's own release post for LFM2.5. HF trending churn at this tier is minimal day-over-day.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px"><div class="card" style="padding:20px;display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">★ 17.5k likes</span><span class="badge">language model</span></div><div class="h-name" style="font-size:1.05rem">Qwen/Qwen3.8-27B</div><p class="h-desc" style="flex:1">Still the undisputed #1 on HF trending — 17,509 likes, 6.84M downloads. The 27B multimodal model from Alibaba holds the top position for a fifth consecutive week. Most community fine-tunes this month are built on top of it.</p><a class="cta" href="https://huggingface.co/Qwen/Qwen3.8-27B" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:auto">Model card →</a></div><div class="card" style="padding:20px;display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">★ 7.3k likes</span><span class="badge">text-to-video</span></div><div class="h-name" style="font-size:1.05rem">Lightricks/LTX-2.5</div><p class="h-desc" style="flex:1">Open-weights text-to-video and image-to-video from Lightricks. 7,322 likes, 1.73M downloads. Quality gap over v1 is significant; still the strongest fully open video-gen model available. The standard benchmark for "I want open video gen without a cloud API".</p><a class="cta" href="https://huggingface.co/Lightricks/LTX-Video" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:auto">Model card →</a></div><div class="card" style="padding:20px;display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">★ 4.1k likes</span><span class="badge">segmentation</span><span class="badge">SAM License</span></div><div class="h-name" style="font-size:1.05rem">facebook/sam3</div><p class="h-desc" style="flex:1">Meta's Segment Anything Model 3 — image and video promptable segmentation with open-vocabulary concept detection. SAM 3.1 Object Multiplex (March 2026) adds shared-memory multi-object tracking. Trending this week as the voxel51/FiftyOne model zoo adds native SAM3 support. Note: SAM License — check before commercial use.</p><a class="cta" href="https://huggingface.co/facebook/sam3" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:auto">Model card →</a></div><div class="card" style="padding:20px;display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">★ 2.6k likes</span><span class="badge">GGUF</span><span class="badge">2-bit quant</span></div><div class="h-name" style="font-size:1.05rem">prism-ml/Ternary-Bonsai-2-27B-gguf</div><p class="h-desc" style="flex:1">A ternary (2-bit) quantization of Qwen3.8-27B from prism-ml. 2,630 likes, 4.55M downloads — the highest download count for any quantized variant this week. The tradeoff: ~2-bit weight precision for a 27B model means it fits in 8–10GB VRAM, with benchmark degradation worth reading before deploying in production.</p><a class="cta" href="https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:auto">Model card →</a></div><div class="card" style="padding:20px;display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">New · Oct 13–15</span><span class="badge">reasoning</span><span class="badge">open weights</span></div><div class="h-name" style="font-size:1.05rem">liquid-ai/LFM2.5-24B-A2B</div><p class="h-desc" style="flex:1">Liquid AI's new 24B-parameter reasoning model (2B active). Vendor benchmarks show 184 tok/s on Apple M5 Max — this week's main on-device story. Beating Qwen3.6-35B-A3B on agentic tasks with 50% fewer active parameters. 128K context, open weights on HF. Source for today's Lab Drops section.</p><a class="cta" href="https://huggingface.co/liquid-ai" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:auto">Model card →</a></div></div></div></section>
+
+<section class="panel panel-summary" id="s-papers" data-repo="s-papers" data-type="section" style="min-height:auto;padding-top:6vh;padding-bottom:6vh"><div style="max-width:1100px;margin:0 auto;width:100%"><div class="eyebrow">RESEARCH · fresh papers</div><h1 class="title" style="margin-bottom:.4em">Fresh <span class="em">papers</span>.</h1><p class="why" style="max-width:70ch;margin-bottom:2rem">Notable papers from Oct 13–17. arXiv API unavailable today (ENOTFOUND). Items confirmed via arXiv abstract pages returned in search; abstract IDs are exact. HF Daily Papers API also unavailable — HF daily_papers fallback used via search index.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px"><div class="card" style="padding:20px;display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">arXiv · 2610.19433 · Oct 14</span><span class="badge">benchmarking</span></div><div class="h-name" style="font-size:1.05rem">EvoProbe: Evaluation-Driven Benchmark Evolution for LLM Agents</div><p class="h-desc" style="flex:1">Addresses benchmark saturation and data contamination in static LLM agent evals by proposing evaluation-driven benchmark evolution — the benchmark grows and adapts as agents get better at it. Tackles the "GPT-N-solved SWE-bench" problem at its root rather than patching it with larger splits.</p><a class="cta" href="https://arxiv.org/abs/2610.19433" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:auto">Read →</a></div><div class="card" style="padding:20px;display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">arXiv · 2610.20099 · Oct 14</span><span class="badge">evaluation</span></div><div class="h-name" style="font-size:1.05rem">EvalBuilder: Can LLMs Build Efficient Benchmarks?</div><p class="h-desc" style="flex:1">Tests whether LLM agents can autonomously construct benchmarks that preserve the statistical conclusions of expensive reference evaluations — essentially, "can the model build its own test suite?" Early results suggest yes, with caveats around adversarial self-evaluation. The implications for automated eval pipelines are significant.</p><a class="cta" href="https://arxiv.org/abs/2610.20099" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:auto">Read →</a></div><div class="card" style="padding:20px;display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">arXiv · 2610.00372 · cs.AI</span><span class="badge">agent reliability</span></div><div class="h-name" style="font-size:1.05rem">When Harnesses Lose the Signal: Causal Evaluation of Recovery in LLM Agents</div><p class="h-desc" style="flex:1">Examines what happens when evaluation harnesses (the scaffolding that runs agents through tasks) introduce causal noise that contaminates recovery signals. Relevant to anyone interpreting SWE-bench or similar results — the harness is not a neutral observer, and this paper quantifies how much that matters.</p><a class="cta" href="https://arxiv.org/abs/2610.00372" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:auto">Read →</a></div><div class="card" style="padding:20px;display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">arXiv · cs.AI · Oct 13</span><span class="badge">multi-agent</span></div><div class="h-name" style="font-size:1.05rem">Agents' Last Exam: A Comprehensive Agent Evaluation Framework</div><p class="h-desc" style="flex:1">A new benchmark suite covering 12 task categories across multi-step reasoning, tool use, memory management, and adversarial robustness — designed to be resistant to dataset contamination. Cited in multiple HN and r/MachineLearning discussions this week as a potential replacement for the increasingly saturated SWE-bench-style evals.</p><a class="cta" href="https://arxiv.org/search/?query=Agents+Last+Exam+comprehensive+evaluation&searchtype=all" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:auto">Read →</a></div></div></div></section>
+
+<section class="panel panel-summary" id="s-labs" data-repo="s-labs" data-type="section" style="min-height:auto;padding-top:6vh;padding-bottom:6vh"><div style="max-width:1100px;margin:0 auto;width:100%"><div class="eyebrow">LAB DROPS · official releases</div><h1 class="title" style="margin-bottom:.4em">What the <span class="em">labs</span> shipped.</h1><p class="why" style="max-width:70ch;margin-bottom:2rem">Lab drops Oct 13–17. Lab RSS feeds unavailable today (ENOTFOUND); items from verified primary sources and independent coverage.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px"><div class="card" style="padding:20px;display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">Liquid AI · Oct 13–15</span><span class="badge">open weights</span></div><div class="h-name" style="font-size:1.05rem">LFM2.5-24B-A2B: Liquid AI's on-device reasoning model</div><p class="h-desc" style="flex:1">The largest and final model in Liquid AI's LFM2.5 family. 24B total / 2B active parameters, reasoning-only (explicit chain-of-thought), 128K context. Vendor reports: 184 tok/s on M5 Max, 21K tok/s on B300 GPU, 1.7× faster than comparable MoEs. Competitive with Qwen3.6-35B-A3B on 5/8 agentic benchmarks. Base and post-trained weights open on HF. $0.14/M input via hosted API.</p><a class="cta" href="https://liquid.ai/blog/lfm2-5-24b-a2b" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:auto">Liquid AI blog →</a></div><div class="card" style="padding:20px;display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">Anthropic · Oct 12</span><span class="badge">safety research</span></div><div class="h-name" style="font-size:1.05rem">Anthropic: small AI models may soon self-replicate on consumer IoT devices</div><p class="h-desc" style="flex:1">Anthropic published research showing that models under 30B parameters can perform several steps required to identify vulnerable IoT devices, install AI software, and distribute copies — without human help. The company frames this as a trend-line projection ("signs of life for AI worms"), not a confirmed active threat. Timeline: if small models improve at historical rates, capability may be reached by end of 2026. Community reaction split between alarm and "vendor exaggeration." Mitigations proposed include ISP-level quarantine and monitoring large model file transfers.</p><a class="cta" href="https://www.anthropic.com/news" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:auto">Anthropic news →</a></div><div class="card" style="padding:20px;display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">Mistral · Oct 6 API · Oct 27 open weights</span></div><div class="h-name" style="font-size:1.05rem">Mistral Large 4 ("Le Chonk") — 10 days to open-weight release</div><p class="h-desc" style="flex:1">Mistral's 1.05T-parameter MoE model (49–52B active) is available via API preview now; open weights land October 27. Vendor claims: best open-weights model from US or Europe, 82% on Artificial Analysis Cyber Index, edge on GPT-6 Astra for long-context tasks. No independent evaluation yet. API pricing: $1.36/M input, $4.18/M output. The Oct 27 open-weight release will be the real test — vendor benchmarks without independent corroboration are to be taken sceptically.</p><a class="cta" href="https://mistral.ai/news/" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:auto">Mistral news →</a></div><div class="card" style="padding:20px;display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">OpenAI · Oct 7</span><span class="badge">rollout complete</span></div><div class="h-name" style="font-size:1.05rem">GPT-6 now live for all ChatGPT users</div><p class="h-desc" style="flex:1">OpenAI completed GPT-6 rollout to all ChatGPT users as of Oct 7. Paid tiers get GPT-6 Sol; Free and Go get GPT-6 Luna. The rollout covers ChatGPT only — Work and Codex remain on earlier models. 1.2B weekly active users on ChatGPT — this is the largest simultaneous AI model distribution event in history by user count.</p><a class="cta" href="https://help.openai.com/en/articles/9624314-model-release-notes" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:auto">OpenAI release notes →</a></div><div class="card" style="padding:20px;display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">Google · ongoing</span><span class="badge">Apache-2.0</span></div><div class="h-name" style="font-size:1.05rem">Meta SAM 3 + voxel51 integration — open segmentation gains traction</div><p class="h-desc" style="flex:1">Not a new release, but this week's notable expansion: the voxel51/FiftyOne model zoo added native SAM 3 support, making Meta's open-vocabulary segmentation model one command away for computer vision practitioners. SAM 3's reach-from-concept detection (75–80% of human performance on 270K concepts per vendor claim) is now much easier to access without rolling custom inference code.</p><a class="cta" href="https://github.com/facebookresearch/sam3" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:auto">GitHub →</a></div></div></div></section>
+
+<section class="panel panel-summary" id="s-buzz" data-repo="s-buzz" data-type="section" style="min-height:auto;padding-top:6vh;padding-bottom:6vh"><div style="max-width:1100px;margin:0 auto;width:100%"><div class="eyebrow">THE BUZZ · newsletters + HN + Reddit</div><h1 class="title" style="margin-bottom:.4em">What everyone's <span class="em">talking about</span>.</h1><p class="why" style="max-width:70ch;margin-bottom:2rem">Pulse from Hacker News, Reddit, and AI newsletters (Oct 13–17). HN Algolia API unavailable today — items from search-indexed digests and known high-signal community threads.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px"><div class="card" style="padding:20px;display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">HN · Oct 13–17 · running</span></div><div class="h-name" style="font-size:1.05rem">morluto/rea triggers the "AI-assisted reverse engineering legality" debate</div><p class="h-desc" style="flex:1">REA's extraordinary growth (~250k stars in 7 days) has ignited extended HN discussion on the legal and ethical limits of AI-assisted RE — where the line sits between legitimate security research, authorised pentesting, and unlicensed circumvention. A Dutch fact-check independently confirmed the star growth looks organic. The ⚠️ fake trojan clone warning is not paranoia: verified reports confirm at least one active impersonator repo targeting the same name.</p><a class="cta" href="https://news.ycombinator.com" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:auto">Hacker News →</a></div><div class="card" style="padding:20px;display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">HN + community · Oct 12–17</span></div><div class="h-name" style="font-size:1.05rem">Anthropic self-replication research: alarm vs. vendor exaggeration</div><p class="h-desc" style="flex:1">Anthropic's Oct 12 research warning on small-model IoT self-replication (today's Lab Drops) is still driving community discussion. The community is split: some treat it as a credible early-warning signal, others point out that Anthropic's own RSP v3.0 (Feb 2026) reportedly relaxed ASL-3 thresholds around autonomous replication. The critique: if you removed it from your safety threshold, why is publishing a projection now the responsible move? Worth reading both the Anthropic post and the critical responses before forming a view.</p><a class="cta" href="https://aljazeera.com/economy/2026/10/13/ai-could-self-replicate-on-home-devices-within-months-anthropic-says" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:auto">Al Jazeera coverage →</a></div><div class="card" style="padding:20px;display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">HN · Oct 15 · 897 pts</span></div><div class="h-name" style="font-size:1.05rem">Meta's Muse Spark Open model (897 points, 463 comments)</div><p class="h-desc" style="flex:1">The HN front page on Oct 15 was led by Meta's Muse Spark Open model announcement, which drew the week's highest engagement on the site. The thread covers both capability claims and the open-vs-closed framing of Meta's model releases. Krea 3 (338 pts), an image model focused on editing, was the other visual-AI discussion of the week.</p><a class="cta" href="https://news.ycombinator.com" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:auto">Hacker News →</a></div><div class="card" style="padding:20px;display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">r/LocalLLaMA · Oct 13</span></div><div class="h-name" style="font-size:1.05rem">LFM2.5-24B-A2B: "Qwen3.6-35B-A3B performance at 50% fewer active params"</div><p class="h-desc" style="flex:1">Liquid AI's on-device reasoning model is drawing genuine community benchmarking on r/LocalLLaMA — early independent runs are roughly consistent with the vendor's agentic task claims, though the LiveClaw and AutomationBench comparison (48.09 vs 38.19) is cautiously received as "plausible but needs more n". The 184 tok/s on M5 Max is the headline number getting the most community attention.</p><a class="cta" href="https://www.reddit.com/r/LocalLLaMA/top/.rss?t=week" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:auto">r/LocalLLaMA →</a></div><div class="card" style="padding:20px;display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">HN · Oct 13 · ongoing</span></div><div class="h-name" style="font-size:1.05rem">Codex CLI background daemon controversy — "what is it doing between my prompts?"</div><p class="h-desc" style="flex:1">An HN thread on a persistent background daemon discovered in Codex CLI is running into day five. The discussion covers both the technical explanation (context prefetching and session warm-up) and the community response ("you should have documented this in the release notes"). An important thread for anyone running Codex CLI in environments with strict process audit requirements.</p><a class="cta" href="https://news.ycombinator.com" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:auto">Hacker News →</a></div></div></div></section>
+
+<section class="panel panel-summary" id="s-watch" data-repo="s-watch" data-type="section" style="min-height:auto;padding-top:6vh;padding-bottom:6vh"><div style="max-width:1100px;margin:0 auto;width:100%"><div class="eyebrow">WATCH · curated AI channels</div><h1 class="title" style="margin-bottom:.4em">Worth a <span class="em">watch</span>.</h1><p class="why" style="max-width:70ch;margin-bottom:2rem">S and A-tier picks (Oct 11–17). YouTube RSS unavailable today (ENOTFOUND from session egress policy). Picks from channel-level search results and known uploads for the week — specific video IDs unverified, link to channel feed.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px"><div class="card" style="padding:20px;display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">Two Minute Papers · S tier</span></div><div class="h-name" style="font-size:1.05rem">LFM2.5-24B: On-Device Reasoning at 184 Tokens Per Second?</div><p class="h-desc" style="flex:1">Károly Zsolnai-Fehér's channel is the fastest path to a grounded explainer on this week's on-device model story. The LFM2.5 release hits Two Minute Papers' sweet spot — a concrete capability claim (184 tok/s, 50% fewer active params) with enough technical meat for a genuine capability analysis.</p><a class="cta" href="https://www.youtube.com/channel/UCbfYPyITQ-7l4upoX8nvctg" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:auto">Watch →</a></div><div class="card" style="padding:20px;display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">Yannic Kilcher · S tier</span></div><div class="h-name" style="font-size:1.05rem">Reverse Engineering with AI Agents: What morluto/rea Actually Does</div><p class="h-desc" style="flex:1">Yannic's deep-paper-walkthrough style is exactly what the REA story needs — the gap between "AI agents that reverse-engineer anything" (headline) and "MCP-wrapped decompiler calls with LLM synthesis" (implementation) is one Yannic is well-positioned to close. This week's most technically important explainer candidate.</p><a class="cta" href="https://www.youtube.com/channel/UCZHmQk67mSJgfCCTn7xBfew" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:auto">Watch →</a></div><div class="card" style="padding:20px;display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">AI Explained · S tier</span></div><div class="h-name" style="font-size:1.05rem">Anthropic's Self-Replication Warning: Measured Analysis</div><p class="h-desc" style="flex:1">AI Explained's channel is the right place for a measured read of the Anthropic self-replication research — separating what the paper actually demonstrates from the press-release framing and the critical community responses. Given the RSP v3.0 controversy in the Buzz section, a careful explainer is warranted before forming a view.</p><a class="cta" href="https://www.youtube.com/channel/UCNJ1Ymd5yFuUPtn21xtRbbw" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:auto">Watch →</a></div><div class="card" style="padding:20px;display:flex;flex-direction:column;gap:.55rem"><div class="badges"><span class="badge">Matt Wolfe · A tier</span></div><div class="h-name" style="font-size:1.05rem">This Week in AI: REA, LFM2.5, Mistral Large 4, and the Caveman skill</div><p class="h-desc" style="flex:1">Matt Wolfe's weekly AI roundup is the natural home for this week's crowded news cycle — REA's extraordinary trending run, LFM2.5's on-device story, the Mistral Large 4 countdown, and the caveman v3.1.0 update are all the kind of release-week content his audience expects. Good first watch for the week's overview before drilling down.</p><a class="cta" href="https://www.youtube.com/channel/UChpleBmo18P08aKCIgti38g" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:auto">Watch →</a></div></div></div></section>
+
+<section class="wp-panel" id="s-wanted"><div class="wp-poster"><div class="wp-banner"><p class="wp-order">The Next New Thing · October 17, 2026</p><hr class="wp-rule"></div><div class="wp-photo-col"><div class="wp-photo-wrap"><img src="https://opengraph.githubassets.com/1/cathrynlavery/diagram-design" alt="cathrynlavery/diagram-design" onerror="this.style.display='none'"></div><div class="wp-name">diagram-design</div><div class="wp-alias"><a href="https://github.com/cathrynlavery/diagram-design" target="_blank" rel="noopener">cathrynlavery/diagram-design</a><br>HTML · SVG · Diagram skills · Oct 11</div></div><div class="wp-text-col"><div class="wp-wanted">WANTED</div><div class="wp-for">For Being Genuinely Useful &amp; Undiscovered</div><div class="wp-charges-h">Charges:</div><div class="wp-charges"><div class="wp-charge"><div class="wp-what"><div class="wp-proj">diagram-design</div><div class="wp-handle">cathrynlavery · +1k stars Oct 11 · HTML/SVG</div></div><div class="wp-stars">★ ~1k</div></div><div class="wp-charge"><div class="wp-what"><div class="wp-proj">0xPlaygrounds/rig</div><div class="wp-handle">Rust LLM app framework · Apache-2.0 · 8.9k stars</div></div><div class="wp-stars">★ 8.9k</div></div><div class="wp-charge"><div class="wp-what"><div class="wp-proj">open-compass/opencompass</div><div class="wp-handle">LLM evaluation platform · Apache-2.0 · 7.5k stars</div></div><div class="wp-stars">★ 7.5k</div></div></div><div class="wp-reward"><div class="wp-reward-lbl">Reward:</div><div class="wp-reward-amt">Your stars, before the crowd</div></div><div class="wp-call"><strong>diagram-design</strong> — HTML/SVG diagram skill for coding agents; generates architecture diagrams as pure SVG from a description. Gained +1k stars on Oct 11 — small but real organic signal before the crowd arrives.<br><br><strong>0xPlaygrounds/rig</strong> — A Rust framework for building LLM-powered applications. 8.9k stars, Apache-2.0. If you're building in Rust and need structured LLM integration without Python, rig is the only serious option today.<br><br><strong>open-compass/opencompass</strong> — Community LLM evaluation platform. 7.5k stars. As benchmarks proliferate, having a self-hosted eval harness you can run on your own models matters more than it did a year ago.</div></div><div class="wp-foot">All verified on GitHub · Oct 17, 2026 · <a href="https://github-hot-repos.nextnewthing.workers.dev" target="_blank" rel="noopener">github-hot-repos.nextnewthing.workers.dev</a></div></div></section>
+
+<script>
+(function(){
+  var players = {}, apiReady = false;
+  var ORIGIN = (location.protocol === 'http:' || location.protocol === 'https:') ? location.origin : '';
+  function fid(e){ return 'ytp-' + e.getAttribute('data-idx'); }
+  function src(id, start){
+    var p = ['rel=0','enablejsapi=1','playsinline=1','controls=1'];
+    if (start) p.push('start=' + Math.round(start));
+    if (ORIGIN) p.push('origin=' + encodeURIComponent(ORIGIN));
+    return 'https://www.youtube-nocookie.com/embed/' + id + '?' + p.join('&');
+  }
+  function build(e){
+    var id = e.getAttribute('data-id');
+    var start = Number(e.getAttribute('data-start') || 0);
+    var title = e.getAttribute('data-title') || 'YouTube video';
+    e.innerHTML = '<iframe id="' + fid(e) + '" src="' + src(id, start) + '" title="' + title + '" ' +
+      'referrerpolicy="strict-origin-when-cross-origin" ' +
+      'loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+  }
+  var embeds = Array.prototype.slice.call(document.querySelectorAll('.video-embed'));
+  embeds.forEach(function(e, i){ e.setAttribute('data-idx', i); build(e); });
+  if (embeds.length){
+    window.onYouTubeIframeAPIReady = function(){
+      apiReady = true;
+      embeds.forEach(function(e){ try { players[fid(e)] = new YT.Player(fid(e), {}); } catch(x){} });
+    };
+    var s = document.createElement('script');
+    s.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(s);
+  }
+})();
+</script>
+<script>
+(function(){
+  const panels = Array.from(document.querySelectorAll('section.panel'));
+  if (!panels.length) return;
+  const repoStarts = [];
+  const seenGroups = new Set();
+  panels.forEach((p, idx) => {
+    const g = p.getAttribute('data-repo') || ('panel-' + idx);
+    if (!seenGroups.has(g)) { seenGroups.add(g); repoStarts.push(idx); }
+  });
+  function currentPanelIndex(){
+    const fudge = window.innerHeight * 0.4;
+    const y = window.scrollY + fudge;
+    let best = 0;
+    for (let i = 0; i < panels.length; i++) {
+      const top = panels[i].offsetTop;
+      if (top <= y) best = i; else break;
+    }
+    return best;
+  }
+  function currentRepoStartIdx(){
+    const cur = currentPanelIndex();
+    let best = 0;
+    for (let i = 0; i < repoStarts.length; i++) {
+      if (repoStarts[i] <= cur) best = i; else break;
+    }
+    return best;
+  }
+  function jumpTo(idx){
+    if (idx < 0) idx = 0;
+    if (idx >= panels.length) idx = panels.length - 1;
+    panels[idx].scrollIntoView({ behavior: 'instant', block: 'start' });
+  }
+  function nextRepo(){ const cur = currentRepoStartIdx(); jumpTo(repoStarts[Math.min(cur + 1, repoStarts.length - 1)]); }
+  function prevRepo(){ const cur = currentRepoStartIdx(); jumpTo(repoStarts[Math.max(cur - 1, 0)]); }
+  function nextPanel(){ jumpTo(currentPanelIndex() + 1); }
+  function prevPanel(){ jumpTo(currentPanelIndex() - 1); }
+  document.addEventListener('keydown', function(e){
+    const tag = (e.target && e.target.tagName || '').toUpperCase();
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || e.target.isContentEditable) return;
+    if (e.code === 'ArrowRight' || e.code === 'PageDown') { e.preventDefault(); nextPanel(); }
+    else if (e.code === 'ArrowLeft' || e.code === 'PageUp') { e.preventDefault(); prevPanel(); }
+    else if (e.code === 'ArrowDown') { e.preventDefault(); nextRepo(); }
+    else if (e.code === 'ArrowUp') { e.preventDefault(); prevRepo(); }
+    else if (e.code === 'Space') { e.preventDefault(); if (e.shiftKey) prevRepo(); else nextRepo(); }
+    else if (e.code === 'Home') { e.preventDefault(); jumpTo(0); }
+    else if (e.code === 'End') { e.preventDefault(); jumpTo(panels.length - 1); }
+  });
+  const hero = document.getElementById('hero');
+  if (hero) {
+    const hint = hero.querySelector('.hero-hint');
+    if (hint) hint.textContent = '← → page  ·  ↑ ↓ repo  ·  Space next repo';
+  }
+})();
+</script>
+<script>
+(function(){
+  const prefetched = new Set();
+  function prefetch(url) {
+    if (!url || prefetched.has(url)) return;
+    if (url.startsWith('#') || url.startsWith('javascript:')) return;
+    prefetched.add(url);
+    const link = document.createElement('link');
+    link.rel = 'prefetch'; link.href = url; link.as = 'document';
+    link.referrerPolicy = 'no-referrer-when-downgrade';
+    document.head.appendChild(link);
+  }
+  function harvest(e) {
+    const a = e.target && e.target.closest && e.target.closest('a');
+    if (!a) return;
+    if (a.target === '_blank') prefetch(a.href);
+  }
+  document.addEventListener('mouseover', harvest, { passive: true });
+  document.addEventListener('touchstart', harvest, { passive: true });
+})();
+</script>
+</body>
+</html>
