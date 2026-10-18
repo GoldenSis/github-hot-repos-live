@@ -63,11 +63,22 @@ content-type (check for `<rss>`/`<?xml>` or real JSON), not just HTTP 200.**
 | 🥇 **AI News (smol.ai)** | `https://news.smol.ai/rss.xml` — pre-summarized meta-aggregate of ~356 X accts + 21 Discords + AI subreddits | ★5 |
 | Latent Space | `https://www.latent.space/feed` | ★5 |
 | Import AI (Jack Clark) | `https://jack-clark.net/feed/` | ★5 |
+| a16z News | `https://www.a16z.news/feed` | Agents, infrastructure and company-building analysis; investor perspective |
+| Speedrun Newsletter | `https://speedrun.substack.com/feed` | Product, distribution and founder lessons; investor perspective |
 | TLDR AI | `https://tldr.tech/api/rss/ai` (note: `/ai/rss` 404s) | ★3 |
 | Hacker News (AI, score-filtered) | `https://hn.algolia.com/api/v1/search_by_date?query=AI&tags=story&numericFilters=points>100` | ★4 |
 | Reddit r/LocalLLaMA | `https://www.reddit.com/r/LocalLLaMA/top/.rss?t=week` — ⚠️ `.rss` only, spaced, custom UA, curl | ★5 |
 | Reddit r/MachineLearning | `https://www.reddit.com/r/MachineLearning/.rss` — same caveats | ★4 |
 > Skip: The Batch & Ben's Bites (no working RSS — AI News covers their ground).
+
+**a16z additions checked 2026-10-18:** both feeds returned valid RSS with 20 recent items
+each using a browser User-Agent; the default Python User-Agent returned 403. These are
+recent windows, not complete archives. Follow canonical article URLs and deduplicate across
+feeds and prior issues. On a blocked fetch, report the source as unread and continue with
+available sources. The [official directory](https://a16z.com/newsletters/) also lists Jobs,
+Crypto and AI Policy; those are outside the default pull. Read selected articles in full;
+label investor opinions and portfolio announcements, and corroborate technical claims at
+the relevant project's source. Public feeds need no email subscription or new account.
 
 ## 6. Video — YouTube (per-channel RSS, keyless)
 `https://www.youtube.com/feeds/videos.xml?channel_id=UC…` — free, no quota, no key. Feed = channel's ~15 latest uploads (includes Shorts — filter by title/duration if needed).
@@ -108,4 +119,4 @@ No free API since 2026-02-06; nitter effectively dead. Best-effort only: `xcance
 
 ---
 ### The routine's default pull (keyless, one pass)
-GitHub Trending RSS (§1) · GitHub Search breakouts (§1) · HF trending models + daily_papers (§2) · Tier-1 lab RSS (§3) · arXiv API (§4) · AI News + HN + Import AI (§5). YouTube RSS once channel IDs are pinned. Everything here is no-key and cloud-runnable today.
+GitHub Trending RSS (§1) · GitHub Search breakouts (§1) · HF trending models + daily_papers (§2) · Tier-1 lab RSS (§3) · arXiv API (§4) · AI News + HN + Import AI + a16z News + Speedrun (§5). YouTube RSS once channel IDs are pinned. Use the access notes above; a successful local fetch does not guarantee access from the cloud runner.
