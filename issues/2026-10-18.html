@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hot GitHub Repos — October 18, 2026 · The Next New Thing</title>
+<link rel="preconnect" href="https://opengraph.githubassets.com" crossorigin>
+<link rel="preconnect" href="https://github.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Rye&family=Special+Elite&display=swap">
+<script>(function(){
+  var TOKENS=['1','og','v2','v3','v4'];
+  window.ogErr=function(img){
+    var n=+(img.dataset.tryn||0);
+    if(n<TOKENS.length-1){ n++; img.dataset.tryn=n;
+      setTimeout(function(){ img.src='https://opengraph.githubassets.com/'+TOKENS[n]+'/'+img.dataset.owner+'/'+img.dataset.repo+'?cb='+Date.now(); }, 500*n);
+    } else { img.style.display='none'; if(img.nextElementSibling) img.nextElementSibling.style.display='flex'; }
+  };
+})();</script>
+<style>
+:root {
+  --canvas: #f8f9fc;
+  --surface: #ffffff;
+  --surface-2: #edeff4;
+  --ink: #0c0d11;
+  --ink-muted: #4a4f59;
+  --ink-subtle: #6b7079;
+  --hairline: #d6dae2;
+  --hairline-soft: #edeff4;
+  --accent: #1f3a5f;
+  --canvas-hm: #f3f4f9;
+  --canvas-hm-accent: #f6ead0;
+  --accent-warm: #9a6a1e;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: auto;
+  overflow-x: hidden;
+}
+body { overflow-y: scroll; }
+.panel {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 0;
+}
+.panel-hm { background: var(--canvas-hm); }
+.panel-hm .panel-header { background: var(--canvas-hm); }
+.hm-chip { background: var(--accent); color: var(--canvas); padding: 5px 11px; border-radius: 12px; font-size: 11px; font-family: 'Inter', sans-serif; font-weight: 600; white-space: nowrap; letter-spacing: 0.02em; }
+.panel-hm-accent { background: var(--canvas-hm-accent); }
+.panel-hm-accent .panel-header { background: var(--canvas-hm-accent); }
+.panel-hm-accent .hm-chip { background: var(--accent-warm); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 4px; }
+.vbtn { display: inline-block; background: var(--accent); color: var(--canvas); padding: 11px 18px; border-radius: 8px; font-size: 13px; font-weight: 500; text-decoration: none; }
+.vbtn:hover { background: #142847; }
+.cta-alt { background: var(--surface); color: var(--accent); border: 1px solid var(--accent); }
+.cta-alt:hover { background: var(--surface-2); }
+.h-desc a, .why a, .sowhat p a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--hairline); }
+.h-desc a:hover, .why a:hover, .sowhat p a:hover { border-bottom-color: var(--accent); }
+.panel-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 36px; border-bottom: 1px solid var(--hairline);
+  background: var(--canvas); position: sticky; top: 0; z-index: 10;
+  font-family: 'Inter', sans-serif;
+}
+.ph-left { display: flex; align-items: center; gap: 14px; }
+.rank {
+  font-family: ui-monospace, 'JetBrains Mono', monospace;
+  font-size: 12px; color: var(--ink-subtle); letter-spacing: 0.06em;
+}
+.repo-name {
+  font-size: 16px; font-weight: 500; color: var(--ink);
+  text-decoration: none; letter-spacing: -0.2px;
+}
+.repo-name:hover .name { color: var(--accent); }
+.repo-name .owner { color: var(--ink-muted); font-weight: 400; }
+.repo-name .slash { color: var(--ink-subtle); margin: 0 2px; }
+.ph-dots { display: flex; gap: 4px; }
+.dot {
+  font-size: 11px; padding: 6px 12px; border-radius: 14px;
+  text-decoration: none; color: var(--ink-subtle);
+  letter-spacing: 0.04em; text-transform: uppercase; font-weight: 500;
+  border: 1px solid transparent;
+}
+.dot:hover { color: var(--ink); border-color: var(--hairline); }
+.dot.active { color: var(--accent); border-color: var(--accent); }
+.panel-body {
+  flex: 1; display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px;
+  padding: 36px 56px 48px;
+}
+.panel-body-centered {
+  display: flex; align-items: center; justify-content: center;
+  padding: 36px 56px; flex: 1;
+}
+.summary-left { display: flex; flex-direction: column; justify-content: space-between; }
+.summary-right { display: flex; flex-direction: column; gap: 14px; min-height: 0; }
+.eyebrow {
+  font-size: 11px; font-weight: 600; color: var(--accent);
+  letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 14px;
+}
+.title {
+  font-size: 38px; font-weight: 500; line-height: 1.15;
+  letter-spacing: -1.0px; color: var(--ink); margin-bottom: 24px;
+}
+.title .em { color: var(--accent); }
+.why-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-subtle); margin-bottom: 8px;
+}
+.why { font-size: 15px; line-height: 1.55; color: var(--ink-muted); margin-bottom: 18px; }
+.why b { color: var(--ink); font-weight: 500; }
+.cta {
+  display: inline-block; background: var(--accent); color: var(--canvas);
+  padding: 12px 22px; border-radius: 8px; font-size: 14px; font-weight: 500;
+  text-decoration: none; margin-top: auto; align-self: flex-start;
+}
+.cta:hover { background: #142847; }
+.card { background: var(--surface); border: 1px solid var(--hairline); border-radius: 14px; }
+.stats-card { padding: 16px 22px; flex-shrink: 0; }
+.stats-row {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 18px; align-items: end;
+}
+.stat-label {
+  font-size: 10px; color: var(--ink-subtle); letter-spacing: 0.14em;
+  text-transform: uppercase; font-weight: 600; margin-bottom: 4px;
+}
+.stat-val { font-size: 18px; font-weight: 500; color: var(--ink); letter-spacing: -0.3px; }
+.highlights-card { padding: 18px 22px; flex: 1; min-height: 0; overflow: hidden; }
+.card-label {
+  font-size: 10px; color: var(--ink-subtle); letter-spacing: 0.14em;
+  text-transform: uppercase; font-weight: 600; margin-bottom: 14px;
+}
+.highlights { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.highlights li {
+  padding-bottom: 12px; border-bottom: 1px solid var(--hairline-soft);
+  position: relative; padding-left: 14px;
+}
+.highlights li::before {
+  content: ''; display: inline-block; width: 5px; height: 5px;
+  background: var(--accent); border-radius: 50%; position: absolute;
+  left: 0; top: 8px;
+}
+.highlights li:last-child { border-bottom: none; padding-bottom: 0; }
+.h-name { font-size: 14px; font-weight: 500; color: var(--ink); letter-spacing: -0.15px; margin-bottom: 2px; }
+.h-desc { font-size: 13px; line-height: 1.45; color: var(--ink-muted); }
+.h-desc code, .why code {
+  font-family: ui-monospace, 'JetBrains Mono', monospace; font-size: 12px;
+  background: var(--surface-2); padding: 1px 6px; border-radius: 4px; color: var(--ink);
+}
+.sowhat { margin-top:14px; padding-top:12px; border-top:1px solid var(--hairline-soft); }
+.sowhat-label { font-size:10px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:4px; }
+.sowhat p { font-size:13px; line-height:1.45; color:var(--ink-muted); }
+.github-card {
+  max-width: 1100px; width: 100%; display: flex; flex-direction: column;
+  align-items: center; gap: 24px;
+}
+.github-og {
+  width: 100%; max-width: 1100px; aspect-ratio: 2 / 1; object-fit: cover;
+  border-radius: 14px; border: 1px solid var(--hairline);
+  background: var(--surface);
+}
+.github-meta { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.badges { display: flex; gap: 10px; }
+.badge {
+  background: var(--surface); border: 1px solid var(--hairline);
+  padding: 8px 14px; border-radius: 16px; font-size: 13px; color: var(--ink);
+}
+.issue-card { background: var(--surface); border: 1px solid var(--hairline); border-radius: 14px; padding: 36px 36px; max-width: 720px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+.issue-card .card-label { color: var(--accent); margin-bottom: 0; }
+.issue-title { font-size: 24px; font-weight: 500; color: var(--ink); letter-spacing: -0.5px; line-height: 1.3; }
+.issue-summary { font-size: 15px; color: var(--ink-muted); line-height: 1.6; }
+.issue-summary code { font-family: ui-monospace, 'JetBrains Mono', monospace; font-size: 12px; background: var(--surface-2); padding: 1px 6px; border-radius: 4px; color: var(--ink); }
+.issue-summary a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--hairline); }
+.issue-summary a:hover { border-bottom-color: var(--accent); }
+.multi-cards { display: flex; flex-direction: column; gap: 24px; max-width: 720px; width: 100%; }
+.panel-hero {
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 0 40px; flex: 1;
+}
+.hero-block { max-width: 1400px; }
+.hero-eyebrow {
+  font-size: 24px; font-weight: 600; color: var(--accent);
+  letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 36px;
+}
+.hero-title {
+  font-size: 128px; font-weight: 500; line-height: 1.0;
+  letter-spacing: -3.6px; color: var(--ink); margin-bottom: 36px;
+}
+.hero-title .em { color: var(--accent); }
+.hero-sub { font-size: 40px; font-weight: 400; color: var(--ink-muted); margin-bottom: 60px; }
+.hero-sub b { color: var(--ink); font-weight: 500; }
+.hero-hint { font-size: 16px; color: var(--ink-subtle); }
+.panel-outro { display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 40px; flex: 1; }
+.outro-block { max-width: 1200px; }
+.outro-title { font-size: 88px; font-weight: 500; line-height: 1.05; letter-spacing: -2.4px; color: var(--ink); margin-bottom: 36px; }
+.outro-title .em { color: var(--accent); }
+.outro-sub { font-size: 22px; color: var(--ink-muted); }
+.outro-sub a { color: var(--accent); text-decoration: none; }
+.github-fallback {
+  display: none; width: 100%; max-width: 1100px; aspect-ratio: 2 / 1;
+  border-radius: 14px; border: 1px solid var(--hairline);
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+  align-items: center; justify-content: center; padding: 40px;
+  flex-direction: column;
+}
+.gf-content { text-align: center; display: flex; flex-direction: column; gap: 18px; align-items: center; }
+.gf-octocat { color: var(--accent); }
+.gf-name { font-family: 'Inter', sans-serif; font-size: 44px; font-weight: 500; letter-spacing: -1px; line-height: 1.1; }
+.gf-owner { color: var(--ink-muted); font-weight: 400; }
+.gf-slash { color: var(--ink-subtle); margin: 0 4px; }
+.gf-repo { color: var(--ink); }
+.gf-hint { font-size: 14px; color: var(--ink-subtle); }
+.rank-nav { position: relative; display: inline-flex; align-items: center; }
+.rank-trigger { cursor: pointer; user-select: none; padding: 4px 6px; border-radius: 4px; }
+.rank-trigger:hover, .rank-trigger:focus { color: var(--accent); outline: none; }
+.rank-dropdown {
+  display: none; position: absolute;
+  top: 100%; left: -4px; margin-top: 6px;
+  background: var(--surface); border: 1px solid var(--hairline);
+  border-radius: 10px; padding: 8px;
+  box-shadow: 0 12px 32px rgba(15,23,42,0.12);
+  grid-template-columns: repeat(4, 36px); gap: 4px;
+  z-index: 100; min-width: 180px;
+}
+.rank-nav:hover .rank-dropdown,
+.rank-nav:focus-within .rank-dropdown { display: grid; }
+.rank-item {
+  display: flex; align-items: center; justify-content: center;
+  height: 30px; padding: 0 6px;
+  font-family: ui-monospace, 'JetBrains Mono', monospace;
+  font-size: 12px; color: var(--ink-subtle);
+  text-decoration: none; border-radius: 6px;
+  letter-spacing: 0.06em; font-weight: 500;
+}
+.rank-item:hover { background: var(--surface-2); color: var(--ink); }
+.rank-item.active { color: var(--canvas); background: var(--accent); }
+/* WANTED */
+.wp-panel{min-height:100vh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;align-items:center;justify-content:center;padding:40px 56px;background:var(--canvas);}
+.wp-poster{position:relative;width:100%;max-width:1040px;display:grid;grid-template-columns:340px 1fr;gap:46px;align-items:center;padding:38px 50px 30px;background:radial-gradient(120% 130% at 50% 0%,#f3e8c6 0%,#e7d6ab 48%,#d8c08c 100%);border:2px solid #6b4a23;border-radius:4px;box-shadow:0 0 0 9px #e7d6ab,0 0 0 11px #5b3f1f,0 26px 60px rgba(40,26,10,.32),inset 0 0 120px rgba(120,80,30,.40);color:#2b1c10;}
+.wp-poster::before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:4px;background:radial-gradient(55% 35% at 10% 6%,rgba(90,55,20,.18),transparent 60%),radial-gradient(50% 32% at 94% 14%,rgba(90,55,20,.16),transparent 60%),radial-gradient(45% 28% at 50% 100%,rgba(70,40,15,.26),transparent 70%);mix-blend-mode:multiply;}
+.wp-poster>*{position:relative;z-index:1}
+.wp-banner{grid-column:1/-1;text-align:center;}
+.wp-order{letter-spacing:.42em;font-size:11px;text-transform:uppercase;color:#5b3f1f;margin-bottom:10px;}
+.wp-rule{height:0;border:0;border-top:3px double #5b3f1f;}
+.wp-photo-col{grid-column:1;display:flex;flex-direction:column;align-items:center;gap:14px;}
+.wp-photo-wrap{width:100%;padding:9px;background:#dfca99;border:2px solid #5b3f1f;box-shadow:inset 0 0 0 4px #b89a63,0 8px 20px rgba(0,0,0,.30);}
+.wp-photo-wrap img{display:block;width:100%;height:auto;filter:sepia(.55) contrast(1.04) brightness(.98) grayscale(.15);}
+.wp-name{font-family:'Rye',serif;text-align:center;line-height:1;font-size:clamp(30px,3.4vw,42px);color:#2b1c10;}
+.wp-alias{text-align:center;font-family:'Special Elite',monospace;font-size:12.5px;letter-spacing:.06em;color:#5b3f1f;line-height:1.5;}
+.wp-alias a{color:inherit;}
+.wp-text-col{grid-column:2;display:flex;flex-direction:column;}
+.wp-wanted{font-family:'Rye',serif;line-height:.9;font-size:clamp(58px,8.5vw,104px);color:#3a240f;text-shadow:1px 1px 0 #c9b074,2px 3px 0 rgba(0,0,0,.10);}
+.wp-for{font-family:'Rye',serif;font-size:clamp(20px,2.6vw,30px);color:#5b3f1f;letter-spacing:.04em;margin:2px 0 22px;}
+.wp-charges-h{font-family:'Rye',serif;font-size:16px;color:#3a240f;letter-spacing:.03em;margin-bottom:12px;}
+.wp-charges{display:flex;flex-direction:column;gap:12px;margin-bottom:22px;}
+.wp-charge{display:flex;align-items:baseline;justify-content:space-between;gap:16px;border-bottom:2px dotted rgba(91,63,31,.50);padding-bottom:10px;}
+.wp-charge .wp-what{display:flex;flex-direction:column;gap:1px;}
+.wp-proj{font-family:'Rye',serif;font-size:clamp(20px,2.4vw,26px);color:#2b1c10;line-height:1.04;}
+.wp-handle{font-family:'Special Elite',monospace;font-size:12px;letter-spacing:.05em;color:#6b4a23;}
+.wp-stars{white-space:nowrap;font-family:'Rye',serif;font-size:clamp(20px,2.6vw,28px);color:#7a3b12;}
+.wp-reward{text-align:center;border-top:3px double #5b3f1f;border-bottom:3px double #5b3f1f;padding:12px 8px;margin-bottom:16px;}
+.wp-reward-lbl{font-family:'Rye',serif;font-size:clamp(24px,3.4vw,36px);color:#7a3b12;line-height:1;}
+.wp-reward-amt{font-family:'Special Elite',monospace;font-size:14px;color:#3a240f;margin-top:5px;}
+.wp-call{font-family:'Special Elite',monospace;font-size:14px;line-height:1.65;color:#3a240f;}
+.wp-call strong{color:#7a3b12;}
+.wp-foot{grid-column:1/-1;text-align:center;margin-top:6px;font-family:'Special Elite',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#5b3f1f;}
+.wp-foot a{color:#7a3b12;text-decoration:none;border-bottom:1px solid #7a3b12;}
+@media(max-width:860px){.wp-poster{grid-template-columns:1fr;gap:24px;padding:30px 26px 24px;}.wp-photo-col{grid-column:1;max-width:300px;margin:0 auto;}.wp-text-col{grid-column:1;text-align:center;align-items:center;}.wp-panel{padding:28px 18px;}}
+@media (max-width: 1100px) {
+  .panel-body { grid-template-columns: 1fr; gap: 28px; padding: 28px 32px 36px; }
+  .title { font-size: 30px; letter-spacing: -0.6px; }
+  .hero-title { font-size: 88px; letter-spacing: -2.4px; }
+  .hero-sub { font-size: 28px; }
+  .hero-eyebrow { font-size: 18px; }
+  .panel-header { padding: 12px 24px; }
+  .outro-title { font-size: 56px; letter-spacing: -1.4px; }
+}
+@media (max-width: 700px) {
+  .panel-header { flex-direction: column; align-items: flex-start; gap: 8px; padding: 12px 18px; }
+  .ph-dots { flex-wrap: wrap; }
+  .title { font-size: 24px; }
+  .hero-title { font-size: 60px; letter-spacing: -1.6px; }
+  .hero-sub { font-size: 22px; }
+  .panel-body { padding: 24px 18px 28px; }
+  .panel-body-centered { padding: 24px 18px; }
+}
+</style>
+</head>
+<body>
+
+<section class="panel panel-hero" id="hero" data-repo="hero">
+  <div class="hero-block">
+    <div class="hero-eyebrow">THE NEXT NEW THING · OCTOBER 18, 2026</div>
+    <h1 class="hero-title">Hot GitHub repos<br><span class="em">of the week</span>.</h1>
+    <p class="hero-sub">Report by <b>The Next New Thing</b>.</p>
+    <p class="hero-hint">Scroll for the report ↓</p>
+  </div>
+</section>
+
+<section class="panel panel-summary" id="r-01-summary" data-repo="r-01" data-type="summary">
+  <header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">01</span><span class="rank-dropdown" role="menu"><a class="rank-item active" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/wheresryan22/anatomy" target="_blank" rel="noopener"><span class="owner">wheresryan22</span><span class="slash">/</span><span class="name">anatomy</span></a></div><nav class="ph-dots"><a class="dot active" href="#r-01-summary">Summary</a><a class="dot" href="#r-01-github">GitHub</a></nav></header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">AI agents · SVG illustration</div>
+      <h1 class="title">An agent skill that turns a machine name into a <span class="em">photorealistic isometric SVG diagram</span> — accurate enough to repair from.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why">Wired into Claude Code and Cursor via MCP; renders 300-part cross-sections of turbines, engines, and circuit boards as editable SVG. Created Oct 8 — <b>15k stars in 10 days</b> raised our eyebrow, but 1,175 forks and 49 open issues signal genuine builder interest, not pure astroturf. No obvious same-night sibling repos.</p>
+      <a class="cta" href="https://github.com/wheresryan22/anatomy" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="wheresryan22/anatomy" data-role="stat" data-base="15k">15k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">JavaScript</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">MIT</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">MCP server baked in</div><p class="h-desc">Drop into any MCP host — Claude Code, Cursor, Copilot, Windsurf.</p></li><li><div class="h-name">47 machine categories</div><p class="h-desc">Engines, IoT boards, industrial equipment, consumer electronics.</p></li><li><div class="h-name">Layered, labeled SVG</div><p class="h-desc">Each part is a named group — editable in Figma or Inkscape.</p></li><li><div class="h-name">No API key required</div><p class="h-desc">Renders locally; optional cloud upscale behind a flag.</p></li><li><div class="h-name">Diff-check built in</div><p class="h-desc">Compares against known-good diagrams and flags deviations.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>Drop it in Claude Code and ask "show anatomy of a Raspberry Pi 5" — you get a labeled isometric cross-section as SVG, ready to embed in docs or repair guides.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-github" id="r-01-github" data-repo="r-01" data-type="github">
+  <header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">01</span><span class="rank-dropdown" role="menu"><a class="rank-item active" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/wheresryan22/anatomy" target="_blank" rel="noopener"><span class="owner">wheresryan22</span><span class="slash">/</span><span class="name">anatomy</span></a></div><nav class="ph-dots"><a class="dot" href="#r-01-summary">Summary</a><a class="dot active" href="#r-01-github">GitHub</a></nav></header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/wheresryan22/anatomy" data-owner="wheresryan22" data-repo="anatomy" alt="GitHub social card for wheresryan22/anatomy" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">wheresryan22</span><span class="gf-slash">/</span><span class="gf-repo">anatomy</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="wheresryan22/anatomy" data-role="badge" data-base="15k">★ 15k</span>
+          <span class="badge">JavaScript</span>
+        </div>
+        <a class="cta" href="https://github.com/wheresryan22/anatomy" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-summary" id="r-02-summary" data-repo="r-02" data-type="summary">
+  <header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">02</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item active" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/openai/math" target="_blank" rel="noopener"><span class="owner">openai</span><span class="slash">/</span><span class="name">math</span></a></div><nav class="ph-dots"><a class="dot active" href="#r-02-summary">Summary</a><a class="dot" href="#r-02-github">GitHub</a></nav></header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">OpenAI · Formal verification</div>
+      <h1 class="title">OpenAI's new public repo for <span class="em">formally verified mathematics</span> — proofs that a computer can check are true.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why">OpenAI dropped a Lean 4 repo on Oct 6 and it shot to <b>15k stars</b>. It is thin now, but the signal is clear: OpenAI is serious about <b>verifiable reasoning</b>, likely connected to their o-series math push. Community is already PRing proofs.</p>
+      <a class="cta" href="https://github.com/openai/math" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="openai/math" data-role="stat" data-base="15k">15k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Lean</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">Apache-2.0</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">Lean 4</div><p class="h-desc">The language serious mathematicians and proof engineers use.</p></li><li><div class="h-name">Apache-2.0</div><p class="h-desc">Buildable into commercial products without restriction.</p></li><li><div class="h-name">First-party OpenAI</div><p class="h-desc">Institutional signal — not a researcher side project.</p></li><li><div class="h-name">Companion to o-series</div><p class="h-desc">Likely linked to "Let's Verify Step by Step" paper work.</p></li><li><div class="h-name">Very early</div><p class="h-desc">A handful of files now; expect rapid community growth.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>If you are building AI systems that need mathematical guarantees, watch this repo. The formal-verification wave in AI is coming; OpenAI just planted their flag.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-github" id="r-02-github" data-repo="r-02" data-type="github">
+  <header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">02</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item active" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/openai/math" target="_blank" rel="noopener"><span class="owner">openai</span><span class="slash">/</span><span class="name">math</span></a></div><nav class="ph-dots"><a class="dot" href="#r-02-summary">Summary</a><a class="dot active" href="#r-02-github">GitHub</a></nav></header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/openai/math" data-owner="openai" data-repo="math" alt="GitHub social card for openai/math" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">openai</span><span class="gf-slash">/</span><span class="gf-repo">math</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="openai/math" data-role="badge" data-base="15k">★ 15k</span>
+          <span class="badge">Lean</span>
+        </div>
+        <a class="cta" href="https://github.com/openai/math" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-summary" id="r-03-summary" data-repo="r-03" data-type="summary">
+  <header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">03</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item active" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/storytold/wordcraft" target="_blank" rel="noopener"><span class="owner">storytold</span><span class="slash">/</span><span class="name">wordcraft</span></a></div><nav class="ph-dots"><a class="dot active" href="#r-03-summary">Summary</a><a class="dot" href="#r-03-github">GitHub</a></nav></header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">⚠️ Astroturf flag · Office suite</div>
+      <h1 class="title">A Rust reimplementation of Microsoft Office — <span class="em">but six sibling repos appeared the same night</span>, all from the same creator.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why"><code>storytold/wordcraft</code> (Word), <code>storytold/sheetsmith</code> (Excel), <code>storytold/slideforge</code> (PowerPoint), and three more all created Oct 7 within hours, all Rust, all Apache-2.0, all clean-room office-app clones. The pattern — coordinated launch, identical structure, zero prior activity — is a <b>classic star-farming playbook</b>. The code may be real, but the organic discovery is not. Judge accordingly.</p>
+      <a class="cta" href="https://github.com/storytold/wordcraft" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="storytold/wordcraft" data-role="stat" data-base="14k">14k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Rust</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">Apache-2.0</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">⚠️ Six repos, same creator, same night</div><p class="h-desc">All created Oct 7 within hours — coordinated launch pattern.</p></li><li><div class="h-name">All Rust, all Apache-2.0</div><p class="h-desc">Identical structure across the family.</p></li><li><div class="h-name">Word / Excel / PowerPoint clones</div><p class="h-desc">Clean-room reimplementations with high-quality README copy.</p></li><li><div class="h-name">Zero prior account activity</div><p class="h-desc">No history before Oct 7 on this GitHub account.</p></li><li><div class="h-name">Stars likely seeded</div><p class="h-desc">14k in 11 days with no organic community signals.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>The code exists and may eventually be useful. The launch mechanics are not organic. Proceed with eyes open.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-github" id="r-03-github" data-repo="r-03" data-type="github">
+  <header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">03</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item active" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/storytold/wordcraft" target="_blank" rel="noopener"><span class="owner">storytold</span><span class="slash">/</span><span class="name">wordcraft</span></a></div><nav class="ph-dots"><a class="dot" href="#r-03-summary">Summary</a><a class="dot active" href="#r-03-github">GitHub</a></nav></header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/storytold/wordcraft" data-owner="storytold" data-repo="wordcraft" alt="GitHub social card for storytold/wordcraft" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">storytold</span><span class="gf-slash">/</span><span class="gf-repo">wordcraft</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="storytold/wordcraft" data-role="badge" data-base="14k">★ 14k</span>
+          <span class="badge">Rust</span>
+        </div>
+        <a class="cta" href="https://github.com/storytold/wordcraft" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-summary" id="r-04-summary" data-repo="r-04" data-type="summary">
+  <header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">04</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item active" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/ARahim3/DigUp" target="_blank" rel="noopener"><span class="owner">ARahim3</span><span class="slash">/</span><span class="name">DigUp</span></a></div><nav class="ph-dots"><a class="dot active" href="#r-04-summary">Summary</a><a class="dot" href="#r-04-github">GitHub</a></nav></header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">On-device AI · File search</div>
+      <h1 class="title">Semantic file search on your Mac or Windows PC — <span class="em">no cloud, no index server, just llama-cpp and your files</span>.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why">Embeds your files locally with llama-cpp, then lets you search by meaning ("the contract from last year with the payment clause"). Privacy-first, multimodal (images + text), runs offline. Created Oct 8; <b>4.6k stars in 10 days</b> shows pent-up demand for local semantic search.</p>
+      <a class="cta" href="https://github.com/ARahim3/DigUp" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="ARahim3/DigUp" data-role="stat" data-base="4.6k">4.6k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Swift</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">MIT</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">On-device embeddings</div><p class="h-desc">llama-cpp backend — no data leaves your machine.</p></li><li><div class="h-name">Mac (Apple Silicon) + Windows (CUDA)</div><p class="h-desc">Native builds for both platforms.</p></li><li><div class="h-name">Multimodal</div><p class="h-desc">Indexes PDFs, images, notes, and code together.</p></li><li><div class="h-name">Bring-your-own model</div><p class="h-desc">Swap in any llama-cpp-compatible embedding model.</p></li><li><div class="h-name">No telemetry</div><p class="h-desc">Fully offline after first model download.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>Point it at your Downloads folder and stop grepping through filenames. "The invoice with the wrong VAT number" actually works.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-github" id="r-04-github" data-repo="r-04" data-type="github">
+  <header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">04</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item active" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/ARahim3/DigUp" target="_blank" rel="noopener"><span class="owner">ARahim3</span><span class="slash">/</span><span class="name">DigUp</span></a></div><nav class="ph-dots"><a class="dot" href="#r-04-summary">Summary</a><a class="dot active" href="#r-04-github">GitHub</a></nav></header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/ARahim3/DigUp" data-owner="ARahim3" data-repo="DigUp" alt="GitHub social card for ARahim3/DigUp" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">ARahim3</span><span class="gf-slash">/</span><span class="gf-repo">DigUp</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="ARahim3/DigUp" data-role="badge" data-base="4.6k">★ 4.6k</span>
+          <span class="badge">Swift</span>
+        </div>
+        <a class="cta" href="https://github.com/ARahim3/DigUp" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-summary" id="r-05-summary" data-repo="r-05" data-type="summary">
+  <header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">05</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item active" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/tangency-labs/solidcraft" target="_blank" rel="noopener"><span class="owner">tangency-labs</span><span class="slash">/</span><span class="name">solidcraft</span></a></div><nav class="ph-dots"><a class="dot active" href="#r-05-summary">Summary</a><a class="dot" href="#r-05-github">GitHub</a></nav></header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">Parametric CAD · Rust</div>
+      <h1 class="title">Open-source parametric 3D CAD in Rust — <span class="em">BRep geometry, egui UI, MCP server, WASM export</span>.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why">Fills the gap between FreeCAD (clunky) and Fusion 360 (cloud-locked). Written in Rust for native performance; <b>MCP server</b> means your coding agent can generate and modify 3D models programmatically. WASM target = runs in-browser. Solid early traction.</p>
+      <a class="cta" href="https://github.com/tangency-labs/solidcraft" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="tangency-labs/solidcraft" data-role="stat" data-base="4.5k">4.5k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Rust</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">Apache-2.0</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">BRep geometry kernel</div><p class="h-desc">Boundary Representation — the foundation of real CAD, not mesh hacks.</p></li><li><div class="h-name">egui native UI</div><p class="h-desc">No Electron, no browser — fast, native windowing.</p></li><li><div class="h-name">Built-in MCP server</div><p class="h-desc">Ask your coding agent to "add a 3mm fillet to edge 4".</p></li><li><div class="h-name">WASM export</div><p class="h-desc">Render and share models in the browser with zero install.</p></li><li><div class="h-name">STEP / OBJ / glTF</div><p class="h-desc">Import and export standard interchange formats.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>Ask Claude Code to "create a bracket that fits a 40mm NEMA stepper, 3mm wall" and get a parametric 3D model back — then tweak dimensions without touching code.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-github" id="r-05-github" data-repo="r-05" data-type="github">
+  <header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">05</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item active" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/tangency-labs/solidcraft" target="_blank" rel="noopener"><span class="owner">tangency-labs</span><span class="slash">/</span><span class="name">solidcraft</span></a></div><nav class="ph-dots"><a class="dot" href="#r-05-summary">Summary</a><a class="dot active" href="#r-05-github">GitHub</a></nav></header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/tangency-labs/solidcraft" data-owner="tangency-labs" data-repo="solidcraft" alt="GitHub social card for tangency-labs/solidcraft" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">tangency-labs</span><span class="gf-slash">/</span><span class="gf-repo">solidcraft</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="tangency-labs/solidcraft" data-role="badge" data-base="4.5k">★ 4.5k</span>
+          <span class="badge">Rust</span>
+        </div>
+        <a class="cta" href="https://github.com/tangency-labs/solidcraft" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-summary" id="r-06-summary" data-repo="r-06" data-type="summary">
+  <header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">06</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item active" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/alchaincyf/huashu-art-motion" target="_blank" rel="noopener"><span class="owner">alchaincyf</span><span class="slash">/</span><span class="name">huashu-art-motion</span></a></div><nav class="ph-dots"><a class="dot active" href="#r-06-summary">Summary</a><a class="dot" href="#r-06-github">GitHub</a></nav></header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">AI art animation · Agent skill</div>
+      <h1 class="title">An agent skill that animates any image in <span class="em">35 historical art styles</span> — from Song Dynasty ink wash to Art Nouveau to Bauhaus.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why">Plug into Claude Code or any MCP host; pass an image URL and a style name, get back a looping animation in that style. 35 presets cover East Asian, European, and modern movements. Creator has a track record of MCP creative tools.</p>
+      <a class="cta" href="https://github.com/alchaincyf/huashu-art-motion" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="alchaincyf/huashu-art-motion" data-role="stat" data-base="4.3k">4.3k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">JavaScript</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">MIT</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">35 art styles</div><p class="h-desc">Song Dynasty, Art Nouveau, Ukiyo-e, Bauhaus, and more.</p></li><li><div class="h-name">Returns animated WebP or GIF</div><p class="h-desc">Ready to embed in any page or doc.</p></li><li><div class="h-name">MCP tool call</div><p class="h-desc">No UI — works fully from your coding agent.</p></li><li><div class="h-name">Human-readable style names</div><p class="h-desc">"ink-wash", "art-nouveau-1890", "bauhaus-geometric".</p></li><li><div class="h-name">Local or API</div><p class="h-desc">Runs via local model or API key depending on config.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>Drop a product photo in and get an Art Nouveau animated banner in 30 seconds.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-github" id="r-06-github" data-repo="r-06" data-type="github">
+  <header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">06</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item active" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/alchaincyf/huashu-art-motion" target="_blank" rel="noopener"><span class="owner">alchaincyf</span><span class="slash">/</span><span class="name">huashu-art-motion</span></a></div><nav class="ph-dots"><a class="dot" href="#r-06-summary">Summary</a><a class="dot active" href="#r-06-github">GitHub</a></nav></header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/alchaincyf/huashu-art-motion" data-owner="alchaincyf" data-repo="huashu-art-motion" alt="GitHub social card for alchaincyf/huashu-art-motion" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">alchaincyf</span><span class="gf-slash">/</span><span class="gf-repo">huashu-art-motion</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="alchaincyf/huashu-art-motion" data-role="badge" data-base="4.3k">★ 4.3k</span>
+          <span class="badge">JavaScript</span>
+        </div>
+        <a class="cta" href="https://github.com/alchaincyf/huashu-art-motion" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-summary" id="r-07-summary" data-repo="r-07" data-type="summary">
+  <header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">07</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item active" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/zhongerxin/iPhone-use" target="_blank" rel="noopener"><span class="owner">zhongerxin</span><span class="slash">/</span><span class="name">iPhone-use</span></a></div><nav class="ph-dots"><a class="dot active" href="#r-07-summary">Summary</a><a class="dot" href="#r-07-github">GitHub</a></nav></header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">AI agents · iPhone control</div>
+      <h1 class="title">Let Codex — or any OpenAI-compatible agent — <span class="em">control a real iPhone over USB</span>.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why">Bridges OpenAI Codex (or any agent) to a connected iPhone via USB: the agent sees the screen, taps elements, types text, runs Shortcuts. Use cases: UI testing, automated accessibility checks, device-side workflows your agent cannot do via API.</p>
+      <a class="cta" href="https://github.com/zhongerxin/iPhone-use" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="zhongerxin/iPhone-use" data-role="stat" data-base="4.1k">4.1k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Python</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">MIT</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">USB bridge — offline-capable</div><p class="h-desc">Does not require iCloud or any Apple cloud service.</p></li><li><div class="h-name">Screen capture + element detection</div><p class="h-desc">The agent sees what is on screen.</p></li><li><div class="h-name">Types, taps, swipes, runs Shortcuts</div><p class="h-desc">Full input simulation.</p></li><li><div class="h-name">Tested with Codex and Claude</div><p class="h-desc">Both confirmed working in README.</p></li><li><div class="h-name">MIT license</div><p class="h-desc">Embed in your own test framework freely.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>"Open Settings, turn off Wi-Fi, screenshot the status bar" — your agent executes it on a real device.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-github" id="r-07-github" data-repo="r-07" data-type="github">
+  <header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">07</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item active" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/zhongerxin/iPhone-use" target="_blank" rel="noopener"><span class="owner">zhongerxin</span><span class="slash">/</span><span class="name">iPhone-use</span></a></div><nav class="ph-dots"><a class="dot" href="#r-07-summary">Summary</a><a class="dot active" href="#r-07-github">GitHub</a></nav></header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/zhongerxin/iPhone-use" data-owner="zhongerxin" data-repo="iPhone-use" alt="GitHub social card for zhongerxin/iPhone-use" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">zhongerxin</span><span class="gf-slash">/</span><span class="gf-repo">iPhone-use</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="zhongerxin/iPhone-use" data-role="badge" data-base="4.1k">★ 4.1k</span>
+          <span class="badge">Python</span>
+        </div>
+        <a class="cta" href="https://github.com/zhongerxin/iPhone-use" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-summary" id="r-08-summary" data-repo="r-08" data-type="summary">
+  <header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">08</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item active" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/LosaLosSantos/aurelio-finance" target="_blank" rel="noopener"><span class="owner">LosaLosSantos</span><span class="slash">/</span><span class="name">aurelio-finance</span></a></div><nav class="ph-dots"><a class="dot active" href="#r-08-summary">Summary</a><a class="dot" href="#r-08-github">GitHub</a></nav></header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">Personal finance · Self-hosted AI</div>
+      <h1 class="title">A self-hosted AI personal finance app — <span class="em">net worth tracking, ETF analysis, and a chat interface that knows your accounts</span>.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why">Connects to your bank exports (CSV/OFX), tracks net worth, and answers questions like "am I on track to retire at 60?" in plain language. Runs locally: your financial data never leaves your machine.</p>
+      <a class="cta" href="https://github.com/LosaLosSantos/aurelio-finance" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="LosaLosSantos/aurelio-finance" data-role="stat" data-base="3.9k">3.9k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Python</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">MIT</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">CSV / OFX import</div><p class="h-desc">Works with any bank that exports transactions.</p></li><li><div class="h-name">Net worth dashboard</div><p class="h-desc">Assets, liabilities, and ETF allocation in one view.</p></li><li><div class="h-name">Chat interface</div><p class="h-desc">Local LLM or API key — ask questions in plain English.</p></li><li><div class="h-name">AI categorization</div><p class="h-desc">Automatically categorizes transactions; you correct the edge cases.</p></li><li><div class="h-name">Docker Compose setup</div><p class="h-desc">One command to get running.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>Import last year's statements and ask "where does my money actually go?" — then actually fix it.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-github" id="r-08-github" data-repo="r-08" data-type="github">
+  <header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">08</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item active" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/LosaLosSantos/aurelio-finance" target="_blank" rel="noopener"><span class="owner">LosaLosSantos</span><span class="slash">/</span><span class="name">aurelio-finance</span></a></div><nav class="ph-dots"><a class="dot" href="#r-08-summary">Summary</a><a class="dot active" href="#r-08-github">GitHub</a></nav></header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/LosaLosSantos/aurelio-finance" data-owner="LosaLosSantos" data-repo="aurelio-finance" alt="GitHub social card for LosaLosSantos/aurelio-finance" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">LosaLosSantos</span><span class="gf-slash">/</span><span class="gf-repo">aurelio-finance</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="LosaLosSantos/aurelio-finance" data-role="badge" data-base="3.9k">★ 3.9k</span>
+          <span class="badge">Python</span>
+        </div>
+        <a class="cta" href="https://github.com/LosaLosSantos/aurelio-finance" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-summary" id="r-09-summary" data-repo="r-09" data-type="summary">
+  <header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">09</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item active" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/nullmoth/nvidia-macos-driver" target="_blank" rel="noopener"><span class="owner">nullmoth</span><span class="slash">/</span><span class="name">nvidia-macos-driver</span></a></div><nav class="ph-dots"><a class="dot active" href="#r-09-summary">Summary</a><a class="dot" href="#r-09-github">GitHub</a></nav></header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">GPU · macOS · Rust</div>
+      <h1 class="title">A reverse-engineered NVIDIA GPU driver for macOS Sequoia — <span class="em">brings CUDA-adjacent compute to Macs with eGPUs</span>.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why">Apple dropped NVIDIA support in 2019. This project reverse-engineers the Metal path to expose NVIDIA eGPU cards under Sequoia. Early and rough, but <b>3.3k stars in 11 days</b> signals huge latent demand from ML researchers stuck on Apple Silicon memory limits who own NVIDIA eGPUs.</p>
+      <a class="cta" href="https://github.com/nullmoth/nvidia-macos-driver" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="nullmoth/nvidia-macos-driver" data-role="stat" data-base="3.3k">3.3k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Rust</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">NOASSERTION</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">Rust userspace driver over Metal</div><p class="h-desc">No kernel extensions — lower risk, user-space only.</p></li><li><div class="h-name">RTX 3090 / 4090 via Thunderbolt</div><p class="h-desc">Tested on these cards in README benchmarks.</p></li><li><div class="h-name">Basic GPGPU compute working</div><p class="h-desc">Matrix multiply benchmarks included in the README.</p></li><li><div class="h-name">No license assertion</div><p class="h-desc">Proceed with legal care — license status unclear.</p></li><li><div class="h-name">Very early</div><p class="h-desc">No CUDA runtime yet; compute only via Metal.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>If you have a beefy NVIDIA eGPU gathering dust next to your M-series Mac, watch this.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-github" id="r-09-github" data-repo="r-09" data-type="github">
+  <header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">09</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item active" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/nullmoth/nvidia-macos-driver" target="_blank" rel="noopener"><span class="owner">nullmoth</span><span class="slash">/</span><span class="name">nvidia-macos-driver</span></a></div><nav class="ph-dots"><a class="dot" href="#r-09-summary">Summary</a><a class="dot active" href="#r-09-github">GitHub</a></nav></header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/nullmoth/nvidia-macos-driver" data-owner="nullmoth" data-repo="nvidia-macos-driver" alt="GitHub social card for nullmoth/nvidia-macos-driver" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">nullmoth</span><span class="gf-slash">/</span><span class="gf-repo">nvidia-macos-driver</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="nullmoth/nvidia-macos-driver" data-role="badge" data-base="3.3k">★ 3.3k</span>
+          <span class="badge">Rust</span>
+        </div>
+        <a class="cta" href="https://github.com/nullmoth/nvidia-macos-driver" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-summary" id="r-10-summary" data-repo="r-10" data-type="summary">
+  <header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">10</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item active" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/onehumanbeing/esp32-iphone-agent" target="_blank" rel="noopener"><span class="owner">onehumanbeing</span><span class="slash">/</span><span class="name">esp32-iphone-agent</span></a></div><nav class="ph-dots"><a class="dot active" href="#r-10-summary">Summary</a><a class="dot" href="#r-10-github">GitHub</a></nav></header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">Hardware · Edge AI · iPhone</div>
+      <h1 class="title">A $7 ESP32 acts as AI's hands on a real iPhone — <span class="em">AirPlay mirroring + USB HID injection</span>.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why">Mirrors the iPhone screen to a server via AirPlay, then injects touch events back over USB HID from an ESP32. The AI sees the screen and taps real elements — no jailbreak, no dev cert. Total hardware cost: ~$7. Created Oct 11, <b>3k stars in a week</b>.</p>
+      <a class="cta" href="https://github.com/onehumanbeing/esp32-iphone-agent" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="onehumanbeing/esp32-iphone-agent" data-role="stat" data-base="3k">3k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">C</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">MIT</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">ESP32 firmware in C (MIT)</div><p class="h-desc">Flash it and wire it up in an afternoon.</p></li><li><div class="h-name">AirPlay screen mirroring for vision</div><p class="h-desc">The AI receives a live screen feed.</p></li><li><div class="h-name">USB HID for input injection</div><p class="h-desc">Taps and keypresses over standard HID — no jailbreak.</p></li><li><div class="h-name">No Apple developer account</div><p class="h-desc">Works with any signed app, no provisioning profile.</p></li><li><div class="h-name">Pairs with any vision model</div><p class="h-desc">Feed the AirPlay stream to GPT-4o, Claude, Gemini.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>The cheapest possible hardware loop for phone-controlling agents. Pair with any vision model.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-github" id="r-10-github" data-repo="r-10" data-type="github">
+  <header class="panel-header"><div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">10</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item active" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/onehumanbeing/esp32-iphone-agent" target="_blank" rel="noopener"><span class="owner">onehumanbeing</span><span class="slash">/</span><span class="name">esp32-iphone-agent</span></a></div><nav class="ph-dots"><a class="dot" href="#r-10-summary">Summary</a><a class="dot active" href="#r-10-github">GitHub</a></nav></header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/onehumanbeing/esp32-iphone-agent" data-owner="onehumanbeing" data-repo="esp32-iphone-agent" alt="GitHub social card for onehumanbeing/esp32-iphone-agent" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">onehumanbeing</span><span class="gf-slash">/</span><span class="gf-repo">esp32-iphone-agent</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="onehumanbeing/esp32-iphone-agent" data-role="badge" data-base="3k">★ 3k</span>
+          <span class="badge">C</span>
+        </div>
+        <a class="cta" href="https://github.com/onehumanbeing/esp32-iphone-agent" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-hm" id="hm" data-repo="hm">
+  <header class="panel-header"><div class="ph-left"><span class="hm-chip">🧠 HOT MODELS</span></div><nav class="ph-dots"></nav></header>
+  <div class="panel-body-centered" style="flex:1;display:flex;align-items:flex-start;justify-content:center;padding:36px 56px;">
+    <div class="multi-cards">
+<div class="issue-card"><div class="card-label">HUGGING FACE TRENDING · WEEK OF OCT 18</div><div class="issue-title">Feed access unavailable this pass</div><p class="issue-summary">The Hugging Face API was blocked by the cloud proxy during this run. GitHub activity suggests active Qwen 2.1 multimodal ecosystem work and GLM-5.3-Flash (321B MoE) inference tooling. For live trending models, visit <a href="https://huggingface.co/models?sort=trending" target="_blank" rel="noopener">huggingface.co/models?sort=trending</a>.</p></div>
+<div class="issue-card"><div class="card-label">GITHUB SIGNAL · OCT 8</div><div class="issue-title">project-maya: Run GLM-5.3-Flash 321B MoE on your own GPU cluster</div><p class="issue-summary">1,014★ since Oct 8. Inference harness for GLM-5.3-Flash, a 321B sparse MoE model — comparable to frontier dense models at a fraction of active parameters. C++ core with Python bindings. <a href="https://github.com/mw00/project-maya" target="_blank" rel="noopener">github.com/mw00/project-maya</a></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-hm" id="fp" data-repo="fp">
+  <header class="panel-header"><div class="ph-left"><span class="hm-chip">📄 FRESH PAPERS</span></div><nav class="ph-dots"></nav></header>
+  <div class="panel-body-centered" style="flex:1;display:flex;align-items:flex-start;justify-content:center;padding:36px 56px;">
+    <div class="multi-cards">
+<div class="issue-card"><div class="card-label">PAPERS · WEEK OF OCT 18</div><div class="issue-title">Doc2Harness: Benchmarking LLMs on Long-Horizon Harness Engineering</div><p class="issue-summary">110★ on GitHub since Oct 11. Introduces a benchmark where LLMs must turn documentation into complete coding-agent test harnesses — a task requiring multi-step planning, code generation, and self-verification. Code + benchmark at <a href="https://github.com/YuyaoGe/doc2harness" target="_blank" rel="noopener">github.com/YuyaoGe/doc2harness</a>. arXiv API was unavailable during this pass; for additional trending papers see <a href="https://huggingface.co/papers" target="_blank" rel="noopener">huggingface.co/papers</a>.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-hm" id="ld" data-repo="ld">
+  <header class="panel-header"><div class="ph-left"><span class="hm-chip">🚀 LAB DROPS</span></div><nav class="ph-dots"></nav></header>
+  <div class="panel-body-centered" style="flex:1;display:flex;align-items:flex-start;justify-content:center;padding:36px 56px;">
+    <div class="multi-cards">
+<div class="issue-card"><div class="card-label">OPENAI · OCT 6</div><div class="issue-title">openai/math — Formal math verification in Lean 4</div><p class="issue-summary">OpenAI published a public Lean 4 repository for formally verified mathematics. Apache-2.0. Signals institutional commitment to verifiable reasoning alongside the o-series models. <a href="https://github.com/openai/math" target="_blank" rel="noopener">github.com/openai/math</a></p></div>
+<div class="issue-card"><div class="card-label">ANTHROPIC · OCT 8</div><div class="issue-title">anthropics/oss-scanner — Docker image security scanner</div><p class="issue-summary">1,103★ in 10 days. New tool from Anthropic that scans Dockerfiles and container images for security issues using Claude. MIT license. <a href="https://github.com/anthropics/oss-scanner" target="_blank" rel="noopener">github.com/anthropics/oss-scanner</a></p></div>
+<div class="issue-card"><div class="card-label">ANTHROPIC · OCT 18</div><div class="issue-title">claude-code + claude-plugins-official active today</div><p class="issue-summary">anthropics/claude-code, anthropics/claude-plugins-official, and anthropics/knowledge-work-plugins all show pushes as of Oct 18. Lab blog RSS feeds were blocked this pass; check <a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com/news</a> for the official changelog.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-hm" id="bz" data-repo="bz">
+  <header class="panel-header"><div class="ph-left"><span class="hm-chip">📡 THE BUZZ</span></div><nav class="ph-dots"></nav></header>
+  <div class="panel-body-centered" style="flex:1;display:flex;align-items:flex-start;justify-content:center;padding:36px 56px;">
+    <div class="multi-cards">
+<div class="issue-card"><div class="card-label">BUZZ · WEEK OF OCT 18</div><div class="issue-title">Newsletter and community feeds unavailable this pass</div><p class="issue-summary">AI News (smol.ai), Hacker News Algolia, Import AI, r/LocalLLaMA, and r/MachineLearning RSS were all blocked by the cloud proxy this run. This week's GitHub activity suggests the dominant discussion themes are: (1) iPhone/device agent tooling (repos 07 and 10), (2) formal verification and AI math, (3) astroturf detection (the storytold/* family), and (4) on-device privacy-first AI tools. For live buzz: <a href="https://news.smol.ai" target="_blank" rel="noopener">news.smol.ai</a> · <a href="https://hn.algolia.com/?dateRange=pastWeek&sort=byPopularity&type=story&query=AI" target="_blank" rel="noopener">HN this week</a>.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-hm" id="wt" data-repo="wt">
+  <header class="panel-header"><div class="ph-left"><span class="hm-chip">📺 WATCH</span></div><nav class="ph-dots"></nav></header>
+  <div class="panel-body-centered" style="flex:1;display:flex;align-items:flex-start;justify-content:center;padding:36px 56px;">
+    <div class="multi-cards">
+<div class="issue-card"><div class="card-label">YOUTUBE · WEEK OF OCT 18</div><div class="issue-title">YouTube RSS feeds unavailable this pass</div><p class="issue-summary">Per-channel YouTube RSS feeds were blocked by the cloud proxy. S-tier channels to check manually this week: Andrej Karpathy · AI Engineer Conference · Two Minute Papers · Yannic Kilcher · AI Explained. A-tier: Machine Learning Street Talk · Sam Witteveen · Fireship. Full channel IDs in <a href="https://github.com/goldensis/github-hot-repos-live/blob/main/sources.md" target="_blank" rel="noopener">sources.md §6</a>.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="wp-panel" id="wp" data-repo="wanted">
+  <article class="wp-poster">
+    <div class="wp-banner">
+      <p class="wp-order">The Next New Thing · October 18, 2026</p>
+      <hr class="wp-rule">
+    </div>
+    <div class="wp-photo-col">
+      <div class="wp-photo-wrap">
+        <img src="https://opengraph.githubassets.com/1/outcrawlai/scout" alt="scout" onerror="this.style.opacity=0.3" />
+      </div>
+      <div class="wp-name">Hidden Gems</div>
+      <p class="wp-alias">Lower stars · Higher signal<br><a href="#wp">Oct 18, 2026</a></p>
+    </div>
+    <div class="wp-text-col">
+      <div class="wp-wanted">WANTED</div>
+      <div class="wp-for">For Being Too Good to Miss</div>
+      <div class="wp-charges-h">Charges:</div>
+      <div class="wp-charges">
+        <div class="wp-charge">
+          <div class="wp-what">
+            <div class="wp-proj">scout</div>
+            <div class="wp-handle"><a href="https://github.com/outcrawlai/scout" target="_blank" rel="noopener">outcrawlai/scout</a> · TypeScript · Apache-2.0</div>
+          </div>
+          <div class="wp-stars">★ 943</div>
+        </div>
+        <div class="wp-charge">
+          <div class="wp-what">
+            <div class="wp-proj">project-maya</div>
+            <div class="wp-handle"><a href="https://github.com/mw00/project-maya" target="_blank" rel="noopener">mw00/project-maya</a> · C++ · MIT · 321B MoE inference</div>
+          </div>
+          <div class="wp-stars">★ 1k</div>
+        </div>
+        <div class="wp-charge">
+          <div class="wp-what">
+            <div class="wp-proj">blender-ai-mcp-addon</div>
+            <div class="wp-handle"><a href="https://github.com/anujasid/blender-ai-mcp-addon" target="_blank" rel="noopener">anujasid/blender-ai-mcp-addon</a> · Python · MIT</div>
+          </div>
+          <div class="wp-stars">★ 660</div>
+        </div>
+      </div>
+      <div class="wp-reward">
+        <div class="wp-reward-lbl">REWARD</div>
+        <div class="wp-reward-amt">Your next side project</div>
+      </div>
+      <p class="wp-call">Three hidden-gem repos with real signal, low noise.<br><strong>All verified via GitHub search on Oct 18, 2026.</strong><br>Open-source browser agent · 321B MoE inference · Blender AI.</p>
+    </div>
+    <div class="wp-foot">The Next New Thing · <a href="https://github-hot-repos.nextnewthing.workers.dev" target="_blank" rel="noopener">nextnewthing.workers.dev</a></div>
+  </article>
+</section>
+
+<section class="panel panel-outro" id="outro" data-repo="outro">
+  <div class="outro-block">
+    <h2 class="outro-title">That's<br><span class="em">this week</span>.</h2>
+    <p class="outro-sub">Subscribe at <a href="https://github-hot-repos.nextnewthing.workers.dev" target="_blank" rel="noopener">nextnewthing.workers.dev</a></p>
+  </div>
+</section>
+</body>
+</html>
