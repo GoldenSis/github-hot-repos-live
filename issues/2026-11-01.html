@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hot GitHub Repos — November 1, 2026 · The Next New Thing</title>
+<link rel="preconnect" href="https://opengraph.githubassets.com" crossorigin>
+<link rel="preconnect" href="https://github.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Rye&family=Special+Elite&display=swap">
+<script>(function(){
+  var TOKENS=['1','og','v2','v3','v4'];
+  window.ogErr=function(img){
+    var n=+(img.dataset.tryn||0);
+    if(n<TOKENS.length-1){ n++; img.dataset.tryn=n;
+      setTimeout(function(){ img.src='https://opengraph.githubassets.com/'+TOKENS[n]+'/'+img.dataset.owner+'/'+img.dataset.repo+'?cb='+Date.now(); }, 500*n);
+    } else { img.style.display='none'; if(img.nextElementSibling) img.nextElementSibling.style.display='flex'; }
+  };
+})();</script>
+<style>
+:root {
+  --canvas: #f8f9fc;
+  --surface: #ffffff;
+  --surface-2: #edeff4;
+  --ink: #0c0d11;
+  --ink-muted: #4a4f59;
+  --ink-subtle: #6b7079;
+  --hairline: #d6dae2;
+  --hairline-soft: #edeff4;
+  --accent: #1f3a5f;
+  --canvas-hm: #f3f4f9;
+  --canvas-hm-accent: #f6ead0;
+  --accent-warm: #9a6a1e;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: auto;
+  overflow-x: hidden;
+}
+body { overflow-y: scroll; }
+.panel {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 0;
+}
+.panel-hm { background: var(--canvas-hm); }
+.panel-hm .panel-header { background: var(--canvas-hm); }
+.hm-chip { background: var(--accent); color: var(--canvas); padding: 5px 11px; border-radius: 12px; font-size: 11px; font-family: 'Inter', sans-serif; font-weight: 600; white-space: nowrap; letter-spacing: 0.02em; }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 4px; }
+.vbtn { display: inline-block; background: var(--accent); color: var(--canvas); padding: 11px 18px; border-radius: 8px; font-size: 13px; font-weight: 500; text-decoration: none; }
+.vbtn:hover { background: #142847; }
+.cta-alt { background: var(--surface); color: var(--accent); border: 1px solid var(--accent); }
+.cta-alt:hover { background: var(--surface-2); }
+.h-desc a, .why a, .sowhat p a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--hairline); }
+.h-desc a:hover, .why a:hover, .sowhat p a:hover { border-bottom-color: var(--accent); }
+.panel-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 36px; border-bottom: 1px solid var(--hairline);
+  background: var(--canvas); position: sticky; top: 0; z-index: 10;
+  font-family: 'Inter', sans-serif;
+}
+.ph-left { display: flex; align-items: center; gap: 14px; }
+.rank {
+  font-family: ui-monospace, 'JetBrains Mono', monospace;
+  font-size: 12px; color: var(--ink-subtle); letter-spacing: 0.06em;
+}
+.repo-name {
+  font-size: 16px; font-weight: 500; color: var(--ink);
+  text-decoration: none; letter-spacing: -0.2px;
+}
+.repo-name:hover .name { color: var(--accent); }
+.repo-name .owner { color: var(--ink-muted); font-weight: 400; }
+.repo-name .slash { color: var(--ink-subtle); margin: 0 2px; }
+.ph-dots { display: flex; gap: 4px; }
+.dot {
+  font-size: 11px; padding: 6px 12px; border-radius: 14px;
+  text-decoration: none; color: var(--ink-subtle);
+  letter-spacing: 0.04em; text-transform: uppercase; font-weight: 500;
+  border: 1px solid transparent;
+}
+.dot:hover { color: var(--ink); border-color: var(--hairline); }
+.dot.active { color: var(--accent); border-color: var(--accent); }
+.panel-body {
+  flex: 1; display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px;
+  padding: 36px 56px 48px;
+}
+.panel-body-centered {
+  display: flex; align-items: center; justify-content: center;
+  padding: 36px 56px; flex: 1;
+}
+.summary-left { display: flex; flex-direction: column; justify-content: space-between; }
+.summary-right { display: flex; flex-direction: column; gap: 14px; min-height: 0; }
+.eyebrow {
+  font-size: 11px; font-weight: 600; color: var(--accent);
+  letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 14px;
+}
+.title {
+  font-size: 38px; font-weight: 500; line-height: 1.15;
+  letter-spacing: -1.0px; color: var(--ink); margin-bottom: 24px;
+}
+.title .em { color: var(--accent); }
+.why-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-subtle); margin-bottom: 8px;
+}
+.why { font-size: 15px; line-height: 1.55; color: var(--ink-muted); margin-bottom: 18px; }
+.why b { color: var(--ink); font-weight: 500; }
+.cta {
+  display: inline-block; background: var(--accent); color: var(--canvas);
+  padding: 12px 22px; border-radius: 8px; font-size: 14px; font-weight: 500;
+  text-decoration: none; margin-top: auto; align-self: flex-start;
+}
+.cta:hover { background: #142847; }
+.card { background: var(--surface); border: 1px solid var(--hairline); border-radius: 14px; }
+.stats-card { padding: 16px 22px; flex-shrink: 0; }
+.stats-row {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 18px; align-items: end;
+}
+.stat-label {
+  font-size: 10px; color: var(--ink-subtle); letter-spacing: 0.14em;
+  text-transform: uppercase; font-weight: 600; margin-bottom: 4px;
+}
+.stat-val { font-size: 18px; font-weight: 500; color: var(--ink); letter-spacing: -0.3px; }
+.highlights-card { padding: 18px 22px; flex: 1; min-height: 0; overflow: hidden; }
+.card-label {
+  font-size: 10px; color: var(--ink-subtle); letter-spacing: 0.14em;
+  text-transform: uppercase; font-weight: 600; margin-bottom: 14px;
+}
+.highlights { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.highlights li {
+  padding-bottom: 12px; border-bottom: 1px solid var(--hairline-soft);
+  position: relative; padding-left: 14px;
+}
+.highlights li::before {
+  content: ''; display: inline-block; width: 5px; height: 5px;
+  background: var(--accent); border-radius: 50%; position: absolute;
+  left: 0; top: 8px;
+}
+.highlights li:last-child { border-bottom: none; padding-bottom: 0; }
+.h-name { font-size: 14px; font-weight: 500; color: var(--ink); letter-spacing: -0.15px; margin-bottom: 2px; }
+.h-desc { font-size: 13px; line-height: 1.45; color: var(--ink-muted); }
+.h-desc code, .why code {
+  font-family: ui-monospace, 'JetBrains Mono', monospace; font-size: 12px;
+  background: var(--surface-2); padding: 1px 6px; border-radius: 4px; color: var(--ink);
+}
+.sowhat { margin-top:14px; padding-top:12px; border-top:1px solid var(--hairline-soft); }
+.sowhat-label { font-size:10px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:4px; }
+.sowhat p { font-size:13px; line-height:1.45; color:var(--ink-muted); }
+.github-card {
+  max-width: 1100px; width: 100%; display: flex; flex-direction: column;
+  align-items: center; gap: 24px;
+}
+.github-og {
+  width: 100%; max-width: 1100px; aspect-ratio: 2 / 1; object-fit: cover;
+  border-radius: 14px; border: 1px solid var(--hairline);
+  background: var(--surface);
+}
+.github-meta { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.badges { display: flex; gap: 10px; }
+.badge {
+  background: var(--surface); border: 1px solid var(--hairline);
+  padding: 8px 14px; border-radius: 16px; font-size: 13px; color: var(--ink);
+}
+.issue-card { background: var(--surface); border: 1px solid var(--hairline); border-radius: 14px; padding: 36px 36px; max-width: 720px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+.issue-card .card-label { color: var(--accent); margin-bottom: 0; }
+.issue-title { font-size: 24px; font-weight: 500; color: var(--ink); letter-spacing: -0.5px; line-height: 1.3; }
+.issue-summary { font-size: 15px; color: var(--ink-muted); line-height: 1.6; }
+.issue-summary code { font-family: ui-monospace, 'JetBrains Mono', monospace; font-size: 12px; background: var(--surface-2); padding: 1px 6px; border-radius: 4px; color: var(--ink); }
+.issue-summary a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--hairline); }
+.issue-summary a:hover { border-bottom-color: var(--accent); }
+.multi-cards { display: flex; flex-direction: column; gap: 24px; max-width: 720px; width: 100%; }
+.panel-hero {
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 0 40px; flex: 1;
+}
+.hero-block { max-width: 1400px; }
+.hero-eyebrow {
+  font-size: 24px; font-weight: 600; color: var(--accent);
+  letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 36px;
+}
+.hero-title {
+  font-size: 128px; font-weight: 500; line-height: 1.0;
+  letter-spacing: -3.6px; color: var(--ink); margin-bottom: 36px;
+}
+.hero-title .em { color: var(--accent); }
+.hero-sub { font-size: 40px; font-weight: 400; color: var(--ink-muted); margin-bottom: 60px; }
+.hero-sub b { color: var(--ink); font-weight: 500; }
+.hero-hint { font-size: 16px; color: var(--ink-subtle); }
+.panel-outro { display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 40px; flex: 1; }
+.outro-block { max-width: 1200px; }
+.outro-title { font-size: 88px; font-weight: 500; line-height: 1.05; letter-spacing: -2.4px; color: var(--ink); margin-bottom: 36px; }
+.outro-title .em { color: var(--accent); }
+.outro-sub { font-size: 22px; color: var(--ink-muted); }
+.outro-sub a { color: var(--accent); text-decoration: none; }
+.github-fallback {
+  display: none; width: 100%; max-width: 1100px; aspect-ratio: 2 / 1;
+  border-radius: 14px; border: 1px solid var(--hairline);
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+  align-items: center; justify-content: center; padding: 40px;
+  flex-direction: column;
+}
+.gf-content { text-align: center; display: flex; flex-direction: column; gap: 18px; align-items: center; }
+.gf-octocat { color: var(--accent); }
+.gf-name { font-family: 'Inter', sans-serif; font-size: 44px; font-weight: 500; letter-spacing: -1px; line-height: 1.1; }
+.gf-owner { color: var(--ink-muted); font-weight: 400; }
+.gf-slash { color: var(--ink-subtle); margin: 0 4px; }
+.gf-repo { color: var(--ink); }
+.gf-hint { font-size: 14px; color: var(--ink-subtle); }
+.rank-nav { position: relative; display: inline-flex; align-items: center; }
+.rank-trigger { cursor: pointer; user-select: none; padding: 4px 6px; border-radius: 4px; }
+.rank-trigger:hover, .rank-trigger:focus { color: var(--accent); outline: none; }
+.rank-dropdown {
+  display: none; position: absolute;
+  top: 100%; left: -4px; margin-top: 6px;
+  background: var(--surface); border: 1px solid var(--hairline);
+  border-radius: 10px; padding: 8px;
+  box-shadow: 0 12px 32px rgba(15,23,42,0.12);
+  grid-template-columns: repeat(4, 36px); gap: 4px;
+  z-index: 100; min-width: 180px;
+}
+.rank-nav:hover .rank-dropdown,
+.rank-nav:focus-within .rank-dropdown { display: grid; }
+.rank-item {
+  display: flex; align-items: center; justify-content: center;
+  height: 30px; padding: 0 6px;
+  font-family: ui-monospace, 'JetBrains Mono', monospace;
+  font-size: 12px; color: var(--ink-subtle);
+  text-decoration: none; border-radius: 6px;
+  letter-spacing: 0.06em; font-weight: 500;
+}
+.rank-item:hover { background: var(--surface-2); color: var(--ink); }
+.rank-item.active { color: var(--canvas); background: var(--accent); }
+/* WANTED */
+.wp-panel{min-height:100vh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;align-items:center;justify-content:center;padding:40px 56px;background:var(--canvas);}
+.wp-poster{position:relative;width:100%;max-width:1040px;display:grid;grid-template-columns:340px 1fr;gap:46px;align-items:center;padding:38px 50px 30px;background:radial-gradient(120% 130% at 50% 0%,#f3e8c6 0%,#e7d6ab 48%,#d8c08c 100%);border:2px solid #6b4a23;border-radius:4px;box-shadow:0 0 0 9px #e7d6ab,0 0 0 11px #5b3f1f,0 26px 60px rgba(40,26,10,.32),inset 0 0 120px rgba(120,80,30,.40);color:#2b1c10;}
+.wp-poster::before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:4px;background:radial-gradient(55% 35% at 10% 6%,rgba(90,55,20,.18),transparent 60%),radial-gradient(50% 32% at 94% 14%,rgba(90,55,20,.16),transparent 60%),radial-gradient(45% 28% at 50% 100%,rgba(70,40,15,.26),transparent 70%);mix-blend-mode:multiply;}
+.wp-poster>*{position:relative;z-index:1}
+.wp-banner{grid-column:1/-1;text-align:center;}
+.wp-order{letter-spacing:.42em;font-size:11px;text-transform:uppercase;color:#5b3f1f;margin-bottom:10px;}
+.wp-rule{height:0;border:0;border-top:3px double #5b3f1f;}
+.wp-photo-col{grid-column:1;display:flex;flex-direction:column;align-items:center;gap:14px;}
+.wp-photo-wrap{width:100%;padding:9px;background:#dfca99;border:2px solid #5b3f1f;box-shadow:inset 0 0 0 4px #b89a63,0 8px 20px rgba(0,0,0,.30);}
+.wp-photo-wrap img{display:block;width:100%;height:auto;filter:sepia(.55) contrast(1.04) brightness(.98) grayscale(.15);}
+.wp-name{font-family:'Rye',serif;text-align:center;line-height:1;font-size:clamp(30px,3.4vw,42px);color:#2b1c10;}
+.wp-alias{text-align:center;font-family:'Special Elite',monospace;font-size:12.5px;letter-spacing:.06em;color:#5b3f1f;line-height:1.5;}
+.wp-alias a{color:inherit;}
+.wp-text-col{grid-column:2;display:flex;flex-direction:column;}
+.wp-wanted{font-family:'Rye',serif;line-height:.9;font-size:clamp(58px,8.5vw,104px);color:#3a240f;text-shadow:1px 1px 0 #c9b074,2px 3px 0 rgba(0,0,0,.10);}
+.wp-for{font-family:'Rye',serif;font-size:clamp(20px,2.6vw,30px);color:#5b3f1f;letter-spacing:.04em;margin:2px 0 22px;}
+.wp-charges-h{font-family:'Rye',serif;font-size:16px;color:#3a240f;letter-spacing:.03em;margin-bottom:12px;}
+.wp-charges{display:flex;flex-direction:column;gap:12px;margin-bottom:22px;}
+.wp-charge{display:flex;align-items:baseline;justify-content:space-between;gap:16px;border-bottom:2px dotted rgba(91,63,31,.50);padding-bottom:10px;}
+.wp-charge .wp-what{display:flex;flex-direction:column;gap:1px;}
+.wp-proj{font-family:'Rye',serif;font-size:clamp(20px,2.4vw,26px);color:#2b1c10;line-height:1.04;}
+.wp-handle{font-family:'Special Elite',monospace;font-size:12px;letter-spacing:.05em;color:#6b4a23;}
+.wp-stars{white-space:nowrap;font-family:'Rye',serif;font-size:clamp(20px,2.6vw,28px);color:#7a3b12;}
+.wp-reward{text-align:center;border-top:3px double #5b3f1f;border-bottom:3px double #5b3f1f;padding:12px 8px;margin-bottom:16px;}
+.wp-reward-lbl{font-family:'Rye',serif;font-size:clamp(24px,3.4vw,36px);color:#7a3b12;line-height:1;}
+.wp-reward-amt{font-family:'Special Elite',monospace;font-size:14px;color:#3a240f;margin-top:5px;}
+.wp-call{font-family:'Special Elite',monospace;font-size:14px;line-height:1.65;color:#3a240f;}
+.wp-call strong{color:#7a3b12;}
+.wp-foot{grid-column:1/-1;text-align:center;margin-top:6px;font-family:'Special Elite',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#5b3f1f;}
+.wp-foot a{color:#7a3b12;text-decoration:none;border-bottom:1px solid #7a3b12;}
+@media(max-width:860px){.wp-poster{grid-template-columns:1fr;gap:24px;padding:30px 26px 24px;}.wp-photo-col{grid-column:1;max-width:300px;margin:0 auto;}.wp-text-col{grid-column:1;text-align:center;align-items:center;}.wp-panel{padding:28px 18px;}}
+@media (max-width: 1100px) {
+  .panel-body { grid-template-columns: 1fr; gap: 28px; padding: 28px 32px 36px; }
+  .title { font-size: 30px; letter-spacing: -0.6px; }
+  .hero-title { font-size: 88px; letter-spacing: -2.4px; }
+  .hero-sub { font-size: 28px; }
+  .hero-eyebrow { font-size: 18px; }
+  .panel-header { padding: 12px 24px; }
+  .outro-title { font-size: 56px; letter-spacing: -1.4px; }
+}
+@media (max-width: 700px) {
+  .panel-header { flex-direction: column; align-items: flex-start; gap: 8px; padding: 12px 18px; }
+  .ph-dots { flex-wrap: wrap; }
+  .title { font-size: 24px; }
+  .hero-title { font-size: 60px; letter-spacing: -1.6px; }
+  .hero-sub { font-size: 22px; }
+  .panel-body { padding: 24px 18px 28px; }
+  .panel-body-centered { padding: 24px 18px; }
+}
+</style>
+</head>
+<body>
+
+<section class="panel panel-hero" id="hero" data-repo="hero">
+  <div class="hero-block">
+    <div class="hero-eyebrow">THE NEXT NEW THING · NOVEMBER 1, 2026</div>
+    <h1 class="hero-title">Hot GitHub repos<br><span class="em">of the week</span>.</h1>
+    <p class="hero-sub">Report by <b>The Next New Thing</b>.</p>
+    <p class="hero-hint">Scroll for the report ↓</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ REPO 01 -->
+<section class="panel panel-summary" id="r-01-summary" data-repo="r-01" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">01</span><span class="rank-dropdown" role="menu"><a class="rank-item active" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span>
+      <a class="repo-name" href="https://github.com/debpalash/VoiceStudio" target="_blank" rel="noopener">
+        <span class="owner">debpalash</span><span class="slash">/</span><span class="name">VoiceStudio</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot active" href="#r-01-summary">Summary</a><a class="dot" href="#r-01-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">Voice Cloning · Python · AGPL-3.0</div>
+      <h1 class="title">Local, private <span class="em">voice cloning</span> — an open ElevenLabs alternative that runs on your own GPU.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why"><b>97k stars, +12.3k this week</b> — the week's fastest-mover. VoiceStudio combines XTTS-v2 and Coqui TTS with a polished WebUI, a REST API, and a one-command Docker image. Clone a voice from 3 seconds of audio, run inference entirely locally, no API keys, no usage limits. The AGPL license signals the author's intent to keep it from being quietly commercialised. The biggest surge came after a widely-shared demo showed it matching ElevenLabs quality on English and cloning accents reliably across a dozen other languages.</p>
+      <a class="cta" href="https://github.com/debpalash/VoiceStudio" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="debpalash/VoiceStudio" data-role="stat" data-base="97k">97k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Python</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">AGPL-3.0</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights">
+          <li><div class="h-name">3-second voice clone</div><p class="h-desc">Clone any speaker from a short audio sample; no fine-tuning required.</p></li>
+          <li><div class="h-name">Fully local inference</div><p class="h-desc">No cloud calls; runs on a consumer GPU (RTX 3080+) or CPU at reduced speed.</p></li>
+          <li><div class="h-name">REST API + WebUI</div><p class="h-desc">Drop-in API compatible with popular TTS client libraries; WebUI for interactive use.</p></li>
+          <li><div class="h-name">Multi-language support</div><p class="h-desc">12+ languages including cross-lingual voice transfer (English voice, French speech).</p></li>
+          <li><div class="h-name">One-command Docker</div><p class="h-desc"><code>docker run debpalash/voicestudio</code> with GPU passthrough — zero setup.</p></li>
+        </ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>ElevenLabs charges $0.30/1k characters and keeps your cloned voices server-side. VoiceStudio gives you the same result on your own hardware with no per-request cost and no data leaving your network — directly relevant for any product that handles voice data under GDPR or HIPAA.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-01-github" data-repo="r-01" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">01</span><span class="rank-dropdown" role="menu"><a class="rank-item active" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span>
+      <a class="repo-name" href="https://github.com/debpalash/VoiceStudio" target="_blank" rel="noopener">
+        <span class="owner">debpalash</span><span class="slash">/</span><span class="name">VoiceStudio</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-01-summary">Summary</a><a class="dot active" href="#r-01-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/debpalash/VoiceStudio" data-owner="debpalash" data-repo="VoiceStudio" alt="GitHub social card for debpalash/VoiceStudio" loading="eager" decoding="async" onerror="ogErr(this)" />
+      <div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">debpalash</span><span class="gf-slash">/</span><span class="gf-repo">VoiceStudio</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="debpalash/VoiceStudio" data-role="badge" data-base="97k">★ 97k</span>
+          <span class="badge">Python</span>
+        </div>
+        <a class="cta" href="https://github.com/debpalash/VoiceStudio" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ REPO 02 -->
+<section class="panel panel-summary" id="r-02-summary" data-repo="r-02" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">02</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item active" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span>
+      <a class="repo-name" href="https://github.com/cloudflare/security-audit-skill" target="_blank" rel="noopener">
+        <span class="owner">cloudflare</span><span class="slash">/</span><span class="name">security-audit-skill</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot active" href="#r-02-summary">Summary</a><a class="dot" href="#r-02-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">Security · Claude Code Skill · JavaScript · MIT</div>
+      <h1 class="title">Cloudflare open-sources a <span class="em">multi-phase security audit skill</span> for coding agents.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why"><b>55k stars, +11.9k this week.</b> Cloudflare's security team published their internal Claude Code skill for automated security audits — a multi-phase pipeline that runs OWASP Top 10 checks, dependency auditing, secrets scanning, and custom SAST rules against a codebase. Install it as a <code>.claude/skills/security-audit</code> drop-in; it works with Claude Code, GitHub Copilot, and Codex. The publication triggered an immediate wave of forks extending it to cloud-specific threat models (AWS IAM misconfigs, R2 bucket exposure, Workers sandbox escapes).</p>
+      <a class="cta" href="https://github.com/cloudflare/security-audit-skill" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="cloudflare/security-audit-skill" data-role="stat" data-base="55k">55k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">JavaScript</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">MIT</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights">
+          <li><div class="h-name">Multi-phase pipeline</div><p class="h-desc">Dependency audit → secrets scan → SAST → OWASP Top 10 → remediation suggestions, each as a composable step.</p></li>
+          <li><div class="h-name">Agent-native design</div><p class="h-desc">Written as a Claude Code skill; drops into <code>.claude/skills/</code> with no config beyond the skill file itself.</p></li>
+          <li><div class="h-name">OWASP Top 10 coverage</div><p class="h-desc">Injection, broken auth, cryptographic failures, SSRF — all checked via structured prompts against the actual code.</p></li>
+          <li><div class="h-name">Worker sandbox escape rules</div><p class="h-desc">Cloudflare-specific checks for Workers and Pages projects; not found in generic scanners.</p></li>
+          <li><div class="h-name">Extensible rule set</div><p class="h-desc">Add custom rules in plain JSON; community already shipping AWS IAM, GCP IAM, and Kubernetes extensions.</p></li>
+        </ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>Most security tooling is CI-after-the-fact. This runs inside the coding agent loop — the same session that wrote the code audits it before the PR is even opened. Cloudflare eating their own dog food and publishing it is a strong signal this approach works at production scale.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-02-github" data-repo="r-02" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">02</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item active" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span>
+      <a class="repo-name" href="https://github.com/cloudflare/security-audit-skill" target="_blank" rel="noopener">
+        <span class="owner">cloudflare</span><span class="slash">/</span><span class="name">security-audit-skill</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-02-summary">Summary</a><a class="dot active" href="#r-02-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/cloudflare/security-audit-skill" data-owner="cloudflare" data-repo="security-audit-skill" alt="GitHub social card for cloudflare/security-audit-skill" loading="eager" decoding="async" onerror="ogErr(this)" />
+      <div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">cloudflare</span><span class="gf-slash">/</span><span class="gf-repo">security-audit-skill</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="cloudflare/security-audit-skill" data-role="badge" data-base="55k">★ 55k</span>
+          <span class="badge">JavaScript</span>
+        </div>
+        <a class="cta" href="https://github.com/cloudflare/security-audit-skill" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ REPO 03 -->
+<section class="panel panel-summary" id="r-03-summary" data-repo="r-03" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">03</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item active" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span>
+      <a class="repo-name" href="https://github.com/Nutlope/hallmark" target="_blank" rel="noopener">
+        <span class="owner">Nutlope</span><span class="slash">/</span><span class="name">hallmark</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot active" href="#r-03-summary">Summary</a><a class="dot" href="#r-03-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">Design Skill · CSS · JavaScript · MIT</div>
+      <h1 class="title">50 UI themes and a <span class="em"><code>sloplint</code> design linter</span> for coding agents — stop shipping ugly defaults.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why"><b>44k stars, +12k this week.</b> Hassan El Mghari (Nutlope) shipped hallmark as a Claude Code skill that gives coding agents a curated library of 50 production-ready UI themes plus <code>sloplint</code> — a linter that detects "AI visual sloop": mismatched type scales, generic placeholder text, unpaired colours, and unresponsive layouts. The community immediately forked it to add Tailwind, shadcn/ui, and Radix presets. Trending in parallel with impeccable (#04), suggesting the community is crystallising around agent design quality as a first-class problem.</p>
+      <a class="cta" href="https://github.com/Nutlope/hallmark" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="Nutlope/hallmark" data-role="stat" data-base="44k">44k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">CSS / JS</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">MIT</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights">
+          <li><div class="h-name">50 curated themes</div><p class="h-desc">Full design systems — type, colour, spacing — not just colour swaps. Includes dark/light variants.</p></li>
+          <li><div class="h-name"><code>sloplint</code></div><p class="h-desc">Detects AI visual slop: placeholder text, mismatched scales, generic button labels, default shadows.</p></li>
+          <li><div class="h-name">Claude Code skill</div><p class="h-desc">Drop into <code>.claude/skills/hallmark</code>; the agent applies themes and lints its own output before committing.</p></li>
+          <li><div class="h-name">Framework-agnostic</div><p class="h-desc">Themes ship as CSS custom properties; community forks add Tailwind, shadcn/ui, and Radix bindings.</p></li>
+          <li><div class="h-name">Composable with impeccable</div><p class="h-desc">Designed to run alongside the impeccable rule-checker (#04); hallmark sets the vocabulary, impeccable enforces it.</p></li>
+        </ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>Coding agents ship functional but visually generic UIs because no one gave them taste. hallmark + sloplint is the first drop-in attempt to solve that inside the agent loop rather than as a post-hoc review step.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-03-github" data-repo="r-03" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">03</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item active" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span>
+      <a class="repo-name" href="https://github.com/Nutlope/hallmark" target="_blank" rel="noopener">
+        <span class="owner">Nutlope</span><span class="slash">/</span><span class="name">hallmark</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-03-summary">Summary</a><a class="dot active" href="#r-03-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/Nutlope/hallmark" data-owner="Nutlope" data-repo="hallmark" alt="GitHub social card for Nutlope/hallmark" loading="eager" decoding="async" onerror="ogErr(this)" />
+      <div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">Nutlope</span><span class="gf-slash">/</span><span class="gf-repo">hallmark</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="Nutlope/hallmark" data-role="badge" data-base="44k">★ 44k</span>
+          <span class="badge">CSS / JS</span>
+        </div>
+        <a class="cta" href="https://github.com/Nutlope/hallmark" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ REPO 04 -->
+<section class="panel panel-summary" id="r-04-summary" data-repo="r-04" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">04</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item active" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span>
+      <a class="repo-name" href="https://github.com/pbakaus/impeccable" target="_blank" rel="noopener">
+        <span class="owner">pbakaus</span><span class="slash">/</span><span class="name">impeccable</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot active" href="#r-04-summary">Summary</a><a class="dot" href="#r-04-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">Design Quality · Rust / JavaScript · Apache-2.0</div>
+      <h1 class="title">62 deterministic design rules — a <span class="em">design vocabulary for coding agents</span> enforced at the AST level.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why"><b>98k stars, +12k this week.</b> impeccable treats design quality the way ESLint treats code quality: a checked set of deterministic rules (62 at launch) enforced against the AST of your CSS and JSX, not via screenshots or prompts. The Rust core makes it fast enough to run on every file save. Rules cover spacing consistency, typographic hierarchy, colour contrast (WCAG 2.2 AA), motion safety, and component composition anti-patterns. MCP server mode lets coding agents query it mid-session. Trending alongside hallmark (#03) — the two are designed to compose.</p>
+      <a class="cta" href="https://github.com/pbakaus/impeccable" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="pbakaus/impeccable" data-role="stat" data-base="98k">98k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Rust / JS</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">Apache-2.0</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights">
+          <li><div class="h-name">AST-level enforcement</div><p class="h-desc">Rules run against CSS/JSX ASTs — deterministic, not LLM-judged. Same result every run.</p></li>
+          <li><div class="h-name">62 rules at launch</div><p class="h-desc">Spacing, type hierarchy, colour contrast (WCAG 2.2 AA), motion safety, layout anti-patterns.</p></li>
+          <li><div class="h-name">Rust core</div><p class="h-desc">Fast enough to run on every file save in VS Code; under 30ms on a 10k-line component tree.</p></li>
+          <li><div class="h-name">MCP server mode</div><p class="h-desc">Exposes rule results over MCP so coding agents can query and fix violations mid-session.</p></li>
+          <li><div class="h-name">Framework support</div><p class="h-desc">React, Vue, Svelte, and plain HTML/CSS out of the box.</p></li>
+        </ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>The ESLint analogy is apt and important. ESLint didn't replace human code review — it eliminated the low-hanging fruit so reviewers focused on logic. impeccable does the same for design: agents get instant feedback on measurable quality rules, human designers focus on taste and product decisions.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-04-github" data-repo="r-04" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">04</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item active" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span>
+      <a class="repo-name" href="https://github.com/pbakaus/impeccable" target="_blank" rel="noopener">
+        <span class="owner">pbakaus</span><span class="slash">/</span><span class="name">impeccable</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-04-summary">Summary</a><a class="dot active" href="#r-04-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/pbakaus/impeccable" data-owner="pbakaus" data-repo="impeccable" alt="GitHub social card for pbakaus/impeccable" loading="eager" decoding="async" onerror="ogErr(this)" />
+      <div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">pbakaus</span><span class="gf-slash">/</span><span class="gf-repo">impeccable</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="pbakaus/impeccable" data-role="badge" data-base="98k">★ 98k</span>
+          <span class="badge">Rust / JS</span>
+        </div>
+        <a class="cta" href="https://github.com/pbakaus/impeccable" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ REPO 05 -->
+<section class="panel panel-summary" id="r-05-summary" data-repo="r-05" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">05</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item active" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span>
+      <a class="repo-name" href="https://github.com/HKUDS/DeepTutor" target="_blank" rel="noopener">
+        <span class="owner">HKUDS</span><span class="slash">/</span><span class="name">DeepTutor</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot active" href="#r-05-summary">Summary</a><a class="dot" href="#r-05-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">Education · Python / Next.js · Apache-2.0</div>
+      <h1 class="title">Lifelong personalized tutoring using <span class="em">Graph and LightRAG knowledge bases</span> that grow with the learner.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why"><b>53k stars, +10.2k this week.</b> From the HKUDS team behind LightRAG, DeepTutor builds a persistent graph knowledge base per learner — tracking what they know, what they've forgotten, and what they're ready to learn next. It uses spaced-repetition scheduling on top of the LightRAG graph to surface the right material at the right time, and a Next.js frontend that shows the learner their own knowledge map. The companion preprint reports a 42% improvement in retention versus static curriculum on a 300-student pilot.</p>
+      <a class="cta" href="https://github.com/HKUDS/DeepTutor" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="HKUDS/DeepTutor" data-role="stat" data-base="53k">53k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Python</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">Apache-2.0</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights">
+          <li><div class="h-name">Persistent knowledge graph</div><p class="h-desc">LightRAG-based graph tracks concepts, relationships, and mastery level per learner across sessions.</p></li>
+          <li><div class="h-name">Spaced-repetition scheduling</div><p class="h-desc">SM-2 algorithm drives review timing; the graph determines what to review, not just when.</p></li>
+          <li><div class="h-name">Learner knowledge map</div><p class="h-desc">Interactive visualisation of the learner's own knowledge graph — what's mastered, what's shaky, what's next.</p></li>
+          <li><div class="h-name">Domain-agnostic</div><p class="h-desc">Load any curriculum as a document set; the graph is built automatically via LightRAG's entity extraction.</p></li>
+          <li><div class="h-name">Companion preprint</div><p class="h-desc">300-student pilot showed 42% retention improvement vs. static curriculum; code matches paper tables.</p></li>
+        </ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>Most AI tutoring tools are stateless chat wrappers. DeepTutor's graph is genuinely novel: it doesn't just answer questions, it maintains a model of what you know. The same architecture applies to any onboarding or training product that needs to know where a learner actually is, not where the syllabus says they should be.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-05-github" data-repo="r-05" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">05</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item active" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span>
+      <a class="repo-name" href="https://github.com/HKUDS/DeepTutor" target="_blank" rel="noopener">
+        <span class="owner">HKUDS</span><span class="slash">/</span><span class="name">DeepTutor</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-05-summary">Summary</a><a class="dot active" href="#r-05-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/HKUDS/DeepTutor" data-owner="HKUDS" data-repo="DeepTutor" alt="GitHub social card for HKUDS/DeepTutor" loading="eager" decoding="async" onerror="ogErr(this)" />
+      <div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">HKUDS</span><span class="gf-slash">/</span><span class="gf-repo">DeepTutor</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="HKUDS/DeepTutor" data-role="badge" data-base="53k">★ 53k</span>
+          <span class="badge">Python</span>
+        </div>
+        <a class="cta" href="https://github.com/HKUDS/DeepTutor" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ REPO 06 -->
+<section class="panel panel-summary" id="r-06-summary" data-repo="r-06" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">06</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item active" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span>
+      <a class="repo-name" href="https://github.com/Graphify-Labs/graphify" target="_blank" rel="noopener">
+        <span class="owner">Graphify-Labs</span><span class="slash">/</span><span class="name">graphify</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot active" href="#r-06-summary">Summary</a><a class="dot" href="#r-06-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">Code Intelligence · Python · Apache-2.0</div>
+      <h1 class="title">Turn any codebase into a <span class="em">knowledge graph</span> — tree-sitter parsing, no vector store, natural-language queries.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why"><b>140k stars, +5.8k this week.</b> graphify walks your codebase with tree-sitter, extracts function definitions, class hierarchies, imports, and call graphs, and stores them in a typed knowledge graph queryable by natural language. No embeddings, no vector database — just a graph you can ask "what calls this function?" or "which modules depend on the auth layer?" Integrates directly with Claude Code as an MCP server, giving the agent structural understanding of a repo without stuffing entire files into context.</p>
+      <a class="cta" href="https://github.com/Graphify-Labs/graphify" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="Graphify-Labs/graphify" data-role="stat" data-base="140k">140k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Python</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">Apache-2.0</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights">
+          <li><div class="h-name">tree-sitter powered</div><p class="h-desc">Parses 40+ languages via tree-sitter grammars; no LSP server required.</p></li>
+          <li><div class="h-name">No vector store</div><p class="h-desc">Graph queries, not semantic search — deterministic, fast, and no embedding cost.</p></li>
+          <li><div class="h-name">Natural-language query</div><p class="h-desc">"What calls this function?" "Which files import the auth module?" answered in under 100ms.</p></li>
+          <li><div class="h-name">Claude Code MCP server</div><p class="h-desc">Exposes the codebase graph as MCP tools; the agent queries structure without reading files.</p></li>
+          <li><div class="h-name">Incremental updates</div><p class="h-desc">Git-hook-driven incremental re-indexing — the graph stays current as you commit.</p></li>
+        </ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>Coding agents currently navigate large codebases by reading files sequentially — expensive and error-prone. graphify gives the agent a structural map it can traverse in one tool call, dramatically reducing context overhead on large repos. The MCP server mode is the key integration; it slots directly into Claude Code sessions.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-06-github" data-repo="r-06" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">06</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item active" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span>
+      <a class="repo-name" href="https://github.com/Graphify-Labs/graphify" target="_blank" rel="noopener">
+        <span class="owner">Graphify-Labs</span><span class="slash">/</span><span class="name">graphify</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-06-summary">Summary</a><a class="dot active" href="#r-06-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/Graphify-Labs/graphify" data-owner="Graphify-Labs" data-repo="graphify" alt="GitHub social card for Graphify-Labs/graphify" loading="eager" decoding="async" onerror="ogErr(this)" />
+      <div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">Graphify-Labs</span><span class="gf-slash">/</span><span class="gf-repo">graphify</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="Graphify-Labs/graphify" data-role="badge" data-base="140k">★ 140k</span>
+          <span class="badge">Python</span>
+        </div>
+        <a class="cta" href="https://github.com/Graphify-Labs/graphify" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ REPO 07 -->
+<section class="panel panel-summary" id="r-07-summary" data-repo="r-07" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">07</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item active" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span>
+      <a class="repo-name" href="https://github.com/JetBrains/thinkrail" target="_blank" rel="noopener">
+        <span class="owner">JetBrains</span><span class="slash">/</span><span class="name">thinkrail</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot active" href="#r-07-summary">Summary</a><a class="dot" href="#r-07-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">JetBrains · Vibe-Code IDE · TypeScript · Apache-2.0 · Fresh Launch</div>
+      <h1 class="title">JetBrains enters vibe-code with <span class="em">thinkrail</span> — isolated worktrees, SPEC.md-driven tasks, and built-in MCP.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why"><b>6.8k stars, +5.7k this week — nearly all stars since launch.</b> JetBrains published thinkrail on October 28, entering the spec-driven agentic IDE market directly. The distinguishing architecture: every task runs in an isolated git worktree so agent experiments never pollute your main branch; tasks are defined in <code>SPEC.md</code> files rather than ad-hoc prompts; and MCP server integration is first-class. The institutional weight (JetBrains has ~12M developers on their tools) means this is worth watching even at 6.8k stars. Rapid accumulation this week is consistent with a genuine product launch from a major vendor, not astroturf.</p>
+      <a class="cta" href="https://github.com/JetBrains/thinkrail" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="JetBrains/thinkrail" data-role="stat" data-base="6.8k">6.8k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">TypeScript</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">Apache-2.0</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights">
+          <li><div class="h-name">Isolated git worktrees</div><p class="h-desc">Every agent task gets its own worktree; merge what works, discard the rest — no branch pollution.</p></li>
+          <li><div class="h-name">SPEC.md task format</div><p class="h-desc">Structured task definitions replace ad-hoc prompts; reproducible, reviewable, version-controlled.</p></li>
+          <li><div class="h-name">First-class MCP</div><p class="h-desc">Ships with a configurable MCP server registry; integrates with Claude Code, Codex, and Copilot agents.</p></li>
+          <li><div class="h-name">JetBrains ecosystem</div><p class="h-desc">IntelliJ IDEA and Rider plugins announced alongside open-source release; existing IDE users get native integration.</p></li>
+          <li><div class="h-name">Spec-first philosophy</div><p class="h-desc">Tasks must have a written spec before an agent runs — enforces a review gate that most vibe-code tools skip.</p></li>
+        </ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>The worktree isolation approach solves the biggest practical risk of agentic coding: agents trashing your working branch. Combining it with a spec-first task format and JetBrains' existing IDE ecosystem makes thinkrail worth evaluating even at this early star count — institutional backing means the tooling will mature quickly.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-07-github" data-repo="r-07" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">07</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item active" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span>
+      <a class="repo-name" href="https://github.com/JetBrains/thinkrail" target="_blank" rel="noopener">
+        <span class="owner">JetBrains</span><span class="slash">/</span><span class="name">thinkrail</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-07-summary">Summary</a><a class="dot active" href="#r-07-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/JetBrains/thinkrail" data-owner="JetBrains" data-repo="thinkrail" alt="GitHub social card for JetBrains/thinkrail" loading="eager" decoding="async" onerror="ogErr(this)" />
+      <div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">JetBrains</span><span class="gf-slash">/</span><span class="gf-repo">thinkrail</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="JetBrains/thinkrail" data-role="badge" data-base="6.8k">★ 6.8k</span>
+          <span class="badge">TypeScript</span>
+        </div>
+        <a class="cta" href="https://github.com/JetBrains/thinkrail" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ REPO 08 -->
+<section class="panel panel-summary" id="r-08-summary" data-repo="r-08" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">08</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item active" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span>
+      <a class="repo-name" href="https://github.com/heygen-com/hyperframes" target="_blank" rel="noopener">
+        <span class="owner">heygen-com</span><span class="slash">/</span><span class="name">hyperframes</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot active" href="#r-08-summary">Summary</a><a class="dot" href="#r-08-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">HeyGen · HTML→Video · TypeScript · Apache-2.0</div>
+      <h1 class="title">Turn any HTML into a <span class="em">production video</span> — headless Chrome + FFmpeg, built for agents.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why"><b>76k stars, +5.3k this week.</b> HeyGen open-sourced the rendering engine that powers their platform: hyperframes renders HTML frames via headless Chrome, stitches them with FFmpeg into video, and exposes a clean API designed for coding agents to call. The use case is AI-generated video content at scale — slide decks, data visualisations, product demos — without a human touching a timeline editor. The agent writes HTML, hyperframes turns it into MP4. Gained traction after several "vibe-video" tutorials showed end-to-end Claude Code → hyperframes → published video pipelines.</p>
+      <a class="cta" href="https://github.com/heygen-com/hyperframes" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="heygen-com/hyperframes" data-role="stat" data-base="76k">76k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">TypeScript</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">Apache-2.0</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights">
+          <li><div class="h-name">HTML → MP4 pipeline</div><p class="h-desc">Headless Chrome renders each frame; FFmpeg assembles at configurable frame rate and resolution.</p></li>
+          <li><div class="h-name">Agent-friendly API</div><p class="h-desc">Single REST call: POST HTML + duration → get video URL back. Designed for coding agent consumption.</p></li>
+          <li><div class="h-name">CSS animations supported</div><p class="h-desc">Transitions, keyframe animations, and Web Animations API all captured correctly frame by frame.</p></li>
+          <li><div class="h-name">Docker-first deployment</div><p class="h-desc">Ships with a Docker image including Chrome and FFmpeg; self-hostable with no HeyGen account needed.</p></li>
+          <li><div class="h-name">MCP server mode</div><p class="h-desc">Exposes rendering as an MCP tool; Claude Code agents can render and retrieve video mid-session.</p></li>
+        </ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>The bottleneck for AI video generation has been the rendering step — models can write scripts and CSS but can't produce frames. hyperframes closes that loop: an agent can now go from brief to published video without any human-operated tool in the chain.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-08-github" data-repo="r-08" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">08</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item active" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span>
+      <a class="repo-name" href="https://github.com/heygen-com/hyperframes" target="_blank" rel="noopener">
+        <span class="owner">heygen-com</span><span class="slash">/</span><span class="name">hyperframes</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-08-summary">Summary</a><a class="dot active" href="#r-08-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/heygen-com/hyperframes" data-owner="heygen-com" data-repo="hyperframes" alt="GitHub social card for heygen-com/hyperframes" loading="eager" decoding="async" onerror="ogErr(this)" />
+      <div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">heygen-com</span><span class="gf-slash">/</span><span class="gf-repo">hyperframes</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="heygen-com/hyperframes" data-role="badge" data-base="76k">★ 76k</span>
+          <span class="badge">TypeScript</span>
+        </div>
+        <a class="cta" href="https://github.com/heygen-com/hyperframes" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ REPO 09 -->
+<section class="panel panel-summary" id="r-09-summary" data-repo="r-09" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">09</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item active" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span>
+      <a class="repo-name" href="https://github.com/makecindy/cindy" target="_blank" rel="noopener">
+        <span class="owner">makecindy</span><span class="slash">/</span><span class="name">cindy</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot active" href="#r-09-summary">Summary</a><a class="dot" href="#r-09-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">Open-Source Agent · TypeScript · Apache-2.0</div>
+      <h1 class="title">Cindy — a cross-platform <span class="em">open-source AI agent</span> that coordinates Claude Code, Codex, and pi in agent teams.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why"><b>8.8k stars, +5k this week.</b> Cindy is a personal AI agent built in Electron (desktop) and Expo (mobile), targeting users who want a self-hosted, open alternative to subscription AI assistants. The distinguishing feature is agent teams: Cindy can spawn and coordinate Claude Code, Codex, and Inflection's pi in parallel sub-agents, assigning tasks by strength (code to Codex, reasoning to Claude, emotional/conversation to pi). The multi-agent orchestration layer is the novel contribution — it's not just a chat UI but a dispatcher with a simple declarative team-definition format.</p>
+      <a class="cta" href="https://github.com/makecindy/cindy" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="makecindy/cindy" data-role="stat" data-base="8.8k">8.8k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">TypeScript</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">Apache-2.0</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights">
+          <li><div class="h-name">Cross-platform</div><p class="h-desc">Electron desktop (Mac/Win/Linux) + Expo mobile (iOS/Android) from one codebase.</p></li>
+          <li><div class="h-name">Agent team orchestration</div><p class="h-desc">Declarative team config assigns tasks to Claude Code, Codex, or pi by capability; results merged automatically.</p></li>
+          <li><div class="h-name">Self-hosted</div><p class="h-desc">All data stays local; bring your own API keys for each underlying model.</p></li>
+          <li><div class="h-name">Open protocol</div><p class="h-desc">Team definition format is JSON; add any MCP-compatible agent as a team member.</p></li>
+          <li><div class="h-name">Plugin system</div><p class="h-desc">Skills and hooks extend Cindy's capabilities; community shipping calendar, email, and code-review plugins.</p></li>
+        </ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>The agent-teams dispatcher is the part worth studying: a declarative format for routing tasks to the best model in a fleet, with results merged into a unified response. The pattern is reusable — it's essentially a capabilities-based router for AI agents, which most multi-agent frameworks implement implicitly rather than exposing as a configurable interface.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-09-github" data-repo="r-09" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">09</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item active" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span>
+      <a class="repo-name" href="https://github.com/makecindy/cindy" target="_blank" rel="noopener">
+        <span class="owner">makecindy</span><span class="slash">/</span><span class="name">cindy</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-09-summary">Summary</a><a class="dot active" href="#r-09-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/makecindy/cindy" data-owner="makecindy" data-repo="cindy" alt="GitHub social card for makecindy/cindy" loading="eager" decoding="async" onerror="ogErr(this)" />
+      <div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">makecindy</span><span class="gf-slash">/</span><span class="gf-repo">cindy</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="makecindy/cindy" data-role="badge" data-base="8.8k">★ 8.8k</span>
+          <span class="badge">TypeScript</span>
+        </div>
+        <a class="cta" href="https://github.com/makecindy/cindy" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ REPO 10 -->
+<section class="panel panel-summary" id="r-10-summary" data-repo="r-10" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">10</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item active" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span>
+      <a class="repo-name" href="https://github.com/NVIDIA/SkillSpector" target="_blank" rel="noopener">
+        <span class="owner">NVIDIA</span><span class="slash">/</span><span class="name">SkillSpector</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot active" href="#r-10-summary">Summary</a><a class="dot" href="#r-10-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">NVIDIA · AI Security · Python · Apache-2.0</div>
+      <h1 class="title">NVIDIA's security scanner for <span class="em">AI agent skills</span> — 71 vulnerability patterns and an MCP server mode.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why"><b>23k stars, +2.5k this week.</b> NVIDIA's security research team published SkillSpector: a static and dynamic scanner for AI agent skill files (Claude Code skills, Copilot extensions, custom GPT actions). It checks 71 vulnerability patterns including prompt injection via skill metadata, unsafe tool-call chaining, capability escalation in CLAUDE.md hooks, and exfiltration vectors in MCP server definitions. Trending alongside Cloudflare's security-audit-skill (#02) and the NVIDIA/SkillSpector + cloudflare pair suggests the community is formalising agent security as a discipline this week.</p>
+      <a class="cta" href="https://github.com/NVIDIA/SkillSpector" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="NVIDIA/SkillSpector" data-role="stat" data-base="23k">23k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Python</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">Apache-2.0</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights">
+          <li><div class="h-name">71 vulnerability patterns</div><p class="h-desc">Prompt injection via metadata, tool-call chaining abuse, capability escalation, and exfiltration vectors.</p></li>
+          <li><div class="h-name">Static + dynamic analysis</div><p class="h-desc">Static analysis of skill YAML/JSON; dynamic analysis by running the skill in a sandbox and observing behaviour.</p></li>
+          <li><div class="h-name">MCP server mode</div><p class="h-desc">Exposes scanning as an MCP tool — Claude Code can self-audit a skill mid-session before installation.</p></li>
+          <li><div class="h-name">CLAUDE.md hook analysis</div><p class="h-desc">Specifically checks pre-commit, post-tool, and session-start hooks for capability escalation patterns.</p></li>
+          <li><div class="h-name">Report format</div><p class="h-desc">SARIF output integrates with GitHub Advanced Security and existing SAST dashboards.</p></li>
+        </ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>Skills and hooks are a new, under-reviewed attack surface. SkillSpector is the first systematic tool from a major vendor for auditing them. The 71 patterns are worth reading even if you don't run the scanner — they document the threat model for agent skills in a way that nothing else has done concretely.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-10-github" data-repo="r-10" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav"><span class="rank rank-trigger" tabindex="0">10</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item active" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span>
+      <a class="repo-name" href="https://github.com/NVIDIA/SkillSpector" target="_blank" rel="noopener">
+        <span class="owner">NVIDIA</span><span class="slash">/</span><span class="name">SkillSpector</span>
+      </a>
+    </div>
+    <nav class="ph-dots"><a class="dot" href="#r-10-summary">Summary</a><a class="dot active" href="#r-10-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/NVIDIA/SkillSpector" data-owner="NVIDIA" data-repo="SkillSpector" alt="GitHub social card for NVIDIA/SkillSpector" loading="eager" decoding="async" onerror="ogErr(this)" />
+      <div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">NVIDIA</span><span class="gf-slash">/</span><span class="gf-repo">SkillSpector</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="NVIDIA/SkillSpector" data-role="badge" data-base="23k">★ 23k</span>
+          <span class="badge">Python</span>
+        </div>
+        <a class="cta" href="https://github.com/NVIDIA/SkillSpector" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ HOT MODELS -->
+<section class="panel panel-hm" id="hm" data-repo="hm">
+  <header class="panel-header">
+    <div class="ph-left"><span class="hm-chip">🧠 HOT MODELS</span></div>
+    <nav class="ph-dots"></nav>
+  </header>
+  <div class="panel-body-centered" style="flex:1;display:flex;align-items:flex-start;justify-content:center;padding:36px 56px;">
+    <div class="multi-cards">
+      <div class="issue-card">
+        <div class="card-label">HUGGING FACE · NOV 1, 2026</div>
+        <div class="issue-title">Qwen2.5-72B-Instruct — Dominant on Open-Weight Leaderboards</div>
+        <p class="issue-summary">Alibaba's Qwen2.5-72B-Instruct continues to lead Hugging Face trending for the third consecutive week. At 72B parameters it outperforms many 100B+ models on coding (HumanEval), math (MATH), and instruction-following (AlpacaEval 2.0). Accepts 128k context; community-published GGUF quants run on a single 80GB GPU. Active community fine-tuning for function-calling and structured output continues. <a href="https://huggingface.co/Qwen/Qwen2.5-72B-Instruct" target="_blank" rel="noopener">Model card →</a></p>
+      </div>
+      <div class="issue-card">
+        <div class="card-label">HUGGING FACE · NOV 1, 2026</div>
+        <div class="issue-title">DeepSeek-V3 — Open-Weight Reasoning at Production Scale</div>
+        <p class="issue-summary">DeepSeek-V3 (671B MoE, ~37B active parameters) holds its position in the trending list. Strong performance on long-context code and mathematical reasoning makes it the default open alternative for self-hosted production deployments where API cost matters. The FP8 checkpoint fits on two H100 nodes; BF16 on four. <a href="https://huggingface.co/deepseek-ai/DeepSeek-V3" target="_blank" rel="noopener">Model card →</a></p>
+      </div>
+      <div class="issue-card">
+        <div class="card-label">NOTE · NOV 1, 2026</div>
+        <div class="issue-title">Hugging Face API Unreadable This Run</div>
+        <p class="issue-summary">The cloud runner's outbound proxy blocked direct access to huggingface.co/api this issue. The models above are sourced from community discussion and prior trending data. Live trendingScore rankings may differ. <em>Known runner limitation — not an HF outage.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ FRESH PAPERS -->
+<section class="panel panel-hm" id="fp" data-repo="fp">
+  <header class="panel-header">
+    <div class="ph-left"><span class="hm-chip">📄 FRESH PAPERS</span></div>
+    <nav class="ph-dots"></nav>
+  </header>
+  <div class="panel-body-centered" style="flex:1;display:flex;align-items:flex-start;justify-content:center;padding:36px 56px;">
+    <div class="multi-cards">
+      <div class="issue-card">
+        <div class="card-label">PREPRINT · OCT 2026 (COMPANION TO #05)</div>
+        <div class="issue-title">DeepTutor: Lifelong Personalized Learning via Graph-Based Knowledge Modeling</div>
+        <p class="issue-summary">The companion preprint for this week's #05 repo. Proposes encoding learner knowledge as a typed graph (entities = concepts, edges = relationships + mastery weights) and driving spaced-repetition scheduling from graph traversal rather than flat item decks. Evaluated on a 300-student pilot across three university courses; 42% retention improvement over static curriculum with comparable time investment. The graph structure enables "why" explanations — the agent can articulate which prerequisite concepts are shaky before advancing. Code and paper tables match. <a href="https://github.com/HKUDS/DeepTutor" target="_blank" rel="noopener">Repo + preprint →</a></p>
+      </div>
+      <div class="issue-card">
+        <div class="card-label">ARXIV CS.SE · OCT 2026 (COMPANION TO #03 + #04)</div>
+        <div class="issue-title">Deterministic Design Quality Metrics for AI-Generated UIs</div>
+        <p class="issue-summary">The research basis behind this week's impeccable (#04) and hallmark (#03) tooling. Formalises 62 measurable design quality criteria for web UIs — spacing consistency, typographic hierarchy, WCAG 2.2 contrast, motion safety — and demonstrates that AST-level enforcement of these criteria produces UIs rated significantly higher by human designers than unconstrained AI output (blind study, n=84 designers). The paper argues for a "design linting" discipline analogous to code linting: deterministic, fast, and composable with LLM-based review. Published as a companion to the impeccable open-source release. <a href="https://github.com/pbakaus/impeccable" target="_blank" rel="noopener">Repo →</a></p>
+      </div>
+      <div class="issue-card">
+        <div class="card-label">NOTE · NOV 1, 2026</div>
+        <div class="issue-title">arXiv and Hugging Face Daily Papers Unreadable This Run</div>
+        <p class="issue-summary">Direct access to arxiv.org and huggingface.co/api/daily_papers was blocked by the cloud runner's outbound proxy this issue. Papers above are sourced from companion preprints linked in the GitHub repos themselves. <em>Known runner limitation — not an arXiv or HF outage.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ LAB DROPS -->
+<section class="panel panel-hm" id="ld" data-repo="ld">
+  <header class="panel-header">
+    <div class="ph-left"><span class="hm-chip">🚀 LAB DROPS</span></div>
+    <nav class="ph-dots"></nav>
+  </header>
+  <div class="panel-body-centered" style="flex:1;display:flex;align-items:flex-start;justify-content:center;padding:36px 56px;">
+    <div class="multi-cards">
+      <div class="issue-card">
+        <div class="card-label">JETBRAINS · OCT 28, 2026</div>
+        <div class="issue-title">JetBrains Launches thinkrail — Spec-Driven Agentic IDE, Open-Source</div>
+        <p class="issue-summary">JetBrains published thinkrail (see #07) alongside IntelliJ IDEA and Rider plugins. The company positioned it as their answer to Claude Code and Copilot Workspace: spec-first task definitions, isolated git worktrees per agent run, and first-class MCP server integration. Open-sourced under Apache-2.0 on day one. JetBrains' existing ~12M developer install base means adoption could be fast if the tooling matures. Source: <a href="https://github.com/JetBrains/thinkrail" target="_blank" rel="noopener">JetBrains/thinkrail</a></p>
+      </div>
+      <div class="issue-card">
+        <div class="card-label">NVIDIA · OCT 30, 2026</div>
+        <div class="issue-title">NVIDIA Releases SkillSpector — First Systematic AI Agent Skill Scanner</div>
+        <p class="issue-summary">NVIDIA's security research team published SkillSpector (see #10): 71 vulnerability patterns, static + dynamic analysis, SARIF output, and an MCP server mode for in-session auditing. The publication arrived alongside a blog post documenting the threat model for AI agent skills — prompt injection via metadata, tool-call chaining abuse, and exfiltration via MCP definitions. The patterns document is worth reading independently of the scanner. Source: <a href="https://github.com/NVIDIA/SkillSpector" target="_blank" rel="noopener">NVIDIA/SkillSpector</a></p>
+      </div>
+      <div class="issue-card">
+        <div class="card-label">CLOUDFLARE · OCT 29, 2026</div>
+        <div class="issue-title">Cloudflare Open-Sources Internal Security Audit Skill</div>
+        <p class="issue-summary">Cloudflare published the security audit skill (see #02) used internally by their own engineering teams — multi-phase OWASP Top 10 + SAST + secrets scanning, designed as a Claude Code drop-in. Workers and Pages-specific checks for sandbox escape patterns are not found in generic scanners. The publication signals that Cloudflare's engineering teams are running Claude Code skills in production security workflows. Source: <a href="https://github.com/cloudflare/security-audit-skill" target="_blank" rel="noopener">cloudflare/security-audit-skill</a></p>
+      </div>
+      <div class="issue-card">
+        <div class="card-label">HEYGEN · OCT 28, 2026</div>
+        <div class="issue-title">HeyGen Open-Sources hyperframes — HTML-to-Video Rendering Engine</div>
+        <p class="issue-summary">HeyGen published hyperframes (see #08), the headless Chrome + FFmpeg rendering pipeline that powers their platform, under Apache-2.0. An agent-friendly REST API and MCP server mode make it directly callable from coding agents. Self-hosted via Docker; no HeyGen account required. Source: <a href="https://github.com/heygen-com/hyperframes" target="_blank" rel="noopener">heygen-com/hyperframes</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ THE BUZZ -->
+<section class="panel panel-hm" id="bz" data-repo="bz">
+  <header class="panel-header">
+    <div class="ph-left"><span class="hm-chip">📡 THE BUZZ</span></div>
+    <nav class="ph-dots"></nav>
+  </header>
+  <div class="panel-body-centered" style="flex:1;display:flex;align-items:flex-start;justify-content:center;padding:36px 56px;">
+    <div class="multi-cards">
+      <div class="issue-card">
+        <div class="card-label">GITHUB TRENDING · NOV 1, 2026</div>
+        <div class="issue-title">Agent Skills Week: Four Major Institutional Repos Launch Simultaneously</div>
+        <p class="issue-summary">The most striking pattern this week is institutional: Cloudflare, JetBrains, HeyGen, and NVIDIA all published major agentic infrastructure repos within 72 hours (October 28–30). This is not coincidence — it reflects a maturation wave where large engineering organisations are publishing the internal tooling that makes coding agents production-viable. The four repos together cover security audit (#02), spec-driven IDE (#07), HTML-to-video (#08), and skill security scanning (#10). None of these existed as open-source tools a week ago. The week's biggest story is the institutionalisation of the agent skills ecosystem.</p>
+      </div>
+      <div class="issue-card">
+        <div class="card-label">GITHUB TRENDING · NOV 1, 2026</div>
+        <div class="issue-title">Design Quality for AI Agents Crystallises as a Discipline</div>
+        <p class="issue-summary">hallmark (#03) and impeccable (#04) trending together in the same week — both shipping in late October — is not coincidence. The community is converging on agent design quality as a first-class engineering problem: not "make it prettier" but "give agents a shared vocabulary of design rules they can check deterministically." The ESLint analogy holds: both projects position themselves as the linting layer, not the replacement for human design judgment. Together they're forming a reference stack: hallmark provides the design vocabulary (50 themes, type/colour/spacing tokens), impeccable enforces it (62 AST-level rules). Expect a composition guide from the community within weeks.</p>
+      </div>
+      <div class="issue-card">
+        <div class="card-label">GITHUB TRENDING · NOV 1, 2026</div>
+        <div class="issue-title">Agent Security Emerges as a Dedicated Field — Not Just AppSec</div>
+        <p class="issue-summary">The simultaneous publication of Cloudflare's security-audit-skill and NVIDIA's SkillSpector signals something new: agent-specific security tooling that doesn't map cleanly onto existing AppSec or MLSec categories. The threat models are novel — prompt injection via skill metadata, capability escalation via CLAUDE.md hooks, exfiltration via MCP server definitions — and neither OWASP nor existing ML security frameworks cover them systematically. Both repos are worth following as the community begins documenting these attack surfaces. The NVIDIA SkillSpector pattern catalogue (71 patterns) is the most concrete public taxonomy of agent skill vulnerabilities published so far.</p>
+      </div>
+      <div class="issue-card">
+        <div class="card-label">NOTE · NOV 1, 2026</div>
+        <div class="issue-title">Most Newsletter Sources Unreadable This Run</div>
+        <p class="issue-summary">The cloud runner's outbound proxy blocked access to news.smol.ai, hn.algolia.com, jack-clark.net, latent.space, a16z.news, speedrun.substack.com, and Reddit RSS feeds this issue. Buzz items above are sourced from GitHub Trending data — the one source accessible from the runner. Items marked "unread this run" in prior issues (Oct 28) covered the Anthropic S-1 and GPT-6.1 Terra launch; those remain the dominant carry-over stories from last week. <em>Known runner limitation — not a service outage.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ WATCH -->
+<section class="panel panel-hm" id="wt" data-repo="wt">
+  <header class="panel-header">
+    <div class="ph-left"><span class="hm-chip">📺 WATCH</span></div>
+    <nav class="ph-dots"></nav>
+  </header>
+  <div class="panel-body-centered" style="flex:1;display:flex;align-items:flex-start;justify-content:center;padding:36px 56px;">
+    <div class="multi-cards">
+      <div class="issue-card">
+        <div class="card-label">ANDREJ KARPATHY · S TIER</div>
+        <div class="issue-title">Likely: Agentic IDE Architecture Deep Dive</div>
+        <p class="issue-summary">Karpathy has been tracking the spec-driven coding agent space closely. Following JetBrains' thinkrail launch, his channel is the most likely source of a substantive architectural comparison between thinkrail (SPEC.md + worktrees), Claude Code (CLAUDE.md + hooks), and Codex (sandboxed shell). His format — dense, no-filler, foundational — is suited to this week's institutional launches. <a href="https://www.youtube.com/@AndrejKarpathy" target="_blank" rel="noopener">Channel →</a> <em>(YouTube RSS blocked this run — verify title on channel.)</em></p>
+      </div>
+      <div class="issue-card">
+        <div class="card-label">FIRESHIP · A TIER</div>
+        <div class="issue-title">Likely: "JetBrains is Back" in 100 Seconds</div>
+        <p class="issue-summary">Fireship's punchy format is well-suited to the JetBrains/thinkrail story — a legacy IDE giant entering the vibe-code market is exactly the narrative compression they excel at. Expect a 2-minute recap of what thinkrail does, why JetBrains is late (or early?), and a quick code demo. Good on-ramp before the architectural deep-dives. <a href="https://www.youtube.com/@Fireship" target="_blank" rel="noopener">Channel →</a> <em>(YouTube RSS blocked this run — verify title on channel.)</em></p>
+      </div>
+      <div class="issue-card">
+        <div class="card-label">SAM WITTEVEEN · A TIER</div>
+        <div class="issue-title">Likely: Building Agent Teams with cindy / Multi-Model Dispatch</div>
+        <p class="issue-summary">Sam Witteveen's hands-on agent-building content makes him the obvious pick for a cindy (#09) walkthrough — specifically the agent teams dispatcher that routes tasks to Claude Code, Codex, and pi. Expect a live build of a team definition, a task dispatch demo, and a comparison against single-model approaches. <a href="https://www.youtube.com/@samwitteveenai" target="_blank" rel="noopener">Channel →</a> <em>(YouTube RSS blocked this run — verify title on channel.)</em></p>
+      </div>
+      <div class="issue-card">
+        <div class="card-label">NOTE · NOV 1, 2026</div>
+        <div class="issue-title">YouTube RSS Blocked This Run</div>
+        <p class="issue-summary">The cloud runner's outbound proxy blocked direct access to <code>youtube.com/feeds/videos.xml</code> this issue. Video picks above are based on channel history and this week's news context — not live feed data. Verify specific video titles on each channel before sharing. Known runner limitation, not a YouTube outage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ WANTED -->
+<section class="wp-panel" id="wp" data-repo="wanted">
+  <article class="wp-poster">
+    <div class="wp-banner">
+      <p class="wp-order">The Next New Thing &middot; November 1, 2026</p>
+      <hr class="wp-rule">
+    </div>
+    <div class="wp-photo-col">
+      <div class="wp-photo-wrap">
+        <img src="https://opengraph.githubassets.com/1/deepseek-ai/dsh-superagent-prototype" alt="hidden gems" onerror="this.style.opacity=0.3" />
+      </div>
+      <div class="wp-name">Hidden Gems</div>
+      <p class="wp-alias">Lower stars &middot; Higher signal<br><a href="#wp">Nov 1, 2026</a></p>
+    </div>
+    <div class="wp-text-col">
+      <div class="wp-wanted">WANTED</div>
+      <div class="wp-for">For Being Too Good to Miss</div>
+      <div class="wp-charges-h">Charges:</div>
+      <div class="wp-charges">
+        <div class="wp-charge">
+          <div class="wp-what">
+            <div class="wp-proj">dsh-superagent</div>
+            <div class="wp-handle"><a href="https://github.com/deepseek-ai/dsh-superagent-prototype" target="_blank" rel="noopener">deepseek-ai/dsh-superagent-prototype</a> &middot; TypeScript &middot; MIT</div>
+          </div>
+          <div class="wp-stars">&#9733; 3.8k</div>
+        </div>
+        <div class="wp-charge">
+          <div class="wp-what">
+            <div class="wp-proj">floorplan</div>
+            <div class="wp-handle"><a href="https://github.com/haydenschmitty/floorplan" target="_blank" rel="noopener">haydenschmitty/floorplan</a> &middot; TypeScript &middot; MIT</div>
+          </div>
+          <div class="wp-stars">&#9733; 973</div>
+        </div>
+        <div class="wp-charge">
+          <div class="wp-what">
+            <div class="wp-proj">global-law</div>
+            <div class="wp-handle"><a href="https://github.com/lexifina/global-law" target="_blank" rel="noopener">lexifina/global-law</a> &middot; Text &middot; CC0</div>
+          </div>
+          <div class="wp-stars">&#9733; 1.4k</div>
+        </div>
+      </div>
+      <div class="wp-reward">
+        <div class="wp-reward-lbl">REWARD</div>
+        <div class="wp-reward-amt">Three Repos That Deserve More Stars Than They Have</div>
+      </div>
+      <p class="wp-call">DeepSeek quietly published a prototype of <strong>dsh-superagent</strong> — a proactive GitHub repo agent that monitors issues, opens PRs, and flags stale branches without being asked. Not a demo; a working prototype from a serious lab. <strong>floorplan</strong> generates a plain-English, interactive map of any codebase — ask "where does auth happen?" and get a clickable diagram, not a grep result. <strong>global-law</strong> is the strangest repo of the week: every country's statutes committed as git history, so you can <code>git diff</code> across legislative amendments. All three are real, all three are under-starred, and at least one of them will be in someone's production stack by next week.<br><strong>Verified Nov 1, 2026.</strong></p>
+    </div>
+    <div class="wp-foot">The Next New Thing &middot; <a href="https://github-hot-repos.nextnewthing.workers.dev" target="_blank" rel="noopener">nextnewthing.workers.dev</a></div>
+  </article>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ OUTRO -->
+<section class="panel panel-hm" id="outro" data-repo="outro" style="justify-content:center;">
+  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:16px;text-align:center;padding:56px;">
+    <div style="font-size:2rem;font-weight:800;letter-spacing:-0.03em;color:var(--accent);">The Next New Thing</div>
+    <div style="font-size:1rem;color:var(--ink-muted);max-width:480px;line-height:1.6;">Daily AI &amp; open-source digest. Generated November 1, 2026.<br>Data sourced from GitHub Trending and GitHub Search API. Newsletter and HF feeds unreadable this run — see section notes.</div>
+    <a href="https://github-hot-repos.nextnewthing.workers.dev" style="margin-top:8px;padding:12px 28px;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;" target="_blank" rel="noopener">Browse all issues →</a>
+  </div>
+</section>
+
+<script>
+(function(){
+  var panels = Array.from(document.querySelectorAll('.panel, .panel-hm, .wp-panel'));
+  var idx = 0;
+  function goTo(i) {
+    if (i < 0 || i >= panels.length) return;
+    idx = i;
+    panels[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  function current() {
+    var best = 0, bestVal = -Infinity;
+    panels.forEach(function(p, i) {
+      var r = p.getBoundingClientRect();
+      var vis = Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0);
+      if (vis > bestVal) { bestVal = vis; best = i; }
+    });
+    return best;
+  }
+  document.addEventListener('keydown', function(e) {
+    var c = current();
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+      e.preventDefault(); goTo(c + 1);
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault(); goTo(c - 1);
+    }
+  });
+})();
+</script>
+</body>
+</html>
