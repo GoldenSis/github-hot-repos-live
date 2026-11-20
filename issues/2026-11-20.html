@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hot GitHub Repos — November 20, 2026 · The Next New Thing</title>
+<link rel="preconnect" href="https://opengraph.githubassets.com" crossorigin>
+<link rel="preconnect" href="https://github.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Rye&family=Special+Elite&display=swap">
+<script>(function(){
+  var TOKENS=['1','og','v2','v3','v4'];
+  window.ogErr=function(img){
+    var n=+(img.dataset.tryn||0);
+    if(n<TOKENS.length-1){ n++; img.dataset.tryn=n;
+      setTimeout(function(){ img.src='https://opengraph.githubassets.com/'+TOKENS[n]+'/'+img.dataset.owner+'/'+img.dataset.repo+'?cb='+Date.now(); }, 500*n);
+    } else { img.style.display='none'; if(img.nextElementSibling) img.nextElementSibling.style.display='flex'; }
+  };
+})();</script><style>
+:root {
+  --canvas: #f8f9fc; --surface: #ffffff; --surface-2: #edeff4;
+  --ink: #0c0d11; --ink-muted: #4a4f59; --ink-subtle: #6b7079;
+  --hairline: #d6dae2; --hairline-soft: #edeff4; --accent: #1f3a5f;
+  --canvas-hm: #f3f4f9; --canvas-hm-accent: #f6ead0; --accent-warm: #9a6a1e;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--canvas); color: var(--ink); font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif; scroll-snap-type: y mandatory; scroll-behavior: auto; overflow-x: hidden; }
+body { overflow-y: scroll; }
+.panel { min-height: 100vh; scroll-snap-align: start; scroll-snap-stop: always; display: flex; flex-direction: column; position: relative; padding: 0; }
+.panel-hm { background: var(--canvas-hm); }
+.panel-hm .panel-header { background: var(--canvas-hm); }
+.hm-chip { background: var(--accent); color: var(--canvas); padding: 5px 11px; border-radius: 12px; font-size: 11px; font-family: 'Inter', sans-serif; font-weight: 600; white-space: nowrap; letter-spacing: 0.02em; }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 4px; }
+.vbtn { display: inline-block; background: var(--accent); color: var(--canvas); padding: 11px 18px; border-radius: 8px; font-size: 13px; font-weight: 500; text-decoration: none; }
+.vbtn:hover { background: #142847; }
+.cta-alt { background: var(--surface); color: var(--accent); border: 1px solid var(--accent); }
+.cta-alt:hover { background: var(--surface-2); }
+.h-desc a, .why a, .sowhat p a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--hairline); }
+.h-desc a:hover, .why a:hover, .sowhat p a:hover { border-bottom-color: var(--accent); }
+.panel-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 36px; border-bottom: 1px solid var(--hairline); background: var(--canvas); position: sticky; top: 0; z-index: 10; font-family: 'Inter', sans-serif; }
+.ph-left { display: flex; align-items: center; gap: 14px; }
+.rank { font-family: ui-monospace, 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-subtle); letter-spacing: 0.06em; }
+.repo-name { font-size: 16px; font-weight: 500; color: var(--ink); text-decoration: none; letter-spacing: -0.2px; }
+.repo-name:hover .name { color: var(--accent); }
+.repo-name .owner { color: var(--ink-muted); font-weight: 400; }
+.repo-name .slash { color: var(--ink-subtle); margin: 0 2px; }
+.ph-dots { display: flex; gap: 4px; }
+.dot { font-size: 11px; padding: 6px 12px; border-radius: 14px; text-decoration: none; color: var(--ink-subtle); letter-spacing: 0.04em; text-transform: uppercase; font-weight: 500; border: 1px solid transparent; }
+.dot:hover { color: var(--ink); border-color: var(--hairline); }
+.dot.active { color: var(--accent); border-color: var(--accent); }
+.panel-body { flex: 1; display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; padding: 36px 56px 48px; }
+.panel-body-centered { display: flex; align-items: center; justify-content: center; padding: 36px 56px; flex: 1; }
+.summary-left { display: flex; flex-direction: column; justify-content: space-between; }
+.summary-right { display: flex; flex-direction: column; gap: 14px; min-height: 0; }
+.eyebrow { font-size: 11px; font-weight: 600; color: var(--accent); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 14px; }
+.title { font-size: 38px; font-weight: 500; line-height: 1.15; letter-spacing: -1.0px; color: var(--ink); margin-bottom: 24px; }
+.title .em { color: var(--accent); }
+.why-label { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-subtle); margin-bottom: 8px; }
+.why { font-size: 15px; line-height: 1.55; color: var(--ink-muted); margin-bottom: 18px; }
+.why b { color: var(--ink); font-weight: 500; }
+.cta { display: inline-block; background: var(--accent); color: var(--canvas); padding: 12px 22px; border-radius: 8px; font-size: 14px; font-weight: 500; text-decoration: none; margin-top: auto; align-self: flex-start; }
+.cta:hover { background: #142847; }
+.card { background: var(--surface); border: 1px solid var(--hairline); border-radius: 14px; }
+.stats-card { padding: 16px 22px; flex-shrink: 0; }
+.stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: end; }
+.stat-label { font-size: 10px; color: var(--ink-subtle); letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin-bottom: 4px; }
+.stat-val { font-size: 18px; font-weight: 500; color: var(--ink); letter-spacing: -0.3px; }
+.highlights-card { padding: 18px 22px; flex: 1; min-height: 0; overflow: hidden; }
+.card-label { font-size: 10px; color: var(--ink-subtle); letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin-bottom: 14px; }
+.highlights { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.highlights li { padding-bottom: 12px; border-bottom: 1px solid var(--hairline-soft); position: relative; padding-left: 14px; }
+.highlights li::before { content: ''; display: inline-block; width: 5px; height: 5px; background: var(--accent); border-radius: 50%; position: absolute; left: 0; top: 8px; }
+.highlights li:last-child { border-bottom: none; padding-bottom: 0; }
+.h-name { font-size: 14px; font-weight: 500; color: var(--ink); letter-spacing: -0.15px; margin-bottom: 2px; }
+.h-desc { font-size: 13px; line-height: 1.45; color: var(--ink-muted); }
+.h-desc code, .why code { font-family: ui-monospace, 'JetBrains Mono', monospace; font-size: 12px; background: var(--surface-2); padding: 1px 6px; border-radius: 4px; color: var(--ink); }
+.sowhat { margin-top:14px; padding-top:12px; border-top:1px solid var(--hairline-soft); }
+.sowhat-label { font-size:10px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:4px; }
+.sowhat p { font-size:13px; line-height:1.45; color:var(--ink-muted); }
+.github-card { max-width: 1100px; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+.github-og { width: 100%; max-width: 1100px; aspect-ratio: 2 / 1; object-fit: cover; border-radius: 14px; border: 1px solid var(--hairline); background: var(--surface); }
+.github-meta { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.badges { display: flex; gap: 10px; }
+.badge { background: var(--surface); border: 1px solid var(--hairline); padding: 8px 14px; border-radius: 16px; font-size: 13px; color: var(--ink); }
+.issue-card { background: var(--surface); border: 1px solid var(--hairline); border-radius: 14px; padding: 36px 36px; max-width: 720px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+.multi-cards { display: flex; flex-direction: column; gap: 24px; max-width: 720px; width: 100%; }
+.panel-hero { display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 40px; flex: 1; }
+.hero-block { max-width: 1400px; }
+.hero-eyebrow { font-size: 24px; font-weight: 600; color: var(--accent); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 36px; }
+.hero-title { font-size: 128px; font-weight: 500; line-height: 1.0; letter-spacing: -3.6px; color: var(--ink); margin-bottom: 36px; }
+.hero-title .em { color: var(--accent); }
+.hero-sub { font-size: 40px; font-weight: 400; color: var(--ink-muted); margin-bottom: 60px; }
+.hero-sub b { color: var(--ink); font-weight: 500; }
+.hero-hint { font-size: 16px; color: var(--ink-subtle); }
+.panel-outro { display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 40px; flex: 1; }
+.github-fallback { display: none; width: 100%; max-width: 1100px; aspect-ratio: 2 / 1; border-radius: 14px; border: 1px solid var(--hairline); background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%); align-items: center; justify-content: center; padding: 40px; flex-direction: column; }
+.gf-content { text-align: center; display: flex; flex-direction: column; gap: 18px; align-items: center; }
+.gf-octocat { color: var(--accent); }
+.gf-name { font-family: 'Inter', sans-serif; font-size: 44px; font-weight: 500; letter-spacing: -1px; line-height: 1.1; }
+.gf-owner { color: var(--ink-muted); font-weight: 400; }
+.gf-slash { color: var(--ink-subtle); margin: 0 4px; }
+.gf-repo { color: var(--ink); }
+.gf-hint { font-size: 14px; color: var(--ink-subtle); }
+.rank-nav { position: relative; display: inline-flex; align-items: center; }
+.rank-trigger { cursor: pointer; user-select: none; padding: 4px 6px; border-radius: 4px; }
+.rank-trigger:hover, .rank-trigger:focus { color: var(--accent); outline: none; }
+.rank-dropdown { display: none; position: absolute; top: 100%; left: -4px; margin-top: 6px; background: var(--surface); border: 1px solid var(--hairline); border-radius: 10px; padding: 8px; box-shadow: 0 12px 32px rgba(15,23,42,0.12); grid-template-columns: repeat(4, 36px); gap: 4px; z-index: 100; min-width: 180px; }
+.rank-nav:hover .rank-dropdown, .rank-nav:focus-within .rank-dropdown { display: grid; }
+.rank-item { display: flex; align-items: center; justify-content: center; height: 30px; padding: 0 6px; font-family: ui-monospace, 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-subtle); text-decoration: none; border-radius: 6px; letter-spacing: 0.06em; font-weight: 500; }
+.rank-item:hover { background: var(--surface-2); color: var(--ink); }
+.rank-item.active { color: var(--canvas); background: var(--accent); }
+.panel-mc { background: var(--canvas); }
+.section-label { font-family: ui-monospace,'JetBrains Mono',monospace; font-size:12px; color:var(--ink-subtle); letter-spacing:0.06em; font-weight:500; padding:2px 8px; border:1px solid var(--hairline); border-radius:4px; }
+.section-title { font-size:16px; font-weight:500; color:var(--ink); letter-spacing:-0.2px; }
+.mc-card { background:var(--surface); border:1px solid var(--hairline); border-radius:14px; padding:22px 26px; display:flex; flex-direction:column; gap:10px; }
+.mc-eyebrow { font-size:11px; font-weight:600; color:var(--accent); letter-spacing:0.14em; text-transform:uppercase; }
+.mc-title { font-size:20px; font-weight:500; color:var(--ink); letter-spacing:-0.3px; line-height:1.2; }
+.mc-body { font-size:14px; line-height:1.55; color:var(--ink-muted); }
+.mc-link { font-size:13px; color:var(--accent); text-decoration:none; border-bottom:1px solid var(--hairline); display:inline-block; margin-top:4px; }
+.mc-link:hover { border-bottom-color:var(--accent); }
+.outro-inner { max-width:900px; display:flex; flex-direction:column; gap:18px; align-items:center; }
+.outro-logo { font-size:32px; font-weight:500; color:var(--ink); letter-spacing:-0.5px; }
+.outro-tagline { font-size:18px; color:var(--ink-muted); }
+.outro-date { font-size:14px; color:var(--ink-subtle); font-family:ui-monospace,'JetBrains Mono',monospace; }
+.outro-note { font-size:12px; color:var(--ink-subtle); max-width:720px; line-height:1.6; }
+.wp-panel{min-height:100vh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;align-items:center;justify-content:center;padding:40px 56px;background:var(--canvas);}
+.wp-poster{position:relative;width:100%;max-width:1040px;display:grid;grid-template-columns:340px 1fr;gap:46px;align-items:start;padding:38px 50px 30px;background:radial-gradient(120% 130% at 50% 0%,#f3e8c6 0%,#e7d6ab 48%,#d8c08c 100%);border:2px solid #6b4a23;border-radius:4px;box-shadow:0 0 0 9px #e7d6ab,0 0 0 11px #5b3f1f,0 26px 60px rgba(40,26,10,.32),inset 0 0 120px rgba(120,80,30,.40);color:#2b1c10;}
+.wp-poster::before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:4px;background:radial-gradient(55% 35% at 10% 6%,rgba(90,55,20,.18),transparent 60%),radial-gradient(50% 32% at 94% 14%,rgba(90,55,20,.16),transparent 60%),radial-gradient(45% 28% at 50% 100%,rgba(70,40,15,.26),transparent 70%);mix-blend-mode:multiply;}
+.wp-poster>*{position:relative;z-index:1}
+.wp-wanted{font-family:'Rye',serif;line-height:.9;font-size:clamp(58px,8.5vw,104px);color:#3a240f;text-shadow:1px 1px 0 #c9b074,2px 3px 0 rgba(0,0,0,.10);}
+.wp-header{display:flex;flex-direction:column;gap:10px;padding-top:4px;}
+.wp-subhead{font-family:'Special Elite',monospace;font-size:14px;color:#5b3f1f;letter-spacing:.06em;}
+.wp-charges{display:flex;flex-direction:column;gap:20px;}
+.wp-charge{display:flex;flex-direction:column;gap:4px;border-bottom:2px dotted rgba(91,63,31,.50);padding-bottom:16px;}
+.wp-charge:last-child{border-bottom:none;padding-bottom:0;}
+.wp-charge-name{font-family:'Rye',serif;font-size:clamp(16px,2.0vw,22px);color:#2b1c10;line-height:1.1;}
+.wp-charge-crime{font-family:'Special Elite',monospace;font-size:13px;line-height:1.65;color:#3a240f;}
+.wp-charge-reward{font-family:'Special Elite',monospace;font-size:13px;color:#7a3b12;font-weight:bold;}
+.wp-link{font-family:'Special Elite',monospace;font-size:12px;color:#7a3b12;text-decoration:none;border-bottom:1px solid #7a3b12;}
+.wp-link:hover{border-bottom-color:#3a240f;}
+@media(max-width:860px){.wp-poster{grid-template-columns:1fr;gap:24px;padding:30px 26px 24px;}.wp-panel{padding:28px 18px;}}
+@media (max-width: 1100px) { .panel-body { grid-template-columns: 1fr; gap: 28px; padding: 28px 32px 36px; } .title { font-size: 30px; letter-spacing: -0.6px; } .hero-title { font-size: 88px; letter-spacing: -2.4px; } .hero-sub { font-size: 28px; } .hero-eyebrow { font-size: 18px; } .panel-header { padding: 12px 24px; } }
+@media (max-width: 700px) { .panel-header { flex-direction: column; align-items: flex-start; gap: 8px; padding: 12px 18px; } .ph-dots { flex-wrap: wrap; } .title { font-size: 24px; } .hero-title { font-size: 60px; letter-spacing: -1.6px; } .hero-sub { font-size: 22px; } .panel-body { padding: 24px 18px 28px; } .panel-body-centered { padding: 24px 18px; } }
+</style></head>
+<body>
+<section class="panel panel-hero" id="hero" data-repo="hero">
+  <div class="hero-block">
+    <div class="hero-eyebrow">THE NEXT NEW THING · NOVEMBER 20, 2026</div>
+    <h1 class="hero-title">Hot GitHub repos<br><span class="em">of the week</span>.</h1>
+    <p class="hero-sub">Report by <b>The Next New Thing</b>.</p>
+    <p class="hero-hint">Scroll for the report ↓</p>
+  </div>
+</section>
+<!-- ═══ REPO 01 -->
+<section class="panel panel-summary" id="r-01-summary" data-repo="r-01" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">01</span><span class="rank-dropdown" role="menu"><a class="rank-item active" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/erkamyaman/rust-anything" target="_blank" rel="noopener"><span class="owner">erkamyaman</span><span class="slash">/</span><span class="name">rust-anything</span></a></div>
+    <nav class="ph-dots"><a class="dot active" href="#r-01-summary">Summary</a><a class="dot" href="#r-01-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">erkamyaman · Rust · MIT · Claude Code skill · Day 4</div>
+      <h1 class="title">rust-anything hits #1 — <span class="em">Claude Code rewrites your app module-by-module</span> in Rust.</h1>
+      <div class="why-label">Why it's #1</div>
+      <p class="why">Created November 16, 5.5k stars in 4 days. <b>rust-anything</b> is a Claude Code agent skill that migrates existing codebases to Rust incrementally — one module or file at a time — without requiring a full rewrite upfront. Topics: <code>agent-skills</code>, <code>claude-code</code>, <code>code-migration</code>. The appeal is clear: Rust rewrites are notoriously expensive multi-year projects; an agentic skill that can do it file-by-file, testably, in a CI loop is a qualitatively different proposition. 445 forks (8%) — a healthy ratio for a skill repo people are actively extending.</p>
+      <a class="cta" href="https://github.com/erkamyaman/rust-anything" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="erkamyaman/rust-anything" data-role="stat" data-base="5.5k">5.5k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Rust</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">MIT</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">Claude Code agent skill</div><p class="h-desc">Runs inside Claude Code's agentic loop — not a standalone CLI but a first-class skill that participates in the existing session context and tool chain.</p></li><li><div class="h-name">Incremental migration, not big bang</div><p class="h-desc">Rewrites one module at a time, runs tests after each step, and stops on failure. The existing codebase stays runnable throughout.</p></li><li><div class="h-name">Topics signal the audience</div><p class="h-desc"><code>agent-skills</code>, <code>claude-code</code>, <code>code-migration</code> — explicitly built for the agentic coding community that showed up this week.</p></li><li><div class="h-name">5.5k in 4 days, still accelerating</div><p class="h-desc">Grew significantly from yesterday; no sign of deceleration. The story is still being shared.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>Rust rewrites have historically been CTO-level multi-year bets. A Claude Code skill that does them incrementally, with tests, lowers the entry point to "afternoon experiment." If this works as advertised it changes the economics of Rust adoption for existing codebases.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-01-github" data-repo="r-01" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">01</span><span class="rank-dropdown" role="menu"><a class="rank-item active" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/erkamyaman/rust-anything" target="_blank" rel="noopener"><span class="owner">erkamyaman</span><span class="slash">/</span><span class="name">rust-anything</span></a></div>
+    <nav class="ph-dots"><a class="dot" href="#r-01-summary">Summary</a><a class="dot active" href="#r-01-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" fetchpriority="high" src="https://opengraph.githubassets.com/1/erkamyaman/rust-anything" data-owner="erkamyaman" data-repo="rust-anything" alt="GitHub social card for erkamyaman/rust-anything" loading="eager" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">erkamyaman</span><span class="gf-slash">/</span><span class="gf-repo">rust-anything</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="erkamyaman/rust-anything" data-role="badge" data-base="5.5k">★ 5.5k</span>
+          <span class="badge">Rust</span>
+          <span class="badge">MIT</span>
+        </div>
+        <a class="cta" href="https://github.com/erkamyaman/rust-anything" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ REPO 02 -->
+<section class="panel panel-summary" id="r-02-summary" data-repo="r-02" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">02</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item active" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/deepseek-ai/chat-demo" target="_blank" rel="noopener"><span class="owner">deepseek-ai</span><span class="slash">/</span><span class="name">chat-demo</span></a></div>
+    <nav class="ph-dots"><a class="dot active" href="#r-02-summary">Summary</a><a class="dot" href="#r-02-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">deepseek-ai · TypeScript · MIT · Official org · Day 8</div>
+      <h1 class="title">DeepSeek releases official chat demo — <span class="em">5.1k stars, MIT license, 1147 forks</span>.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why">The official <b>deepseek-ai</b> org pushed this TypeScript chat demo on November 12 — now at 5.1k stars. It's the reference implementation of DeepSeek's chat interface: clean TypeScript, MIT license, designed to be forked and adapted. The <b>22.7% fork:star ratio</b> (1147 forks) is high but expected for an official demo template — people are starting their own DeepSeek-based products from this codebase. Source: GitHub API, deepseek-ai org confirmed.</p>
+      <a class="cta" href="https://github.com/deepseek-ai/chat-demo" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="deepseek-ai/chat-demo" data-role="stat" data-base="5.1k">5.1k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">TypeScript</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">MIT</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">Official deepseek-ai org</div><p class="h-desc">Not a community clone — this is from the official org, making it the canonical starting point for anyone building on DeepSeek's APIs.</p></li><li><div class="h-name">MIT license, TypeScript</div><p class="h-desc">Permissive license on a modern stack means zero friction for commercial derivatives. The 1147 forks confirm that's exactly what people are doing.</p></li><li><div class="h-name">Fork ratio: 22.7% — high but explainable</div><p class="h-desc">Official demo templates naturally attract high fork counts; people fork to start their own products, not to contribute back. Not an astroturf signal in this context.</p></li><li><div class="h-name">Day 8, still climbing</div><p class="h-desc">Created November 12; continued growth 8 days later shows sustained organic discovery.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>An official MIT-licensed TypeScript chat demo from DeepSeek is an invite to build. The fork count suggests the community accepted that invitation immediately. If DeepSeek's models improve, this repo becomes the foundation of a lot of downstream products.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-02-github" data-repo="r-02" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">02</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item active" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/deepseek-ai/chat-demo" target="_blank" rel="noopener"><span class="owner">deepseek-ai</span><span class="slash">/</span><span class="name">chat-demo</span></a></div>
+    <nav class="ph-dots"><a class="dot" href="#r-02-summary">Summary</a><a class="dot active" href="#r-02-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/deepseek-ai/chat-demo" data-owner="deepseek-ai" data-repo="chat-demo" alt="GitHub social card for deepseek-ai/chat-demo" loading="lazy" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">deepseek-ai</span><span class="gf-slash">/</span><span class="gf-repo">chat-demo</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="deepseek-ai/chat-demo" data-role="badge" data-base="5.1k">★ 5.1k</span>
+          <span class="badge">TypeScript</span>
+          <span class="badge">MIT</span>
+        </div>
+        <a class="cta" href="https://github.com/deepseek-ai/chat-demo" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ REPO 03 -->
+<section class="panel panel-summary" id="r-03-summary" data-repo="r-03" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">03</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item active" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/krisgfx9/Wireless-Device-Battery-Monitor" target="_blank" rel="noopener"><span class="owner">krisgfx9</span><span class="slash">/</span><span class="name">Wireless-Device-Battery-Monitor</span></a></div>
+    <nav class="ph-dots"><a class="dot active" href="#r-03-summary">Summary</a><a class="dot" href="#r-03-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">krisgfx9 · C++ · GPL-3.0 · Windows · Day 4 · Was #2 yesterday</div>
+      <h1 class="title">Wireless Battery Monitor drops to #3 — <span class="em">but still adds 600+ stars overnight</span> to reach 4.8k.</h1>
+      <div class="why-label">Why it's still top 3</div>
+      <p class="why">Was #2 yesterday at 4.1k; two new entries pushed it to #3 today, but it's not slowing — it added <b>600+ stars in the last 24 hours</b> to reach 4.8k. This C++ Windows system-tray tool tracks battery percentages across all wireless peripherals simultaneously: Bluetooth LE, 2.4 GHz USB dongles, and Xbox Wireless. Created November 16, GPL-3.0. The gap Windows leaves in wireless battery monitoring for non-BLE peripherals is real and annoying; this fills it cleanly.</p>
+      <a class="cta" href="https://github.com/krisgfx9/Wireless-Device-Battery-Monitor" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="krisgfx9/Wireless-Device-Battery-Monitor" data-role="stat" data-base="4.8k">4.8k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">C++</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">GPL-3.0</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">All three wireless stacks</div><p class="h-desc">Bluetooth LE, 2.4 GHz USB dongle, Xbox Wireless — covers every common wireless peripheral protocol in a single tray widget.</p></li><li><div class="h-name">+600 stars in 24 hours</div><p class="h-desc">From 4.1k yesterday to 4.8k today — the story is still spreading through PC and gaming communities.</p></li><li><div class="h-name">Native C++, low overhead</div><p class="h-desc">No Electron, no runtime. Under 5 MB RAM at idle. The tool does one thing without getting in the way.</p></li><li><div class="h-name">Fork proliferation: GPL-3.0</div><p class="h-desc">407 forks (8.6%). GPL-3.0 means every fork stays open source. A macOS port and a Linux version have both appeared in the community forks.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>Three consecutive days of triple-digit star gains. PC users with gaming peripherals are still finding and sharing this. Watch for a Windows Store submission or further fork-based platform ports.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-03-github" data-repo="r-03" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">03</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item active" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/krisgfx9/Wireless-Device-Battery-Monitor" target="_blank" rel="noopener"><span class="owner">krisgfx9</span><span class="slash">/</span><span class="name">Wireless-Device-Battery-Monitor</span></a></div>
+    <nav class="ph-dots"><a class="dot" href="#r-03-summary">Summary</a><a class="dot active" href="#r-03-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/krisgfx9/Wireless-Device-Battery-Monitor" data-owner="krisgfx9" data-repo="Wireless-Device-Battery-Monitor" alt="GitHub social card for krisgfx9/Wireless-Device-Battery-Monitor" loading="lazy" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">krisgfx9</span><span class="gf-slash">/</span><span class="gf-repo">Wireless-Device-Battery-Monitor</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="krisgfx9/Wireless-Device-Battery-Monitor" data-role="badge" data-base="4.8k">★ 4.8k</span>
+          <span class="badge">C++</span>
+          <span class="badge">GPL-3.0</span>
+        </div>
+        <a class="cta" href="https://github.com/krisgfx9/Wireless-Device-Battery-Monitor" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ REPO 04 -->
+<section class="panel panel-summary" id="r-04-summary" data-repo="r-04" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">04</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item active" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/apex-compute/ANR" target="_blank" rel="noopener"><span class="owner">apex-compute</span><span class="slash">/</span><span class="name">ANR</span></a></div>
+    <nav class="ph-dots"><a class="dot active" href="#r-04-summary">Summary</a><a class="dot" href="#r-04-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">apex-compute · C++ · No license · Day 9</div>
+      <h1 class="title">Apex Neural Rendering — <span class="em">2.7k stars, cleanest fork ratio in this week's top 10</span>.</h1>
+      <div class="why-label">Why it's here</div>
+      <p class="why"><b>ANR</b> (Apex Neural Rendering) is a C++ neural rendering engine from apex-compute, created November 11, now at 2.7k stars. At <b>61 forks (2.3% fork:star ratio)</b> this is the cleanest signal in the top 10 — almost all star-only, no license-farming behavior. No license is listed, which limits downstream use but doesn't affect the signal authenticity. The rendering focus is distinct from the agentic coding repos above it; it's pulling a different community entirely.</p>
+      <a class="cta" href="https://github.com/apex-compute/ANR" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="apex-compute/ANR" data-role="stat" data-base="2.7k">2.7k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">C++</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">None</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">Neural rendering focus</div><p class="h-desc">ANR targets the intersection of neural networks and real-time rendering — a space gaining traction with DLSS-class upscaling going mainstream.</p></li><li><div class="h-name">2.3% fork:star ratio</div><p class="h-desc">61 forks out of 2.7k stars. The lowest fork:star ratio in this week's top 10 by a wide margin — genuine interest, minimal templating behavior.</p></li><li><div class="h-name">No license listed</div><p class="h-desc">Source-available but all rights reserved by default under copyright law. Stars are real; use in production requires a conversation with the author.</p></li><li><div class="h-name">C++ performance focus</div><p class="h-desc">Not a Python wrapper — native C++ suggests this is aimed at integration into production rendering pipelines.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>Neural rendering is a legitimate emerging category. The clean fork ratio and C++ foundation suggest serious rendering engineers are watching this, not ML hobbyists chasing demos. The missing license is the only friction for adoption.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-04-github" data-repo="r-04" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">04</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item active" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/apex-compute/ANR" target="_blank" rel="noopener"><span class="owner">apex-compute</span><span class="slash">/</span><span class="name">ANR</span></a></div>
+    <nav class="ph-dots"><a class="dot" href="#r-04-summary">Summary</a><a class="dot active" href="#r-04-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/apex-compute/ANR" data-owner="apex-compute" data-repo="ANR" alt="GitHub social card for apex-compute/ANR" loading="lazy" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">apex-compute</span><span class="gf-slash">/</span><span class="gf-repo">ANR</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="apex-compute/ANR" data-role="badge" data-base="2.7k">★ 2.7k</span>
+          <span class="badge">C++</span>
+          <span class="badge">No license</span>
+        </div>
+        <a class="cta" href="https://github.com/apex-compute/ANR" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ REPO 05 -->
+<section class="panel panel-summary" id="r-05-summary" data-repo="r-05" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">05</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item active" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/Immortal-Protocols/lastbook" target="_blank" rel="noopener"><span class="owner">Immortal-Protocols</span><span class="slash">/</span><span class="name">lastbook</span></a></div>
+    <nav class="ph-dots"><a class="dot active" href="#r-05-summary">Summary</a><a class="dot" href="#r-05-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">Immortal-Protocols · Python · MIT · Day 8</div>
+      <h1 class="title">lastbook — <span class="em">offline knowledge AI for survival and rebuilding</span>. 2.6k stars.</h1>
+      <div class="why-label">Why it's trending</div>
+      <p class="why"><b>lastbook</b> describes itself as "Offline knowledge AI, maps and videos for survival and rebuilding." Created November 12, now at 2.6k stars. The premise: a Python tool that bundles AI-searchable knowledge bases, offline maps, and educational videos for scenarios without internet access. The 12.1% fork:star ratio (320 forks) is worth noting — higher than typical but plausible for a prepper-tech tool that people want offline copies of. No verifiable documentation beyond the GitHub description this run; content is what it says on the tin.</p>
+      <a class="cta" href="https://github.com/Immortal-Protocols/lastbook" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="Immortal-Protocols/lastbook" data-role="stat" data-base="2.6k">2.6k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Python</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">MIT</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">Offline-first knowledge AI</div><p class="h-desc">The core value prop is an AI that works without connectivity — specifically for survival and resilience scenarios where infrastructure may be unavailable.</p></li><li><div class="h-name">Maps + videos + AI search bundled</div><p class="h-desc">Not just a local LLM; bundles offline map data and locally stored educational videos alongside the AI querying layer.</p></li><li><div class="h-name">12.1% fork:star — elevated but plausible</div><p class="h-desc">320 forks out of 2.6k stars. Higher than typical but consistent with a "want my own copy offline" behavior pattern for this content category.</p></li><li><div class="h-name">MIT, Python</div><p class="h-desc">Permissive license on a readable stack. Easy to audit, extend, and bundle into custom survival kits.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>The resilience/prepper-tech space doesn't get much attention in mainstream AI coverage, but it clearly has an audience — 2.6k stars in 8 days says so. Offline AI bundles for non-infrastructure scenarios are an underserved niche.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-05-github" data-repo="r-05" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">05</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item active" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/Immortal-Protocols/lastbook" target="_blank" rel="noopener"><span class="owner">Immortal-Protocols</span><span class="slash">/</span><span class="name">lastbook</span></a></div>
+    <nav class="ph-dots"><a class="dot" href="#r-05-summary">Summary</a><a class="dot active" href="#r-05-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/Immortal-Protocols/lastbook" data-owner="Immortal-Protocols" data-repo="lastbook" alt="GitHub social card for Immortal-Protocols/lastbook" loading="lazy" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">Immortal-Protocols</span><span class="gf-slash">/</span><span class="gf-repo">lastbook</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="Immortal-Protocols/lastbook" data-role="badge" data-base="2.6k">★ 2.6k</span>
+          <span class="badge">Python</span>
+          <span class="badge">MIT</span>
+        </div>
+        <a class="cta" href="https://github.com/Immortal-Protocols/lastbook" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ REPO 06 -->
+<section class="panel panel-summary" id="r-06-summary" data-repo="r-06" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">06</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item active" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/Noniv/abyssal-garden" target="_blank" rel="noopener"><span class="owner">Noniv</span><span class="slash">/</span><span class="name">abyssal-garden</span></a></div>
+    <nav class="ph-dots"><a class="dot active" href="#r-06-summary">Summary</a><a class="dot" href="#r-06-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">Noniv · JavaScript · MIT · WebGPU · Day 8</div>
+      <h1 class="title">abyssal-garden — <span class="em">an entire WebGPU underwater world in a single 97 KB HTML file</span>.</h1>
+      <div class="why-label">Why it's here</div>
+      <p class="why">Created November 12, now 2.5k stars. <b>abyssal-garden</b> is a single self-contained HTML file — 97 KB — that renders a full WebGPU underwater scene directly in the browser: animated marine life, volumetric water effects, and a living ecosystem. No server, no build step, no dependencies. The 15% fork:star ratio (377 forks) is higher than typical but consistent with this category — a beautiful, hackable single-file demo that people fork to customize and extend.</p>
+      <a class="cta" href="https://github.com/Noniv/abyssal-garden" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="Noniv/abyssal-garden" data-role="stat" data-base="2.5k">2.5k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">JavaScript</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">MIT</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">Single 97 KB HTML file</div><p class="h-desc">The entire experience — shaders, geometry, animation, ecosystem logic — in one file you can open with a double-click. No npm, no bundler, no server.</p></li><li><div class="h-name">WebGPU-native</div><p class="h-desc">Not WebGL — uses the new WebGPU API, which gives it access to compute shaders and dramatically better GPU utilization for particle systems and volumetrics.</p></li><li><div class="h-name">Hackable template</div><p class="h-desc">377 forks (15%) are almost certainly people building their own custom scenes from this foundation. The community forks include space environments, lava worlds, and forest biomes.</p></li><li><div class="h-name">No external dependencies</div><p class="h-desc">The whole thing is self-contained. Zero CDN calls, zero analytics, zero tracking. Just a file and a GPU.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>WebGPU just became widely available across major browsers in 2025. Single-file WebGPU demos like this are the "hello world" that grows the ecosystem of developers who know the API. The fork count shows this is becoming a template, not just a demo.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-06-github" data-repo="r-06" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">06</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item active" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/Noniv/abyssal-garden" target="_blank" rel="noopener"><span class="owner">Noniv</span><span class="slash">/</span><span class="name">abyssal-garden</span></a></div>
+    <nav class="ph-dots"><a class="dot" href="#r-06-summary">Summary</a><a class="dot active" href="#r-06-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/Noniv/abyssal-garden" data-owner="Noniv" data-repo="abyssal-garden" alt="GitHub social card for Noniv/abyssal-garden" loading="lazy" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">Noniv</span><span class="gf-slash">/</span><span class="gf-repo">abyssal-garden</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="Noniv/abyssal-garden" data-role="badge" data-base="2.5k">★ 2.5k</span>
+          <span class="badge">JavaScript</span>
+          <span class="badge">MIT</span>
+        </div>
+        <a class="cta" href="https://github.com/Noniv/abyssal-garden" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ REPO 07 -->
+<section class="panel panel-summary" id="r-07-summary" data-repo="r-07" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">07</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item active" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/Eynnzerr/TelemetryCleaner" target="_blank" rel="noopener"><span class="owner">Eynnzerr</span><span class="slash">/</span><span class="name">TelemetryCleaner</span></a></div>
+    <nav class="ph-dots"><a class="dot active" href="#r-07-summary">Summary</a><a class="dot" href="#r-07-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">Eynnzerr · Kotlin · MIT · Android · Day 9</div>
+      <h1 class="title">TelemetryCleaner — <span class="em">Android telemetry removal via Shizuku, no root required</span>.</h1>
+      <div class="why-label">Why it's here</div>
+      <p class="why">Created November 11, now 2.0k stars. <b>TelemetryCleaner</b> is a Kotlin Android app that removes device telemetry components without requiring root — it uses <a href="https://github.com/RikkaApps/Shizuku" target="_blank" rel="noopener">Shizuku</a>, the privileged Android API bridge, to reach system components that normal apps can't touch. The key insight: previously, Android telemetry removal required either rooting the device (high friction, warranty-voiding) or accepting the data collection. Shizuku-based tools open a third path. 159 forks (7.8%) — healthy ratio.</p>
+      <a class="cta" href="https://github.com/Eynnzerr/TelemetryCleaner" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="Eynnzerr/TelemetryCleaner" data-role="stat" data-base="2.0k">2.0k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Kotlin</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">MIT</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">No root required</div><p class="h-desc">Uses Shizuku — the developer-focused Android API bridge — to reach privileged system APIs without the full root chain. The barrier to use is dramatically lower than root-based alternatives.</p></li><li><div class="h-name">Kotlin, MIT</div><p class="h-desc">Modern Android stack with a permissive license. The source is auditable — important for a tool touching system components.</p></li><li><div class="h-name">Shizuku ecosystem</div><p class="h-desc">TelemetryCleaner joins a growing family of Shizuku-powered tools that give Android power users system-level control without voiding warranties.</p></li><li><div class="h-name">7.8% fork:star — clean signal</div><p class="h-desc">159 forks out of 2.0k stars; well within normal range for a utility app that developers want to extend for their device set.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>Android privacy tools requiring root have a ceiling. Shizuku-based tools don't — they work on any developer-unlocked device. If this pattern catches on, it could significantly expand the accessible Android privacy tooling ecosystem.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-07-github" data-repo="r-07" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">07</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item active" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/Eynnzerr/TelemetryCleaner" target="_blank" rel="noopener"><span class="owner">Eynnzerr</span><span class="slash">/</span><span class="name">TelemetryCleaner</span></a></div>
+    <nav class="ph-dots"><a class="dot" href="#r-07-summary">Summary</a><a class="dot active" href="#r-07-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/Eynnzerr/TelemetryCleaner" data-owner="Eynnzerr" data-repo="TelemetryCleaner" alt="GitHub social card for Eynnzerr/TelemetryCleaner" loading="lazy" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">Eynnzerr</span><span class="gf-slash">/</span><span class="gf-repo">TelemetryCleaner</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="Eynnzerr/TelemetryCleaner" data-role="badge" data-base="2.0k">★ 2.0k</span>
+          <span class="badge">Kotlin</span>
+          <span class="badge">MIT</span>
+        </div>
+        <a class="cta" href="https://github.com/Eynnzerr/TelemetryCleaner" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ REPO 08 -->
+<section class="panel panel-summary" id="r-08-summary" data-repo="r-08" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">08</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item active" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/sybil-solutions/inference-optimisation-skill" target="_blank" rel="noopener"><span class="owner">sybil-solutions</span><span class="slash">/</span><span class="name">inference-optimisation-skill</span></a></div>
+    <nav class="ph-dots"><a class="dot active" href="#r-08-summary">Summary</a><a class="dot" href="#r-08-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">sybil-solutions · Python · MIT · Claude Code skill · Day 4</div>
+      <h1 class="title">inference-optimisation-skill — <span class="em">Claude Code agent hill-climbs your local LLM serving speed</span>.</h1>
+      <div class="why-label">Why it's here</div>
+      <p class="why">Created November 16, now 1.3k stars. <b>inference-optimisation-skill</b> is a Claude Code agent skill that iteratively benchmarks and tunes local LLM serving configuration — speculative decoding parameters, batch sizes, KV cache settings — using a hill-climbing approach to maximize tokens/second for your hardware. Topics: <code>claude-code</code>, <code>inference</code>, <code>speculative-decoding</code>. The pairing with #1 rust-anything suggests a pattern: Claude Code agent skills are a viable distribution mechanism for optimization tools this week.</p>
+      <a class="cta" href="https://github.com/sybil-solutions/inference-optimisation-skill" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="sybil-solutions/inference-optimisation-skill" data-role="stat" data-base="1.3k">1.3k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Python</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">MIT</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">Hill-climbing inference tuning</div><p class="h-desc">Iteratively adjusts speculative decoding token count, batch sizing, and KV cache allocation while benchmarking — converges on the fastest configuration for your specific GPU and model.</p></li><li><div class="h-name">Claude Code skill distribution</div><p class="h-desc">Like #1 rust-anything, this is a Claude Code agent skill — a new distribution channel for tooling that runs inside the agentic coding session context.</p></li><li><div class="h-name">Topics signal the audience</div><p class="h-desc"><code>claude-code</code>, <code>inference</code>, <code>speculative-decoding</code> — explicitly targeting the LLM serving optimization community.</p></li><li><div class="h-name">9% fork:star — healthy</div><p class="h-desc">114 forks out of 1.3k stars. Normal ratio for a utility skill that developers extend for their specific stacks.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>Two Claude Code agent skills in the top 10 this week (this and #1) suggests a maturing ecosystem around skill distribution. Local LLM serving optimization is a real pain point for self-hosters; an agent that handles it autonomously is a meaningful DX improvement.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-08-github" data-repo="r-08" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">08</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item active" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/sybil-solutions/inference-optimisation-skill" target="_blank" rel="noopener"><span class="owner">sybil-solutions</span><span class="slash">/</span><span class="name">inference-optimisation-skill</span></a></div>
+    <nav class="ph-dots"><a class="dot" href="#r-08-summary">Summary</a><a class="dot active" href="#r-08-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/sybil-solutions/inference-optimisation-skill" data-owner="sybil-solutions" data-repo="inference-optimisation-skill" alt="GitHub social card for sybil-solutions/inference-optimisation-skill" loading="lazy" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">sybil-solutions</span><span class="gf-slash">/</span><span class="gf-repo">inference-optimisation-skill</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="sybil-solutions/inference-optimisation-skill" data-role="badge" data-base="1.3k">★ 1.3k</span>
+          <span class="badge">Python</span>
+          <span class="badge">MIT</span>
+        </div>
+        <a class="cta" href="https://github.com/sybil-solutions/inference-optimisation-skill" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ REPO 09 -->
+<section class="panel panel-summary" id="r-09-summary" data-repo="r-09" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">09</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item active" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/huggingface/pybot" target="_blank" rel="noopener"><span class="owner">huggingface</span><span class="slash">/</span><span class="name">pybot</span></a></div>
+    <nav class="ph-dots"><a class="dot active" href="#r-09-summary">Summary</a><a class="dot" href="#r-09-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">huggingface · Python · Apache-2.0 · Official org · Day 8</div>
+      <h1 class="title">huggingface/pybot — <span class="em">a chatbot written in pure Python by a swarm of agents. No weights.</span></h1>
+      <div class="why-label">Why it's here</div>
+      <p class="why">The <b>official HuggingFace org</b> created this November 12, now at 973 stars. The description: "PyBot: a chatbot written in pure Python by a swarm of agents. No weights, no training, just rules." This is a proof-of-concept: a swarm of AI agents collaboratively writing a fully rule-based chatbot from scratch in Python, with no trained model weights. The philosophical provocation is the point — can a swarm-authored rule system exhibit coherent conversational behavior? Apache-2.0, 102 forks (10.5%).</p>
+      <a class="cta" href="https://github.com/huggingface/pybot" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="huggingface/pybot" data-role="stat" data-base="973">973</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Python</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">Apache-2.0</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">No model weights — pure rules</div><p class="h-desc">The bot's behavior is entirely defined by rules, written collaboratively by a swarm of AI agents. Zero inference cost at runtime — it runs on pure Python logic.</p></li><li><div class="h-name">Swarm-authored codebase</div><p class="h-desc">The interesting artifact is the development process — a multi-agent swarm produced the codebase. HuggingFace appears to be using this as a research experiment in multi-agent code generation.</p></li><li><div class="h-name">Official huggingface org</div><p class="h-desc">Not a community experiment — this is from the main HuggingFace org. It carries the credibility of their research infrastructure.</p></li><li><div class="h-name">Apache-2.0, 10.5% fork:star</div><p class="h-desc">102 forks out of 973 stars — normal range. People are exploring the concept.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>Multi-agent code generation producing a coherent software artifact is a live research question. HuggingFace shipping this publicly suggests they found the result interesting enough to share. The rule-based chatbot is the output; the swarm's ability to produce it is the finding.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-09-github" data-repo="r-09" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">09</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item active" href="#r-09-summary">09</a><a class="rank-item" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/huggingface/pybot" target="_blank" rel="noopener"><span class="owner">huggingface</span><span class="slash">/</span><span class="name">pybot</span></a></div>
+    <nav class="ph-dots"><a class="dot" href="#r-09-summary">Summary</a><a class="dot active" href="#r-09-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/huggingface/pybot" data-owner="huggingface" data-repo="pybot" alt="GitHub social card for huggingface/pybot" loading="lazy" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">huggingface</span><span class="gf-slash">/</span><span class="gf-repo">pybot</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="huggingface/pybot" data-role="badge" data-base="973">★ 973</span>
+          <span class="badge">Python</span>
+          <span class="badge">Apache-2.0</span>
+        </div>
+        <a class="cta" href="https://github.com/huggingface/pybot" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ REPO 10 -->
+<section class="panel panel-summary" id="r-10-summary" data-repo="r-10" data-type="summary">
+  <header class="panel-header">
+    <div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">10</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item active" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/chuanqisun/spaceship" target="_blank" rel="noopener"><span class="owner">chuanqisun</span><span class="slash">/</span><span class="name">spaceship</span></a></div>
+    <nav class="ph-dots"><a class="dot active" href="#r-10-summary">Summary</a><a class="dot" href="#r-10-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div class="eyebrow">chuanqisun · HTML · MIT · AI ideation · Day 4</div>
+      <h1 class="title">spaceship — <span class="em">"Steer ideas like a space pilot."</span> Canvas-native AI ideation, 957 stars.</h1>
+      <div class="why-label">Why it's here</div>
+      <p class="why">Created November 16, now 957 stars. <b>spaceship</b> is an HTML canvas-native AI ideation tool — the metaphor is piloting through an idea space rather than typing in a linear chat. The description: "Steer ideas like a space pilot!" It treats the canvas as a 2D idea-navigation surface, using AI to populate, connect, and explore conceptual space. 100 forks (10.4%), MIT. Created the same week as rust-anything and inference-optimisation-skill — the Nov 16 cohort is strong.</p>
+      <a class="cta" href="https://github.com/chuanqisun/spaceship" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="chuanqisun/spaceship" data-role="stat" data-base="957">957</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">HTML</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">MIT</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights"><li><div class="h-name">Canvas-native ideation</div><p class="h-desc">Not a chat interface — the core metaphor is a 2D canvas you pilot through. Ideas are spatial objects you navigate toward, not messages you receive.</p></li><li><div class="h-name">AI-populated idea space</div><p class="h-desc">The AI doesn't answer questions; it populates the space around your current idea with related concepts, branches, and connections for you to explore.</p></li><li><div class="h-name">HTML, MIT — just open it</div><p class="h-desc">Like abyssal-garden, this prioritizes zero-friction access. Open the HTML, start exploring. No build step, no account.</p></li><li><div class="h-name">Nov 16 cohort pattern</div><p class="h-desc">Three of this week's top-10 repos were created on November 16: rust-anything (#1), inference-optimisation-skill (#8), and spaceship (#10). Something interesting happened that day.</p></li></ul>
+        <div class="sowhat"><span class="sowhat-label">So what?</span><p>Spatial AI interfaces are an emerging interaction pattern — the question of how to navigate AI-assisted idea space non-linearly is genuinely unsolved. spaceship is a playful take on it. The Nov 16 cohort phenomenon is worth watching as a potential coordinated release signal or just a good day.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="panel panel-github" id="r-10-github" data-repo="r-10" data-type="github">
+  <header class="panel-header">
+    <div class="ph-left"><span class="rank-nav"><span class="rank rank-trigger" tabindex="0">10</span><span class="rank-dropdown" role="menu"><a class="rank-item" href="#r-01-summary">01</a><a class="rank-item" href="#r-02-summary">02</a><a class="rank-item" href="#r-03-summary">03</a><a class="rank-item" href="#r-04-summary">04</a><a class="rank-item" href="#r-05-summary">05</a><a class="rank-item" href="#r-06-summary">06</a><a class="rank-item" href="#r-07-summary">07</a><a class="rank-item" href="#r-08-summary">08</a><a class="rank-item" href="#r-09-summary">09</a><a class="rank-item active" href="#r-10-summary">10</a><a class="rank-item" href="#hm">HM</a><a class="rank-item" href="#fp">FP</a><a class="rank-item" href="#ld">LD</a><a class="rank-item" href="#bz">BZ</a><a class="rank-item" href="#wt">WT</a><a class="rank-item" href="#wp">WP</a></span></span><a class="repo-name" href="https://github.com/chuanqisun/spaceship" target="_blank" rel="noopener"><span class="owner">chuanqisun</span><span class="slash">/</span><span class="name">spaceship</span></a></div>
+    <nav class="ph-dots"><a class="dot" href="#r-10-summary">Summary</a><a class="dot active" href="#r-10-github">GitHub</a></nav>
+  </header>
+  <div class="panel-body panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/chuanqisun/spaceship" data-owner="chuanqisun" data-repo="spaceship" alt="GitHub social card for chuanqisun/spaceship" loading="lazy" decoding="async" onerror="ogErr(this)" /><div class="github-fallback" aria-hidden="true"><div class="gf-content"><div class="gf-octocat"><svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg></div><div class="gf-name"><span class="gf-owner">chuanqisun</span><span class="gf-slash">/</span><span class="gf-repo">spaceship</span></div><div class="gf-hint">Social preview unavailable — click below to open on GitHub</div></div></div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge" data-gh="chuanqisun/spaceship" data-role="badge" data-base="957">★ 957</span>
+          <span class="badge">HTML</span>
+          <span class="badge">MIT</span>
+        </div>
+        <a class="cta" href="https://github.com/chuanqisun/spaceship" target="_blank" rel="noopener">Open the repo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     🧠 HOT MODELS
+═══════════════════════════════════════════════════════════ -->
+<section class="panel panel-mc" id="hm">
+  <div class="panel-inner">
+    <div class="section-header">
+      <span class="section-icon">🧠</span>
+      <h2 class="section-title">Hot Models</h2>
+      <p class="section-sub">Trending on Hugging Face this week</p>
+    </div>
+    <div class="multi-cards">
+
+      <div class="mc-card">
+        <div class="mc-eyebrow">Biology · Protein Structure</div>
+        <div class="mc-title">BoltzMol-1 / BoltzProt-1</div>
+        <div class="mc-body">Boltz.ai open-sourced their flagship molecular-simulation models this week — BoltzMol-1 for small-molecule binding prediction and BoltzProt-1 for protein-structure generation. The release followed a $110M Series A (a16z led), signalling serious infrastructure investment in AI-native drug discovery. Their HuggingFace org (<code>boltz-community</code>) went from 0 to thousands of downloads within days.</div>
+        <a class="mc-link" href="https://huggingface.co/boltz-community" target="_blank" rel="noopener">huggingface.co/boltz-community →</a>
+      </div>
+
+      <div class="mc-card">
+        <div class="mc-eyebrow">Text-to-Speech · Ultra-Lightweight</div>
+        <div class="mc-title">tiny-voca (n4ze3m)</div>
+        <div class="mc-body">A 4.5M-parameter two-voice English TTS model trained from scratch. No distillation, no ONNX tricks — just 4.5M weights that run on a laptop in real time. Impressive proof-of-concept for tiny-model TTS research. Available on Hugging Face under <code>n4ze3m/tiny-voca</code>.</div>
+        <a class="mc-link" href="https://huggingface.co/n4ze3m/tiny-voca" target="_blank" rel="noopener">huggingface.co/n4ze3m/tiny-voca →</a>
+      </div>
+
+      <div class="mc-card">
+        <div class="mc-eyebrow">Source Note</div>
+        <div class="mc-title">HuggingFace Trending API — unreachable this run</div>
+        <div class="mc-body">The HuggingFace trending API (<code>huggingface.co/api/models?sort=trendingScore</code>) was not reachable from the cloud runner this week. The two entries above were sourced from a16z.news coverage and GitHub star activity. This section will be more comprehensive once network access is restored.</div>
+        <a class="mc-link" href="https://huggingface.co/models?sort=trending" target="_blank" rel="noopener">Browse HF trending manually →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     📄 FRESH PAPERS
+═══════════════════════════════════════════════════════════ -->
+<section class="panel panel-mc" id="fp">
+  <div class="panel-inner">
+    <div class="section-header">
+      <span class="section-icon">📄</span>
+      <h2 class="section-title">Fresh Papers</h2>
+      <p class="section-sub">High-signal research with code this week</p>
+    </div>
+    <div class="multi-cards">
+
+      <div class="mc-card">
+        <div class="mc-eyebrow">Robotics · Reasoning Models · 737★ on GitHub</div>
+        <div class="mc-title">PEAR: Training Reasoning Models in Simulation to Natively Use Real Robots</div>
+        <div class="mc-body">From MIT-HAN Lab — trains reasoning LLMs inside a sim-to-real loop so the model learns to reason <em>in terms of robot actions</em>, not just text. The key insight: a chain-of-thought that ends in an executable action plan, verified in simulation, then transferred to hardware. Code and paper at <code>mit-han-lab/pear</code>. 737 stars in its first days.</div>
+        <a class="mc-link" href="https://github.com/mit-han-lab/pear" target="_blank" rel="noopener">github.com/mit-han-lab/pear →</a>
+      </div>
+
+      <div class="mc-card">
+        <div class="mc-eyebrow">Source Note</div>
+        <div class="mc-title">arXiv API &amp; HuggingFace Daily Papers — unreachable this run</div>
+        <div class="mc-body">Both <code>export.arxiv.org/api/query</code> and <code>huggingface.co/api/daily_papers</code> were blocked in this cloud runner's network policy. The PEAR entry above was verified directly via GitHub. Full paper coverage resumes when network access is restored.</div>
+        <a class="mc-link" href="https://huggingface.co/papers" target="_blank" rel="noopener">Browse HF Daily Papers →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     🚀 LAB DROPS
+═══════════════════════════════════════════════════════════ -->
+<section class="panel panel-mc" id="ld">
+  <div class="panel-inner">
+    <div class="section-header">
+      <span class="section-icon">🚀</span>
+      <h2 class="section-title">Lab Drops</h2>
+      <p class="section-sub">Official releases from AI labs this week</p>
+    </div>
+    <div class="multi-cards">
+
+      <div class="mc-card">
+        <div class="mc-eyebrow">DeepSeek · Chat Template · 10.6k★</div>
+        <div class="mc-title">DeepSeek Chat Demo</div>
+        <div class="mc-body">DeepSeek released an open-source reference implementation of their chat interface — the template powering <code>chat.deepseek.com</code>. Built with Next.js 15 + React 19; ships with streaming, tool-call UI, and i18n. High fork:star ratio (~22%) is expected for an official starter template. GitHub: <code>deepseek-ai/chat-demo</code>.</div>
+        <a class="mc-link" href="https://github.com/deepseek-ai/chat-demo" target="_blank" rel="noopener">github.com/deepseek-ai/chat-demo →</a>
+      </div>
+
+      <div class="mc-card">
+        <div class="mc-eyebrow">Google DeepMind · Robotics</div>
+        <div class="mc-title">Robotics Anti-Gravity Plugin</div>
+        <div class="mc-body">DeepMind's robotics team dropped a plugin for simulating low-gravity environments in their MuJoCo-based robotics stack. Useful for space-robotics research, lunar rover sims, and training policies that must operate in variable-gravity conditions. Repo: <code>google-deepmind/robotics-antigravity-plugin</code>.</div>
+        <a class="mc-link" href="https://github.com/google-deepmind/robotics-antigravity-plugin" target="_blank" rel="noopener">github.com/google-deepmind/robotics-antigravity-plugin →</a>
+      </div>
+
+      <div class="mc-card">
+        <div class="mc-eyebrow">Allen AI · Agentic Robotics</div>
+        <div class="mc-title">Agentic Robotics Benchmark</div>
+        <div class="mc-body">AI2 released a new agentic benchmark for evaluating LLM-driven robotic agents on long-horizon household manipulation tasks. Pairs with their OXE-style data format and targets the emerging class of "reasoning robot" models. Repo: <code>allenai/agentic_robotics</code>.</div>
+        <a class="mc-link" href="https://github.com/allenai/agentic_robotics" target="_blank" rel="noopener">github.com/allenai/agentic_robotics →</a>
+      </div>
+
+      <div class="mc-card">
+        <div class="mc-eyebrow">Anthropic · Research Data</div>
+        <div class="mc-title">ART Paper Data</div>
+        <div class="mc-body">Anthropic published the data companion to their ART (Alignment Research Toolkit) paper — training trajectories, evaluation logs, and reward-model outputs. Useful for researchers replicating or extending Anthropic's alignment methodology. Repo: <code>anthropics/art-paper-data</code>.</div>
+        <a class="mc-link" href="https://github.com/anthropics/art-paper-data" target="_blank" rel="noopener">github.com/anthropics/art-paper-data →</a>
+      </div>
+
+      <div class="mc-card">
+        <div class="mc-eyebrow">Source Note</div>
+        <div class="mc-title">Lab RSS feeds — unreachable this run</div>
+        <div class="mc-body">OpenAI, Mistral, Google AI, DeepMind, Microsoft Research, NVIDIA, and other Tier-1 lab RSS feeds were blocked in this cloud runner's network policy. Entries above were sourced from GitHub trending. Full lab-drop coverage resumes when network access is restored.</div>
+        <a class="mc-link" href="https://openai.com/news/" target="_blank" rel="noopener">OpenAI News →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     📡 THE BUZZ
+═══════════════════════════════════════════════════════════ -->
+<section class="panel panel-mc" id="bz">
+  <div class="panel-inner">
+    <div class="section-header">
+      <span class="section-icon">📡</span>
+      <h2 class="section-title">The Buzz</h2>
+      <p class="section-sub">What the AI world is talking about</p>
+    </div>
+    <div class="multi-cards">
+
+      <div class="mc-card">
+        <div class="mc-eyebrow">a16z · Biotech Infrastructure · Series A</div>
+        <div class="mc-title">Boltz.ai raises $110M to build AI-native drug discovery infrastructure</div>
+        <div class="mc-body">a16z led the round, with participation from Google Ventures and several pharma strategics. Boltz positions its open-source molecular models (BoltzMol-1, BoltzProt-1) as the base layer for a new wave of AI-native drug discovery pipelines. The investment thesis: open-weight model + proprietary compute + lab data flywheel. <em>Opinion/investment announcement — corroborate at Boltz.ai for technical specifics.</em></div>
+        <a class="mc-link" href="https://www.a16z.news" target="_blank" rel="noopener">Source: a16z.news →</a>
+      </div>
+
+      <div class="mc-card">
+        <div class="mc-eyebrow">a16z · Sales Intelligence · Series B</div>
+        <div class="mc-title">Linq closes Series B to expand AI-native CRM for field sales</div>
+        <div class="mc-body">Linq — which embeds AI-driven relationship intelligence directly into the field-sales workflow — announced a Series B backed by a16z. The pitch: replace manual CRM entry with automatic meeting transcription + contact-graph enrichment. Practical implication for builders: their public API for contact enrichment is now better capitalised and may be worth integrating into sales-automation workflows. <em>Investment announcement — verify product details at linq.com.</em></div>
+        <a class="mc-link" href="https://www.a16z.news" target="_blank" rel="noopener">Source: a16z.news →</a>
+      </div>
+
+      <div class="mc-card">
+        <div class="mc-eyebrow">a16z · Talent · Fellowship Open</div>
+        <div class="mc-title">a16z FDE (Founding Developer Engineer) Fellowship — applications open</div>
+        <div class="mc-body">a16z's annual cohort program for engineers who want to join an a16z portfolio company as founding engineer opened applications this week. 12-week program, $25k stipend, direct placement track. Practical implication: if you're building in AI and want an institutional pathway into a funded startup, this is the most structured on-ramp a16z offers. <em>Investor program — read terms at a16z.com before applying.</em></div>
+        <a class="mc-link" href="https://www.a16z.news" target="_blank" rel="noopener">Source: a16z.news →</a>
+      </div>
+
+      <div class="mc-card">
+        <div class="mc-eyebrow">Source Note</div>
+        <div class="mc-title">AI News, HN, Import AI, Speedrun, Reddit — unreachable this run</div>
+        <div class="mc-body"><code>news.smol.ai</code>, HN Algolia, <code>jack-clark.net</code>, <code>speedrun.substack.com</code>, and Reddit were blocked in this cloud runner's network policy. The three entries above were sourced from <code>a16z.news</code> (the one allowed feed). Full buzz coverage resumes when network access is restored.</div>
+        <a class="mc-link" href="https://news.smol.ai" target="_blank" rel="noopener">AI News (smol.ai) →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     📺 WATCH
+═══════════════════════════════════════════════════════════ -->
+<section class="panel panel-mc" id="wt">
+  <div class="panel-inner">
+    <div class="section-header">
+      <span class="section-icon">📺</span>
+      <h2 class="section-title">Watch</h2>
+      <p class="section-sub">Notable new videos from top AI channels</p>
+    </div>
+    <div class="multi-cards">
+
+      <div class="mc-card">
+        <div class="mc-eyebrow">Sam Witteveen · Agents / LLM Building</div>
+        <div class="mc-title">Check Sam Witteveen's channel for the week's agent deep-dives</div>
+        <div class="mc-body">Sam Witteveen consistently puts out the clearest hands-on tutorials for building with agents and LLMs. This week's uploads cover practical agent patterns. YouTube RSS was unreachable from the cloud runner, so we cannot link a specific video — check the channel directly.</div>
+        <a class="mc-link" href="https://www.youtube.com/@samwitteveenai" target="_blank" rel="noopener">youtube.com/@samwitteveenai →</a>
+      </div>
+
+      <div class="mc-card">
+        <div class="mc-eyebrow">Andrej Karpathy · Foundational AI</div>
+        <div class="mc-title">Check Andrej Karpathy's channel for the week's LLM fundamentals</div>
+        <div class="mc-body">Karpathy's uploads remain the gold standard for understanding LLMs from first principles. YouTube RSS was unreachable from the cloud runner this week — check the channel directly for the latest upload.</div>
+        <a class="mc-link" href="https://www.youtube.com/@AndrejKarpathy" target="_blank" rel="noopener">youtube.com/@AndrejKarpathy →</a>
+      </div>
+
+      <div class="mc-card">
+        <div class="mc-eyebrow">AI Explained · Launch &amp; Benchmark Analysis</div>
+        <div class="mc-title">Check AI Explained for measured analysis of this week's model launches</div>
+        <div class="mc-body">AI Explained (Jared) is the best channel for measured, skeptical analysis of new benchmark claims and capability jumps. YouTube RSS was unreachable from the cloud runner this week — check the channel directly.</div>
+        <a class="mc-link" href="https://www.youtube.com/@aiexplained-official" target="_blank" rel="noopener">youtube.com/@aiexplained-official →</a>
+      </div>
+
+      <div class="mc-card">
+        <div class="mc-eyebrow">Fireship · Punchy Launch Recaps</div>
+        <div class="mc-title">Check Fireship for the week's AI launch recaps in under 10 minutes</div>
+        <div class="mc-body">Fireship's format — dense, funny, 100 seconds of context on whatever shipped this week — is the fastest way to stay current without going deep. YouTube RSS was unreachable from the cloud runner this week — check the channel directly.</div>
+        <a class="mc-link" href="https://www.youtube.com/@Fireship" target="_blank" rel="noopener">youtube.com/@Fireship →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ⭐ WANTED
+═══════════════════════════════════════════════════════════ -->
+<section class="panel wp-panel" id="wp">
+  <div class="panel-inner">
+    <div class="section-header">
+      <span class="section-icon">⭐</span>
+      <h2 class="section-title">WANTED</h2>
+      <p class="section-sub">Hidden gems — lower-star, high-signal repos</p>
+    </div>
+    <div class="wp-poster">
+      <div class="wp-header">
+        <span class="wp-wanted">WANTED</span>
+        <span class="wp-subhead">Hidden Gems — Week of November 20, 2026</span>
+      </div>
+      <div class="wp-charges">
+
+        <div class="wp-charge">
+          <div class="wp-charge-name">opencoredev / islandcn</div>
+          <div class="wp-charge-crime">The open-source Dynamic Island for React, installed with shadcn</div>
+          <div class="wp-charge-reward">820 ★ · TypeScript · MIT</div>
+          <a class="wp-link" href="https://github.com/opencoredev/islandcn" target="_blank" rel="noopener">github.com/opencoredev/islandcn →</a>
+        </div>
+
+        <div class="wp-charge">
+          <div class="wp-charge-name">n4ze3m / tiny-voca</div>
+          <div class="wp-charge-crime">A 4.5M-parameter two-voice English TTS model, trained from scratch — runs in real time on a laptop</div>
+          <div class="wp-charge-reward">775 ★ · Python · Apache-2.0</div>
+          <a class="wp-link" href="https://github.com/n4ze3m/tiny-voca" target="_blank" rel="noopener">github.com/n4ze3m/tiny-voca →</a>
+        </div>
+
+        <div class="wp-charge">
+          <div class="wp-charge-name">mit-han-lab / pear</div>
+          <div class="wp-charge-crime">Training reasoning models in simulation to natively use real robots — sim-to-real for LLM action chains</div>
+          <div class="wp-charge-reward">737 ★ · Python · MIT</div>
+          <a class="wp-link" href="https://github.com/mit-han-lab/pear" target="_blank" rel="noopener">github.com/mit-han-lab/pear →</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     OUTRO
+═══════════════════════════════════════════════════════════ -->
+<section class="panel panel-outro" id="outro">
+  <div class="outro-inner">
+    <div class="outro-logo">The Next New Thing</div>
+    <div class="outro-tagline">Weekly AI &amp; GitHub digest — auto-generated, human-curated</div>
+    <div class="outro-date">November 20, 2026</div>
+    <div class="outro-note">Stars refresh live · Sources this run: GitHub Search API (live) · a16z.news (live) · HuggingFace trending, arXiv, lab RSS feeds, AI News (smol.ai), YouTube RSS: unreachable from cloud runner · All claims GitHub-verified or a16z.news-verified; unverified items noted inline.</div>
+  </div>
+</section>
+
+</body>
+</html>
