@@ -1,5 +1,5 @@
 name = "github-hot-repos"
-main = "src/worker.js"
+main = "src/edge.js"
 compatibility_date = "2026-06-01"
 
 # Every issue's HTML (issues/*.html) bundles into the Worker as text.
