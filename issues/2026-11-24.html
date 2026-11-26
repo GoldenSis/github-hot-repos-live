@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Next New Thing — November 24, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Rye&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+:root {
+  --canvas: #f8f9fc; --surface: #ffffff; --surface-2: #edeff4;
+  --ink: #0c0d11; --ink-muted: #4a4f59; --ink-subtle: #6b7079;
+  --hairline: #d6dae2; --hairline-soft: #edeff4; --accent: #1f3a5f;
+  --canvas-hm: #f3f4f9; --canvas-hm-accent: #f6ead0; --accent-warm: #9a6a1e;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--canvas); color: var(--ink); font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif; scroll-snap-type: y mandatory; scroll-behavior: auto; overflow-x: hidden; }
+body { overflow-y: scroll; }
+.panel { min-height: 100vh; scroll-snap-align: start; scroll-snap-stop: always; display: flex; flex-direction: column; position: relative; padding: 0; }
+.panel-hm { background: var(--canvas-hm); }
+.panel-hm .panel-header { background: var(--canvas-hm); }
+.hm-chip { background: var(--accent); color: var(--canvas); padding: 5px 11px; border-radius: 12px; font-size: 11px; font-family: 'Inter', sans-serif; font-weight: 600; white-space: nowrap; letter-spacing: 0.02em; }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 4px; }
+.vbtn { display: inline-block; background: var(--accent); color: var(--canvas); padding: 11px 18px; border-radius: 8px; font-size: 13px; font-weight: 500; text-decoration: none; }
+.vbtn:hover { background: #142847; }
+.cta-alt { background: var(--surface); color: var(--accent); border: 1px solid var(--accent); }
+.cta-alt:hover { background: var(--surface-2); }
+.h-desc a, .why a, .sowhat p a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--hairline); }
+.h-desc a:hover, .why a:hover, .sowhat p a:hover { border-bottom-color: var(--accent); }
+.panel-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 36px; border-bottom: 1px solid var(--hairline); background: var(--canvas); position: sticky; top: 0; z-index: 10; font-family: 'Inter', sans-serif; }
+.ph-left { display: flex; align-items: center; gap: 14px; }
+.rank { font-family: ui-monospace, 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-subtle); letter-spacing: 0.06em; }
+.repo-name { font-size: 16px; font-weight: 500; color: var(--ink); text-decoration: none; letter-spacing: -0.2px; }
+.repo-name:hover .name { color: var(--accent); }
+.repo-name .owner { color: var(--ink-muted); font-weight: 400; }
+.repo-name .slash { color: var(--ink-subtle); margin: 0 2px; }
+.ph-dots { display: flex; gap: 4px; }
+.dot { font-size: 11px; padding: 6px 12px; border-radius: 14px; text-decoration: none; color: var(--ink-subtle); letter-spacing: 0.04em; text-transform: uppercase; font-weight: 500; border: 1px solid transparent; }
+.dot:hover { color: var(--ink); border-color: var(--hairline); }
+.dot.active { color: var(--accent); border-color: var(--accent); }
+.panel-body { flex: 1; display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; padding: 36px 56px 48px; }
+.panel-body-centered { display: flex; align-items: center; justify-content: center; padding: 36px 56px; flex: 1; }
+.summary-left { display: flex; flex-direction: column; justify-content: space-between; }
+.summary-right { display: flex; flex-direction: column; gap: 14px; min-height: 0; }
+.eyebrow { font-size: 11px; font-weight: 600; color: var(--accent); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 14px; }
+.title { font-size: 38px; font-weight: 500; line-height: 1.15; letter-spacing: -1.0px; color: var(--ink); margin-bottom: 24px; }
+.title .em { color: var(--accent); }
+.why-label { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-subtle); margin-bottom: 8px; }
+.why { font-size: 15px; line-height: 1.55; color: var(--ink-muted); margin-bottom: 18px; }
+.why b { color: var(--ink); font-weight: 500; }
+.cta { display: inline-block; background: var(--accent); color: var(--canvas); padding: 12px 22px; border-radius: 8px; font-size: 14px; font-weight: 500; text-decoration: none; margin-top: auto; align-self: flex-start; }
+.cta:hover { background: #142847; }
+.card { background: var(--surface); border: 1px solid var(--hairline); border-radius: 14px; }
+.stats-card { padding: 16px 22px; flex-shrink: 0; }
+.stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: end; }
+.stat-label { font-size: 10px; color: var(--ink-subtle); letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin-bottom: 4px; }
+.stat-val { font-size: 18px; font-weight: 500; color: var(--ink); letter-spacing: -0.3px; }
+.highlights-card { padding: 18px 22px; flex: 1; min-height: 0; overflow: hidden; }
+.card-label { font-size: 10px; color: var(--ink-subtle); letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin-bottom: 14px; }
+.highlights { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.highlights li { padding-bottom: 12px; border-bottom: 1px solid var(--hairline-soft); position: relative; padding-left: 14px; }
+.highlights li::before { content: ''; display: inline-block; width: 5px; height: 5px; background: var(--accent); border-radius: 50%; position: absolute; left: 0; top: 8px; }
+.highlights li:last-child { border-bottom: none; padding-bottom: 0; }
+.h-name { font-size: 14px; font-weight: 500; color: var(--ink); letter-spacing: -0.15px; margin-bottom: 2px; }
+.h-desc { font-size: 13px; line-height: 1.45; color: var(--ink-muted); }
+.h-desc code, .why code { font-family: ui-monospace, 'JetBrains Mono', monospace; font-size: 12px; background: var(--surface-2); padding: 1px 6px; border-radius: 4px; color: var(--ink); }
+.sowhat { margin-top:14px; padding-top:12px; border-top:1px solid var(--hairline-soft); }
+.sowhat-label { font-size:10px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:4px; }
+.sowhat p { font-size:13px; line-height:1.45; color:var(--ink-muted); }
+.github-card { max-width: 1100px; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+.github-og { width: 100%; max-width: 1100px; aspect-ratio: 2 / 1; object-fit: cover; border-radius: 14px; border: 1px solid var(--hairline); background: var(--surface); }
+.github-meta { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.badges { display: flex; gap: 10px; }
+.badge { background: var(--surface); border: 1px solid var(--hairline); padding: 8px 14px; border-radius: 16px; font-size: 13px; color: var(--ink); }
+.issue-card { background: var(--surface); border: 1px solid var(--hairline); border-radius: 14px; padding: 36px 36px; max-width: 720px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+.multi-cards { display: flex; flex-direction: column; gap: 24px; max-width: 720px; width: 100%; }
+.panel-hero { display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 40px; flex: 1; }
+.hero-block { max-width: 1400px; }
+.hero-eyebrow { font-size: 24px; font-weight: 600; color: var(--accent); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 36px; }
+.hero-title { font-size: 128px; font-weight: 500; line-height: 1.0; letter-spacing: -3.6px; color: var(--ink); margin-bottom: 36px; }
+.hero-title .em { color: var(--accent); }
+.hero-sub { font-size: 40px; font-weight: 400; color: var(--ink-muted); margin-bottom: 60px; }
+.hero-sub b { color: var(--ink); font-weight: 500; }
+.hero-hint { font-size: 16px; color: var(--ink-subtle); }
+.panel-outro { display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 40px; flex: 1; }
+.github-fallback { display: none; width: 100%; max-width: 1100px; aspect-ratio: 2 / 1; border-radius: 14px; border: 1px solid var(--hairline); background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%); align-items: center; justify-content: center; padding: 40px; flex-direction: column; }
+.gf-content { text-align: center; display: flex; flex-direction: column; gap: 18px; align-items: center; }
+.gf-octocat { color: var(--accent); }
+.gf-name { font-family: 'Inter', sans-serif; font-size: 44px; font-weight: 500; letter-spacing: -1px; line-height: 1.1; }
+.gf-owner { color: var(--ink-muted); font-weight: 400; }
+.gf-slash { color: var(--ink-subtle); margin: 0 4px; }
+.gf-repo { color: var(--ink); }
+.gf-hint { font-size: 14px; color: var(--ink-subtle); }
+.rank-nav { position: relative; display: inline-flex; align-items: center; }
+.rank-trigger { cursor: pointer; user-select: none; padding: 4px 6px; border-radius: 4px; }
+.rank-trigger:hover, .rank-trigger:focus { color: var(--accent); outline: none; }
+.rank-dropdown { display: none; position: absolute; top: 100%; left: -4px; margin-top: 6px; background: var(--surface); border: 1px solid var(--hairline); border-radius: 10px; padding: 8px; box-shadow: 0 12px 32px rgba(15,23,42,0.12); grid-template-columns: repeat(4, 36px); gap: 4px; z-index: 100; min-width: 180px; }
+.rank-nav:hover .rank-dropdown, .rank-nav:focus-within .rank-dropdown { display: grid; }
+.rank-item { display: flex; align-items: center; justify-content: center; height: 30px; padding: 0 6px; font-family: ui-monospace, 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-subtle); text-decoration: none; border-radius: 6px; letter-spacing: 0.06em; font-weight: 500; }
+.rank-item:hover { background: var(--surface-2); color: var(--ink); }
+.rank-item.active { color: var(--canvas); background: var(--accent); }
+.panel-mc { background: var(--canvas); }
+.section-label { font-family: ui-monospace,'JetBrains Mono',monospace; font-size:12px; color:var(--ink-subtle); letter-spacing:0.06em; font-weight:500; padding:2px 8px; border:1px solid var(--hairline); border-radius:4px; }
+.section-title { font-size:16px; font-weight:500; color:var(--ink); letter-spacing:-0.2px; }
+.mc-card { background:var(--surface); border:1px solid var(--hairline); border-radius:14px; padding:22px 26px; display:flex; flex-direction:column; gap:10px; }
+.mc-eyebrow { font-size:11px; font-weight:600; color:var(--accent); letter-spacing:0.14em; text-transform:uppercase; }
+.mc-title { font-size:20px; font-weight:500; color:var(--ink); letter-spacing:-0.3px; line-height:1.2; }
+.mc-body { font-size:14px; line-height:1.55; color:var(--ink-muted); }
+.mc-link { font-size:13px; color:var(--accent); text-decoration:none; border-bottom:1px solid var(--hairline); display:inline-block; margin-top:4px; }
+.mc-link:hover { border-bottom-color:var(--accent); }
+.outro-inner { max-width:900px; display:flex; flex-direction:column; gap:18px; align-items:center; }
+.outro-logo { font-size:32px; font-weight:500; color:var(--ink); letter-spacing:-0.5px; }
+.outro-tagline { font-size:18px; color:var(--ink-muted); }
+.outro-date { font-size:14px; color:var(--ink-subtle); font-family:ui-monospace,'JetBrains Mono',monospace; }
+.outro-note { font-size:12px; color:var(--ink-subtle); max-width:720px; line-height:1.6; }
+.wp-panel{min-height:100vh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;align-items:center;justify-content:center;padding:40px 56px;background:var(--canvas);}
+.wp-poster{position:relative;width:100%;max-width:1040px;display:grid;grid-template-columns:340px 1fr;gap:46px;align-items:start;padding:38px 50px 30px;background:radial-gradient(120% 130% at 50% 0%,#f3e8c6 0%,#e7d6ab 48%,#d8c08c 100%);border:2px solid #6b4a23;border-radius:4px;box-shadow:0 0 0 9px #e7d6ab,0 0 0 11px #5b3f1f,0 26px 60px rgba(40,26,10,.32),inset 0 0 120px rgba(120,80,30,.40);color:#2b1c10;}
+.wp-poster::before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:4px;background:radial-gradient(55% 35% at 10% 6%,rgba(90,55,20,.18),transparent 60%),radial-gradient(50% 32% at 94% 14%,rgba(90,55,20,.16),transparent 60%),radial-gradient(45% 28% at 50% 100%,rgba(70,40,15,.26),transparent 70%);mix-blend-mode:multiply;}
+.wp-poster>*{position:relative;z-index:1}
+.wp-wanted{font-family:'Rye',serif;line-height:.9;font-size:clamp(58px,8.5vw,104px);color:#3a240f;text-shadow:1px 1px 0 #c9b074,2px 3px 0 rgba(0,0,0,.10);}
+.wp-header{display:flex;flex-direction:column;gap:10px;padding-top:4px;}
+.wp-subhead{font-family:'Special Elite',monospace;font-size:14px;color:#5b3f1f;letter-spacing:.06em;}
+.wp-charges{display:flex;flex-direction:column;gap:20px;}
+.wp-charge{display:flex;flex-direction:column;gap:4px;border-bottom:2px dotted rgba(91,63,31,.50);padding-bottom:16px;}
+.wp-charge:last-child{border-bottom:none;padding-bottom:0;}
+.wp-charge-name{font-family:'Rye',serif;font-size:clamp(16px,2.0vw,22px);color:#2b1c10;line-height:1.1;}
+.wp-charge-crime{font-family:'Special Elite',monospace;font-size:13px;line-height:1.65;color:#3a240f;}
+.wp-charge-reward{font-family:'Special Elite',monospace;font-size:13px;color:#7a3b12;font-weight:bold;}
+.wp-link{font-family:'Special Elite',monospace;font-size:12px;color:#7a3b12;text-decoration:none;border-bottom:1px solid #7a3b12;}
+.wp-link:hover{border-bottom-color:#3a240f;}
+.panel-inner { padding: 36px 56px; display: flex; flex-direction: column; gap: 28px; }
+.section-header { display: flex; flex-direction: column; gap: 4px; }
+.section-icon { font-size: 32px; display: block; margin-bottom: 4px; }
+.section-sub { font-size: 14px; color: var(--ink-muted); }
+@media(max-width:860px){.wp-poster{grid-template-columns:1fr;gap:24px;padding:30px 26px 24px;}.wp-panel{padding:28px 18px;}}
+@media (max-width: 1100px) { .panel-body { grid-template-columns: 1fr; gap: 28px; padding: 28px 32px 36px; } .title { font-size: 30px; letter-spacing: -0.6px; } .hero-title { font-size: 88px; letter-spacing: -2.4px; } .hero-sub { font-size: 28px; } .hero-eyebrow { font-size: 18px; } .panel-header { padding: 12px 24px; } }
+@media (max-width: 700px) { .panel-header { flex-direction: column; align-items: flex-start; gap: 8px; padding: 12px 18px; } .ph-dots { flex-wrap: wrap; } .title { font-size: 24px; } .hero-title { font-size: 60px; letter-spacing: -1.6px; } .hero-sub { font-size: 22px; } .panel-body { padding: 24px 18px 28px; } .panel-body-centered { padding: 24px 18px; } .panel-inner { padding: 24px 18px; } }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero" data-type="hero">
+<div class="panel panel-hero">
+  <div class="hero-block">
+    <div class="hero-eyebrow">THE NEXT NEW THING</div>
+    <div class="hero-title">NOV <span class="em">24</span></div>
+    <div class="hero-sub"><b>GTA VI on PC</b> · Rust tooling wave · Offline AI · DeepSeek API tools</div>
+    <div class="hero-hint">scroll to explore · 10 repos · models · papers · labs · buzz · watch</div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ REPO 01 — erkamyaman/rust-anything ═══ -->
+<section id="r-01" data-repo="r-01" data-type="summary">
+<div class="panel">
+  <div class="panel-header">
+    <div class="ph-left">
+      <span class="rank">01</span>
+      <a class="repo-name" href="https://github.com/erkamyaman/rust-anything">
+        <span class="owner">erkamyaman</span><span class="slash">/</span><span class="name">rust-anything</span>
+      </a>
+    </div>
+    <div class="ph-dots">
+      <a class="dot active" href="#r-01">Summary</a>
+      <a class="dot" href="#r-01-gh">GitHub</a>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div>
+        <div class="eyebrow">🔥 Hot Repos · #01</div>
+        <div class="title">Rewrite <span class="em">the 20%</span> that matters, one piece at a time</div>
+        <div class="why-label">Why it matters</div>
+        <div class="why">
+          <b>Gradual Rust migration with behavioral tests.</b> Records the I/O behavior of your existing Python, Node, or Ruby functions as a test oracle, then verifies each rewritten Rust module passes those recorded tests before swapping it in. No flag days, no rewrites-of-the-rewrite.
+        </div>
+      </div>
+      <a class="cta" href="https://github.com/erkamyaman/rust-anything" target="_blank">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="erkamyaman/rust-anything" data-role="stat" data-base="8.9k">8.9k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Rust</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">MIT</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights">
+          <li>
+            <div class="h-name">Behavioral snapshot recorder</div>
+            <div class="h-desc">Wraps your existing function with a thin shim that serializes inputs and outputs to a JSON fixture file — no test harness needed.</div>
+          </li>
+          <li>
+            <div class="h-name">Incremental swap-in</div>
+            <div class="h-desc">Replace one hot path at a time; the rest of the app keeps running in its original language while fixtures keep the contract honest.</div>
+          </li>
+          <li>
+            <div class="h-name">CI templates ship in-box</div>
+            <div class="h-desc">GitHub Actions workflow included: record on main, fail the PR if the Rust port diverges from the recorded behavior.</div>
+          </li>
+        </ul>
+        <div class="sowhat">
+          <span class="sowhat-label">So what?</span>
+          <p>Rust's reputation as a "rewrite everything" language keeps teams away. This flips the story: measure first, migrate the hot 20%, keep the rest. Practical for production codebases where a full rewrite is off the table.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="r-01-gh" data-repo="r-01" data-type="github">
+<div class="panel">
+  <div class="panel-header">
+    <div class="ph-left">
+      <span class="rank">01</span>
+      <a class="repo-name" href="https://github.com/erkamyaman/rust-anything">
+        <span class="owner">erkamyaman</span><span class="slash">/</span><span class="name">rust-anything</span>
+      </a>
+    </div>
+    <div class="ph-dots">
+      <a class="dot" href="#r-01">Summary</a>
+      <a class="dot active" href="#r-01-gh">GitHub</a>
+    </div>
+  </div>
+  <div class="panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/erkamyaman/rust-anything" alt="erkamyaman/rust-anything" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="github-fallback">
+        <div class="gf-content">
+          <svg class="gf-octocat" width="64" height="64" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg>
+          <div class="gf-name"><span class="gf-owner">erkamyaman</span><span class="gf-slash">/</span><span class="gf-repo">rust-anything</span></div>
+          <div class="gf-hint">github.com</div>
+        </div>
+      </div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge">Rust</span>
+          <span class="badge">MIT</span>
+          <span class="badge" data-gh="erkamyaman/rust-anything" data-role="badge" data-base="8.9k">★ 8.9k</span>
+        </div>
+        <div class="btn-row">
+          <a class="vbtn" href="https://github.com/erkamyaman/rust-anything" target="_blank">View on GitHub</a>
+          <a class="vbtn cta-alt" href="https://github.com/erkamyaman/rust-anything" target="_blank">⭐ Star</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ REPO 02 — Marvisak/VIctory ═══ -->
+<section id="r-02" data-repo="r-02" data-type="summary">
+<div class="panel">
+  <div class="panel-header">
+    <div class="ph-left">
+      <span class="rank">02</span>
+      <a class="repo-name" href="https://github.com/Marvisak/VIctory">
+        <span class="owner">Marvisak</span><span class="slash">/</span><span class="name">VIctory</span>
+      </a>
+    </div>
+    <div class="ph-dots">
+      <a class="dot active" href="#r-02">Summary</a>
+      <a class="dot" href="#r-02-gh">GitHub</a>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div>
+        <div class="eyebrow">🔥 Hot Repos · #02 · ⚠️ Brand-new repo</div>
+        <div class="title">GTA VI on PC — <span class="em">an attempt</span></div>
+        <div class="why-label">Why it matters</div>
+        <div class="why">
+          <b>⚠️ Astroturf caveat:</b> Created <b>November 23</b> — just 24 hours before this issue — with 5,400+ stars. That velocity warrants skepticism. It is part of a broader community effort to reverse-engineer GTA VI binaries for PC (alongside <a href="https://github.com/ivall/xcl">xcl</a>, xbox-emulator, Xbox2Windows). Actual functionality is early-stage; treat as proof-of-concept, not a working emulator.
+        </div>
+      </div>
+      <a class="cta" href="https://github.com/Marvisak/VIctory" target="_blank">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="Marvisak/VIctory" data-role="stat" data-base="5.4k">5.4k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Rust</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">GPL-3.0</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights">
+          <li>
+            <div class="h-name">Community reverse-engineering wave</div>
+            <div class="h-desc">Multiple repos launched this week targeting GTA VI PC: VIctory, xcl, xbox-emulator, Xbox2Windows — a coordinated community push sparked by console modding research.</div>
+          </li>
+          <li>
+            <div class="h-name">Written in Rust</div>
+            <div class="h-desc">Follows the same systems-programming approach as xcl and fast-anything this week — Rust is the dominant language of the trending list.</div>
+          </li>
+          <li>
+            <div class="h-name">High fork rate (13%)</div>
+            <div class="h-desc">705 forks out of 5,444 stars is on the high side. Combined with the 1-day age, independent corroboration of technical claims is recommended.</div>
+          </li>
+        </ul>
+        <div class="sowhat">
+          <span class="sowhat-label">So what?</span>
+          <p>The GTA VI PC reverse-engineering story dominated GitHub this week — 6+ repos, thousands of stars. Whether any ship playable software is an open question, but the community momentum is real and may produce useful Xbox/PS compatibility research as a side-effect.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="r-02-gh" data-repo="r-02" data-type="github">
+<div class="panel">
+  <div class="panel-header">
+    <div class="ph-left">
+      <span class="rank">02</span>
+      <a class="repo-name" href="https://github.com/Marvisak/VIctory">
+        <span class="owner">Marvisak</span><span class="slash">/</span><span class="name">VIctory</span>
+      </a>
+    </div>
+    <div class="ph-dots">
+      <a class="dot" href="#r-02">Summary</a>
+      <a class="dot active" href="#r-02-gh">GitHub</a>
+    </div>
+  </div>
+  <div class="panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/Marvisak/VIctory" alt="Marvisak/VIctory" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="github-fallback">
+        <div class="gf-content">
+          <svg class="gf-octocat" width="64" height="64" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg>
+          <div class="gf-name"><span class="gf-owner">Marvisak</span><span class="gf-slash">/</span><span class="gf-repo">VIctory</span></div>
+          <div class="gf-hint">github.com</div>
+        </div>
+      </div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge">Rust</span>
+          <span class="badge">GPL-3.0</span>
+          <span class="badge" data-gh="Marvisak/VIctory" data-role="badge" data-base="5.4k">★ 5.4k</span>
+        </div>
+        <div class="btn-row">
+          <a class="vbtn" href="https://github.com/Marvisak/VIctory" target="_blank">View on GitHub</a>
+          <a class="vbtn cta-alt" href="https://github.com/Marvisak/VIctory" target="_blank">⭐ Star</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ REPO 03 — deepseek-ai/chat-demo ═══ -->
+<section id="r-03" data-repo="r-03" data-type="summary">
+<div class="panel">
+  <div class="panel-header">
+    <div class="ph-left">
+      <span class="rank">03</span>
+      <a class="repo-name" href="https://github.com/deepseek-ai/chat-demo">
+        <span class="owner">deepseek-ai</span><span class="slash">/</span><span class="name">chat-demo</span>
+      </a>
+    </div>
+    <div class="ph-dots">
+      <a class="dot active" href="#r-03">Summary</a>
+      <a class="dot" href="#r-03-gh">GitHub</a>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div>
+        <div class="eyebrow">🔥 Hot Repos · #03</div>
+        <div class="title">DeepSeek's official <span class="em">chat UI</span> reference</div>
+        <div class="why-label">Why it matters</div>
+        <div class="why">
+          <b>Official TypeScript chat demo from deepseek-ai.</b> Released alongside DeepSeek's Flash API tool-use launch (Nov 13), this is the reference implementation teams are forking to build on top of DeepSeek Flash. The 24% fork ratio is consistent with a template designed to be forked.
+        </div>
+      </div>
+      <a class="cta" href="https://github.com/deepseek-ai/chat-demo" target="_blank">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="deepseek-ai/chat-demo" data-role="stat" data-base="5.4k">5.4k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">TypeScript</div></div>
+          <div><div class="stat-label">License</div><div class="stat-val">MIT</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights">
+          <li>
+            <div class="h-name">Official org repo</div>
+            <div class="h-desc">Published under <code>deepseek-ai</code> — the same org as DeepSeek-V3 and DeepSeek-R2. Authoritative starting point for DeepSeek integrations.</div>
+          </li>
+          <li>
+            <div class="h-name">TypeScript + API tool use</div>
+            <div class="h-desc">Shows function-calling against the DeepSeek API, including the new Flash endpoint's tool-use billing model (tool calls billed on top of token charges, Nov 13).</div>
+          </li>
+          <li>
+            <div class="h-name">Fork-first design</div>
+            <div class="h-desc">Minimal structure — intentionally thin so teams can fork and add their own UI, auth, and system prompt without fighting the demo's opinions.</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="r-03-gh" data-repo="r-03" data-type="github">
+<div class="panel">
+  <div class="panel-header">
+    <div class="ph-left">
+      <span class="rank">03</span>
+      <a class="repo-name" href="https://github.com/deepseek-ai/chat-demo">
+        <span class="owner">deepseek-ai</span><span class="slash">/</span><span class="name">chat-demo</span>
+      </a>
+    </div>
+    <div class="ph-dots">
+      <a class="dot" href="#r-03">Summary</a>
+      <a class="dot active" href="#r-03-gh">GitHub</a>
+    </div>
+  </div>
+  <div class="panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/deepseek-ai/chat-demo" alt="deepseek-ai/chat-demo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="github-fallback">
+        <div class="gf-content">
+          <svg class="gf-octocat" width="64" height="64" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg>
+          <div class="gf-name"><span class="gf-owner">deepseek-ai</span><span class="gf-slash">/</span><span class="gf-repo">chat-demo</span></div>
+          <div class="gf-hint">github.com</div>
+        </div>
+      </div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge">TypeScript</span>
+          <span class="badge">MIT</span>
+          <span class="badge" data-gh="deepseek-ai/chat-demo" data-role="badge" data-base="5.4k">★ 5.4k</span>
+        </div>
+        <div class="btn-row">
+          <a class="vbtn" href="https://github.com/deepseek-ai/chat-demo" target="_blank">View on GitHub</a>
+          <a class="vbtn cta-alt" href="https://github.com/deepseek-ai/chat-demo" target="_blank">⭐ Star</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ REPO 04 — ivall/xcl ═══ -->
+<section id="r-04" data-repo="r-04" data-type="summary">
+<div class="panel">
+  <div class="panel-header">
+    <div class="ph-left">
+      <span class="rank">04</span>
+      <a class="repo-name" href="https://github.com/ivall/xcl">
+        <span class="owner">ivall</span><span class="slash">/</span><span class="name">xcl</span>
+      </a>
+    </div>
+    <div class="ph-dots">
+      <a class="dot active" href="#r-04">Summary</a>
+      <a class="dot" href="#r-04-gh">GitHub</a>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div>
+        <div class="eyebrow">🔥 Hot Repos · #04</div>
+        <div class="title">Xbox Series X <span class="em">compatibility layer</span> for Windows</div>
+        <div class="why-label">Why it matters</div>
+        <div class="why">
+          <b>Wine for Xbox.</b> <code>xcl</code> reimplements the Xbox Series X|S syscall layer on Windows so console binaries can run natively on x64 PC hardware. If Wine made PC gaming accessible, xcl is trying to do the same for the console backlog. Week-old, 4.6k stars — the energy is real.
+        </div>
+      </div>
+      <a class="cta" href="https://github.com/ivall/xcl" target="_blank">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="ivall/xcl" data-role="stat" data-base="4.6k">4.6k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Rust</div></div>
+          <div><div class="stat-label">Created</div><div class="stat-val">Nov 20</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights">
+          <li>
+            <div class="h-name">Native syscall reimplementation</div>
+            <div class="h-desc">Runs console game code without emulating the CPU — translates Xbox syscalls to Windows equivalents, aiming for near-native performance.</div>
+          </li>
+          <li>
+            <div class="h-name">Rust core</div>
+            <div class="h-desc">Safety-first systems code for a project where memory errors would manifest as game crashes or exploitable vulnerabilities.</div>
+          </li>
+          <li>
+            <div class="h-name">Community context</div>
+            <div class="h-desc">Companion to VIctory, xbox-emulator, and Xbox2Windows — multiple teams converging on Xbox-to-PC translation this week.</div>
+          </li>
+        </ul>
+        <div class="sowhat">
+          <span class="sowhat-label">So what?</span>
+          <p>Xbox compatibility layers are technically hard and legally grey. Watch the fork activity and commit velocity over the next few weeks to gauge whether this is research or shipping software.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="r-04-gh" data-repo="r-04" data-type="github">
+<div class="panel">
+  <div class="panel-header">
+    <div class="ph-left">
+      <span class="rank">04</span>
+      <a class="repo-name" href="https://github.com/ivall/xcl">
+        <span class="owner">ivall</span><span class="slash">/</span><span class="name">xcl</span>
+      </a>
+    </div>
+    <div class="ph-dots">
+      <a class="dot" href="#r-04">Summary</a>
+      <a class="dot active" href="#r-04-gh">GitHub</a>
+    </div>
+  </div>
+  <div class="panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/ivall/xcl" alt="ivall/xcl" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="github-fallback">
+        <div class="gf-content">
+          <svg class="gf-octocat" width="64" height="64" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg>
+          <div class="gf-name"><span class="gf-owner">ivall</span><span class="gf-slash">/</span><span class="gf-repo">xcl</span></div>
+          <div class="gf-hint">github.com</div>
+        </div>
+      </div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge">Rust</span>
+          <span class="badge" data-gh="ivall/xcl" data-role="badge" data-base="4.6k">★ 4.6k</span>
+        </div>
+        <div class="btn-row">
+          <a class="vbtn" href="https://github.com/ivall/xcl" target="_blank">View on GitHub</a>
+          <a class="vbtn cta-alt" href="https://github.com/ivall/xcl" target="_blank">⭐ Star</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ REPO 05 — EL4CTEO/fast-anything ═══ -->
+<section id="r-05" data-repo="r-05" data-type="summary">
+<div class="panel">
+  <div class="panel-header">
+    <div class="ph-left">
+      <span class="rank">05</span>
+      <a class="repo-name" href="https://github.com/EL4CTEO/fast-anything">
+        <span class="owner">EL4CTEO</span><span class="slash">/</span><span class="name">fast-anything</span>
+      </a>
+    </div>
+    <div class="ph-dots">
+      <a class="dot active" href="#r-05">Summary</a>
+      <a class="dot" href="#r-05-gh">GitHub</a>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="summary-left">
+      <div>
+        <div class="eyebrow">🔥 Hot Repos · #05</div>
+        <div class="title">Profile first, <span class="em">port the 5%</span> that's slow</div>
+        <div class="why-label">Why it matters</div>
+        <div class="why">
+          <b>Pragmatic performance profiling + selective Rust FFI.</b> Profiles Python, Node, or Ruby apps, identifies the hot paths, then generates a Rust extension with an FFI wrapper for just those paths. The tagline is literal: <em>"Don't rewrite it in Rust. Rewrite the 5% that's slow."</em>
+        </div>
+      </div>
+      <a class="cta" href="https://github.com/EL4CTEO/fast-anything" target="_blank">View on GitHub →</a>
+    </div>
+    <div class="summary-right">
+      <div class="card stats-card">
+        <div class="stats-row">
+          <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="EL4CTEO/fast-anything" data-role="stat" data-base="3.3k">3.3k</div></div>
+          <div><div class="stat-label">Language</div><div class="stat-val">Rust</div></div>
+          <div><div class="stat-label">Created</div><div class="stat-val">Nov 21</div></div>
+        </div>
+      </div>
+      <div class="card highlights-card">
+        <div class="card-label">Highlights</div>
+        <ul class="highlights">
+          <li>
+            <div class="h-name">Profile-guided extraction</div>
+            <div class="h-desc">Uses <code>py-spy</code>, <code>0x</code>, or <code>rbspy</code> to find the actual hotspots — no guessing which function to rewrite.</div>
+          </li>
+          <li>
+            <div class="h-name">Auto-generated FFI wrappers</div>
+            <div class="h-desc">Scaffolds a Rust <code>cdylib</code> crate and the Python/Node/Ruby bindings in one command. You write the fast version; it handles the glue.</div>
+          </li>
+          <li>
+            <div class="h-name">Complements rust-anything (#01)</div>
+            <div class="h-desc">Where rust-anything is for gradual migration, fast-anything is for surgical performance fixes — same week, different philosophies.</div>
+          </li>
+        </ul>
+        <div class="sowhat">
+          <span class="sowhat-label">So what?</span>
+          <p>Rust's FFI story has historically been painful. If this scaffolding genuinely removes the boilerplate, it could unlock performance improvements for a much wider audience of Python and Node developers.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="r-05-gh" data-repo="r-05" data-type="github">
+<div class="panel">
+  <div class="panel-header">
+    <div class="ph-left">
+      <span class="rank">05</span>
+      <a class="repo-name" href="https://github.com/EL4CTEO/fast-anything">
+        <span class="owner">EL4CTEO</span><span class="slash">/</span><span class="name">fast-anything</span>
+      </a>
+    </div>
+    <div class="ph-dots">
+      <a class="dot" href="#r-05">Summary</a>
+      <a class="dot active" href="#r-05-gh">GitHub</a>
+    </div>
+  </div>
+  <div class="panel-body-centered">
+    <div class="github-card">
+      <img class="github-og" src="https://opengraph.githubassets.com/1/EL4CTEO/fast-anything" alt="EL4CTEO/fast-anything" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="github-fallback">
+        <div class="gf-content">
+          <svg class="gf-octocat" width="64" height="64" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg>
+          <div class="gf-name"><span class="gf-owner">EL4CTEO</span><span class="gf-slash">/</span><span class="gf-repo">fast-anything</span></div>
+          <div class="gf-hint">github.com</div>
+        </div>
+      </div>
+      <div class="github-meta">
+        <div class="badges">
+          <span class="badge">Rust</span>
+          <span class="badge">MIT</span>
+          <span class="badge" data-gh="EL4CTEO/fast-anything" data-role="badge" data-base="3.3k">★ 3.3k</span>
+        </div>
+        <div class="btn-row">
+          <a class="vbtn" href="https://github.com/EL4CTEO/fast-anything" target="_blank">View on GitHub</a>
+          <a class="vbtn cta-alt" href="https://github.com/EL4CTEO/fast-anything" target="_blank">⭐ Star</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ REPOS 06–10 (compact) ═══ -->
+
+<section id="r-06" data-repo="r-06" data-type="summary">
+<div class="panel panel-mc">
+  <div class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav">
+        <span class="rank rank-trigger" tabindex="0">06</span>
+        <div class="rank-dropdown">
+          <a class="rank-item" href="#r-01">01</a><a class="rank-item" href="#r-02">02</a><a class="rank-item" href="#r-03">03</a><a class="rank-item" href="#r-04">04</a>
+          <a class="rank-item" href="#r-05">05</a><a class="rank-item active" href="#r-06">06</a><a class="rank-item" href="#r-07">07</a><a class="rank-item" href="#r-08">08</a>
+          <a class="rank-item" href="#r-09">09</a><a class="rank-item" href="#r-10">10</a>
+        </div>
+      </span>
+      <a class="repo-name" href="https://github.com/Immortal-Protocols/lastbook">
+        <span class="owner">Immortal-Protocols</span><span class="slash">/</span><span class="name">lastbook</span>
+      </a>
+    </div>
+    <div class="ph-dots">
+      <a class="dot active" href="#r-06">GitHub</a>
+    </div>
+  </div>
+  <div class="panel-inner">
+    <div class="card stats-card">
+      <div class="stats-row">
+        <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="Immortal-Protocols/lastbook" data-role="stat" data-base="3.0k">3.0k</div></div>
+        <div><div class="stat-label">Language</div><div class="stat-val">Python</div></div>
+        <div><div class="stat-label">License</div><div class="stat-val">GPL-3.0</div></div>
+      </div>
+    </div>
+    <div class="card highlights-card">
+      <div class="card-label">Offline knowledge AI, maps and videos for survival and rebuilding</div>
+      <ul class="highlights">
+        <li><span class="h-name">Fully offline operation</span><span class="h-desc">Bundles a local LLM, OpenStreetMap tiles, and survival video archives — no internet required after initial setup. Aimed at grid-down scenarios.</span></li>
+        <li><span class="h-name">Curated knowledge base</span><span class="h-desc">Pre-indexed guides covering food production, water purification, first aid, and infrastructure repair — structured for quick retrieval under stress.</span></li>
+        <li><span class="h-name">Unusual but resonant</span><span class="h-desc">The prepper-meets-AI-infrastructure angle hit a nerve; 3k stars in under two weeks. Projects like this surface unmet needs in edge-computing and resilience tooling.</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="r-07" data-repo="r-07" data-type="summary">
+<div class="panel panel-mc">
+  <div class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav">
+        <span class="rank rank-trigger" tabindex="0">07</span>
+        <div class="rank-dropdown">
+          <a class="rank-item" href="#r-01">01</a><a class="rank-item" href="#r-02">02</a><a class="rank-item" href="#r-03">03</a><a class="rank-item" href="#r-04">04</a>
+          <a class="rank-item" href="#r-05">05</a><a class="rank-item" href="#r-06">06</a><a class="rank-item active" href="#r-07">07</a><a class="rank-item" href="#r-08">08</a>
+          <a class="rank-item" href="#r-09">09</a><a class="rank-item" href="#r-10">10</a>
+        </div>
+      </span>
+      <a class="repo-name" href="https://github.com/apex-compute/ANR">
+        <span class="owner">apex-compute</span><span class="slash">/</span><span class="name">ANR</span>
+      </a>
+    </div>
+    <div class="ph-dots">
+      <a class="dot active" href="#r-07">GitHub</a>
+    </div>
+  </div>
+  <div class="panel-inner">
+    <div class="card stats-card">
+      <div class="stats-row">
+        <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="apex-compute/ANR" data-role="stat" data-base="3.0k">3.0k</div></div>
+        <div><div class="stat-label">Language</div><div class="stat-val">C++</div></div>
+        <div><div class="stat-label">Fork rate</div><div class="stat-val">2%</div></div>
+      </div>
+    </div>
+    <div class="card highlights-card">
+      <div class="card-label">Apex Neural Rendering — real-time neural radiance field renderer</div>
+      <ul class="highlights">
+        <li><span class="h-name">Very low fork rate (2%)</span><span class="h-desc">68 forks out of 2,975 stars — unusually clean signal for a C++ renderer. Stars are coming from people watching, not forking to build on top.</span></li>
+        <li><span class="h-name">Real-time NeRF rendering in C++</span><span class="h-desc">Neural rendering for 3D scene reconstruction; targets GPU inference with sub-50ms frame budgets. Positioned as an open alternative to proprietary neural rendering pipelines.</span></li>
+        <li><span class="h-name">By Apex Compute</span><span class="h-desc">Same org behind earlier GPU compute work. Description is sparse — verify technical claims against the README before depending on it.</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="r-08" data-repo="r-08" data-type="summary">
+<div class="panel panel-mc">
+  <div class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav">
+        <span class="rank rank-trigger" tabindex="0">08</span>
+        <div class="rank-dropdown">
+          <a class="rank-item" href="#r-01">01</a><a class="rank-item" href="#r-02">02</a><a class="rank-item" href="#r-03">03</a><a class="rank-item" href="#r-04">04</a>
+          <a class="rank-item" href="#r-05">05</a><a class="rank-item" href="#r-06">06</a><a class="rank-item" href="#r-07">07</a><a class="rank-item active" href="#r-08">08</a>
+          <a class="rank-item" href="#r-09">09</a><a class="rank-item" href="#r-10">10</a>
+        </div>
+      </span>
+      <a class="repo-name" href="https://github.com/Noniv/abyssal-garden">
+        <span class="owner">Noniv</span><span class="slash">/</span><span class="name">abyssal-garden</span>
+      </a>
+    </div>
+    <div class="ph-dots">
+      <a class="dot active" href="#r-08">GitHub</a>
+    </div>
+  </div>
+  <div class="panel-inner">
+    <div class="card stats-card">
+      <div class="stats-row">
+        <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="Noniv/abyssal-garden" data-role="stat" data-base="2.9k">2.9k</div></div>
+        <div><div class="stat-label">Language</div><div class="stat-val">JavaScript</div></div>
+        <div><div class="stat-label">Created</div><div class="stat-val">Nov 12</div></div>
+      </div>
+    </div>
+    <div class="card highlights-card">
+      <div class="card-label">Swim through a generative underwater world in your browser</div>
+      <ul class="highlights">
+        <li><span class="h-name">Zero install, pure browser</span><span class="h-desc">Swaying kelp forests, procedural sunbeams, and ambient sea creatures — rendered entirely in WebGL with no framework dependencies.</span></li>
+        <li><span class="h-name">Creative coding signal</span><span class="h-desc">GitHub's trending list is dominated by systems tools this week; a generative art project breaking through at 2.9k is notable. People want beauty in their feeds.</span></li>
+        <li><span class="h-name">Fork it for your next ambient page</span><span class="h-desc">Clean JavaScript codebase with well-separated simulation and rendering layers — reusable for backgrounds, loading screens, or interactive installations.</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="r-09" data-repo="r-09" data-type="summary">
+<div class="panel panel-mc">
+  <div class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav">
+        <span class="rank rank-trigger" tabindex="0">09</span>
+        <div class="rank-dropdown">
+          <a class="rank-item" href="#r-01">01</a><a class="rank-item" href="#r-02">02</a><a class="rank-item" href="#r-03">03</a><a class="rank-item" href="#r-04">04</a>
+          <a class="rank-item" href="#r-05">05</a><a class="rank-item" href="#r-06">06</a><a class="rank-item" href="#r-07">07</a><a class="rank-item" href="#r-08">08</a>
+          <a class="rank-item active" href="#r-09">09</a><a class="rank-item" href="#r-10">10</a>
+        </div>
+      </span>
+      <a class="repo-name" href="https://github.com/Eynnzerr/TelemetryCleaner">
+        <span class="owner">Eynnzerr</span><span class="slash">/</span><span class="name">TelemetryCleaner</span>
+      </a>
+    </div>
+    <div class="ph-dots">
+      <a class="dot active" href="#r-09">GitHub</a>
+    </div>
+  </div>
+  <div class="panel-inner">
+    <div class="card stats-card">
+      <div class="stats-row">
+        <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="Eynnzerr/TelemetryCleaner" data-role="stat" data-base="2.8k">2.8k</div></div>
+        <div><div class="stat-label">Language</div><div class="stat-val">Kotlin</div></div>
+        <div><div class="stat-label">Root req.</div><div class="stat-val">No</div></div>
+      </div>
+    </div>
+    <div class="card highlights-card">
+      <div class="card-label">Remove pre-installed telemetry modules from Chinese Android ROMs — no root needed</div>
+      <ul class="highlights">
+        <li><span class="h-name">Shizuku-based, no root</span><span class="h-desc">Uses <a href="https://github.com/RikkaApps/Shizuku">Shizuku</a> (ADB-over-USB or wireless ADB) to disable SystemHelper, RegService, and similar data-collection modules without rooting the device.</span></li>
+        <li><span class="h-name">Targets specific telemetry</span><span class="h-desc">Focuses on common Chinese Android OEM packages known for silent data collection — MIUI, ColorOS, OriginOS and similar distributions.</span></li>
+        <li><span class="h-name">Privacy tooling demand</span><span class="h-desc">2.8k stars in under two weeks from a Kotlin app targeting a narrow OEM segment — signals strong unmet demand for accessible privacy controls in this device market.</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="r-10" data-repo="r-10" data-type="summary">
+<div class="panel panel-mc">
+  <div class="panel-header">
+    <div class="ph-left">
+      <span class="rank-nav">
+        <span class="rank rank-trigger" tabindex="0">10</span>
+        <div class="rank-dropdown">
+          <a class="rank-item" href="#r-01">01</a><a class="rank-item" href="#r-02">02</a><a class="rank-item" href="#r-03">03</a><a class="rank-item" href="#r-04">04</a>
+          <a class="rank-item" href="#r-05">05</a><a class="rank-item" href="#r-06">06</a><a class="rank-item" href="#r-07">07</a><a class="rank-item" href="#r-08">08</a>
+          <a class="rank-item" href="#r-09">09</a><a class="rank-item active" href="#r-10">10</a>
+        </div>
+      </span>
+      <a class="repo-name" href="https://github.com/AFK-surf/xnulinux">
+        <span class="owner">AFK-surf</span><span class="slash">/</span><span class="name">xnulinux</span>
+      </a>
+    </div>
+    <div class="ph-dots">
+      <a class="dot active" href="#r-10">GitHub</a>
+    </div>
+  </div>
+  <div class="panel-inner">
+    <div class="card stats-card">
+      <div class="stats-row">
+        <div><div class="stat-label">Stars</div><div class="stat-val" data-gh="AFK-surf/xnulinux" data-role="stat" data-base="2.5k">2.5k</div></div>
+        <div><div class="stat-label">Language</div><div class="stat-val">Obj-C++</div></div>
+        <div><div class="stat-label">Platform</div><div class="stat-val">arm64</div></div>
+      </div>
+    </div>
+    <div class="card highlights-card">
+      <div class="card-label">XNU as a loadable kernel module inside Linux — macOS personality for arm64</div>
+      <ul class="highlights">
+        <li><span class="h-name">macOS syscall layer on Linux</span><span class="h-desc">Loads a reimplemented XNU personality as an LKM, translating macOS userspace syscalls to Linux equivalents on arm64 hardware (think: Asahi, Apple Silicon servers).</span></li>
+        <li><span class="h-name">Runs macOS binaries on Linux</span><span class="h-desc">Goal is Mach-O binary compatibility — running macOS CLI tools and eventually frameworks without macOS installed. Technically audacious.</span></li>
+        <li><span class="h-name">Very low fork rate (4%)</span><span class="h-desc">100 forks from 2,490 stars — the audience is watching more than building on top. Early research project; manage expectations accordingly.</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ HOT MODELS ═══ -->
+<section id="hot-models" data-type="section">
+<div class="panel panel-hm panel-mc">
+  <div class="panel-header">
+    <div class="ph-left">
+      <span class="section-label">HM</span>
+      <span class="section-title">🧠 Hot Models</span>
+    </div>
+    <div class="ph-dots">
+      <span class="dot active">Models</span>
+    </div>
+  </div>
+  <div class="panel-inner">
+    <div class="section-header">
+      <span class="section-icon">🧠</span>
+      <div class="section-title">Hot Models</div>
+      <div class="section-sub">Lab releases &amp; API launches · week of Nov 17–24, 2026 · HF API blocked from cloud runner; using lab announcements and aggregator sources</div>
+    </div>
+    <div class="multi-cards">
+      <div class="mc-card">
+        <div class="mc-eyebrow">Anthropic · Nov 9</div>
+        <div class="mc-title">Claude Fable 5.2</div>
+        <div class="mc-body">Anthropic's latest release in the Claude 5 family. Fable 5.2 (model ID <code>claude-fable-5-2</code>) ships alongside Claude Mythos 5.2. Pricing and context window confirmed via Anthropic's release notes; benchmarks not yet published at time of writing.</div>
+        <a class="mc-link" href="https://www.anthropic.com/news" target="_blank">anthropic.com/news</a>
+      </div>
+      <div class="mc-card">
+        <div class="mc-eyebrow">OpenAI · Nov 17</div>
+        <div class="mc-title">GPT-6.2 Astra &amp; Sol</div>
+        <div class="mc-body">Two variants reported: Astra (general reasoning) and Sol (code-focused). Multiple trackers list the Nov 17 release date; verify against OpenAI's official changelog before integrating. No confirmed context windows or pricing at time of writing.</div>
+        <a class="mc-link" href="https://openai.com/news" target="_blank">openai.com/news</a>
+      </div>
+      <div class="mc-card">
+        <div class="mc-eyebrow">Google · Nov 10–18</div>
+        <div class="mc-title">Gemini 4 Carbon, Hydrogen &amp; Neon</div>
+        <div class="mc-body">Three Gemini 4 variants released across 10 days: Carbon (Nov 10), Hydrogen (Nov 12–13), Neon (Nov 18). The rapid cadence suggests incremental capability bumps rather than major model generations. Sources disagree on exact dates — check Google AI blog directly.</div>
+        <a class="mc-link" href="https://blog.google/technology/ai/" target="_blank">blog.google/technology/ai</a>
+      </div>
+      <div class="mc-card">
+        <div class="mc-eyebrow">DeepSeek · Nov 13</div>
+        <div class="mc-title">DeepSeek Flash — API tool use</div>
+        <div class="mc-body">DeepSeek opens tool-use on the <code>deepseek-flash</code> API endpoint. Tool calls billed separately on top of token charges. The official chat-demo repo (#03 this week) is the reference integration. Useful for agents that need fast, cheap function calling.</div>
+        <a class="mc-link" href="https://github.com/deepseek-ai/chat-demo" target="_blank">github.com/deepseek-ai/chat-demo</a>
+      </div>
+      <div class="mc-card">
+        <div class="mc-eyebrow">Alibaba Qwen · Nov 16</div>
+        <div class="mc-title">Qwen4 Max — API launch</div>
+        <div class="mc-body">Qwen4 Max goes live on the API, joining the existing Qwen4 family. Seven of the top-20 HF trending models this week are built on Qwen bases, per a Nov 13 snapshot — Qwen continues to dominate open-weight fine-tuning activity.</div>
+        <a class="mc-link" href="https://qwenlm.github.io/blog/" target="_blank">qwenlm.github.io/blog</a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ FRESH PAPERS ═══ -->
+<section id="fresh-papers" data-type="section">
+<div class="panel panel-mc">
+  <div class="panel-header">
+    <div class="ph-left">
+      <span class="section-label">FP</span>
+      <span class="section-title">📄 Fresh Papers</span>
+    </div>
+    <div class="ph-dots">
+      <span class="dot active">Papers</span>
+    </div>
+  </div>
+  <div class="panel-inner">
+    <div class="section-header">
+      <span class="section-icon">📄</span>
+      <div class="section-title">Fresh Papers</div>
+      <div class="section-sub">arXiv API blocked from cloud runner · sourced via WebSearch and arXiv listing pages · week of Nov 17–24</div>
+    </div>
+    <div class="multi-cards">
+      <div class="mc-card">
+        <div class="mc-eyebrow">arXiv cs.AI · Nov 2026</div>
+        <div class="mc-title">HabitusMem: Belief Memory over Evolving User Preferences</div>
+        <div class="mc-body">Introduces a persistent belief-memory module for LLM agents that tracks how a user's preferences change over time, rather than re-inferring preferences from scratch each session. Evaluated on preference-shift benchmarks where standard RAG degrades.</div>
+        <a class="mc-link" href="https://arxiv.org/list/cs.AI/new" target="_blank">arxiv.org/list/cs.AI/new</a>
+      </div>
+      <div class="mc-card">
+        <div class="mc-eyebrow">NeurIPS 2026 · Multi-agent</div>
+        <div class="mc-title">Multi-agent Debate for Multimodal LLM Inference</div>
+        <div class="mc-body">Formalizes a structured debate protocol between multimodal LLM agents: agents argue competing answers over an image-text pair, with a judge agent resolving disagreements. Reports consistent accuracy gains over single-agent and ensemble baselines on MMMU and ScienceQA.</div>
+        <a class="mc-link" href="https://arxiv.org/list/cs.MA/current" target="_blank">arxiv.org/list/cs.MA/current</a>
+      </div>
+      <div class="mc-card">
+        <div class="mc-eyebrow">arXiv cs.AI · Production study</div>
+        <div class="mc-title">Coding Agents in Production: Traces from GitHub Copilot</div>
+        <div class="mc-body">First large-scale characterization of coding agents using sampled GitHub Copilot traces (June–July 2026). Finds agents succeed on well-scoped tasks but fail on ambiguous specifications at much higher rates than humans, and that multi-step planning errors compound. Practical implications for agentic IDE tools.</div>
+        <a class="mc-link" href="https://arxiv.org/list/cs.AI/new" target="_blank">arxiv.org/list/cs.AI/new</a>
+      </div>
+      <div class="mc-card">
+        <div class="mc-eyebrow">Lean + Claude · Math · Nov 2026</div>
+        <div class="mc-title">Partial Lean Proof: 67% of Riemann zeros on the critical line</div>
+        <div class="mc-body">A Lean 4 formalization (reportedly assisted by Claude Code) verifies that at least 67.25% of the nontrivial zeros of the Riemann zeta function lie on the critical line — up from 41.6% in prior mechanical proofs. <b>This is not a proof of RH.</b> The result was machine-checked but not yet peer-reviewed; the Lean community Zulip is the best place to track its status.</div>
+        <a class="mc-link" href="https://www.datacamp.com/tutorial/claude-and-the-riemann-hypothesis" target="_blank">datacamp.com · Claude and the Riemann Hypothesis</a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ LAB DROPS ═══ -->
+<section id="lab-drops" data-type="section">
+<div class="panel panel-mc">
+  <div class="panel-header">
+    <div class="ph-left">
+      <span class="section-label">LD</span>
+      <span class="section-title">🚀 Lab Drops</span>
+    </div>
+    <div class="ph-dots">
+      <span class="dot active">Labs</span>
+    </div>
+  </div>
+  <div class="panel-inner">
+    <div class="section-header">
+      <span class="section-icon">🚀</span>
+      <div class="section-title">Lab Drops</div>
+      <div class="section-sub">Official releases from AI labs · Nov 9–24, 2026 · dates from aggregator trackers; verify against each lab's own blog before depending on them</div>
+    </div>
+    <div class="multi-cards">
+      <div class="mc-card">
+        <div class="mc-eyebrow">Anthropic · Nov 9 + Nov 12</div>
+        <div class="mc-title">Claude Fable 5.2 &amp; Claude Meetings beta</div>
+        <div class="mc-body">Fable 5.2 (<code>claude-fable-5-2</code>) released alongside Mythos 5.2 on Nov 9. Claude Meetings, a beta integration for Google Meet, went live Nov 12 — takes notes, surfaces action items, and answers questions during calls. Source: Anthropic release notes and multiple trackers; verify at <a href="https://www.anthropic.com/news">anthropic.com/news</a>.</div>
+        <a class="mc-link" href="https://www.anthropic.com/news" target="_blank">anthropic.com/news</a>
+      </div>
+      <div class="mc-card">
+        <div class="mc-eyebrow">OpenAI · Nov 17</div>
+        <div class="mc-title">GPT-6.2 Astra &amp; Sol</div>
+        <div class="mc-body">Two new GPT-6.2 variants: Astra (general reasoning) and Sol (code-focused). Multiple trackers list Nov 17; no confirmed pricing or context window specs available via public sources at time of writing. Check openai.com/api for current model cards.</div>
+        <a class="mc-link" href="https://openai.com/news" target="_blank">openai.com/news</a>
+      </div>
+      <div class="mc-card">
+        <div class="mc-eyebrow">Google · Nov 10–18</div>
+        <div class="mc-title">Gemini 4 Carbon, Hydrogen &amp; Neon</div>
+        <div class="mc-body">Google shipped three Gemini 4 variants across 10 days. Carbon on Nov 10, Hydrogen on Nov 12–13, Neon on Nov 18. Source dates conflict across trackers — treat as approximate. Google Labs also previewed Stitch Loop and opened Tabletop waitlist during this period.</div>
+        <a class="mc-link" href="https://blog.google/technology/ai/" target="_blank">blog.google/technology/ai</a>
+      </div>
+      <div class="mc-card">
+        <div class="mc-eyebrow">DeepSeek · Nov 13</div>
+        <div class="mc-title">DeepSeek Flash — tool use on API</div>
+        <div class="mc-body">DeepSeek enables function calling on the <code>deepseek-flash</code> endpoint with tool use billed on top of tokens. The official chat-demo repo (★5.4k, #03 this week) is the canonical integration starting point. Useful for fast, cost-effective agent loops.</div>
+        <a class="mc-link" href="https://github.com/deepseek-ai/chat-demo" target="_blank">github.com/deepseek-ai/chat-demo</a>
+      </div>
+      <div class="mc-card">
+        <div class="mc-eyebrow">Alibaba Qwen + Moonshot · Nov 16–20</div>
+        <div class="mc-title">Qwen4 Max API + Kimi K3.1 Pro Prime</div>
+        <div class="mc-body">Qwen4 Max goes live on the API (Nov 16). Kimi K3.1 Pro Prime from Moonshot AI listed as released Nov 20. Both are production-ready endpoints; Qwen continues to dominate HF fine-tuning activity with 7 of the top-20 trending models built on Qwen bases this week.</div>
+        <a class="mc-link" href="https://qwenlm.github.io/blog/" target="_blank">qwenlm.github.io/blog</a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ THE BUZZ ═══ -->
+<section id="the-buzz" data-type="section">
+<div class="panel panel-mc">
+  <div class="panel-header">
+    <div class="ph-left">
+      <span class="section-label">BZ</span>
+      <span class="section-title">📡 The Buzz</span>
+    </div>
+    <div class="ph-dots">
+      <span class="dot active">Buzz</span>
+    </div>
+  </div>
+  <div class="panel-inner">
+    <div class="section-header">
+      <span class="section-icon">📡</span>
+      <div class="section-title">The Buzz</div>
+      <div class="section-sub">What the AI-adjacent internet is talking about · smol.ai RSS blocked; sourced via WebSearch and aggregators · Nov 17–24</div>
+    </div>
+    <div class="multi-cards">
+      <div class="mc-card">
+        <div class="mc-eyebrow">GitHub · Community · Nov 20–24</div>
+        <div class="mc-title">GTA VI on PC: six repos, ten thousand stars, one week</div>
+        <div class="mc-body">The community reverse-engineering push to run GTA VI on PC dominated GitHub this week. VIctory, xcl, xbox-emulator, Xbox2Windows, Ahmet-Dedeler/awesome-gta6-reverse-engineering, and portwatch-vi collectively accumulated &gt;10k stars in under a week. The technical approaches differ (static recompilation, syscall layer, compatibility layer) — but the energy is unified. Whether any produce playable software is an open question; the compatible-layer research (xcl) is the most technically substantial.</div>
+        <a class="mc-link" href="https://github.com/ivall/xcl" target="_blank">github.com/ivall/xcl</a>
+      </div>
+      <div class="mc-card">
+        <div class="mc-eyebrow">Math + AI · Nov 2026</div>
+        <div class="mc-title">Claude Code helps push Lean proof of RH to 67% zero density</div>
+        <div class="mc-body">A Lean 4 formalization reportedly co-developed with Claude Code verified that at least 67.25% of the Riemann zeta function's nontrivial zeros lie on the critical line — up from 41.6%. The repo leanprover-community/riemann-hypothesis has 912 stars. <b>This is not a full proof of RH</b> — but it is the largest mechanically verified share to date, and the involvement of AI tools in hard formal mathematics is a genuine signal.</div>
+        <a class="mc-link" href="https://github.com/leanprover-community/riemann-hypothesis" target="_blank">github.com/leanprover-community/riemann-hypothesis</a>
+      </div>
+      <div class="mc-card">
+        <div class="mc-eyebrow">Infrastructure · Nov 13</div>
+        <div class="mc-title">DeepSeek Flash API: cheap tool use changes the agent economics</div>
+        <div class="mc-body">DeepSeek's decision to price tool use on top of tokens (rather than bundled) is worth watching — it's a different economic model from OpenAI and Anthropic. For high-volume agent loops that make many small tool calls, the cost arithmetic changes significantly. The 5.4k-star chat-demo launch suggests developer interest is real.</div>
+        <a class="mc-link" href="https://github.com/deepseek-ai/chat-demo" target="_blank">github.com/deepseek-ai/chat-demo</a>
+      </div>
+      <div class="mc-card">
+        <div class="mc-eyebrow">Rust ecosystem · Nov 17–24</div>
+        <div class="mc-title">Rust dominated the trending list — four of the top five repos</div>
+        <div class="mc-body">rust-anything (#01, 8.9k), VIctory (#02, 5.4k), xcl (#04, 4.6k), and fast-anything (#05, 3.3k) are all Rust. That's not a coincidence — the community is consolidating around Rust for systems work, and tools that make Rust <em>incremental</em> (rust-anything, fast-anything) are resonating. The "rewrite everything" era is giving way to "rewrite the parts that matter."</div>
+        <a class="mc-link" href="https://github.com/erkamyaman/rust-anything" target="_blank">github.com/erkamyaman/rust-anything</a>
+      </div>
+      <div class="mc-card">
+        <div class="mc-eyebrow">Anthropic · Nov 12</div>
+        <div class="mc-title">Claude Meetings: AI in Google Meet — beta</div>
+        <div class="mc-body">Anthropic's Claude Meetings beta for Google Meet joins a crowded space (Otter, Gemini in Meet, Copilot) but distinguishes itself with real-time Q&amp;A during the call rather than just post-meeting notes. Early reports flag it as genuinely useful for async participants; the Google Meet integration lowers the setup barrier compared to standalone tools.</div>
+        <a class="mc-link" href="https://www.anthropic.com/news" target="_blank">anthropic.com/news</a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ WATCH ═══ -->
+<section id="watch" data-type="section">
+<div class="panel panel-mc">
+  <div class="panel-header">
+    <div class="ph-left">
+      <span class="section-label">WT</span>
+      <span class="section-title">📺 Watch</span>
+    </div>
+    <div class="ph-dots">
+      <span class="dot active">Watch</span>
+    </div>
+  </div>
+  <div class="panel-inner">
+    <div class="section-header">
+      <span class="section-icon">📺</span>
+      <div class="section-title">Watch</div>
+      <div class="section-sub">YouTube RSS feeds blocked from cloud runner (youtube.com/feeds/videos.xml) · standing S/A-tier channel recommendations · check each channel for new uploads this week</div>
+    </div>
+    <div class="multi-cards">
+      <div class="mc-card">
+        <div class="mc-eyebrow">S-tier · Andrej Karpathy</div>
+        <div class="mc-title">Check: foundational LLM and AI explainers</div>
+        <div class="mc-body">Karpathy's channel publishes infrequently but densely. Any upload this week is worth watching — his style is to work through fundamentals from first principles, making even familiar topics clearer. Channel ID: <code>UCXUPKJO5MZQN11PqgIvyuvQ</code>.</div>
+        <a class="mc-link" href="https://www.youtube.com/@AndrejKarpathy" target="_blank">youtube.com/@AndrejKarpathy</a>
+      </div>
+      <div class="mc-card">
+        <div class="mc-eyebrow">S-tier · Yannic Kilcher</div>
+        <div class="mc-title">Check: deep paper walkthroughs</div>
+        <div class="mc-body">The papers section this week has the Lean/RH story and the production coding-agent characterization — either would be a strong candidate for a Kilcher walkthrough. If he covered either of these this week, it's worth your time. Channel ID: <code>UCZHmQk67mSJgfCCTn7xBfew</code>.</div>
+        <a class="mc-link" href="https://www.youtube.com/@YannicKilcher" target="_blank">youtube.com/@YannicKilcher</a>
+      </div>
+      <div class="mc-card">
+        <div class="mc-eyebrow">S-tier · AI Explained</div>
+        <div class="mc-title">Check: GPT-6.2 and Gemini 4 benchmark analysis</div>
+        <div class="mc-body">AI Explained (channel ID: <code>UCNJ1Ymd5yFuUPtn21xtRbbw</code>) specializes in measured, skeptical analysis of model launches and benchmarks. With GPT-6.2 Astra/Sol and multiple Gemini 4 variants this week, there's material for a thorough comparison — check for a new upload.</div>
+        <a class="mc-link" href="https://www.youtube.com/@aiexplained-official" target="_blank">youtube.com/@aiexplained-official</a>
+      </div>
+      <div class="mc-card">
+        <div class="mc-eyebrow">A-tier · Fireship</div>
+        <div class="mc-title">Check: punchy GTA VI on PC or DeepSeek recap</div>
+        <div class="mc-body">Fireship's format (100 seconds, punchy, developer-focused) is perfect for the GTA VI on PC story and the DeepSeek Flash tool-use launch. Both have the right mix of technical interest and cultural moment. Channel ID: <code>UCsBjURrPoezykLs9EqgamOA</code>.</div>
+        <a class="mc-link" href="https://www.youtube.com/@Fireship" target="_blank">youtube.com/@Fireship</a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ WANTED ═══ -->
+<section id="wanted" data-type="section">
+<div class="wp-panel">
+  <div class="wp-poster">
+    <div class="wp-header">
+      <div class="wp-wanted">WANTED</div>
+      <div class="wp-subhead">Hidden gems · week of Nov 24, 2026</div>
+      <div class="wp-subhead">Lower star counts · higher signal · worth watching</div>
+    </div>
+    <div class="wp-charges">
+      <div class="wp-charge">
+        <div class="wp-charge-name">pithings / unkernel</div>
+        <div class="wp-charge-crime">CHARGE: Compiled the Linux kernel to WebAssembly. Boots to a shell in under one second. TypeScript host, runs in any modern browser. No install. ★1,386 · fork rate 5% · created Nov 12.</div>
+        <div class="wp-charge-reward">REWARD: If the kernel-in-WASM runtime story has legs, this is ground zero.</div>
+        <a class="wp-link" href="https://github.com/pithings/unkernel" target="_blank">github.com/pithings/unkernel</a>
+      </div>
+      <div class="wp-charge">
+        <div class="wp-charge-name">INK-Q / agy-fast</div>
+        <div class="wp-charge-crime">CHARGE: Non-invasive MCP accelerator plugin for Claude Code and Claude Desktop. Claims reduced tool-call latency for repeat patterns by pre-caching common MCP responses. ★829 · fork rate 6% · created Nov 19.</div>
+        <div class="wp-charge-reward">REWARD: If the caching strategy holds up under real workloads, it's a low-friction win for anyone running Claude Code heavily.</div>
+        <a class="wp-link" href="https://github.com/INK-Q/agy-fast" target="_blank">github.com/INK-Q/agy-fast</a>
+      </div>
+      <div class="wp-charge">
+        <div class="wp-charge-name">ThreatDefence / agentic-attack-detections</div>
+        <div class="wp-charge-crime">CHARGE: Detection rules and IOCs for AI agent attack frameworks — ARTEX, Cairn, and others. Python. Covers prompt injection, tool poisoning, and lateral movement via MCP. ★578 · fork rate 20% · created Nov 20.</div>
+        <div class="wp-charge-reward">REWARD: The 20% fork rate from a security repo signals real defensive use. If you're running agents in production, these detection rules are worth integrating.</div>
+        <a class="wp-link" href="https://github.com/ThreatDefence/agentic-attack-detections" target="_blank">github.com/ThreatDefence/agentic-attack-detections</a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ OUTRO ═══ -->
+<section id="outro" data-type="outro">
+<div class="panel panel-outro">
+  <div class="outro-inner">
+    <div class="outro-logo">The Next New Thing</div>
+    <div class="outro-tagline">GitHub · Hugging Face · Labs · Papers · Buzz</div>
+    <div class="outro-date">2026-11-24</div>
+    <div class="outro-note">
+      Data gathered Nov 24, 2026. GitHub Search API (primary spine) + lab announcement trackers + arXiv listing pages via WebSearch.
+      HuggingFace API, YouTube RSS, smol.ai RSS, and arXiv API were blocked from the cloud runner this run;
+      model and paper data sourced from aggregators and official lab blogs — verify at primary sources before depending on specifics.
+      Star counts are point-in-time snapshots; live counts refresh via the Worker.
+      Astroturf flag on repo #02 (VIctory): 1-day-old repo, 5.4k stars — treat as a community signal, not a production tool.
+    </div>
+  </div>
+</div>
+</section>
+
+</body>
+</html>
